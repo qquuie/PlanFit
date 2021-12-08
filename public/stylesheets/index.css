@@ -418,12 +418,19 @@ input:focus:hover {
     /* width: 600px; */
     /* height: 600px; */
     top: 40px;
-    left: 300px;
+    left: 50%;
     align-items: center;
     /* 把div內的物件致中 */
     /* flex-direction: column; */
     /* justify-content: space-around; */
     /* min-height: 100vh; */
+}
+
+#Date {
+    position: relative;
+    left: 50%;
+    /* transform: translateX(-60%); */
+    background-color: #1D3124;
 }
 
 

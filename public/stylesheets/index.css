@@ -1,3 +1,24 @@
+html body {
+    background-color: #BACEC1;
+}
+
+nav.navbar,
+button#workOutNav,
+ul.dropdown-menu {
+    background-color: #f3f1de;
+}
+
+.navbar-nav>li>a {
+    margin-left: 27px;
+}
+
+.nav-link:hover,
+#workOutNav:hover {
+    text-decoration: none;
+    background-color: #1D3124;
+    color: white;
+}
+
 .border-GreenLake {
     border: 2px solid #82A3A3;
 }
@@ -132,12 +153,11 @@
 
 #calendar_win {
     /* display: none; */
-    width: 50%;
-    height: 110%;
+    width: 550px;
+    height: 600px;
     top: 60px;
-    left: 50%;
+    left: 300px;
     align-items: center;
-    transform: translateX(-50%);
     /* 把div內的物件致中 */
     /* flex-direction: column; */
     /* justify-content: space-around; */
@@ -162,18 +182,18 @@
 
 
 /* #calendar_win thead tr:first-child th div {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-  }   */
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}   */
 
 
 /* #calendar_win h4 {
-  margin: 0;
-  padding: 0.8vw 0 0.8vw;
-  text-align: center;
-  font-size: 6vw;
-  font-weight: 300px; */
+margin: 0;
+padding: 0.8vw 0 0.8vw;
+text-align: center;
+font-size: 6vw;
+font-weight: 300px; */
 
 
 /* background-color:#82A3A3; */
@@ -193,12 +213,6 @@
     color: #82A3A3;
     /* background-color:#82A3A3;*/
     /*debug用 */
-}
-
-#Date {
-    position: relative;
-    left: 50%;
-    transform: translateX(-40%);
 }
 
 #calendar_win .weekday {
@@ -239,7 +253,7 @@
 
 
 /* #calendar_win tbody tr td[class*="prev-month-last-day"] {
-  border-right: 1px solid #9C9C9C !important;
+border-right: 1px solid #9C9C9C !important;
 } */
 
 .tooltip img {
@@ -263,27 +277,29 @@
 }
 
 
-/*------------------------------放在style.css-----------------------*/
+/*-----------------------------------------------------*/
 
-
-/* .All{
-  background-color: #82A3A3;
-  color: #f3f1de;
-  position: relative;
-  left: -34%;
-  top: 6%;
-  width: 12%;
-  padding: 4px 0;
+.All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    top: 6%;
+    width: 12%;
+    padding: 4px 0;
 }
 
-.Next{
-  background-color: #82A3A3;
-  color: #f3f1de;
-  position: relative;
-  left: 34%;
-  width: 12%;
-  padding: 4px 0;
-} */
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    width: 12%;
+    padding: 4px 0;
+}
+
+
+/*---------------------------------------------按下Next的視窗--------------------------------------------*/
 
 #modal_block {
     display: none;
@@ -382,21 +398,103 @@ input:focus:hover {
     left: -10%;
 }
 
-.All {
-    background-color: #82A3A3;
-    color: #f3f1de;
-    position: relative;
-    left: -34%;
-    top: 6%;
-    width: 12%;
-    padding: 4px 0;
+
+/* ----------------------------------------------------------------------------- */
+
+.margin_0_auto {
+    margin: 0px auto;
 }
 
-.Next {
+.text-align_center {
+    text-align: center;
+}
+
+.margin_0 {
+    margin: 0%;
+}
+
+#calendar_home {
+    /* display: none; */
+    /* width: 600px; */
+    /* height: 600px; */
+    top: 40px;
+    left: 300px;
+    align-items: center;
+    /* 把div內的物件致中 */
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+    /* min-height: 100vh; */
+}
+
+
+/* #calendar_home thead tr:first-child th div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}   */
+
+
+/* #calendar_home h4 {
+margin: 0;
+padding: 0.8vw 0 0.8vw;
+text-align: center;
+font-size: 6vw;
+font-weight: 300px; */
+
+
+/* background-color:#82A3A3; */
+
+
+/*debug用*/
+
+
+/* } */
+
+#calendar_home h3 {
+    margin: 0;
+    padding: 1.5vw 3vw;
+    font-size: 40px;
+    /* font-weight: 500; */
+    display: inline-block;
+    color: #82A3A3;
+    /* background-color:#82A3A3;*/
+    /*debug用 */
+}
+
+#calendar_home .weekday {
+    font-size: large;
+    padding: 8px 4px 10px;
+    /*上右下左*/
+    /*border-bottom: 1px solid #BACEC1 !important;*/
     background-color: #82A3A3;
     color: #f3f1de;
-    position: relative;
-    left: 34%;
-    width: 12%;
-    padding: 4px 0;
+}
+
+#calendar_home tbody td {
+    height: 5vw;
+    width: 5vw;
+    font-size: 1.5vw;
+    font-weight: 500;
+    vertical-align: top;
+    padding: 0.5vw;
+    border: 1px solid #82A3A3;
+    transition: font-size 0.6s ease;
+}
+
+#calendar_home tbody td:hover {
+    font-size: 1.8vw;
+}
+
+#calendar_home .icon_btn {
+    font-size: 1.5vw;
+}
+
+#calendar_home .icon_btn:hover {
+    opacity: 0.6;
+}
+
+#calendar_home #current-day {
+    background-color: #82A3A3;
+    /*debug用*/
+    color: #f3f1de;
 }

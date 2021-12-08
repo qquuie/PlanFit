@@ -1,19 +1,16 @@
 html body {
     background-color: #BACEC1;
-
 }
 
 nav.navbar,
 button#workOutNav,
 ul.dropdown-menu {
     background-color: #f3f1de;
-
 }
 
 nav.navbar {
     margin-bottom: 0px;
 }
-
 
 .navbar-nav>li>a {
     margin-left: 27px;
@@ -24,7 +21,6 @@ nav.navbar {
     text-decoration: none;
     background-color: #1D3124;
     color: white;
-
 }
 
 div.modalContainer {
@@ -33,9 +29,8 @@ div.modalContainer {
 }
 
 
-
-
 /* <---------------------- Contact Us-----------------------> */
+
 .inputGroup {
     width: 45%;
     float: right;
@@ -47,16 +42,16 @@ button.contactBtn.btn {
     font-size: xx-large;
     color: white;
     font-weight: 300;
-
 }
 
+
 /* <---------------------- Sign Up-----------------------> */
+
 .smallPage {
     width: 500 px;
     height: 530 px;
     margin: 0 auto;
     margin-top: 15%;
-
 }
 
 .inputForm4 {
@@ -71,8 +66,6 @@ button.contactBtn.btn {
 .inputForm2 {
     padding: 6%;
 }
-
-
 
 div.input-group-lg>h3 {
     color: #90a598;
@@ -91,7 +84,6 @@ div>h1 {
     color: #90a598;
     text-align: center;
     font-size: 3.5rem;
-
 }
 
 button#signUpBtn.btn {
@@ -101,8 +93,6 @@ button#signUpBtn.btn {
     font-weight: 300;
     width: 400px;
     position: relative;
-
-
 }
 
 button#signInBtn.btn {
@@ -112,8 +102,6 @@ button#signInBtn.btn {
     font-weight: 300;
     width: 400px;
     position: relative;
-
-
 }
 
 button#nextBtn2 {
@@ -124,8 +112,6 @@ button#nextBtn2 {
     width: 400px;
     position: relative;
     right: 10px;
-
-
 }
 
 button#nextBtn3 {
@@ -135,8 +121,6 @@ button#nextBtn3 {
     font-weight: 300;
     width: 400px;
     position: relative;
-
-
 }
 
 button#nextBtn.btn {
@@ -146,10 +130,7 @@ button#nextBtn.btn {
     font-weight: 300;
     width: 440px;
     position: relative;
-
-
 }
-
 
 .signUpDiv>p {
     color: #90a598;
@@ -186,7 +167,6 @@ button#nextBtn.btn {
     right: 2px;
     text-align: center;
     margin-top: 10px;
-
 }
 
 .nextDiv3>p {
@@ -246,7 +226,6 @@ div.modal-footer {
     text-align: center;
     justify-content: center;
     padding: 0;
-
 }
 
 div.modal-header {
@@ -254,12 +233,10 @@ div.modal-header {
     padding-right: 30px;
     /* justify-content: flex-start; */
     border-bottom: 0;
-
 }
-#logoImg
-{
-        justify-content: flex-start;
 
+#logoImg {
+    justify-content: flex-start;
 }
 
 .inputForm4>form>div.input-group-lg {

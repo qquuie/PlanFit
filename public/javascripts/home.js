@@ -218,7 +218,7 @@ let workout_sth_c = ""; //運動名稱
 let workout_times; //運動次數或秒數
 $(".calender").click(function() {
     var $father = $(this).parent().parent().parent().parent();
-    workout_sth_c = $father.find(".card-body h3").text();
+    workout_sth_c = $father.find(".card h1").text();
     $("#modal_workout_name p").text(workout_sth_c);
     console.log(workout_sth_c);
 });

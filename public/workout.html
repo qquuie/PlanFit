@@ -184,6 +184,11 @@
         let thisDate = today.getDate();
         updateDates();
         fillInMonth(thisYear, thisMonth, thisDate);
+        $(document).ready(function()
+        {
+            $("div#smallPageModal").css('z-index', '-1');
+            $(".page").css('z-index', '1000');
+        })
     </script>
 </body>
 

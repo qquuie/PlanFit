@@ -147,7 +147,6 @@
         console.log(workout_sth);
     });
     /*--------------------------------calender--------------------------------------*/
-<<<<<<< HEAD
     $(".calender").click(function(){
       $("#calendar_win").show();
       $("#calendar_win").css({"display":"flex","flex-direction": "column"});
@@ -156,9 +155,7 @@
 
     $("div#smallPageModal").css('z-index','-1');
     $(".page").css('z-index', '1000');
-=======
     $(".calender").click(function() {
         $("#calendar_win").show();
         $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
     });
->>>>>>> 0307cfea8e1ad38749ece4648380f1416b837f6d

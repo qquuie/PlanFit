@@ -270,21 +270,26 @@
 
             })
             // <--------------------------- Information-------------------------->
-        $("nav.navbar").css('z-index', '20000');
+            $("div#smallPageModal").css('z-index', '0');
+            $(".page").css('z-index', '1000');
+        $("ul#workOutMenu>a.dropdown-item").click(function(){
+            $("div#smallPageModal").css('z-index', '0');
+
+        })
         $('button#closeBtn').click(function() {
             $(".modal-backdrop").addClass("fade");
             $("div#smallPageModal").addClass("fade");
-
-            $("nav.navbar").css('z-index', '20000');
-            $(".page.container").css('z-index', '20000');
+            $("div#smallPageModal").css('z-index', '0');
+            $("nav.navbar").css('z-index', '1000');
+            // $(".page.container").css('z-index', '20000');
         })
         $('#inforSign').click(function() {
-            console.log(1);
             $("div#smallPageModal").toggle();
             $("div#smallPageModal").modal("show");
             $("div#smallPageModal").removeClass("fade");
             $(".modal-backdrop").removeClass("fade");
-            $("nav.navbar").css('z-index', '1000');
+            // $("nav.navbar").css('z-index', '1000');
+            $("div#smallPageModal").css('z-index', '2000');
 
         })
 

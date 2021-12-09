@@ -394,7 +394,7 @@ input:focus:hover {
     /* width: 600px; */
     /* height: 600px; */
     top: 40px;
-    left: 300px;
+    left: 50%;
     align-items: center;
     /* 把div內的物件致中 */
     /* flex-direction: column; */
@@ -450,3 +450,6 @@ input:focus:hover {
     /*debug用*/
     color: #f3f1de;
 }
+.homeControls_btn{
+    background-color: #52795e;
+  }

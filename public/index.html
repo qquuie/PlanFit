@@ -123,11 +123,11 @@
 
                 </div>
             </div>
-            <button class="carousel-control-prev btn-dark" type="button" data-bs-target="#homeControls" data-bs-slide="prev">
+            <button class="carousel-control-prev homeControls_btn" type="button" data-bs-target="#homeControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next btn-dark" type="button" data-bs-target="#homeControls" data-bs-slide="next">
+            <button class="carousel-control-next homeControls_btn" type="button" data-bs-target="#homeControls" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -135,10 +135,10 @@
 
         <!-- -----------------首頁月曆表格--------------------- -->
         <div id="calendar_home" class="table-responsive-xxl">
-            <table id="calender_table" class="margin_0_auto">
-                <thead class="color margin_0_auto">
+            <table id="calender_table">
+                <thead class="color">
                     <tr>
-                        <th colspan="7" class="border-color margin_0_auto">
+                        <th colspan="7" class="border-color">
                             <!-- <h4 id="cal-year">December ,2020</h4> -->
                             <div id="Date" class="text-align_center">
                                 <i class="glyphicon glyphicon-menu-left icon_btn" onclick="previousMonth();"></i>
@@ -159,7 +159,7 @@
                 </thead>
                 <tbody id="table-body" class="border-color">
                     <tr>
-                        <td onclick="dayClicked(this);">1</td>
+                        <td onclick="dayClicked(this);"></td>
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
@@ -180,7 +180,7 @@
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
-                        <td class="tooltip" onclick="dayClicked(this);">1 <img src="img/note1.png" alt="記事"><span>這是提示！！！</span></td>
+                        <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>
                         <td onclick="dayClicked(this);">1</td>

@@ -402,30 +402,6 @@ input:focus:hover {
     /* min-height: 100vh; */
 }
 
-
-/* #calendar_home thead tr:first-child th div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}   */
-
-
-/* #calendar_home h4 {
-margin: 0;
-padding: 0.8vw 0 0.8vw;
-text-align: center;
-font-size: 6vw;
-font-weight: 300px; */
-
-
-/* background-color:#82A3A3; */
-
-
-/*debug用*/
-
-
-/* } */
-
 #calendar_home h3 {
     margin: 0;
     padding: 1.5vw 3vw;

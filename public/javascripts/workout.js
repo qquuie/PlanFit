@@ -1,41 +1,46 @@
-    $(".dropdown-item").click(function(){
-      var workout_part = $(this).text();
-      console.log(1);
+    $(".dropdown-item").click(function() {
+        var workout_part = $(this).text();
+        console.log(1);
     });
-    
+
     /*--------------------------------生成workout_div--------------------------------------*/
-    var workout_name="",workout_name2="";
-    var diff=0,diff2=0;
-    var eq="NO",eq2="NO";
-    var jp="NO",jp2="NO";
-    var workout_img="",workout_img2="";
-    for(var i=0;i<3;i++){
-        if(i==0){
-            workout_name="Jumping Squat";
-            workout_name2="side plank";
-            diff=3.5;
-            diff2=4;
-            jp="Yes";
-            workout_img="img_workout/get_fit/full/full_jumping_squat.jpg";
-            workout_img2="/img_workout/get_fit/full/full4.jpg";
-        }else if(i==1){
-            workout_name="Sprinter";
-            workout_name2="Leg glute bridge"
-            diff=3;
-            diff2=4.5;
-            eq="NO";
-            jp="NO";
-            workout_img="img_workout/get_fit/full/full_sprinter_right.jpg";
-            workout_img2="/img_workout/get_fit/full/full5.jpg";
-        }else{
-            workout_name="Squat boxing";
-            workout_name2="Triceps push up"
-            diff=3.5;
-            diff=4;
-            eq="Yes";
-            jp="NO";
-            workout_img="img_workout/get_fit/full/full_jumping_squat.jpg";
-            workout_img2="/img_workout/get_fit/full/full6.jpg";
+    var workout_name = "",
+        workout_name2 = "";
+    var diff = 0,
+        diff2 = 0;
+    var eq = "NO",
+        eq2 = "NO";
+    var jp = "NO",
+        jp2 = "NO";
+    var workout_img = "",
+        workout_img2 = "";
+    for (var i = 0; i < 3; i++) {
+        if (i == 0) {
+            workout_name = "Jumping Squat";
+            workout_name2 = "side plank";
+            diff = 3.5;
+            diff2 = 4;
+            jp = "Yes";
+            workout_img = "img_workout/get_fit/full/full_jumping_squat.jpg";
+            workout_img2 = "/img_workout/get_fit/full/full4.jpg";
+        } else if (i == 1) {
+            workout_name = "Sprinter";
+            workout_name2 = "Leg glute bridge"
+            diff = 3;
+            diff2 = 4.5;
+            eq = "NO";
+            jp = "NO";
+            workout_img = "img_workout/get_fit/full/full_sprinter_right.jpg";
+            workout_img2 = "/img_workout/get_fit/full/full5.jpg";
+        } else {
+            workout_name = "Squat boxing";
+            workout_name2 = "Triceps push up"
+            diff = 3.5;
+            diff = 4;
+            eq = "Yes";
+            jp = "NO";
+            workout_img = "img_workout/get_fit/full/full_jumping_squat.jpg";
+            workout_img2 = "/img_workout/get_fit/full/full6.jpg";
         }
         var row_block = `
         <div class="card border-GreenLake">
@@ -107,42 +112,50 @@
         $(".card_row2").append(row_block2);
     }
 
-    let workout_sth="";
+    let workout_sth = "";
     /*--------------------------------folder--------------------------------------*/
-    $(".folder").click(function(){
-      var $father = $(this).parent().parent().parent().parent();
-      workout_sth= $father.find(".card-body h3").text();
-      console.log(workout_sth);
-      $("#folder_win").show();
+    $(".folder").click(function() {
+        var $father = $(this).parent().parent().parent().parent();
+        workout_sth = $father.find(".card-body h3").text();
+        console.log(workout_sth);
+        $("#folder_win").show();
     });
-    $("#folder_close").click(function(){
-      $("#folder_win").hide();
+    $("#folder_close").click(function() {
+        $("#folder_win").hide();
     });
     //新增資料夾#new_add
-    $('#new_add').click(function(){
-      let $father=$(this).parent();//找按鈕的父元素
-      let new_folder_name=$father.find('#new_name').val();//尋找子元素輸入欄位的val
-      if(new_folder_name != ""){
-        console.log(new_folder_name);
-        let new_row=`
+    $('#new_add').click(function() {
+        let $father = $(this).parent(); //找按鈕的父元素
+        let new_folder_name = $father.find('#new_name').val(); //尋找子元素輸入欄位的val
+        if (new_folder_name != "") {
+            console.log(new_folder_name);
+            let new_row = `
           <div class="folder_workout">
             <div class="folder_name"><p>${new_folder_name}</p></div>
             <div class="folder_add"><p>+</p></div>
           </div>
         `;
-        $('#folder_workout_block').append(new_row);
-      }
+            $('#folder_workout_block').append(new_row);
+        }
     });
     //加入資料夾.folder_add
-    $('.folder_add').click(function(){
-      var $f=$(this).parent();//找按鈕的父元素
-      console.log($f);
-      var add_item=$f.find('.folder_name p').text();//尋找子元素檔案名稱的txt
-      console.log(add_item);
-      console.log(workout_sth);
+    $('.folder_add').click(function() {
+        var $f = $(this).parent(); //找按鈕的父元素
+        console.log($f);
+        var add_item = $f.find('.folder_name p').text(); //尋找子元素檔案名稱的txt
+        console.log(add_item);
+        console.log(workout_sth);
     });
     /*--------------------------------calender--------------------------------------*/
     $(".calender").click(function(){
       $("#calendar_win").show();
       $("#calendar_win").css({"display":"flex","flex-direction": "column"});
+    });
+
+
+    $("div#smallPageModal").css('z-index','-1');
+    $(".page").css('z-index', '1000');
+    $(".calender").click(function() {
+        $("#calendar_win").show();
+        $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
     });

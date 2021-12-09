@@ -1,15 +1,3 @@
-// 使用if來取得週天的名稱
-// function getWeekdayName(weekday){ 
-//   var weekdayName;
-//   if (weekday === 0 ) weekdayName = "Sunday";
-//   if (weekday === 1 ) weekdayName = "Monday";
-//   if (weekday === 2 ) weekdayName = "Tuesday";
-//   if (weekday === 3 ) weekdayName = "Wednesay";
-//   if (weekday === 4 ) weekdayName = "Thursday";
-//   if (weekday === 5 ) weekdayName = "Friday";
-//   if (weekday === 6 ) weekdayName = "Saturay";
-//   return weekdayName;
-// }
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
     var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

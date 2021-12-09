@@ -394,7 +394,7 @@ input:focus:hover {
     /* width: 600px; */
     /* height: 600px; */
     top: 40px;
-    left: 50%;
+    left: 300px;
     align-items: center;
     /* 把div內的物件致中 */
     /* flex-direction: column; */
@@ -454,7 +454,6 @@ input:focus:hover {
 
 #calendar_home #current-day {
     background-color: #82A3A3;
-    /*debug用*/
     color: #f3f1de;
 }
 

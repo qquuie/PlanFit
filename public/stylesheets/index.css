@@ -402,6 +402,12 @@ input:focus:hover {
     /* min-height: 100vh; */
 }
 
+#Date {
+    position: relative;
+    left: 50%;
+    /* transform: translateX(-60%); */
+    background-color: #1D3124;
+}
 
 #calendar_home h3 {
     margin: 0;
@@ -449,4 +455,8 @@ input:focus:hover {
 #calendar_home #current-day {
     background-color: #82A3A3;
     color: #f3f1de;
+}
+
+.homeControls_btn {
+    background-color: #52795e;
 }

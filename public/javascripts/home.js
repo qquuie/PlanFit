@@ -73,23 +73,6 @@ function getUID(year, month, date) {
     return '' + year + month + date;
 }
 
-// //記事圖示與ToolTip處理
-// // 記事資料的程式片段
-// var postIts = []; //記事陣列，用來放置月曆中的記事物件資料
-// //current 目前點擊的日期
-// var currentPostItID = 0; //目前的記事ID
-// var newCurrentPostIt = false; //目前的記事是否為新？也就是：目前點選的日期尚未有任何的記事資料
-// var currentPostItIndex = 0; //目前的記事在postIts陣列中的位置索引
-// function appendSpriteToCellAndTooltip(uid, elem){      
-//   for(let i = 0; i < postIts.length; i++){
-//     if(uid == postIts[i].id){
-//       elem.innerHTML += `<img src='images/note${postIts[i].note_num}.png' alt='A post-it note'>`;
-//       elem.classList.add("tooltip");
-//       elem.innerHTML += `<span>${postIts[i].note}</span>`;
-//     }
-//   }
-// }
-
 function fillInMonth(thisYear, thisMonth, thisDate) {
     let firstDayThisMonthYear = new Date(thisYear, thisMonth, 1).getDay();
     // 填滿月曆表格日期

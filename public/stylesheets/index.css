@@ -409,30 +409,6 @@ input:focus:hover {
     background-color: #1D3124;
 }
 
-
-/* #calendar_home thead tr:first-child th div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}   */
-
-
-/* #calendar_home h4 {
-margin: 0;
-padding: 0.8vw 0 0.8vw;
-text-align: center;
-font-size: 6vw;
-font-weight: 300px; */
-
-
-/* background-color:#82A3A3; */
-
-
-/*debug用*/
-
-
-/* } */
-
 #calendar_home h3 {
     margin: 0;
     padding: 1.5vw 3vw;
@@ -481,6 +457,7 @@ font-weight: 300px; */
     /*debug用*/
     color: #f3f1de;
 }
-.homeControls_btn{
+
+.homeControls_btn {
     background-color: #52795e;
-  }
+}

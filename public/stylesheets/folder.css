@@ -2,50 +2,11 @@ html body {
     background-color: #f3f1de;
 }
 
-nav.navbar,
-button#workOutNav,
-ul.dropdown-menu {
-    background-color: #f3f1de;
-}
-
-nav.navbar {
-    margin-bottom: 0px;
-}
-
-.navbar-nav>li>a {
-    margin-left: 27px;
-}
-
-.nav-link:hover,
-#workOutNav:hover {
-    text-decoration: none;
-    background-color: #1D3124;
-    color: white;
-}
-
-div.modalContainer {
-    background-color: #bacec1;
-    color: white;
-}
-
-
-/* <---------------------- Contact Us-----------------------> */
-
 .inputGroup {
     width: 45%;
     float: right;
     margin: 3%;
 }
-
-button.contactBtn.btn {
-    background-color: #82A3A3;
-    font-size: xx-large;
-    color: white;
-    font-weight: 300;
-}
-
-
-/* <---------------------- Sign Up-----------------------> */
 
 .smallPage {
     width: 500 px;
@@ -54,45 +15,11 @@ button.contactBtn.btn {
     margin-top: 100px;
 }
 
-.inputForm4 {
-    padding: 20%;
-}
-
-.inputForm3,
-.inputForm5 {
-    padding: 12%;
-}
-
-.inputForm2 {
-    padding: 6%;
-}
-
-div.input-group-lg>h3 {
-    color: #90a598;
-    text-align: center;
-    font-size: 3rem;
-    margin-top: 0;
-}
 
 div.input-group-lg>h1 {
     color: #e5945f;
     text-align: center;
     font-weight: bold;
-}
-
-div>h1 {
-    color: #90a598;
-    text-align: center;
-    font-size: 3.5rem;
-}
-
-button#signUpBtn.btn {
-    background-color: #1D3124;
-    font-size: x-large;
-    color: white;
-    font-weight: 300;
-    width: 400px;
-    position: relative;
 }
 
 button#signInBtn.btn {
@@ -104,43 +31,6 @@ button#signInBtn.btn {
     position: relative;
 }
 
-button#nextBtn2 {
-    background-color: #1D3124;
-    font-size: x-large;
-    color: white;
-    font-weight: 300;
-    width: 400px;
-    position: relative;
-    right: 10px;
-}
-
-button#nextBtn3 {
-    background-color: #1D3124;
-    font-size: x-large;
-    color: white;
-    font-weight: 300;
-    width: 400px;
-    position: relative;
-}
-
-button#nextBtn.btn {
-    background-color: #1D3124;
-    font-size: revert;
-    color: white;
-    font-weight: 300;
-    width: 440px;
-    position: relative;
-}
-
-.signUpDiv>p {
-    color: #90a598;
-    width: 400px;
-    position: relative;
-    text-align: center;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
 .signInDiv>p {
     color: #fdfffe;
     width: 400px;
@@ -150,96 +40,7 @@ button#nextBtn.btn {
     margin-top: 10px;
 }
 
-.nextDiv2>p {
-    color: #90a598;
-    width: 400px;
-    position: relative;
-    right: 10px;
-    text-align: center;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
-.nextDiv>p {
-    color: #90a598;
-    width: 400px;
-    position: relative;
-    right: 2px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.nextDiv3>p {
-    color: #90a598;
-    width: 400px;
-    position: relative;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 13px
-}
-
-.signUpDiv>p>a,
-.signInDiv>p>a,
-.nextDiv>p>a,
-.nextDiv2>p>a,
-.nextDiv3>p>a {
+.signInDiv>p>a {
     text-decoration: none;
     color: #1D3124;
-}
-
-label.btn {
-    width: 186px;
-    border: 1px solid #c5c3c3;
-    background-color: white;
-    width: 217px;
-    height: 45px;
-    text-align: center;
-    font-size: 16px;
-    color: #808080a6;
-}
-
-div.form4Btn {
-    padding-left: 16px;
-}
-
-label.btn:hover,
-div.form3Btn>label.btn:hover {
-    background-color: #1D3124;
-    color: white;
-}
-
-.btn.active,
-div.form3Btn>label.btn.active {
-    background-color: #1D3124;
-    color: white;
-}
-
-div.form3Btn>label.btn {
-    height: 50px;
-    font-size: 25px;
-    font-weight: 200;
-    width: 61%;
-    margin: 0 auto;
-}
-
-div.modal-footer {
-    text-align: center;
-    justify-content: center;
-    padding: 0;
-}
-
-div.modal-header {
-    padding-left: 30px;
-    padding-right: 30px;
-    /* justify-content: flex-start; */
-    border-bottom: 0;
-}
-
-#logoImg {
-    justify-content: flex-start;
-}
-
-.inputForm4>form>div.input-group-lg {
-    margin: 0 auto;
-    width: 50%;
 }

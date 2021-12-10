@@ -402,6 +402,7 @@ input:focus:hover {
     /* min-height: 100vh; */
 }
 
+
 /* #Date {
     background-color: #1D3124;
 } */
@@ -456,4 +457,33 @@ input:focus:hover {
 
 .homeControls_btn {
     background-color: #52795e;
+}
+
+
+/* 幻燈片 */
+
+#carousel {
+    width: 100%;
+    /* border:1px solid #222; */
+    height: 600px;
+    position: relative;
+    clear: both;
+    overflow: hidden;
+}
+
+#carousel img {
+    width: 63%;
+    visibility: hidden;
+    /* hide images until carousel can handle them */
+    cursor: pointer;
+    /* otherwise it's not as obvious items can be clicked */
+}
+
+#callback-output {
+    width: 100%;
+    min-height: 50px;
+    background: #fff;
+    padding: 8px;
+    height: 500px;
+    overflow-y: scroll;
 }

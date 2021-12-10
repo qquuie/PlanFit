@@ -21,8 +21,8 @@
             diff = 3.5;
             diff2 = 4;
             jp = "Yes";
-            workout_img = "img_workout/get_fit/full/full_jumping_squat.jpg";
-            workout_img2 = "/img_workout/get_fit/full/full4.jpg";
+            workout_img = "img_workout/full/full_jumping_squat.jpg";
+            workout_img2 = "/img_workout/full/full4.jpg";
         } else if (i == 1) {
             workout_name = "Sprinter";
             workout_name2 = "Leg glute bridge"
@@ -30,8 +30,8 @@
             diff2 = 4.5;
             eq = "NO";
             jp = "NO";
-            workout_img = "img_workout/get_fit/full/full_sprinter_right.jpg";
-            workout_img2 = "/img_workout/get_fit/full/full5.jpg";
+            workout_img = "img_workout/full/full_sprinter_right.jpg";
+            workout_img2 = "/img_workout/full/full5.jpg";
         } else {
             workout_name = "Squat boxing";
             workout_name2 = "Triceps push up"
@@ -39,8 +39,8 @@
             diff = 4;
             eq = "Yes";
             jp = "NO";
-            workout_img = "img_workout/get_fit/full/full_jumping_squat.jpg";
-            workout_img2 = "/img_workout/get_fit/full/full6.jpg";
+            workout_img = "img_workout/full/full_jumping_squat.jpg";
+            workout_img2 = "/img_workout/full/full6.jpg";
         }
         var row_block = `
         <div class="card border-GreenLake">
@@ -147,13 +147,13 @@
         console.log(workout_sth);
     });
     /*--------------------------------calender--------------------------------------*/
-    $(".calender").click(function(){
-      $("#calendar_win").show();
-      $("#calendar_win").css({"display":"flex","flex-direction": "column"});
+    $(".calender").click(function() {
+        $("#calendar_win").show();
+        $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
     });
 
 
-    $("div#smallPageModal").css('z-index','-1');
+    $("div#smallPageModal").css('z-index', '-1');
     $(".page").css('z-index', '1000');
     $(".calender").click(function() {
         $("#calendar_win").show();

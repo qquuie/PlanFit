@@ -202,3 +202,31 @@ $("#modal_OK").click(function() {
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     //之後將存放這些資料的變數清空
 });
+
+//----------------------------------------------------------------------------
+var choice_home_cal;
+var homecalID;
+$(".home_cal").click(function(){
+    if ($(this).hasClass("important") == false) {
+        $(".home_cal").removeClass("important");
+        choice_home_cal = $(this).attr("data-uid");
+        homecalID= $(this).attr("data-homecalID");//哪一格
+        $(this).addClass("important");
+    }
+});
+/*
+if ($(this).hasClass("important") == false) {
+        $(this).addClass("important");
+        choice_d.push(choice); //儲存選擇年月日-->推入陣列
+    } else {
+        $(this).removeClass("important");
+        // var ind = choice_d.indexOf(choice);
+        for (let value of choice_d) {
+            if (value == choice) {
+                var ind = choice_d.indexOf(choice);
+                choice_d.splice(ind, 1);
+                break;
+            }
+        }
+    }
+ */

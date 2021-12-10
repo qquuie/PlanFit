@@ -196,9 +196,8 @@
 }
 
 #Date {
-    position: relative;
-    left: 50%;
-    transform: translateX(-40%);
+    width: 100%;
+    text-align: center;
 }
 
 #calendar_win .weekday {

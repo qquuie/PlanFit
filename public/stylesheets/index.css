@@ -171,12 +171,12 @@ ul.dropdown-menu {
     top: 3%;
 }
 
-#calender_table {
-    height: 80%;
+#calender_table,
+#home_calender_table {
+    margin: 20px auto;
     width: 80%;
     /*等比例縮放*/
-    position: relative;
-    top: 5%;
+    /*等比例縮放*/
     color: #82A3A3;
 }
 
@@ -403,10 +403,7 @@ input:focus:hover {
 }
 
 #Date {
-    position: relative;
-    left: 50%;
-    /* transform: translateX(-60%); */
-    background-color: #1D3124;
+    /* background-color: #1D3124; */
 }
 
 #calendar_home h3 {

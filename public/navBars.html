@@ -86,7 +86,8 @@
         </div>
     </nav>
 
-    <div class="smallPage modal d-grid" tabindex="-1" id="smallPageModal" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true">
+    <div class="smallPage modal d-grid" tabindex="-1" id="smallPageModal" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true" style="z-index: -1;">
+        <!-- abby改 -->
         <div class="modal-dialog">
             <div class="modalContainer modal-content">
                 <div class="logo row modal-header">
@@ -270,9 +271,9 @@
 
             })
             // <--------------------------- Information-------------------------->
-            $("div#smallPageModal").css('z-index', '0');
-            $(".page").css('z-index', '1000');
-        $("ul#workOutMenu>a.dropdown-item").click(function(){
+        $("div#smallPageModal").css('z-index', '-1'); //abby改
+        $(".page").css('z-index', '1000');
+        $("ul#workOutMenu>a.dropdown-item").click(function() {
             $("div#smallPageModal").css('z-index', '0');
 
         })

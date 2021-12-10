@@ -47,6 +47,7 @@ function previousMonth() {
         thisYear--;
     }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     console.log(firstDay);
     fillInMonth(thisYear, thisMonth, thisDate);
@@ -59,6 +60,7 @@ function nextMonth() {
         thisYear++;
     }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     console.log(firstDay);
     fillInMonth(thisYear, thisMonth, thisDate);
@@ -139,7 +141,7 @@ function Nextdialog() {
 }
 
 function Alldialog() {
-    $("td").addClass("important");
+    $(".cal").addClass("important");
 }
 
 var clock = 0;
@@ -157,7 +159,7 @@ $("#modal_back").click(function() {
 });
 $("#modal_OK").click(function() {
     $("#modal_block").hide();
-    $("td").removeClass("important");
+    $(".cal").removeClass("important");
 });
 
 $("#calender_close").click(function() {
@@ -167,7 +169,7 @@ $("#calender_close").click(function() {
 //----------------------------------------按下日期格子----------------------------------
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
-$('td').click(function() {
+$('.cal').click(function() {
     choice = $(this).attr("data-uid");
     if ($(this).hasClass("important") == false) {
         $(this).addClass("important");

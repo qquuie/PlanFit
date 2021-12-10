@@ -1,3 +1,5 @@
+//------
+//每換一頁日曆就要先removeclass，再判斷一次陣列裡面的data-uid的數值後去改變css
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
     var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

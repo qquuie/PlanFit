@@ -467,6 +467,7 @@ input:focus:hover {
     /* border:1px solid #222; */
     height: 600px;
     position: relative;
+    top: 50px;
     clear: both;
     overflow: hidden;
 }

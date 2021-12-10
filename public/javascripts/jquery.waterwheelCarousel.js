@@ -317,11 +317,11 @@
             if (options.orientation == 'horizontal') {
                 var center = data.containerWidth / 2;
                 var newLeft = center + newDistance - (newWidth / 2);
-                var newTop = options.horizon - newOffset - (newHeight / 1.8);
+                var newTop = options.horizon - newOffset - (newHeight / 2);
             } else {
                 var center = data.containerHeight / 2;
                 var newLeft = options.horizon - newOffset - (newWidth / 2);
-                var newTop = center + newDistance - (newHeight / 1.8);
+                var newTop = center + newDistance - (newHeight / 2);
             }
 
             var newOpacity;

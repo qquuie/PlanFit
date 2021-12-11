@@ -3,11 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var MongoClient=require('mongodb').MongoClient;
+// const url="mongodb://localhost:27017/"
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+// Connect to the db
+// var url = "mongodb://localhost:27017/";
+
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("mydb");
+//   var myobj = { name: "Company Inc", address: "Highway 37" };
+//   dbo.collection("customers").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("1 document inserted");
+//     db.close();
+//   });
+// });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

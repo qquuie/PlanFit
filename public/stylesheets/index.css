@@ -171,38 +171,13 @@ ul.dropdown-menu {
     top: 3%;
 }
 
-#calender_table {
-    height: 80%;
+#calender_table,
+#home_calender_table {
+    margin: 20px auto;
     width: 80%;
     /*等比例縮放*/
-    position: relative;
-    top: 5%;
     color: #82A3A3;
 }
-
-
-/* #calendar_win thead tr:first-child th div {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}   */
-
-
-/* #calendar_win h4 {
-margin: 0;
-padding: 0.8vw 0 0.8vw;
-text-align: center;
-font-size: 6vw;
-font-weight: 300px; */
-
-
-/* background-color:#82A3A3; */
-
-
-/*debug用*/
-
-
-/* } */
 
 #calendar_win h3 {
     margin: 0;
@@ -418,7 +393,7 @@ input:focus:hover {
     /* width: 600px; */
     /* height: 600px; */
     top: 40px;
-    left: 50%;
+    left: 300px;
     align-items: center;
     /* 把div內的物件致中 */
     /* flex-direction: column; */
@@ -426,36 +401,10 @@ input:focus:hover {
     /* min-height: 100vh; */
 }
 
-#Date {
-    position: relative;
-    left: 50%;
-    /* transform: translateX(-60%); */
+
+/* #Date {
     background-color: #1D3124;
-}
-
-
-/* #calendar_home thead tr:first-child th div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}   */
-
-
-/* #calendar_home h4 {
-margin: 0;
-padding: 0.8vw 0 0.8vw;
-text-align: center;
-font-size: 6vw;
-font-weight: 300px; */
-
-
-/* background-color:#82A3A3; */
-
-
-/*debug用*/
-
-
-/* } */
+} */
 
 #calendar_home h3 {
     margin: 0;
@@ -478,7 +427,7 @@ font-weight: 300px; */
 }
 
 #calendar_home tbody td {
-    height: 5vw;
+    height: 8vw;/*格子大小*/
     width: 5vw;
     font-size: 1.5vw;
     font-weight: 500;
@@ -502,6 +451,42 @@ font-weight: 300px; */
 
 #calendar_home #current-day {
     background-color: #82A3A3;
-    /*debug用*/
     color: #f3f1de;
+}
+
+.homeControls_btn {
+    background-color: #52795e;
+}
+
+
+/* 幻燈片 */
+
+#carousel {
+    width: 100%;
+    /* border:1px solid #222; */
+    height: 600px;
+    position: relative;
+    top: 50px;
+    clear: both;
+    overflow: hidden;
+}
+
+#carousel img {
+    width: 63%;
+    visibility: hidden;
+    /* hide images until carousel can handle them */
+    cursor: pointer;
+    /* otherwise it's not as obvious items can be clicked */
+}
+
+#callback-output {
+    width: 100%;
+    min-height: 50px;
+    background: #fff;
+    padding: 8px;
+    height: 500px;
+    overflow-y: scroll;
+}
+.home_cal {
+    height: 30%;
 }

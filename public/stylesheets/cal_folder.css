@@ -196,9 +196,8 @@
 }
 
 #Date {
-    position: relative;
-    left: 50%;
-    transform: translateX(-40%);
+    width: 100%;
+    text-align: center;
 }
 
 #calendar_win .weekday {
@@ -387,9 +386,11 @@ input:focus:hover {
     color: #f3f1de;
     position: relative;
     left: -34%;
-    top: 6%;
+    top: 6.5%;
     width: 12%;
-    padding: 4px 0;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
 }
 
 .Next {
@@ -397,6 +398,9 @@ input:focus:hover {
     color: #f3f1de;
     position: relative;
     left: 34%;
+    top:1.2%;
     width: 12%;
-    padding: 4px 0;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
 }

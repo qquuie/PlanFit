@@ -1,3 +1,5 @@
+//------
+//每換一頁日曆就要先removeclass，再判斷一次陣列裡面的data-uid的數值後去改變css
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
     var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -7,29 +9,29 @@ function getWeekdayName(weekday) {
 function getMonthName(month) {
     switch (month) {
         case 0:
-            return "January";
+            return "Jan";
         case 1:
-            return "February";
+            return "Feb";
         case 2:
-            return "March";
+            return "Mar";
         case 3:
-            return "April";
+            return "Apr";
         case 4:
             return "May";
         case 5:
-            return "June";
+            return "Jun";
         case 6:
-            return "July";
+            return "Jul";
         case 7:
-            return "August";
+            return "Aug";
         case 8:
-            return "September";
+            return "Sep";
         case 9:
-            return "October";
+            return "Oct";
         case 10:
-            return "November";
+            return "Nov";
         case 11:
-            return "December";
+            return "Dec";
     }
 }
 
@@ -37,6 +39,7 @@ function getMonthName(month) {
 function updateDates() {
     //新增一個Date物件，命名為today
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
 }
 
 function previousMonth() {
@@ -46,6 +49,7 @@ function previousMonth() {
         thisYear--;
     }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     console.log(firstDay);
     fillInMonth(thisYear, thisMonth, thisDate);
@@ -58,6 +62,7 @@ function nextMonth() {
         thisYear++;
     }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     console.log(firstDay);
     fillInMonth(thisYear, thisMonth, thisDate);
@@ -72,23 +77,6 @@ function getUID(year, month, date) {
     }
     return '' + year + month + date;
 }
-
-// //記事圖示與ToolTip處理
-// // 記事資料的程式片段
-// var postIts = []; //記事陣列，用來放置月曆中的記事物件資料
-// //current 目前點擊的日期
-// var currentPostItID = 0; //目前的記事ID
-// var newCurrentPostIt = false; //目前的記事是否為新？也就是：目前點選的日期尚未有任何的記事資料
-// var currentPostItIndex = 0; //目前的記事在postIts陣列中的位置索引
-// function appendSpriteToCellAndTooltip(uid, elem){      
-//   for(let i = 0; i < postIts.length; i++){
-//     if(uid == postIts[i].id){
-//       elem.innerHTML += `<img src='images/note${postIts[i].note_num}.png' alt='A post-it note'>`;
-//       elem.classList.add("tooltip");
-//       elem.innerHTML += `<span>${postIts[i].note}</span>`;
-//     }
-//   }
-// }
 
 function fillInMonth(thisYear, thisMonth, thisDate) {
     let firstDayThisMonthYear = new Date(thisYear, thisMonth, 1).getDay();
@@ -155,7 +143,7 @@ function Nextdialog() {
 }
 
 function Alldialog() {
-    $("td").addClass("important");
+    $(".cal").addClass("important");
 }
 
 var clock = 0;
@@ -173,7 +161,7 @@ $("#modal_back").click(function() {
 });
 $("#modal_OK").click(function() {
     $("#modal_block").hide();
-    $("td").removeClass("important");
+    $(".cal").removeClass("important");
 });
 
 $("#calender_close").click(function() {
@@ -183,7 +171,7 @@ $("#calender_close").click(function() {
 //----------------------------------------按下日期格子----------------------------------
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
-$('td').click(function() {
+$('.cal').click(function() {
     choice = $(this).attr("data-uid");
     if ($(this).hasClass("important") == false) {
         $(this).addClass("important");
@@ -216,3 +204,31 @@ $("#modal_OK").click(function() {
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     //之後將存放這些資料的變數清空
 });
+
+//----------------------------------------------------------------------------
+var choice_home_cal;
+var homecalID;
+$(".home_cal").click(function(){
+    if ($(this).hasClass("important") == false) {
+        $(".home_cal").removeClass("important");
+        choice_home_cal = $(this).attr("data-uid");
+        homecalID= $(this).attr("data-homecalID");//哪一格
+        $(this).addClass("important");
+    }
+});
+/*
+if ($(this).hasClass("important") == false) {
+        $(this).addClass("important");
+        choice_d.push(choice); //儲存選擇年月日-->推入陣列
+    } else {
+        $(this).removeClass("important");
+        // var ind = choice_d.indexOf(choice);
+        for (let value of choice_d) {
+            if (value == choice) {
+                var ind = choice_d.indexOf(choice);
+                choice_d.splice(ind, 1);
+                break;
+            }
+        }
+    }
+ */

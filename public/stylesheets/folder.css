@@ -1,0 +1,46 @@
+html body {
+    background-color: #f3f1de;
+}
+
+.inputGroup {
+    width: 45%;
+    float: right;
+    margin: 3%;
+}
+
+.smallPage {
+    width: 500 px;
+    height: 530 px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+
+div.input-group-lg>h1 {
+    color: #e5945f;
+    text-align: center;
+    font-weight: bold;
+}
+
+button#signInBtn.btn {
+    background-color: #1D3124;
+    font-size: x-large;
+    color: white;
+    font-weight: 300;
+    width: 400px;
+    position: relative;
+}
+
+.signInDiv>p {
+    color: #fdfffe;
+    width: 400px;
+    position: relative;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.signInDiv>p>a {
+    text-decoration: none;
+    color: #1D3124;
+}

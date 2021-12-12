@@ -61,7 +61,7 @@ ul.dropdown-menu {
     left: 370px;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
-    z-index: 2;
+    z-index: 5;
 }
 
 #folder_close {
@@ -427,7 +427,8 @@ input:focus:hover {
 }
 
 #calendar_home tbody td {
-    height: 8vw;/*格子大小*/
+    height: 8vw;
+    /*格子大小*/
     width: 5vw;
     font-size: 1.5vw;
     font-weight: 500;
@@ -487,6 +488,7 @@ input:focus:hover {
     height: 500px;
     overflow-y: scroll;
 }
+
 .home_cal {
     height: 30%;
 }

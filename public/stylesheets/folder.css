@@ -25,6 +25,7 @@ div.alr-folder>p {
     text-align: center;
     padding-left: 20px;
     margin: 0;
+    cursor: pointer;
 }
 
 .close {
@@ -59,4 +60,32 @@ div.add_folder>img{
     top: 10px;
     width: 30px;
     cursor: pointer;
+}
+
+.fol-btn{
+    width: 90%;
+    padding: 5px;
+    margin: 3% auto;
+}
+
+div.back-btn{
+    background-color: #e5945f;
+    color: #ffffff;
+}
+div.back-btn>p{
+    margin: 5px;
+}
+
+div.addelse-btn{
+    background-color: #bbccc4;
+    color: #ffffff;
+    position: absolute;
+    right: 0;
+}
+div.addelse-btn>p{
+    margin: 5px;
+}
+div.addelse-btn>img{
+    margin: 5px;
+    width: 20px;
 }

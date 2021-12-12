@@ -465,11 +465,11 @@ input:focus:hover {
 #carousel {
     width: 100%;
     /* border:1px solid #222; */
-    height: 600px;
+    height: 450px;
     position: relative;
-    top: 50px;
     clear: both;
     overflow: hidden;
+    margin: 20px 0;
 }
 
 #carousel img {
@@ -491,4 +491,17 @@ input:focus:hover {
 
 .home_cal {
     height: 30%;
+}
+
+.card-body {
+    /* 複寫原本的改變寬度 */
+    /* // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom. */
+    width: 60%;
+}
+
+#pose_name {
+    font-size: 30px;
+    position: relative;
+    left: 500%;
 }

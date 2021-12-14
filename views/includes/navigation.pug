@@ -1,0 +1,255 @@
+doctype html
+head 
+  include test.pug
+body
+  
+  nav.navbar.fixed-top.navbar-expand-sm.border-bottom.justify-content-center
+    .container-fluid
+      a.navbar-brand.d-flex.align-items-center.col-md-4.mb-2.mb-md-0.text-decoration-none(href='./index.html')
+        img(src='./img/LOGO.png' width='135px' height='60px' alt='')
+      button.navbar-toggler.collapsed(type='button' data-target='#navbars' aria-controls='navbars' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+          svg.bi.bi-justify(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
+            path(fill-rule='evenodd' d='M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z')
+      #navbars.navbar-collapse
+        ul.navbar-nav.me-auto.text-black.text-decoration-none
+          li.nav-item.fs-3.mt-3
+            a#homeNav.nav-link.px-2.link-dark.ms-5(href='./index.html') Home
+          li.nav-item.dropdown.fs-3.mt-3
+            a#workOutNav.nav-link.dropdown-toggle.border-0.px-1.link-dark.ms-5(type='button' aria-expanded='false') Workout
+            ul#workOutMenu.dropdown-menu(aria-labelledby='workOutNav')
+              li
+                a.dropdown-item(href='./workout.html') Fullbody
+              li
+                a.dropdown-item(href='./workout.html') Shoulders
+              li
+                a.dropdown-item(href='./workout.html') Abs
+              li
+                a.dropdown-item(href='./workout.html') Arms
+              li
+                a.dropdown-item(href='./workout.html') Chest
+              li
+                a.dropdown-item(href='./workout.html') Back
+              li
+                a.dropdown-item(href='./workout.html') Thing
+              li
+                a.dropdown-item(href='./workout.html') Butt
+          li.nav-item.fs-3.mt-3
+            a#contactUsNav.nav-link.link-dark.ms-5(href='./contactus.html') Contact Us
+          li.nav-item.fs-3.mt-3
+            a#aboutUsNav.nav-link.link-dark.ms-5(href='./aboutus.html') About Us
+          li.nav-item.dropdown.fs-3.mt-3
+            a#inforNav.nav-link.dropdown-toggle.border-0.px-1.link-dark.ms-5(type='button' aria-expanded='false') Information
+            ul#inforMenu.dropdown-menu(aria-labelledby='inforNav')
+              li
+                a.dropdown-item(href='./infor.html') Edit
+              li
+                a.dropdown-item(href='./infor.html') File
+              li
+                a#inforSign.dropdown-item.btn(data-toggle='modal' data-bs-target='#smallPageModal' href='') Sign In/Sign Out
+  #smallPageModal.smallPage.modal.d-grid.fade(tabindex='-1' role='dialog' data-backdrop='static' data-keyboard='false' data-bs-keyboard='false' aria-hidden='true')
+    #smallPageModal.smallPage.modal.d-grid(tabindex='-1' role='dialog' data-backdrop='static' data-keyboard='false' data-bs-keyboard='false' aria-hidden='true' style='z-index: -1;')
+      // abby改
+      .modal-dialog
+        .modalContainer.modal-content
+          .logo.row.modal-header
+            a#logoImg.col.me-auto(href='./index.html')
+              img(src='./img/LOGO.png' width='150px' height='70px' alt='')
+            button#closeBtn.btn.col-auto(type='button' data-dismiss='modal' aria-label='Close')
+              img#closeBtnImg(src='./img/close_g2.png' width='30px' height='40px' alt='')
+          // <---------------------------------signinDiv------------------------------
+          .inputForm5.modal-body
+            form
+              .input-group-lg.mb-3
+                h2 Let&apos;s workout together!
+              .input-group-lg.mb-3
+                input#yourAccount.form-control(type='text' placeholder='    | Account')
+              .input-group-lg.mb-3
+                input#yourPass.form-control(type='password' placeholder='    | Password')
+            .signInDiv.modal-footer
+              p By creating an account, you agree to planFit&apos;s Private policy and Terms of us 
+              button#signInBtn.btn.btn-lg(data-dismiss='modal' aria-label='Close') Sign In
+              p
+                | Not a member yet?
+                button#joinUs.btn(href='' data-mdb-target='#inputFormID1' data-mdb-toggle='modal' data-mdb-dismiss='modal') Join Us
+          // <---------------------------------signUpDiv1------------------------------
+          #inputFormID1.inputForm1.modal-body
+            form
+              .mb-3
+                h1 Which part should you focus on?
+              .row
+                .form4Btn.gap-1.col-6
+                  input#signUpFullB.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpFullB') Full Body
+                  input#signUpShou.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpShou') Shoulder
+                  input#signUpBack.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpBack') Back
+                  input#signUpThign.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpThign') Thigh
+                .form4Btn.gap-1.col-6
+                  input#signUpArm.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpArm') Arm
+                  input#signUpChest.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpChest') Chest
+                  input#signUpAbs.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpAbs') Abs
+                  input#signUpButt.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                  label.btn.btn-lg(for='signUpButt') Butts
+            .nextDiv3.modal-footer
+              p By creating an account, you agree to planFit&apos;s Private policy and Terms of us 
+              button#nextBtn3.btn.btn-lg Next
+              p
+                | Already a member?
+                button#signInBack.btn Sign In
+          // <---------------------------------signUpDiv2------------------------------
+          .inputForm2.modal-body
+            form
+              .input-group-lg.mb-3
+                h3 Welcome to join us
+              .input-group-lg.mb-3
+                input#signUpEmail.form-control(type='email' placeholder='    | Email Address(account)')
+              .input-group-lg.mb-3
+                input#signUpName.form-control(type='text' placeholder='    | Name')
+              .input-group-lg.mb-3
+                input#signUpPass.form-control(type='password' placeholder='    | Passwork')
+              .input-group-lg.mb-3
+                input#signUpBirth.form-control(type='datetime' placeholder='    | Date of birth')
+              .btn-group.mb-3
+                input#signUpFemale.btn-check.btn-lg(type='radio' name='options' autocomplete='off')
+                label.btn.me-5(for='signUpFemale') Female
+                input#signUpMale.btn-check.btn-lg(type='radio' name='options' autocomplete='off')
+                label.btn(for='signUpMale') Male
+            .nextDiv.modal-footer
+              p By creating an account, you agree to planFit&apos;s Private policy and Terms of us 
+              button#nextBtn.btn.btn-lg Next
+              p
+                | Already a member?
+                button#signInBack.btn Sign In
+          // <---------------------------------signUpDiv3------------------------------
+          .inputForm3.modal-body
+            form
+              .mb-3
+                h1 What do you need?
+              .form3Btn.d-grid.gap-1
+                input#loseWei.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                label.btn.btn-lg(for='loseWei') Lose Weight
+                br
+                input#gainMus.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                label.btn.btn-lg(for='gainMus') Gain muscle
+                br
+                input#getFit.btn-check.btn-lg(type='button' name='options' autocomplete='off')
+                label.btn.btn-lg(for='getFit') Get fitter
+            .nextDiv2.modal-footer
+              p By creating an account, you agree to planFit&apos;s Private policy and Terms of us 
+              button#nextBtn2.btn.btn-lg Next
+              p
+                | Already a member?
+                button#signInBack.btn Sign In
+          // <---------------------------------signUpDiv3------------------------------
+          .inputForm4.modal-body
+            form
+              .input-group-lg.mb-3
+                input#yourHeight.form-control(type='number' placeholder='    | Height(cm)')
+              .input-group-lg.mb-3
+                input#yourWeight.form-control(type='number' placeholder='    | Weight(kg)')
+              .input-group-lg.mb-3
+                input#yourAge.form-control(type='number' placeholder='    | Age')
+            .signUpDiv.modal-footer
+              p By creating an account, you agree to planFit&apos;s Private policy and Terms of us 
+              button#signUpBtn.btn.btn-lg(data-dismiss='modal' aria-label='Close') Sign Up
+              p
+                | Already a member?
+                button#signInBack.btn Sign In
+    script.
+      $(document).ready(function () {
+      $(".dropdown-item").click(function () {
+      $('.dropdown-menu').css("display", "none");
+      })
+      $("#workOutNav").click(function () {
+      $("#workOutMenu.dropdown-menu").toggle();
+      })
+      $("#inforNav").click(function () {
+      $("#inforMenu.dropdown-menu").toggle();
+      })
+      $('.page').click(function () {
+      $("#inforMenu.dropdown-menu").hide();
+      $("#workOutMenu.dropdown-menu").hide();
+      })
+      $("div#navbars.navbar-collapse").addClass('hide');
+      $("button.navbar-toggler").click(function () {
+      $("div#navbars.navbar-collapse").toggleClass("show")
+      $("div#navbars.navbar-collapse").toggleClass("hide");
+      })
+      // <--------------------------- Information-------------------------->
+      $("div#smallPageModal").css('z-index', '-1'); //abby改
+      $(".page").css('z-index', '1000');
+      $("ul#workOutMenu>a.dropdown-item").click(function () {
+      $("div#smallPageModal").css('z-index', '-1');
+      })
+      $('button#closeBtn').click(function () {
+      $(".modal-backdrop").addClass("fade");
+      $("div#smallPageModal").addClass("fade");
+      $("div#smallPageModal").css('z-index', '-1');
+      $(".page").css('z-index', '1000');
+      })
+      $('button#signInBtn').click(function () {
+      $(".modal-backdrop").addClass("fade");
+      $("div#smallPageModal").addClass("fade");
+      $("div#smallPageModal").css('z-index', '-1');
+      $(".page").css('z-index', '1000');
+      })
+      $('button#signUpBtn').click(function () {
+      $(".modal-backdrop").addClass("fade");
+      $("div#smallPageModal").addClass("fade");
+      $("div#smallPageModal").css('z-index', '-1');
+      $(".page").css('z-index', '1000');
+      })
+      jQuery.noConflict();
+      $('#inforSign').click(function () {
+      $("div#smallPageModal").toggle();
+      $("div#smallPageModal").modal("toggle");
+      $("div#smallPageModal").removeClass("fade");
+      $(".modal-backdrop").removeClass("fade");
+      $("div#smallPageModal").css('z-index', '1050');
+      $(".page").css('z-index', '-1');
+      })
+      $(".inputForm2").hide();
+      $(".inputForm3").hide();
+      $(".inputForm4").hide();
+      $('div#inputFormID1.inputForm1').css('display', 'none')
+      $("button#joinUs").click(function () {
+      console.log(1);
+      $(".inputForm1").show();
+      $(".inputForm5").hide();
+      $("div.modalContainer").css("background-color", "#f3f1de")
+      })
+      $("button#nextBtn3").click(function () {
+      console.log(1);
+      $(".inputForm2").show();
+      $(".inputForm1").hide();
+      })
+      $("button#nextBtn").click(function () {
+      console.log(1);
+      $(".inputForm3").show();
+      $(".inputForm1").hide();
+      $(".inputForm2").hide();
+      })
+      $("button#nextBtn2").click(function () {
+      console.log(1);
+      $(".inputForm4").show();
+      $(".inputForm1").hide();
+      $(".inputForm2").hide();
+      $(".inputForm3").hide();
+      })
+      $('button#signInBack').click(function () {
+      $(".inputForm5").show();
+      $(".inputForm1").hide();
+      $(".inputForm2").hide();
+      $(".inputForm4").hide();
+      $("div.modalContainer").css("background-color", "#bacec1")
+      })
+      $("label.btn").click(function () {
+      $(this).button('toggle');
+      })
+      })

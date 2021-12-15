@@ -10,6 +10,11 @@
 //   if (weekday === 6 ) weekdayName = "Saturay";
 //   return weekdayName;
 // }
+//---------------------------------------初始化變數---------------------------------------------------
+var choice_d = []; //存放所有選擇日期陣列
+var choice; //選擇某格日期
+
+
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
     var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -167,7 +172,27 @@ function Nextdialog() {
 }
 
 function Alldialog() {
-    $("td").addClass("important");
+    //將該月所有資料推進陣列
+    //choice = $(this).attr("data-uid");
+    if ($("td").hasClass("important") == false) {
+        $("td").addClass("important");
+        //choice_d.push(choice); //儲存選擇年月日-->推入陣列
+        for (let i = 0; i <= 41; i++) {
+            // console.log($(day[i]).attr("data-uid")); 
+        }
+    
+    } else {
+        $("td").removeClass("important");
+        // var ind = choice_d.indexOf(choice);
+        // for (let value of choice_d) {
+        //     if (value == choice) {
+        //         var ind = choice_d.indexOf(choice);
+        //         choice_d.splice(ind, 1);
+        //         break;
+        //     }
+        // }
+    }
+    console.log(choice_d);
 }
 
 var clock = 0;
@@ -193,8 +218,6 @@ $("#calender_close").click(function() {
 });
 /*--------------------------------------以下為要存的資料------------------------------*/
 //----------------------------------------按下日期格子----------------------------------
-var choice_d = []; //存放所有選擇日期陣列
-var choice; //選擇某格日期
 $('td').click(function() {
     choice = $(this).attr("data-uid");
     if ($(this).hasClass("important") == false) {
@@ -227,4 +250,9 @@ $("#modal_OK").click(function() {
     var $ff = $(this).parent();
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     //之後將存放這些資料的變數清空
+});
+
+//-----------按下一頁或上一頁變色內容改變，先移除所有的css變色，再把資料庫裡有的日期css變色
+$(".icon_btn").click(function(){
+    
 });

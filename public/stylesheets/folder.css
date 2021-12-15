@@ -42,7 +42,8 @@ div.alr-folder>p {
     margin: 3% auto;
     background-color: #e5945f;
 }
-div.add_folder>p{
+
+div.add_folder>p {
     color: #ffffff;
     font-size: 15px;
     text-align: center;
@@ -50,11 +51,11 @@ div.add_folder>p{
     margin: 0;
 }
 
-div.add_folder>input{
+div.add_folder>input {
     width: 60%;
 }
 
-div.add_folder>img{
+div.add_folder>img {
     position: absolute;
     right: 5%;
     top: 10px;
@@ -62,30 +63,33 @@ div.add_folder>img{
     cursor: pointer;
 }
 
-.fol-btn{
+.fol-btn {
     width: 90%;
     padding: 5px;
     margin: 3% auto;
 }
 
-div.back-btn{
+div.back-btn {
     background-color: #e5945f;
     color: #ffffff;
 }
-div.back-btn>p{
+
+div.back-btn>p {
     margin: 5px;
 }
 
-div.addelse-btn{
+div.addelse-btn {
     background-color: #bbccc4;
     color: #ffffff;
     position: absolute;
     right: 0;
 }
-div.addelse-btn>p{
+
+div.addelse-btn>p {
     margin: 5px;
 }
-div.addelse-btn>img{
+
+div.addelse-btn>img {
     margin: 5px;
     width: 20px;
 }

@@ -17,7 +17,7 @@
     height: 500px;
     position: absolute;
     top: 100px;
-    left: 370px;
+    left: 35%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
@@ -112,22 +112,22 @@
 
 #calendar_win {
     /* display: none; */
-    width: 550px;
-    height: 600px;
-    top: 60px;
+    width: 50%;
+    height: 700px;
+    top: 100px;
     left: 300px;
     align-items: center;
-    /* 把div內的物件致中 */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
+    flex-direction: column;
+    justify-content: space-around;
     /* min-height: 100vh; */
+    margin: 0 auto;
 }
 
 #calender_close {
     width: 30px;
     position: relative;
-    left: 45%;
-    top: 3%;
+    right: -42%;
+    top: 4%;
 }
 
 #calender_table,
@@ -136,6 +136,16 @@
     width: 80%;
     /*等比例縮放*/
     color: #82A3A3;
+}
+
+#calender_table {
+    position: relative;
+    top: -55px;
+}
+
+#check_btn {
+    position: relative;
+    top: -64px;
 }
 
 #calendar_win h3 {
@@ -182,7 +192,7 @@
 }
 
 #calendar_win {
-    color: #f3f1de;
+    color: #f8f0ab;
 }
 
 .tooltip img {
@@ -236,10 +246,11 @@
     width: 450px;
     height: 300px;
     position: absolute;
-    top: 100px;
-    left: 370px;
+    top: 240px;
+    left: 40%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
 }
 
 #modal_workout_name {

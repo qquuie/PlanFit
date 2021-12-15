@@ -218,11 +218,11 @@ $("#modal_OK").click(function() {
 //----------------------------------------------------------------------------
 var choice_home_cal;
 var homecalID;
-$(".home_cal").click(function(){
+$(".home_cal").click(function() {
     if ($(this).hasClass("important") == false) {
         $(".home_cal").removeClass("important");
         choice_home_cal = $(this).attr("data-uid");
-        homecalID= $(this).attr("data-homecalID");//哪一格
+        homecalID = $(this).attr("data-homecalID"); //哪一格
         $(this).addClass("important");
     }
 });

@@ -81,6 +81,8 @@
          * properly determine the width and height of the items. This is not needed
          * if a user instead manually specifies that information.
          */
+
+
         function preload(callback) {
             if (options.preloadImages === false) {
                 callback();
@@ -193,6 +195,7 @@
          * attributes. All items start in the middle position by default
          * and will "fan out" from there during the first animation
          */
+
         function setupCarousel() {
             // Fill in a data array with jQuery objects of all the images
             data.items = data.itemsContainer.find('img');

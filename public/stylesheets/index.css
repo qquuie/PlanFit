@@ -185,6 +185,17 @@
     color: #f3f1de;
 }
 
+<<<<<<< HEAD
+=======
+
+/* #calendar_win tbody tr td[class*="prev-month-last-day"] {
+border-right: 1px solid #9C9C9C !important;
+}
+#calendar_home tbody tr td[class*="prev-month-last-day"] {
+    border-right: 1px solid #9C9C9C !important;
+} */
+
+>>>>>>> 074ab192f84c5127614567003f6f9d612cd3cceb
 .tooltip img {
     width: 3.8vw;
     vertical-align: top;

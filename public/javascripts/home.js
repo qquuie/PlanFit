@@ -82,6 +82,7 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
     let firstDayThisMonthYear = new Date(thisYear, thisMonth, 1).getDay();
     // 填滿月曆表格日期
     var days = document.getElementsByTagName("td"); //取得月曆表格html所有的TD標籤物件陣列
+    var days_form = document.getElementsByClassName("cal"); //取得月曆表格html所有的TD標籤物件陣列
     var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //記錄每個月的天數
     if (thisYear % 400 == 0 || (thisYear % 4 == 0 && thisYear % 100 != 0)) {
         monthDays[1] = 29; //閏年的話，2月為29天
@@ -92,6 +93,8 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
     for (let i = 1; i <= monthDays[thisMonth]; i++) {
         uid = getUID(thisYear, thisMonth, i);
         // console.log(uid);
+        days_form[i + firstDayThisMonthYear - 1].innerHTML = i;
+        days_form[i + firstDayThisMonthYear - 1].setAttribute("data-uid", uid);
         days[i + firstDayThisMonthYear - 1].innerHTML = i;
         days[i + firstDayThisMonthYear - 1].setAttribute("data-uid", uid);
     }
@@ -114,9 +117,14 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
         days[i].innerHTML = d;
         days[i].classList.remove("prev-month-last-day");
         days[i].setAttribute("data-uid", uid);
+        days_form[i].innerHTML = d;
+        days_form[i].classList.remove("prev-month-last-day");
+        days_form[i].setAttribute("data-uid", uid);
         d--;
     }
     if (firstDayThisMonthYear > 0) days[firstDayThisMonthYear - 1].classList.add("prev-month-last-day");
+    if (firstDayThisMonthYear > 0) days_form[firstDayThisMonthYear - 1].classList.add("prev-month-last-day");
+
 
     var nextMonth = thisMonth + 1;
     //填下月的天數，從1到最後1格    
@@ -130,6 +138,8 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
         // console.log(uid);
         days[i].innerHTML = d;
         days[i].setAttribute("data-uid", uid);
+        days_form[i].innerHTML = d;
+        days_form[i].setAttribute("data-uid", uid);
     }
 
 }

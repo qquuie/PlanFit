@@ -229,6 +229,9 @@ ul.dropdown-menu {
 
 /* #calendar_win tbody tr td[class*="prev-month-last-day"] {
 border-right: 1px solid #9C9C9C !important;
+}
+#calendar_home tbody tr td[class*="prev-month-last-day"] {
+    border-right: 1px solid #9C9C9C !important;
 } */
 
 .tooltip img {

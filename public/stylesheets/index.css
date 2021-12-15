@@ -1,46 +1,5 @@
-html body {
-    background-color: #BACEC1;
-}
-
-nav.navbar,
-button#workOutNav,
-ul.dropdown-menu {
-    background-color: #f3f1de;
-}
-
-.navbar-nav>li>a {
-    margin-left: 27px;
-}
-
-.nav-link:hover,
-#workOutNav:hover {
-    text-decoration: none;
-    background-color: #1D3124;
-    color: white;
-}
-
-.border-GreenLake {
-    border: 2px solid #82A3A3;
-}
-
-.border-darkgreen {
-    border: 2px solid #1D3124;
-}
-
 .text-GreenLake {
     color: #82A3A3;
-}
-
-.text-darkgreen {
-    color: #1D3124;
-}
-
-.text-darkgreen1 {
-    color: #52795e;
-}
-
-.back-transparent {
-    background-color: rgba(255, 255, 255, 0);
 }
 
 .see_times {
@@ -226,6 +185,8 @@ ul.dropdown-menu {
     color: #f3f1de;
 }
 
+<<<<<<< HEAD
+=======
 
 /* #calendar_win tbody tr td[class*="prev-month-last-day"] {
 border-right: 1px solid #9C9C9C !important;
@@ -234,6 +195,7 @@ border-right: 1px solid #9C9C9C !important;
     border-right: 1px solid #9C9C9C !important;
 } */
 
+>>>>>>> 074ab192f84c5127614567003f6f9d612cd3cceb
 .tooltip img {
     width: 3.8vw;
     vertical-align: top;
@@ -385,10 +347,6 @@ input:focus:hover {
 
 .text-align_center {
     text-align: center;
-}
-
-.margin_0 {
-    margin: 0%;
 }
 
 #calendar_home {

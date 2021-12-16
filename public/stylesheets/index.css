@@ -23,6 +23,16 @@
     z-index: 5;
 }
 
+#calendar_win {
+    width: 50%;
+    height: 110%;
+    top: 60px;
+    left: 50%;
+    align-items: center;
+    transform: translateX(-50%);
+    color: #f3f1de;
+}
+
 #folder_close {
     width: 30px;
     position: absolute;
@@ -115,7 +125,6 @@
     width: 50%;
     height: 700px;
     top: 100px;
-    left: 300px;
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
@@ -222,19 +231,24 @@
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
-    left: -34%;
-    top: 6%;
-    width: 12%;
-    padding: 4px 0;
+    left: -180px;
+    top: 20px;
+    width: 120%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
 }
 
 .Next {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
-    left: 34%;
-    width: 12%;
-    padding: 4px 0;
+    left: 165px;
+    top: -15px;
+    width: 120%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
 }
 
 

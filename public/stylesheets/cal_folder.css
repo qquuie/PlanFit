@@ -138,6 +138,7 @@
     left: 50%;
     align-items: center;
     transform: translateX(-50%);
+    color: #f3f1de;
     /* 把div內的物件致中 */
     /* flex-direction: column; */
     /* justify-content: space-around; */
@@ -232,10 +233,6 @@
     opacity: 0.6;
 }
 
-#calendar_win {
-    color: #f3f1de;
-}
-
 
 /* #calendar_win tbody tr td[class*="prev-month-last-day"] {
   border-right: 1px solid #9C9C9C !important;
@@ -265,23 +262,23 @@
 /*------------------------------放在style.css-----------------------*/
 
 
-/* .All{
-  background-color: #82A3A3;
-  color: #f3f1de;
-  position: relative;
-  left: -34%;
-  top: 6%;
-  width: 12%;
-  padding: 4px 0;
+/* .All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    top: 6%;
+    width: 12%;
+    padding: 4px 0;
 }
 
-.Next{
-  background-color: #82A3A3;
-  color: #f3f1de;
-  position: relative;
-  left: 34%;
-  width: 12%;
-  padding: 4px 0;
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    width: 12%;
+    padding: 4px 0;
 } */
 
 #modal_block {

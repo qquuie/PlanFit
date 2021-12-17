@@ -1,8 +1,8 @@
-.folder {
+div.folder {
     background-color: #f3f1de;
-    width: 50%;
-    padding: 5px;
-    margin: 0 auto;
+    /* width: 50%; */
+    /* padding: 5px; */
+    /* margin: 0 auto; */
 }
 
 div.input-group-lg>h1 {

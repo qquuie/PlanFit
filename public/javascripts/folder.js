@@ -33,11 +33,11 @@ function newFolder(data) {
 // -----------------新增文件夾動作div------------------
 function newFolderList(data) {
     let content =
-        `<div class="folder d-none" id="folder${data.id}">
+        `<div class="modal-body d-none" id="folder${data.id}">
             <div class="input-group-lg mt-3">
                 <h1><img src="img/icon_folder.png">${data.title}</h1>
             </div>
-            <div id="all_fol">
+            <div id="fol_move${data.id}">
                 <div class="d-flex flex-row position-relative alr-folder" id="${data.id}">
                     <p>My favorite</p>
                     <img src="img/close_r.png" class="close" id="del_list${data.id}"  onclick="removeList('${data.id}')">
@@ -48,7 +48,8 @@ function newFolderList(data) {
                 <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick=""><p>Add else</p> <img src="img/add.png" alt=""></div>
             </div>
         </div>`;
-    $('.Page').append(content);
+    // $('.Page').append(content);
+    $('.folder').append(content);
 }
 // -----------------進入文件夾------------------
 function FolderList(id){

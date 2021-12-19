@@ -1,0 +1,80 @@
+* {
+    font-family: "微軟正黑體";
+}
+
+#n1 {
+    color: black;
+    font-weight: bold;
+    border-style: none;
+    background-color: rgb(228, 228, 228);
+    padding: 30px;
+    font-size: 30px;
+}
+
+#n2 {
+    color: black;
+    font-weight: bold;
+    border-style: none;
+    background-color: rgb(175, 215, 255);
+    padding: 30px;
+    font-size: 30px;
+}
+
+#n3 {
+    color: black;
+    font-weight: bold;
+    border-style: none;
+    background-color: rgb(161, 192, 166);
+    padding: 30px;
+    font-size: 30px;
+}
+
+#n4 {
+    color: black;
+    font-weight: bold;
+    border-style: none;
+    background-color: rgb(255, 215, 175);
+    padding: 30px;
+    font-size: 30px;
+}
+
+.card-title{
+    color: black;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+li {
+    list-style: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.col-sm-4,
+.col-sm-8 {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.col-sm-8 {
+    height: 300px;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    display: inline;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.card-text li {
+    list-style-type: circle;
+    color: black;
+    font-size: 20px;
+    font-weight: normal;
+}
+

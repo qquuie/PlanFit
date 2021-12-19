@@ -48,8 +48,8 @@ function newFolderList(data) {
                 <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick=""><p>Add else</p> <img src="img/add.png" alt=""></div>
             </div>
         </div>`;
-    // $('.Page').append(content);
-    $('.folder').append(content);
+    $('.Page').append(content);
+    // $('.folder').append(content);
 }
 // -----------------進入文件夾------------------
 function FolderList(id){

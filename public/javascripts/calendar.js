@@ -254,5 +254,13 @@ $("#modal_OK").click(function() {
 
 //-----------按下一頁或上一頁變色內容改變，先移除所有的css變色，再把資料庫裡有的日期css變色
 $(".icon_btn").click(function(){
-    
+    $("td").removeClass("important");
+    //for迴圈判斷所有表格的屬性直是否等於陣列裡的，若有就把顏色改變
+    // for (let value of days) {
+    //     if (value == choice) {
+    //         var ind = choice_d.indexOf(choice);
+    //         choice_d.splice(ind, 1);
+    //         break;
+    //     }
+    // }
 });

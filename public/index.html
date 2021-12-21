@@ -327,11 +327,25 @@
                 return false;
             });
 
-            $('#reload').bind('click', function() {
-                newOptions = eval("(" + $('#newoptions').val() + ")");
-                carousel.reload(newOptions);
-                return false;
+            // $('#reload').bind('click', function() {
+            //     newOptions = eval("(" + $('#newoptions').val() + ")");
+            //     carousel.reload(newOptions);
+            //     return false;
+            // });
+
+            jQuery(function($) {
+                var windowWidth = $(window).width();
+                var windowHeight = $(window).height();
+
+                $(window).resize(function() {
+                    if (windowWidth != $(window).width() || windowHeight != $(window)
+                        .height()) {
+                        location.reload();
+                        return;
+                    }
+                });
             });
+
         });
     </script>
 

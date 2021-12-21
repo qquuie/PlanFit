@@ -2,31 +2,39 @@
     font-family: "微軟正黑體";
 }
 
-#n1,#n2,#n3,#n4 {
-    color: #F6F4E8;
+#n1,#n2,#n3,#n4{
+    color: #82A3A3;
+    background-color: #F6F4E8;
+}
+
+#n1,#n2,#n3,#n4,#aboutWeb,#about_sb {
+    
     font-weight: bold;
     border-style: none;
-    background-color: #82A3A3;
-    padding: 15px;
-    font-size: 25px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+#aboutWeb,#about_sb {
+    color: #F6F4E8;
+    border-width: 0px;
+    /*只留下邊界*/
+    border-bottom: 1.5px solid #F6F4E8;
+    background-color: #BACEC1;
+}
+#about_sb{
+    margin-bottom: 10px;
 }
 
 .card-title{
-    color: #82A3A3;
+    color: #F6F4E8;
     font-weight: bolder;
-    font-size: 20px;
-}
-
-li {
-    list-style: none;
-    color: #ffffff;
-    font-weight: bold;
+    font-size: 15px;
 }
 
 .col-sm-4,
 .col-sm-8 {
     padding-top: 20px;
-    padding-left: 30px;
 }
 
 .col-sm-8 {
@@ -38,10 +46,21 @@ li {
     margin: 0 auto;
 }
 
-.profile-pic {
+.profile-pic ,#about_logo_pic{
     display: inline;
     margin: 0 auto;
+    height: 50%;
+}
+.profile-pic{
     border-radius: 50%;
+}
+#about_logo_pic{
+    position: relative;
+    left: 80%;
+}
+.aboutWeb_li{
+    position: relative;
+    left: 20%;
 }
 
 .card-text li {
@@ -51,6 +70,10 @@ li {
     font-weight: normal;
 }
 .intro{
-    height: 250px;
+    height: 280px;
 }
 
+.introAll1,.introAll2{
+    padding: 10px 0px;
+    height: 250px;
+}

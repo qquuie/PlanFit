@@ -7,8 +7,10 @@ div.folder {
 
 div.input-group-lg>h1 {
     color: #e5945f;
-    text-align: center;
+    /* text-align: left; */
+    position: relative;
     font-weight: bold;
+    left: 30%;
 }
 
 .alr-folder {
@@ -26,14 +28,6 @@ div.alr-folder>p {
     padding-left: 20px;
     margin: 0;
     cursor: pointer;
-}
-
-.close {
-    height: 15px;
-    width: 15px;
-    position: absolute;
-    top: 0;
-    right: 0;
 }
 
 .add_folder {
@@ -92,4 +86,21 @@ div.addelse-btn>p {
 div.addelse-btn>img {
     margin: 5px;
     width: 20px;
+}
+
+#closeBtn {
+    position: relative;
+    right: -55px;
+}
+
+.alr-folder>img {
+    width: 45px;
+}
+
+.alr-folder>.close {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

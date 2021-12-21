@@ -338,8 +338,8 @@
     text-align: center;
 }
 
-input:focus:hover {
-    /*輸入時*/
+#input_num:focus:hover {
+    /* 輸入 */
     background-color: #82A3A3;
     color: white;
 }

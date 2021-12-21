@@ -254,3 +254,8 @@ div.modal-header {
     white-space: nowrap;
     text-align: left;
 }
+
+#closeBtnImg {
+    position: relative;
+    right: 56px;
+}

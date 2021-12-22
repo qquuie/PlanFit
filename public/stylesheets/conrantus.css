@@ -5,7 +5,7 @@ html {
 }
 
 .page {
-    background-image: url(./img/contact_back.png);
+    background-image: url(../img/contact_back.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0px -46px;

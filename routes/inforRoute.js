@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('infor', { title: 'information tab' });
 });
-router.post('/infor', function(req, res, next) {
-res.send('success')  });
+// router.post('/infor', function(req, res, next) {
+// res.send('success')  });
 
 module.exports = router;

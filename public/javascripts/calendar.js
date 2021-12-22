@@ -18,8 +18,8 @@ var now_click_ym;//現在的年月(用來記錄當All被按下時，是否已經
 var change=true;//判斷是否已經按下過該格子
 var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
 var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
-let workout_sth_c = ""; //運動名稱
-let workout_times; //運動次數或秒數
+var workout_sth_c = ""; //運動名稱
+var workout_times; //運動次數或秒數
 
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {

@@ -7,8 +7,13 @@ var MongoClient=require('mongodb').MongoClient;
 // const url="mongodb://localhost:27017/"
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var inforRouter = require('./routes/inforRoute');
+var contactRouter = require('./routes/contactRoute');
+var workoutRouter = require('./routes/workoutRoute');
+var navigationRouter = require('./routes/navigationRoute');
+var aboutRouter = require('./routes/aboutRoute');
+
+
 
 var app = express();
 // Connect to the db
@@ -37,8 +42,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/index', indexRouter);
-app.use('/users', usersRouter);
+app.use('/contact', contactRouter);
 app.use('/infor',inforRouter)
+app.use('/workout',workoutRouter)
+app.use('/navi',navigationRouter)
+app.use('/about',aboutRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

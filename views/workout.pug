@@ -1,0 +1,149 @@
+doctype html
+html
+  head
+    link(rel='icon', href='/img/LOGO_icon.png', type='image/x-icon')
+    //  CSS only 
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3', crossorigin='anonymous')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    link(rel='stylesheet', href='stylesheets/cal_folder.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    //  JavaScript Bundle with Popper 
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p', crossorigin='anonymous').
+  
+    script(type='javascript' src='javascripts/javascript.js')
+    script(type='javascript' src='javascripts/workout.js')
+    script(type='javascript' src='javascripts/calendar.js')
+    script(type='javascript' src='javascripts/jquery.waterwheelCarousel.js')
+    script(type='javascript' src='javascripts/save_sth.js')
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx', crossorigin='anonymous').
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='https://kit.fontawesome.com/e45ac9a14a.js', crossorigin='anonymous')
+  body 
+    include includes/navigation
+    .page.container
+      .card-group.card_row1.text-center
+        //  js生成 
+      .card-group.card_row2.text-center.
+        
+        
+      //  -----------------加入資料夾--------------------- 
+      #folder_win
+        img#folder_close(src='img/close_r.png')
+        #folder_workout_block
+          // 預設資料夾
+          .folder_workout
+            .folder_name
+              p My favorite
+            .folder_add
+              p +
+        #folder_new_block
+          #folder_title
+            p New folder
+          input#new_name(type='text', name)
+          #new_add
+            p +
+      //  -----------------月曆表格----------------- 
+      #calendar_win.table-responsive-sm
+        img#calender_close(src='img/close_g2.png')
+        table#calender_table
+          thead.color
+            tr
+              th.border-color(colspan='7')
+                //  <h4 id="cal-year">December ,2020</h4> 
+                #Date
+                  i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
+                  h3#cal-month December ,2020
+                  i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonth();')
+            tr
+              th.weekday.border-color Sun
+              th.weekday.border-color Mon
+              th.weekday.border-color Tue
+              th.weekday.border-color Wed
+              th.weekday.border-color Thu
+              th.weekday.border-color Fri
+              th.weekday.border-color Sat
+          tbody#home_table-body.border-color
+            tr
+              td.home_cal#cal1(onclick='dayClicked(this);', data-homecalid='1')
+              td.home_cal#cal2(onclick='dayClicked(this);', data-homecalid='2') 1
+              td.home_cal#cal3(onclick='dayClicked(this);', data-homecalid='3') 1
+              td.home_cal#cal4(onclick='dayClicked(this);', data-homecalid='4') 1
+              td.home_cal#cal5(onclick='dayClicked(this);', data-homecalid='5') 1
+              td.home_cal#cal6(onclick='dayClicked(this);', data-homecalid='6') 1
+              td.home_cal#cal7(onclick='dayClicked(this);', data-homecalid='7') 1
+            tr
+              td.home_cal#cal8(onclick='dayClicked(this);', data-homecalid='8') 1
+              td.home_cal#cal9(onclick='dayClicked(this);', data-homecalid='9') 1
+              td.home_cal#cal10(onclick='dayClicked(this);', data-homecalid='10') 1
+              td.home_cal#cal11(onclick='dayClicked(this);', data-homecalid='11') 1
+              td.home_cal#cal12(onclick='dayClicked(this);', data-homecalid='12') 1
+              td.home_cal#cal13(onclick='dayClicked(this);', data-homecalid='13') 1
+              td.home_cal#cal14(onclick='dayClicked(this);', data-homecalid='14') 1
+            tr
+              td.home_cal#cal15(onclick='dayClicked(this);', data-homecalid='15') 1
+              td.home_cal#cal16(onclick='dayClicked(this);', data-homecalid='16') 1
+              td.home_cal#cal17(onclick='dayClicked(this);', data-homecalid='17') 1
+              td.home_cal#cal18(onclick='dayClicked(this);', data-homecalid='18') 1
+              td.home_cal#cal19(onclick='dayClicked(this);', data-homecalid='19') 1
+              td.home_cal#cal20(onclick='dayClicked(this);', data-homecalid='20') 1
+              td.home_cal#cal21(onclick='dayClicked(this);', data-homecalid='21') 1
+            tr
+              td.home_cal#cal22(onclick='dayClicked(this);', data-homecalid='22') 1
+              td.home_cal#cal23(onclick='dayClicked(this);', data-homecalid='23') 1
+              td.home_cal#cal24(onclick='dayClicked(this);', data-homecalid='24') 1
+              td.home_cal#cal25(onclick='dayClicked(this);', data-homecalid='25') 1
+              td.home_cal#cal26(onclick='dayClicked(this);', data-homecalid='26') 1
+              td.home_cal#cal27(onclick='dayClicked(this);', data-homecalid='27') 1
+              td.home_cal#cal28(onclick='dayClicked(this);', data-homecalid='28') 1
+            tr
+              td.home_cal#cal29(onclick='dayClicked(this);', data-homecalid='29') 1
+              td.home_cal#cal30(onclick='dayClicked(this);', data-homecalid='30') 1
+              td.home_cal#cal31(onclick='dayClicked(this);', data-homecalid='31') 1
+              td.home_cal#cal32(onclick='dayClicked(this);', data-homecalid='32') 1
+              td.home_cal#cal33(onclick='dayClicked(this);', data-homecalid='33') 1
+              td.home_cal#cal34(onclick='dayClicked(this);', data-homecalid='34') 1
+              td.home_cal#cal35(onclick='dayClicked(this);', data-homecalid='35') 1
+            tr
+              td.home_cal#cal36(onclick='dayClicked(this);', data-homecalid='36') 1
+              td.home_cal#cal37(onclick='dayClicked(this);', data-homecalid='37') 1
+              td.home_cal#cal38(onclick='dayClicked(this);', data-homecalid='38') 1
+              td.home_cal#cal39(onclick='dayClicked(this);', data-homecalid='39') 1
+              td.home_cal#cal40(onclick='dayClicked(this);', data-homecalid='40') 1
+              td.home_cal#cal41(onclick='dayClicked(this);', data-homecalid='41') 1
+              td.home_cal#cal42(onclick='dayClicked(this);', data-homecalid='42') 1
+              //  點class，讀屬性 
+        .All(type='button', name='btnAll', onclick='Alldialog();') All
+        .Next(type='button', name='btnNext', onclick='Nextdialog();') Next
+        //  <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button> 
+      //  -----------------月曆表格新增記事----------------- 
+      #modal_block
+        #modal_workout_name
+          p workout name
+        #modal_times
+          input#input_num(type='number', name, min='1')
+          #times
+            p times
+        #modal_back
+          p back
+        #modal_OK
+          p OK
+        
+  
+
+  script.
+    let today = new Date(); //新增一個Date物件，命名為today
+          let thisYear = today.getFullYear();
+          let thisMonth = today.getMonth();
+          let thisDate = today.getDate();
+          updateDates();
+          fillInMonth(thisYear, thisMonth, thisDate);
+    $(document).ready(function()
+      {
+        $("div#smallPageModal").css('z-index', '-1');
+        $(".page").css('z-index', '1000');
+      })
+  
+
+  
+

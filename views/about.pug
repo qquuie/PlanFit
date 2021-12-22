@@ -1,0 +1,85 @@
+doctype html
+html
+  head
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    // JavaScript Bundle with Popper
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='javascripts/javascript.js')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    link(rel='stylesheet', href='stylesheets/aboutus.css')
+  body 
+    include includes/navigation
+    .content.page
+      .row.introAll1
+        .card-header#aboutWeb 關於PlanFIT
+        .col-sm-4
+          img#about_logo_pic(src='img/LOGO_icon.png', alt='card img')
+        .col-sm-8.aboutWeb_li
+          ol.card-text
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+            li 網站功能、特色概述
+      .row.introAll2
+        .card-header#about_sb 成員介紹
+        .col-sm-6
+          .intro
+            .card
+              .card-header#n1 江若仙
+            .row
+              .col-sm-4
+                img.profile-pic(src='img/aboutus/role2.jpg', alt='card img', height='200px')
+              .col-sm-8
+                h5.card-title 簡介：
+                ol.card-text
+                  li 組長(安排作業進度)
+                  li 程式碼編寫(主要：Information的Edit、重整程式碼、修改bug)
+                  li 輔助查資料
+                  li 口頭報告
+          .intro
+            .card
+              .card-header#n2 蔡易辰
+            .row
+              .col-sm-4
+                img.profile-pic(src='img/aboutus/role1.png', alt='card img', height='200px')
+              .col-sm-8
+                h5.card-title 簡介：
+                ol.card-text
+                  li 程式碼編寫(主要：Workout、日曆)
+                  li 網頁介面設計、排版
+                  li word製作
+        .col-sm-6
+          .intro
+            .card
+              .card-header#n3 張舒涵
+            .row
+              .col-sm-4
+                img.profile-pic(src='img/aboutus/role3.png', alt='card img', height='200px')
+              .col-sm-8
+                h5.card-title 簡介：
+                ol.card-text
+                  li 程式碼編寫(主要：Home，Folder、About us)
+                  li 輔助查資料
+                  li word製作
+          .intro
+            .card
+              .card-header#n4 裴氏瓊如
+            .row
+              .col-sm-4
+                img.profile-pic(src='img/aboutus/cadie.jpg', alt='card img', height='200px', width="150px")
+              .col-sm-8
+                h5.card-title 簡介：
+                ol.card-text
+                  li
+                    | 程式碼編寫(主要：網站架構、
+                    br
+                    | Sign in\Sign out、Contact Us)
+                  li 輔助查資料
+                  li PPT製作

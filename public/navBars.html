@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="stylesheets/contact_sign.css">
     <link rel="stylesheet" href="stylesheets/folder.css">
 
-    <!-- <link rel="stylesheet" href="javascripts/folder.js"> -->
-    <!-- <script src="./javascripts/javascript.js"></script> -->
 
     <nav class="navbar fixed-top navbar-expand-sm border-bottom justify-content-center">
         <div class="container-fluid">
@@ -72,18 +70,15 @@
                             <li><a class="dropdown-item" href="./infor.html">Edit</a></li>
                             <li><a id="inforFolder" data-toggle="modal" data-bs-target="#smallPageModal_folder" class="dropdown-item btn" href="">File</a></li>
                             <li><a class="dropdown-item btn" id="inforSign" data-toggle="modal" data-bs-target="#smallPageModal" href="">Sign In/Sign Out</a></li>
-
                         </ul>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
 
     <!-- -----------------------------Folder-------------------------------- -->
-    <div class="smallPage modal d-grid fade" tabindex="-1" id="smallPageModal_folder" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true" style="z-index: -1;">
-
+    <div class="smallPage modal fade d-grid " tabindex="-1" id="smallPageModal_folder" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true" style="z-index: -1;">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content folder">
                 <div class="modal-header">
@@ -142,7 +137,7 @@
     </div>
 
     <!-- ---------------------------Signun/Signout------------------------------ -->
-    <div class="smallPage modal d-grid fade" tabindex="-1" id="smallPageModal" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true">
+    <div class="smallPage modal fade d-grid" tabindex="-1" id="smallPageModal" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true">
         <div class="smallPage modal d-grid" tabindex="-1" id="smallPageModal" role="dialog" data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true" style="z-index: -1;">
             <!-- abby改 -->
             <div class="modal-dialog">
@@ -443,30 +438,6 @@
                 $("div#smallPageModal_folder").addClass("fade");
                 $("div#smallPageModal_folder").css('z-index', '-1');
                 $(".page").css('z-index', '1000');
-            })
-
-            $('button#signInBtn').click(function() {
-                $(".modal-backdrop").addClass("fade");
-                $("div#smallPageModal_folder").addClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '-1');
-                $(".page").css('z-index', '1000');
-            })
-
-            $('button#signUpBtn').click(function() {
-                $(".modal-backdrop").addClass("fade");
-                $("div#smallPageModal_folder").addClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '-1');
-                $(".page").css('z-index', '1000');
-            })
-            jQuery.noConflict();
-
-            $('#inforSign').click(function() {
-                $("div#smallPageModal_folder").toggle();
-                $("div#smallPageModal_folder").modal("toggle");
-                $("div#smallPageModal_folder").removeClass("fade");
-                $(".modal-backdrop").removeClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '1050');
-                $(".page").css('z-index', '-1');
             })
 
 

@@ -445,31 +445,6 @@
                 $(".page").css('z-index', '1000');
             })
 
-            $('button#signInBtn').click(function() {
-                $(".modal-backdrop").addClass("fade");
-                $("div#smallPageModal_folder").addClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '-1');
-                $(".page").css('z-index', '1000');
-            })
-
-            $('button#signUpBtn').click(function() {
-                $(".modal-backdrop").addClass("fade");
-                $("div#smallPageModal_folder").addClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '-1');
-                $(".page").css('z-index', '1000');
-            })
-            jQuery.noConflict();
-
-            $('#inforSign').click(function() {
-                $("div#smallPageModal_folder").toggle();
-                $("div#smallPageModal_folder").modal("toggle");
-                $("div#smallPageModal_folder").removeClass("fade");
-                $(".modal-backdrop").removeClass("fade");
-                $("div#smallPageModal_folder").css('z-index', '1050');
-                $(".page").css('z-index', '-1');
-            })
-
-
             $('#add_fol').click(function() {
                 addFolder();
             });

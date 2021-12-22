@@ -18,8 +18,8 @@ var now_click_ym;//現在的年月(用來記錄當All被按下時，是否已經
 var change=true;//判斷是否已經按下過該格子
 var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
 var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
-let workout_sth_c = ""; //運動名稱
-let workout_times; //運動次數或秒數
+var workout_sth_c = ""; //運動名稱
+var workout_times; //運動次數或秒數
 
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
@@ -248,11 +248,6 @@ $("#modal_back").click(function() {
     $("#calendar_win").show();
     $("#modal_block").hide();
 });
-$("#modal_OK").click(function() {
-    $("#modal_block").hide();
-    $("td").removeClass("important");
-});
-
 $("#calender_close").click(function() {
     $("#calendar_win").hide();
 });
@@ -292,6 +287,25 @@ $(".calender").click(function() {
     //初始化
     choice_d=[];
     //for迴圈判斷workout_list的物件裡面是否有該運動名稱
+    for(var i=0;i<workout_list.length;i++){
+        console.log(workout_list[i].workout_sth_c);
+        if(workout_sth_c==workout_list[i].workout_sth_c){
+            choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
+
+            var Days = document.getElementsByTagName("td");
+            for(var i=0;i<choice_d.length;i++){//有的日期變色
+                for(var j=0;j<42;j++){
+                    if(choice_d[j]==$(Days[j]).attr("data-uid")){
+                        $(Days[j]).addClass("important");
+                        break;
+                    }
+                }
+            }
+            console.log(workout_list[i].choice_d);
+            console.log(choice_d);
+            break;
+        }
+    }
     $("td").removeClass("important");
     //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
     var $father = $(this).parent().parent().parent().parent();
@@ -301,6 +315,8 @@ $(".calender").click(function() {
 });
 //按下確定後，紀錄該運動的日期陣列、運動名稱、運動次數或秒數-->存進物件
 $("#modal_OK").click(function() {
+    $("#modal_block").hide();//視窗關閉
+
     var $ff = $(this).parent();
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     console.log(workout_times);

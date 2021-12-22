@@ -21,100 +21,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="javascripts/jquery.waterwheelCarousel.js"></script>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <link rel="stylesheet" href="stylesheets/index.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
-
 
     <div class="navBars"></div>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
 
 </head>
 
 <body>
 
     <div class="page">
-        <!-- -----------------每日訓練/推薦 幻燈片--------------------- -->
-        <!-- <div id="homeControls" class="carousel slide " data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-
-                    <div class="card border-GreenLake">
-                        <h1 class="card-title align-middle text-center fw-bold text-GreenLake">Exercise of the day</h1>
-                        <img class="card-img" src="img_workout/get_fit/abs/abs_bicycle_crunch.jpg" alt="Card image cap">
-                        
-                    </div>
-
-                </div>
-                <div class="carousel-item">
-
-                    <div class="card border-GreenLake">
-                        <h1 class="card-title  align-middle text-center fw-bold text-GreenLake">Jumping Squat</h1>
-                        <img class="card-img" src="img_workout/get_fit/abs/abs_bicycle_crunch.jpg" alt="Card image cap">
-                        <div class="card-body text-GreenLake margin_0_auto">
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link">
-                                        <img src="img/icon_see_times.png" width="20px">
-                                        <p class="see_times">10</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link folder">
-                                        <img src="img/icon_folder.png" width="25px">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link calender">
-                                        <img src="img/icon_calender.png" width="20px">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="carousel-item">
-
-                    <div class="card border-GreenLake">
-                        <h1 class="card-title  align-middle text-center fw-bold  text-GreenLake">Jumping Squat</h1>
-                        <img class="card-img" src="img_workout/get_fit/abs/abs_bicycle_crunch.jpg" alt="Card image cap">
-                        <div class="card-body text-GreenLake margin_0_auto">
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link">
-                                        <img src="img/icon_see_times.png" width="20px">
-                                        <p class="see_times">10</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link folder">
-                                        <img src="img/icon_folder.png" width="25px">
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link calender">
-                                        <img src="img/icon_calender.png" width="20px">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <button class="carousel-control-prev homeControls_btn" type="button" data-bs-target="#homeControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next homeControls_btn" type="button" data-bs-target="#homeControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> -->
         <div>
             <div class="card-body text-GreenLake margin_0_auto">
                 <ul class="nav nav-tabs card-header-tabs">
@@ -171,58 +91,58 @@
                 </thead>
                 <tbody id="home_table-body" class="border-color">
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="1" class="home_cal"></td>
-                        <td onclick="dayClicked(this);" data-homecalID="2" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="3" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="4" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="5" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="6" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="7" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="1" class="home_cal" id="cal1"></td>
+                        <td onclick="dayClicked(this);" data-homecalID="2" class="home_cal" id="cal2">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="3" class="home_cal" id="cal3">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="4" class="home_cal" id="cal4">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="5" class="home_cal" id="cal5">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="6" class="home_cal" id="cal6">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="7" class="home_cal" id="cal7">1</td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="8" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="9" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="10" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="11" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="12" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="13" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="14" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="8" class="home_cal" id="cal8">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="9" class="home_cal" id="cal9">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="10" class="home_cal" id="cal10">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="11" class="home_cal" id="cal11">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="12" class="home_cal" id="cal12">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="13" class="home_cal" id="cal13">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="14" class="home_cal" id="cal14">1</td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="15" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="16" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="17" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="18" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="19" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="20" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="21" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="15" class="home_cal" id="cal15">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="16" class="home_cal" id="cal16">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="17" class="home_cal" id="cal17">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="18" class="home_cal" id="cal18">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="19" class="home_cal" id="cal19">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="20" class="home_cal" id="cal20">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="21" class="home_cal" id="cal21">1</td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="22" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="23" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="24" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="25" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="26" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="27" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="28" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="22" class="home_cal" id="cal22">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="23" class="home_cal" id="cal23">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="24" class="home_cal" id="cal24">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="25" class="home_cal" id="cal25">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="26" class="home_cal" id="cal26">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="27" class="home_cal" id="cal27">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="28" class="home_cal" id="cal28">1</td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="29" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="30" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="31" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="32" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="33" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="34" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="35" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="29" class="home_cal" id="cal29">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="30" class="home_cal" id="cal30">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="31" class="home_cal" id="cal31">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="32" class="home_cal" id="cal32">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="33" class="home_cal" id="cal33">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="34" class="home_cal" id="cal34">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="35" class="home_cal" id="cal35">1</td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" data-homecalID="36" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="37" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="38" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="39" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="40" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="41" class="home_cal">1</td>
-                        <td onclick="dayClicked(this);" data-homecalID="42" class="home_cal">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="36" class="home_cal" id="cal36">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="37" class="home_cal" id="cal37">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="38" class="home_cal" id="cal38">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="39" class="home_cal" id="cal39">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="40" class="home_cal" id="cal40">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="41" class="home_cal" id="cal41">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="42" class="home_cal" id="cal42">1</td>
                         <!-- 點class，讀屬性 -->
                     </tr>
                 </tbody>
@@ -310,36 +230,38 @@
                         <td onclick="dayClicked(this);" id="calNO21" class="cal"></td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO22" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO23" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO24" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO25" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO26" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO27" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO28" class="cal"></td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO29" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO30" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO31" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO32" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO33" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO34" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO35" class="cal"></td>
                     </tr>
                     <tr>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
-                        <td onclick="dayClicked(this);" id="calNO" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO36" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO37" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO38" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO39" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO40" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO41" class="cal"></td>
+                        <td onclick="dayClicked(this);" id="calNO42" class="cal"></td>
                     </tr>
                 </tbody>
             </table>
-            <div type="button" name="btnAll" class="btn All" onclick="Alldialog();">All</div>
-            <div type="button" name="btnNext" class="btn Next" onclick="Nextdialog();">Next</div>
+            <div id="check_btn">
+                <div type="button" name="btnAll" class="btn All" onclick="Alldialog();">All</div>
+                <div type="button" name="btnNext" class="btn Next" onclick="Nextdialog();">Next</div>
+            </div>
             <!-- <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button> -->
         </div>
 
@@ -374,6 +296,7 @@
             document.getElementById("item-2").src = arr[1];
             document.getElementById("item-3").src = arr[2];
 
+
             var carousel = $("#carousel").waterwheelCarousel({
                 flankingItems: 3,
                 movingToCenter: function($item) {
@@ -404,11 +327,25 @@
                 return false;
             });
 
-            $('#reload').bind('click', function() {
-                newOptions = eval("(" + $('#newoptions').val() + ")");
-                carousel.reload(newOptions);
-                return false;
+            // $('#reload').bind('click', function() {
+            //     newOptions = eval("(" + $('#newoptions').val() + ")");
+            //     carousel.reload(newOptions);
+            //     return false;
+            // });
+
+            jQuery(function($) {
+                var windowWidth = $(window).width();
+                var windowHeight = $(window).height();
+
+                $(window).resize(function() {
+                    if (windowWidth != $(window).width() || windowHeight != $(window)
+                        .height()) {
+                        location.reload();
+                        return;
+                    }
+                });
             });
+
         });
     </script>
 

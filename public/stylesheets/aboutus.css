@@ -53,7 +53,9 @@
 }
 .profile-pic{
     border-radius: 50%;
+    width: 150px;
 }
+
 #about_logo_pic{
     position: relative;
     left: 80%;

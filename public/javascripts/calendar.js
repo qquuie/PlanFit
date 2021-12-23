@@ -20,6 +20,8 @@ var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數�
 var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
 var workout_sth_c = ""; //運動名稱
 var workout_times; //運動次數或秒數
+var same=false;//判斷是否有存取過該運動
+var sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
 
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
@@ -86,6 +88,7 @@ function previousMonth() {
             if($(Days[i]).attr("data-uid")==choice_d[j]){
                 console.log($(Days[i]).attr("data-uid")+","+choice_d[j]);
                 $(Days[i]).addClass("important");
+                break;
             }
         } 
     }
@@ -113,6 +116,7 @@ function nextMonth() {
             if($(Days[i]).attr("data-uid")==choice_d[j]){
                 console.log($(Days[i]).attr("data-uid")+","+choice_d[j]);
                 $(Days[i]).addClass("important");
+                break;
             }
         } 
     }
@@ -284,34 +288,40 @@ $('.home_cal').click(function() {
 // let workout_sth_c = ""; //運動名稱
 // let workout_times; //運動次數或秒數
 $(".calender").click(function() {
-    //初始化
+    //---------------------------------------------------------初始化-------------------------------
     choice_d=[];
-    //for迴圈判斷workout_list的物件裡面是否有該運動名稱
+    same=false;//判斷是否有存取過該運動
+    sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+    //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
+    var $father = $(this).parent().parent().parent().parent();
+    workout_sth_c = $father.find(".card-body h3").text();
+    $("#modal_workout_name p").text(workout_sth_c);
+    console.log(workout_sth_c);
+
+    $("td").removeClass("important");
+    //---------------------------------------------------------初始化End----------------------------
+    //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
     for(var i=0;i<workout_list.length;i++){
-        console.log(workout_list[i].workout_sth_c);
-        if(workout_sth_c==workout_list[i].workout_sth_c){
+        if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
+            console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
+            same=true;
+            sameID=i;
             choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
 
             var Days = document.getElementsByTagName("td");
-            for(var i=0;i<choice_d.length;i++){//有的日期變色
-                for(var j=0;j<42;j++){
-                    if(choice_d[j]==$(Days[j]).attr("data-uid")){
-                        $(Days[j]).addClass("important");
+            for (var k = 0; k <= 41; k++) {
+                for(var j=0;j<choice_d.length;j++){
+                    if($(Days[k]).attr("data-uid")==choice_d[j]){
+                        $(Days[k]).addClass("important");
                         break;
                     }
-                }
+                } 
             }
             console.log(workout_list[i].choice_d);
             console.log(choice_d);
             break;
         }
     }
-    $("td").removeClass("important");
-    //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
-    var $father = $(this).parent().parent().parent().parent();
-    workout_sth_c = $father.find(".card-body h3").text();
-    $("#modal_workout_name p").text(workout_sth_c);
-    console.log(workout_sth_c);
 });
 //按下確定後，紀錄該運動的日期陣列、運動名稱、運動次數或秒數-->存進物件
 $("#modal_OK").click(function() {
@@ -319,15 +329,22 @@ $("#modal_OK").click(function() {
 
     var $ff = $(this).parent();
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
-    console.log(workout_times);
-    console.log(workout_sth_c);
+    // console.log(workout_times);
+    // console.log(workout_sth_c);
     console.log(choice_d);
-    workout_item={
-        workout_sth_c:workout_sth_c,
-        workout_times:workout_times,
-        choice_d:choice_d
+    if(same==true){// && workout_list[sameID].workout_times==workout_times-->
+        //只要改變選擇日期
+        workout_list[sameID].choice_d=choice_d;
+        workout_list[sameID].workout_times=workout_times;
     }
-    workout_list.push(workout_item);
+    else if(same==false){
+        workout_item={
+            workout_sth_c:workout_sth_c,
+            workout_times:workout_times,
+            choice_d:choice_d
+        }
+        workout_list.push(workout_item);
+    }
     console.log(workout_item);
     console.log(workout_list);
     //之後將存放這些資料的變數清空

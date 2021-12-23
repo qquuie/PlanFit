@@ -1,7 +1,10 @@
 html body {
     background-color: #BACEC1;
 }
-
+.page
+{
+    margin-top: 100px;
+}
 nav.navbar,
 button#workOutNav,
 ul.dropdown-menu {

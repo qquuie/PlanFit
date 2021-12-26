@@ -22,7 +22,7 @@ ul.dropdown-menu {
 
 /*---------------------------日曆的全選All跟下一步Next按鈕，cal_folder.css移過來的--------------------------*/
 
-.All {
+/* .All {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
@@ -30,16 +30,16 @@ ul.dropdown-menu {
     top: 6%;
     width: 12%;
     padding: 4px 0;
-}
+} */
 
-.Next {
+/* .Next {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
     left: 34%;
     width: 12%;
     padding: 4px 0;
-}
+} */
 
 
 /*---------------------------------------------按下Next的視窗--------------------------------------------*/

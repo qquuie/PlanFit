@@ -1,4 +1,4 @@
-.text-GreenLake {
+/* .text-GreenLake {
     color: #82A3A3;
 }
 
@@ -9,7 +9,19 @@
     left: 10%;
 }
 
-#folder_win,
+#folder_win{
+    display: none;
+    background-color: #f3f1de;
+    width: 450px;
+    height: 500px;
+    position: absolute;
+    top: 100px;
+    left: 35%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
+} */
+/* #folder_win,
 #calendar_win {
     display: none;
     background-color: #f3f1de;
@@ -21,9 +33,9 @@
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
-}
+} */
 
-#calendar_win {
+/* #calendar_win {
     width: 50%;
     height: 110%;
     top: 60px;
@@ -31,9 +43,9 @@
     align-items: center;
     transform: translateX(-50%);
     color: #f3f1de;
-}
+} */
 
-#folder_close {
+/* #folder_close {
     width: 30px;
     position: absolute;
     top: 10px;
@@ -50,19 +62,18 @@
     position: relative;
     left: 10%;
     top: 15%;
-    /* background-color: white; */
     overflow-y: scroll;
-}
+} */
 
-.folder_workout {
+/* .folder_workout {
     width: 100%;
     height: 20%;
     background-color: white;
     margin: 10px 0px;
-    /*上下 左右*/
-}
+} */
+/*上下 左右*/
 
-.folder_name {
+/* .folder_name {
     float: left;
     color: #E59560;
     font-size: 30px;
@@ -115,7 +126,7 @@
 #new_name {
     padding: 10px;
     margin: 6px;
-}
+} */
 
 
 /*------------------------------------------------日曆視窗---------------------------------------------*/
@@ -226,8 +237,31 @@
 
 
 /*-----------------------------------------------------*/
+/* .All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    top: 3%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}
 
-.All {
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    top: -1.5%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+} */
+
+/* .All {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
@@ -249,12 +283,12 @@
     padding: 8px 0;
     text-align: center;
     border-radius: 10%;
-}
+} */
 
 
 /*---------------------------------------------按下Next的視窗--------------------------------------------*/
 
-#modal_block {
+/* #modal_block {
     display: none;
     background-color: #f3f1de;
     width: 450px;
@@ -265,9 +299,9 @@
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
-}
+} */
 
-#modal_workout_name {
+/* #modal_workout_name {
     position: relative;
     left: 10%;
     top: 15%;
@@ -281,44 +315,44 @@
 #modal_workout_name p {
     text-align: center;
     padding: 8px;
-}
+} */
 
-#modal_times {
+/* #modal_times {
     position: relative;
-    left: 25%;
+    left: 25%; */
     /* (100-width)/2 */
-    top: 30%;
+    /* top: 30%;
     background-color: #ffffff;
     color: #82A3A3;
     font-size: 15px;
     width: 50%;
     height: 20%;
-    margin: 10px 0px;
+    margin: 10px 0px; */
     /*上下 左右*/
-}
+/* } */
 
-#input_num {
+/* #input_num {
     padding: 10px;
     margin: 6px 10px;
     width: 50%;
-    border-width: 0px;
+    border-width: 0px; */
     /*只留下邊界*/
-    border-bottom: 1px solid #52795e;
+    /* border-bottom: 1px solid #52795e; */
     /*輸入框的外圍*/
-    outline: none;
+    /* outline: none; */
     /*按下輸入框不會有除了下邊界的線*/
-    transition: 0.5s;
+    /* transition: 0.5s; */
     /*轉換過度效果*/
-    text-align: center;
-}
+    /* text-align: center; */
+/* } */
 
-#input_num:focus:hover {
+/* #input_num:focus:hover { */
     /*輸入時*/
-    background-color: #82A3A3;
+    /* background-color: #82A3A3;
     color: white;
-}
+} */
 
-#times {
+/* #times {
     background-color: #82A3A3;
     float: right;
     font-size: 30px;
@@ -350,7 +384,7 @@
 #modal_OK {
     float: right;
     left: -10%;
-}
+} */
 
 
 /* ----------------------------------------------------------------------------- */
@@ -472,7 +506,7 @@
     /* 複寫原本的改變寬度 */
     /* // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom. */
-    width: 60%;
+    /* width: 60%; */
 }
 
 #pose_name {

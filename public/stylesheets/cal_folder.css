@@ -40,7 +40,7 @@
     left: 35%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
-    z-index: 2;
+    z-index: 5;
 }
 
 #folder_close {
@@ -383,7 +383,7 @@
     color: #f3f1de;
     position: relative;
     left: -34%;
-    top: 6.5%;
+    top: 3%;
     width: 12%;
     padding: 8px 0;
     text-align: center;
@@ -395,7 +395,7 @@
     color: #f3f1de;
     position: relative;
     left: 34%;
-    top: 1.8%;
+    top: -1.5%;
     width: 12%;
     padding: 8px 0;
     text-align: center;

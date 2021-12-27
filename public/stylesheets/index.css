@@ -159,8 +159,7 @@
 }
 
 #calender_table {
-    position: relative;
-    top: -55px;
+
 }
 
 #check_btn {
@@ -192,7 +191,6 @@
     height: 5vw;
     width: 5vw;
     font-size: 1.5vw;
-    font-weight: 500;
     vertical-align: top;
     padding: 0.5vw;
     border: 1px solid #82A3A3;

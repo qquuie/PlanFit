@@ -133,8 +133,8 @@
 #calendar_win {
     /* display: none; */
     width: 50%;
-    height: 110%;
-    top: 60px;
+    height: 90%;
+    /* top: 60px; */
     left: 50%;
     align-items: center;
     transform: translateX(-50%);
@@ -156,8 +156,8 @@
     height: 80%;
     width: 80%;
     /*等比例縮放*/
-    position: relative;
-    top: 5%;
+    /* position: relative;
+    top: 5%; */
     color: #82A3A3;
 }
 
@@ -383,7 +383,6 @@
     color: #f3f1de;
     position: relative;
     left: -34%;
-    top: 3%;
     width: 12%;
     padding: 8px 0;
     text-align: center;
@@ -395,7 +394,7 @@
     color: #f3f1de;
     position: relative;
     left: 34%;
-    top: -1.5%;
+    top: -5%;
     width: 12%;
     padding: 8px 0;
     text-align: center;

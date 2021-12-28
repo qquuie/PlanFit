@@ -149,7 +149,8 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
 // ----------------------------------月曆按鈕按下-----------------------------------//
 function Nextdialog() {
     $("#modal_block").show();
-    $("#calendar_win").hide();
+    $("#cal_win").hide();
+    //$("#calendar_win").hide();
 }
 
 function Alldialog() {
@@ -166,7 +167,8 @@ $("#times").click(function() {
     clock++;
 });
 $("#modal_back").click(function() {
-    $("#calendar_win").show();
+    //$("#calendar_win").show();
+    $("#cal_win").hide();
     $("#modal_block").hide();
 });
 $("#modal_OK").click(function() {
@@ -175,7 +177,8 @@ $("#modal_OK").click(function() {
 });
 
 $("#calender_close").click(function() {
-    $("#calendar_win").hide();
+    $("#cal_win").hide();
+    //$("#calendar_win").hide();
 });
 /*--------------------------------------以下為要存的資料------------------------------*/
 //----------------------------------------按下日期格子----------------------------------

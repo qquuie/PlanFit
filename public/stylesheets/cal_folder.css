@@ -40,7 +40,7 @@
     left: 35%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
-    z-index: 2;
+    z-index: 5;
 }
 
 #folder_close {
@@ -131,18 +131,13 @@
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
 #calendar_win {
-    /* display: none; */
     width: 50%;
-    height: 110%;
-    top: 60px;
+    height: 90%;
+    top: -10px;
     left: 50%;
     align-items: center;
     transform: translateX(-50%);
     color: #f3f1de;
-    /* 把div內的物件致中 */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
-    /* min-height: 100vh; */
 }
 
 #calender_close {
@@ -156,8 +151,8 @@
     height: 80%;
     width: 80%;
     /*等比例縮放*/
-    position: relative;
-    top: 5%;
+    /* position: relative;
+    top: 5%; */
     color: #82A3A3;
 }
 
@@ -291,6 +286,7 @@
     left: 35%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
 }
 
 #modal_workout_name {
@@ -383,7 +379,6 @@
     color: #f3f1de;
     position: relative;
     left: -34%;
-    top: 6.5%;
     width: 12%;
     padding: 8px 0;
     text-align: center;
@@ -395,7 +390,7 @@
     color: #f3f1de;
     position: relative;
     left: 34%;
-    top: 1.8%;
+    top: -5%;
     width: 12%;
     padding: 8px 0;
     text-align: center;

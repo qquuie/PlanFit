@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/cal_folder.css">
+    <link rel="stylesheet" href="stylesheets/workout.css">
 
 </head>
 
@@ -177,6 +179,8 @@
             </div>
         </div>
         <!-- -----------------月曆表格----------------- -->
+
+        <!-- -----------------月曆表格----------------- -->
         <div id="calendar_win" class="table-responsive-sm">
             <img src="img/close_g2.png" id="calender_close">
             <table id="calender_table">
@@ -185,6 +189,113 @@
                         <th colspan="7" class="border-color">
                             <!-- <h4 id="cal-year">December ,2020</h4> -->
                             <div id="Date">
+                                <i class="glyphicon glyphicon-menu-left icon_btn" onclick="previousMonth();"></i>
+                                <h3 id="cal-month">December ,2020</h3>
+                                <i class="glyphicon glyphicon-menu-right icon_btn" onclick="nextMonth();"></i>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="weekday border-color">Sun</th>
+                        <th class="weekday border-color">Mon</th>
+                        <th class="weekday border-color">Tue</th>
+                        <th class="weekday border-color">Wed</th>
+                        <th class="weekday border-color">Thu</th>
+                        <th class="weekday border-color">Fri</th>
+                        <th class="weekday border-color">Sat</th>
+                    </tr>
+                </thead>
+                <tbody id="home_table-body" class="border-color">
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="1" class="home_cal" id="cal1"></td>
+                        <td onclick="dayClicked(this);" data-homecalID="2" class="home_cal" id="cal2">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="3" class="home_cal" id="cal3">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="4" class="home_cal" id="cal4">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="5" class="home_cal" id="cal5">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="6" class="home_cal" id="cal6">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="7" class="home_cal" id="cal7">1</td>
+                    </tr>
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="8" class="home_cal" id="cal8">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="9" class="home_cal" id="cal9">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="10" class="home_cal" id="cal10">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="11" class="home_cal" id="cal11">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="12" class="home_cal" id="cal12">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="13" class="home_cal" id="cal13">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="14" class="home_cal" id="cal14">1</td>
+                    </tr>
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="15" class="home_cal" id="cal15">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="16" class="home_cal" id="cal16">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="17" class="home_cal" id="cal17">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="18" class="home_cal" id="cal18">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="19" class="home_cal" id="cal19">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="20" class="home_cal" id="cal20">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="21" class="home_cal" id="cal21">1</td>
+                    </tr>
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="22" class="home_cal" id="cal22">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="23" class="home_cal" id="cal23">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="24" class="home_cal" id="cal24">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="25" class="home_cal" id="cal25">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="26" class="home_cal" id="cal26">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="27" class="home_cal" id="cal27">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="28" class="home_cal" id="cal28">1</td>
+                    </tr>
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="29" class="home_cal" id="cal29">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="30" class="home_cal" id="cal30">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="31" class="home_cal" id="cal31">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="32" class="home_cal" id="cal32">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="33" class="home_cal" id="cal33">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="34" class="home_cal" id="cal34">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="35" class="home_cal" id="cal35">1</td>
+                    </tr>
+                    <tr>
+                        <td onclick="dayClicked(this);" data-homecalID="36" class="home_cal" id="cal36">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="37" class="home_cal" id="cal37">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="38" class="home_cal" id="cal38">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="39" class="home_cal" id="cal39">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="40" class="home_cal" id="cal40">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="41" class="home_cal" id="cal41">1</td>
+                        <td onclick="dayClicked(this);" data-homecalID="42" class="home_cal" id="cal42">1</td>
+                        <!-- 點class，讀屬性 -->
+                    </tr>
+                </tbody>
+            </table>
+            <div type="button" name="btnAll" class="All" onclick="Alldialog();">All</div>
+            <div type="button" name="btnNext" class="Next" onclick="Nextdialog();">Next</div>
+            <!-- <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button> -->
+        </div>
+
+        <!-- -----------------月曆表格新增記事----------------- -->
+        <div id="modal_block">
+            <div id="modal_workout_name">
+                <p>workout name</p>
+            </div>
+            <div id="modal_times">
+                <input type="number" name="" id="input_num" min="1">
+                <div id="times">
+                    <p>times</p>
+                </div>
+            </div>
+            <div id="modal_back">
+                <p>back</p>
+            </div>
+            <div id="modal_OK">
+                <p>OK</p>
+            </div>
+        </div>
+
+
+        <!-- <div id="calendar_win" class="table-responsive-sm">
+            <img src="img/close_g2.png" id="calender_close">
+            <table id="calender_table">
+                <thead class="color">
+                    <tr>
+                        <th colspan="7" class="border-color"> -->
+                            <!-- <h4 id="cal-year">December ,2020</h4> -->
+                            <!-- <div id="Date">
                                 <i class="glyphicon glyphicon-menu-left icon_btn" onclick="previousMonth();"></i>
                                 <h3 id="cal-month">December ,2020</h3>
                                 <i class="glyphicon glyphicon-menu-right icon_btn" onclick="nextMonth();"></i>
@@ -261,12 +372,12 @@
             <div id="check_btn">
                 <div type="button" name="btnAll" class="btn All" onclick="Alldialog();">All</div>
                 <div type="button" name="btnNext" class="btn Next" onclick="Nextdialog();">Next</div>
-            </div>
+            </div> -->
             <!-- <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button> -->
-        </div>
+        <!-- </div> -->
 
         <!-- -----------------月曆表格新增記事----------------- -->
-        <div id="modal_block">
+        <!-- <div id="modal_block">
             <div id="modal_workout_name">
                 <p>workout name</p>
             </div>
@@ -282,7 +393,7 @@
             <div id="modal_OK">
                 <p>OK</p>
             </div>
-        </div>
+        </div> -->
 
     </div>
 
@@ -353,6 +464,7 @@
     <script src="javascripts/workout.js"></script>
     <script src="javascripts/home.js"></script>
     <script src="javascripts/javascript.js"></script>
+    <script src="javascripts/calendar.js"></script>
     <script>
         let today = new Date(); //新增一個Date物件，命名為today
         let thisYear = today.getFullYear();

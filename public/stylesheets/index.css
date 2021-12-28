@@ -1,4 +1,4 @@
-.text-GreenLake {
+/* .text-GreenLake {
     color: #82A3A3;
 }
 
@@ -9,7 +9,19 @@
     left: 10%;
 }
 
-#folder_win,
+#folder_win{
+    display: none;
+    background-color: #f3f1de;
+    width: 450px;
+    height: 500px;
+    position: absolute;
+    top: 100px;
+    left: 35%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
+} */
+/* #folder_win,
 #calendar_win {
     display: none;
     background-color: #f3f1de;
@@ -21,9 +33,9 @@
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
-}
+} */
 
-#calendar_win {
+/* #calendar_win {
     width: 50%;
     height: 110%;
     top: 60px;
@@ -31,9 +43,9 @@
     align-items: center;
     transform: translateX(-50%);
     color: #f3f1de;
-}
+} */
 
-#folder_close {
+/* #folder_close {
     width: 30px;
     position: absolute;
     top: 10px;
@@ -50,19 +62,18 @@
     position: relative;
     left: 10%;
     top: 15%;
-    /* background-color: white; */
     overflow-y: scroll;
-}
+} */
 
-.folder_workout {
+/* .folder_workout {
     width: 100%;
     height: 20%;
     background-color: white;
     margin: 10px 0px;
-    /*上下 左右*/
-}
+} */
+/*上下 左右*/
 
-.folder_name {
+/* .folder_name {
     float: left;
     color: #E59560;
     font-size: 30px;
@@ -115,28 +126,29 @@
 #new_name {
     padding: 10px;
     margin: 6px;
-}
+} */
 
 
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
-#calendar_win {
-    /* display: none; */
-    width: 50%;
-    height: 700px;
-    top: 100px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    /* min-height: 100vh; */
+#cal_win {
+    display: none;
+    background-color: #f3f1de;
+    width: 50vw;
+    height: 50vw;
     margin: 0 auto;
+    left: 25%;
+    position: absolute;
+    top: 100px;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
 }
-
-#calender_close {
-    width: 30px;
-    position: relative;
-    right: -42%;
-    top: 4%;
+#cal_close {
+    width: 6%;
+    position: absolute;
+    left: 90%;
+    top: 3%;
 }
 
 #calender_table,
@@ -147,28 +159,22 @@
     color: #82A3A3;
 }
 
-#calender_table {
-    position: relative;
-    top: -55px;
-}
-
 #check_btn {
     position: relative;
-    top: -64px;
+    width: 100%;
+    height: 20%;
 }
 
-#calendar_win h3 {
+#cal_win h3 {
     margin: 0;
     padding: 1.5vw 3vw;
     font-size: 40px;
     /* font-weight: 500; */
     display: inline-block;
     color: #82A3A3;
-    /* background-color:#82A3A3;*/
-    /*debug用 */
 }
 
-#calendar_win .weekday {
+#cal_win .weekday {
     font-size: large;
     padding: 8px 4px 10px;
     /*上右下左*/
@@ -177,7 +183,7 @@
     color: #f3f1de;
 }
 
-#calendar_win tbody td {
+#cal_win tbody td {
     height: 5vw;
     width: 5vw;
     font-size: 1.5vw;
@@ -188,19 +194,19 @@
     transition: font-size 0.6s ease;
 }
 
-#calendar_win tbody td:hover {
+#cal_win tbody td:hover {
     font-size: 1.8vw;
 }
 
-#calendar_win .icon_btn {
+#cal_win .icon_btn {
     font-size: 1.5vw;
 }
 
-#calendar_win .icon_btn:hover {
+#cal_win .icon_btn:hover {
     opacity: 0.6;
 }
 
-#calendar_win {
+#cal_win {
     color: #f8f0ab;
 }
 
@@ -226,8 +232,69 @@
 
 
 /*-----------------------------------------------------*/
+#All,#Next{
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: absolute;
+    width: 10%;
 
-.All {
+    text-align: center;
+    border-radius: 10%;
+    padding: 8px 0;
+}
+#All{
+    left: 10%;
+}
+#Next {
+    left: 80%;
+}
+/* #All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}
+
+#Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    top: -5%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+} */
+/* .All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    top: 3%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    top: -1.5%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+} */
+
+/* .All {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
@@ -249,12 +316,12 @@
     padding: 8px 0;
     text-align: center;
     border-radius: 10%;
-}
+} */
 
 
 /*---------------------------------------------按下Next的視窗--------------------------------------------*/
 
-#modal_block {
+/* #modal_block {
     display: none;
     background-color: #f3f1de;
     width: 450px;
@@ -265,9 +332,9 @@
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
-}
+} */
 
-#modal_workout_name {
+/* #modal_workout_name {
     position: relative;
     left: 10%;
     top: 15%;
@@ -281,44 +348,44 @@
 #modal_workout_name p {
     text-align: center;
     padding: 8px;
-}
+} */
 
-#modal_times {
+/* #modal_times {
     position: relative;
-    left: 25%;
+    left: 25%; */
     /* (100-width)/2 */
-    top: 30%;
+    /* top: 30%;
     background-color: #ffffff;
     color: #82A3A3;
     font-size: 15px;
     width: 50%;
     height: 20%;
-    margin: 10px 0px;
+    margin: 10px 0px; */
     /*上下 左右*/
-}
+/* } */
 
-#input_num {
+/* #input_num {
     padding: 10px;
     margin: 6px 10px;
     width: 50%;
-    border-width: 0px;
+    border-width: 0px; */
     /*只留下邊界*/
-    border-bottom: 1px solid #52795e;
+    /* border-bottom: 1px solid #52795e; */
     /*輸入框的外圍*/
-    outline: none;
+    /* outline: none; */
     /*按下輸入框不會有除了下邊界的線*/
-    transition: 0.5s;
+    /* transition: 0.5s; */
     /*轉換過度效果*/
-    text-align: center;
-}
+    /* text-align: center; */
+/* } */
 
-#input_num:focus:hover {
+/* #input_num:focus:hover { */
     /*輸入時*/
-    background-color: #82A3A3;
+    /* background-color: #82A3A3;
     color: white;
-}
+} */
 
-#times {
+/* #times {
     background-color: #82A3A3;
     float: right;
     font-size: 30px;
@@ -350,7 +417,7 @@
 #modal_OK {
     float: right;
     left: -10%;
-}
+} */
 
 
 /* ----------------------------------------------------------------------------- */
@@ -472,7 +539,7 @@
     /* 複寫原本的改變寬度 */
     /* // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom. */
-    width: 60%;
+    /* width: 60%; */
 }
 
 #pose_name {

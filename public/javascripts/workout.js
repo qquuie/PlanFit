@@ -159,3 +159,18 @@
         $("#calendar_win").show();
         $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
     });
+
+    
+    //------
+    $(".calender").click(function() {
+        $("#cal_win").show();
+        $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+    });
+
+
+    $("div#smallPageModal").css('z-index', '-1');
+    $(".page").css('z-index', '1000');
+    $(".calender").click(function() {
+        $("#cal_win").show();
+        $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+    });

@@ -2,6 +2,7 @@ $(document).ready(function () {
     // <--------------------------- Information-------------------------->
     $("div#smallPageModal").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
+    $(".nav.navbar").css('z-index', '1050');
     // -------------------folder----------------
     let folder = [];
     let id = 2;

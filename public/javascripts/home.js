@@ -1,4 +1,16 @@
-//------
+//---------------------------------------初始化變數---------------------------------------------------
+var choice_d = []; //存放所有選擇日期陣列
+var choice; //選擇某格日期
+var pre_click_ym;//之前的年月(用來記錄當All被按下時，是否已經換月)
+var now_click_ym;//現在的年月(用來記錄當All被按下時，是否已經換月)
+var change=true;//判斷是否已經按下過該格子
+var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
+var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
+var workout_sth_c = ""; //運動名稱
+var workout_times; //運動次數或秒數
+var same=false;//判斷是否有存取過該運動
+var sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+
 //每換一頁日曆就要先removeclass，再判斷一次陣列裡面的data-uid的數值後去改變css
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
@@ -168,7 +180,7 @@ $("#times").click(function() {
 });
 $("#modal_back").click(function() {
     //$("#calendar_win").show();
-    $("#cal_win").hide();
+    $("#cal_win").show();
     $("#modal_block").hide();
 });
 $("#modal_OK").click(function() {
@@ -182,8 +194,6 @@ $("#calender_close").click(function() {
 });
 /*--------------------------------------以下為要存的資料------------------------------*/
 //----------------------------------------按下日期格子----------------------------------
-var choice_d = []; //存放所有選擇日期陣列
-var choice; //選擇某格日期
 $('.cal').click(function() {
     choice = $(this).attr("data-uid");
     if ($(this).hasClass("important") == false) {
@@ -203,8 +213,6 @@ $('.cal').click(function() {
     console.log(choice_d);
 });
 //紀錄運動名稱
-let workout_sth_c = ""; //運動名稱
-let workout_times; //運動次數或秒數
 $(".calender").click(function() {
     var $father = $(this).parent().parent().parent().parent();
     workout_sth_c = $father.find(".card h1").text();

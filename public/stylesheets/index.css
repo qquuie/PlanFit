@@ -130,29 +130,7 @@
 
 
 /*------------------------------------------------日曆視窗---------------------------------------------*/
-/* #cal_win {
-    display: none;
-    background-color: #f3f1de; */
-    /* margin: 0 auto;致中 */
-    /* width: 50%;
 
-    transform: translateY(-225%);
-
-    border-radius: 4px;
-    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
-    z-index: 5;
-}  */
-
-
-/* #cal_win {
-    width: 50%;
-    height: 90%; */
-    /* top: 60px; */
-    /* left: 50%;
-    align-items: center;
-    transform: translateX(-50%);
-    color: #f3f1de;
-} */
 #cal_win {
     display: none;
     background-color: #f3f1de;
@@ -166,18 +144,6 @@
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
 }
-/* #cal_win {
-    display: none;
-    background-color: #f3f1de;
-    width: 50vw;
-    height: 60vw;
-    margin: 0 auto;
-    position: relative;
-    top: -1300px;
-    border-radius: 4px;
-    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
-    z-index: 5;
-} */
 #cal_close {
     width: 6%;
     position: absolute;

@@ -339,13 +339,14 @@ $("#modal_OK").click(function() {
 });
 
 //----------------------------------------------------------------------------
-var choice_home_cal;
-var homecalID;
+var choice_home_cal;//
+var homecalID;//首頁表格
 $(".home_cal").click(function() {
     if ($(this).hasClass("important") == false) {
         $(".home_cal").removeClass("important");
         choice_home_cal = $(this).attr("data-uid");
-        homecalID = $(this).attr("data-homecalID"); //哪一格
+        homecalID = $(this).attr("data-uid"); //哪一格
+        console.log(homecalID);
         $(this).addClass("important");
     }
 });

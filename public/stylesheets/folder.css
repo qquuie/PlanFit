@@ -4,13 +4,14 @@ div.folder {
     /* padding: 5px; */
     /* margin: 0 auto; */
 }
-
+div.input-group-lg,
 div.input-group-lg>h1 {
     color: #e5945f;
     /* text-align: left; */
     position: relative;
     font-weight: bold;
-    left: 30%;
+    text-align: center;
+    /* left: 30%; */
 }
 
 .alr-folder {
@@ -103,4 +104,20 @@ div.addelse-btn>img {
     position: absolute;
     top: 0;
     right: 0;
+}
+div.action{
+    background-color: #f6f4e8;
+}
+div.addfont>h1{
+    color: #bacec1;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+}
+div.add-btn{
+    background-color: #bacec1;
+    color: #f6f4e8;
+}
+div.add-btn>p {
+    margin: 5px;
 }

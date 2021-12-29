@@ -45,7 +45,23 @@ function newFolderList(data) {
             </div>
             <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
                 <div type="button" class="btn btn-sm back-btn" onclick="backBtn('${data.id}')"><p>Back</p></div>
-                <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick=""><p>Add else</p> <img src="img/add.png" alt=""></div>
+                <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick="addBtn_act('${data.id}')"><p>Add else</p> <img src="img/add.png" alt=""></div>
+            </div>
+        </div>
+        <div class="folder d-none" id="action${data.id}">
+            <div class="input-group-lg mt-3">
+                <h1>Input something...</h1>
+            </div>
+            <div id="">
+                <input type="text">
+            </div>
+            <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
+                <div type="button" class="btn btn-sm back-btn" onclick="backBtn_act('${data.id}')">
+                    <p>Back</p>
+                </div>
+                <div type="button" class="btn btn-sm back-btn" onclick="">
+                    <p>Add</p>
+                </div>
             </div>
         </div>`;
     $('.Page').append(content);
@@ -73,7 +89,21 @@ function backBtn(id){
     $('#folder').removeClass("d-none");
     $('#folder'+id).addClass("d-none");
 }
-
+// -----------------進入新增動作------------------
+function addBtn_act(id){
+    $('#action'+id).removeClass("d-none");
+    $('#folder'+id).addClass("d-none");
+}
+// -----------------回到上一個文件夾------------------
+function backBtn_act(id){
+    $('#folder'+id).removeClass("d-none");
+    $('#action'+id).addClass("d-none");
+}
+// -----------------進入新增動作------------------
+function addBtn_act(id){
+    $('#action').removeClass("d-none");
+    $('#folder'+id).addClass("d-none");
+}
 
 $(document).ready(function () {
     $('#add_fol').click(function () {

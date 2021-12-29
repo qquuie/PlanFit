@@ -131,18 +131,13 @@
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
 #calendar_win {
-    /* display: none; */
     width: 50%;
     height: 90%;
-    /* top: 60px; */
+    top: -10px;
     left: 50%;
     align-items: center;
     transform: translateX(-50%);
     color: #f3f1de;
-    /* 把div內的物件致中 */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
-    /* min-height: 100vh; */
 }
 
 #calender_close {
@@ -291,6 +286,7 @@
     left: 35%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
 }
 
 #modal_workout_name {

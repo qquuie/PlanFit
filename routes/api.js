@@ -3,15 +3,15 @@ var router = express.Router();
 var loginModel = require('../models/login.js');
 // var allList = []; //存放所有待辦事項
 // var id = 1; //紀錄待辦事項的索引值
-router.post('/addUser', function (req, res) {
+router.post('/addUser', function(req, res) {
     var newTodo = new loginModel({
         acc: req.body.acc,
         pw: req.body.pw,
         status: false
     });
-    newTodo.save(function (err, data) {
+    newTodo.save(function(err, data) {
         if (err) {
-         
+
             res.json({
                 "status": 1,
                 // "msg": "error"
@@ -29,10 +29,9 @@ router.post('/addUser', function (req, res) {
 });
 
 //登入畫面擷取所有資料
-router.get('/getUser', function (req, res) {
-    loginModel.find(function(err,data)
-    {
-        if(err) console.log(err);
+router.get('/getUser', function(req, res) {
+    loginModel.find(function(err, data) {
+        if (err) console.log(err);
         console.log(res.json(data));
     })
 });

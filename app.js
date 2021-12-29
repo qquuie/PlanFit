@@ -6,7 +6,7 @@ var logger = require('morgan');
 var api = require('./routes/api')
 
 var app = express();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var indexRouterG = require('./routes/indexG');
@@ -22,12 +22,12 @@ var aboutRouterG = require('./routes/aboutRouteG');
 
 
 //In app.js
-mongoose.connect("mongodb://127.0.0.1:3000/");
-app.use(require("express-session")({
-secret:"Any normal Word",//decode or encode session
-    resave: false,          
-    saveUninitialized:false    
-}));
+// mongoose.connect("mongodb://127.0.0.1:3000/");
+// app.use(require("express-session")({
+//     secret: "Any normal Word", //decode or encode session
+//     resave: false,
+//     saveUninitialized: false
+// }));
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,21 +43,21 @@ app.use('/index', indexRouter);
 app.use('/indexG', indexRouterG);
 
 app.use('/contact', contactRouter);
-app.use('/infor',inforRouter)
-app.use('/workout',workoutRouter)
-app.use('/workoutG',workoutRouterG)
+app.use('/infor', inforRouter)
+app.use('/workout', workoutRouter)
+app.use('/workoutG', workoutRouterG)
 
-app.use('/navi',navigationRouter)
-app.use('/navi',navigationRouterG)
+app.use('/navi', navigationRouter)
+app.use('/navi', navigationRouterG)
 
-app.use('/about',aboutRouter)
-app.use('/aboutG',aboutRouterG)
+app.use('/about', aboutRouter)
+app.use('/aboutG', aboutRouterG)
 
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: false
+    extended: false
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -67,18 +67,18 @@ app.use('/public', express.static('public'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

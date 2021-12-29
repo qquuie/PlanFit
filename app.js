@@ -3,16 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var api = require('./routes/api')
 
 var app = express();
 const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
+var indexRouterG = require('./routes/indexG');
 var inforRouter = require('./routes/inforRoute');
 var contactRouter = require('./routes/contactRoute');
 var workoutRouter = require('./routes/workoutRoute');
+var workoutRouterG = require('./routes/workoutRouteG');
 var navigationRouter = require('./routes/navigationRoute');
+var navigationRouterG = require('./routes/navigationRouteG');
+
 var aboutRouter = require('./routes/aboutRoute');
+var aboutRouterG = require('./routes/aboutRouteG');
 
 
 //In app.js
@@ -34,12 +40,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/index', indexRouter);
+app.use('/indexG', indexRouterG);
+
 app.use('/contact', contactRouter);
 app.use('/infor',inforRouter)
 app.use('/workout',workoutRouter)
-app.use('/navi',navigationRouter)
-app.use('/about',aboutRouter)
+app.use('/workoutG',workoutRouterG)
 
+app.use('/navi',navigationRouter)
+app.use('/navi',navigationRouterG)
+
+app.use('/about',aboutRouter)
+app.use('/aboutG',aboutRouterG)
+
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', api);
+app.use('/public', express.static('public'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

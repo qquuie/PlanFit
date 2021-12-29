@@ -5,16 +5,9 @@ html body {
 nav.navbar
 {
     position: fixed;
-    /* fixing the position takes it out of html flow - knows
-                   nothing about where to locate itself except by browser
-                   coordinates */
     left: 0;
-    /* top left corner should start at leftmost spot */
     top: 0;
-    /* top left corner should start at topmost spot */
     width: 100vw;
-    /* take up the full browser width */
-    /* high z index so other content scrolls underneath */
     height: 100px;
 }
 
@@ -203,7 +196,7 @@ button#nextBtn.btn {
     color: #1D3124;
 }
 
-label.btn {
+label.btn,input.btn {
     width: 186px;
     border: 1px solid #c5c3c3;
     background-color: white;
@@ -218,16 +211,20 @@ div.form4Btn {
     padding-left: 16px;
 }
 
-label.btn:hover,
+label.btn:hover,input.btn:hover
 div.form3Btn>label.btn:hover {
     background-color: #1D3124;
     color: white;
+    outline: 0;
+
 }
 
-.btn.active,
-div.form3Btn>label.btn.active {
+.btn.active,input.btn:active
+div.form3Btn>label.btn:active {
     background-color: #1D3124;
     color: white;
+    outline: 0;
+
 }
 
 div.form3Btn>label.btn {
@@ -247,7 +244,6 @@ div.modal-footer {
 div.modal-header {
     padding-left: 30px;
     padding-right: 30px;
-    /* justify-content: flex-start; */
     border-bottom: 0;
 }
 

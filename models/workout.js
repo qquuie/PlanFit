@@ -9,15 +9,20 @@ mongoose.connect(url, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-    console.log("login連線成功");
+    console.log("workout連線成功");
 });
 
-const loginSchema = new mongoose.Schema({
-    acc: String,
-    pw: String,
-    status: Boolean
+const pose = new mongoose.Schema({
+    name: String,
+    level: String,
+    equipment: Boolean,
+    Jumping: Boolean,
+    img: String,
+    click: Number,
+    describe: String,
 });
-loginSchema.set('collection', 'list');
-const model = mongoose.model('list', loginSchema);
+
+pose.set('collection', 'pose');
+const model = mongoose.model('pose', pose);
 
 module.exports = model;

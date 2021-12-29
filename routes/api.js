@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var loginModel = require('../models/login.js');
+var workoutModel = require('../models/workout.js');
 // var allList = []; //存放所有待辦事項
 // var id = 1; //紀錄待辦事項的索引值
 router.post('/addUser', function(req, res) {
@@ -34,6 +35,15 @@ router.get('/getUser', function(req, res) {
         if (err) console.log(err);
         console.log(res.json(data));
     })
+});
+
+router.get('/getposeList', function(req, res) {
+    workoutModel.find(function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(data); //將資料回應給前端
+    });
 });
 
 // //修改與更新待辦事項

@@ -3,8 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var MongoClient=require('mongodb').MongoClient;
-// const url="mongodb://localhost:27017/"
+
+var app = express();
+const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var inforRouter = require('./routes/inforRoute');
@@ -14,24 +15,15 @@ var navigationRouter = require('./routes/navigationRoute');
 var aboutRouter = require('./routes/aboutRoute');
 
 
-
-var app = express();
-// Connect to the db
-// var url = "mongodb://localhost:27017/";
-
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   var dbo = db.db("mydb");
-//   var myobj = { name: "Company Inc", address: "Highway 37" };
-//   dbo.collection("customers").insertOne(myobj, function(err, res) {
-//     if (err) throw err;
-//     console.log("1 document inserted");
-//     db.close();
-//   });
-// });
+//In app.js
+mongoose.connect("mongodb://127.0.0.1:3000/");
+app.use(require("express-session")({
+secret:"Any normal Word",//decode or encode session
+    resave: false,          
+    saveUninitialized:false    
+}));
 
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -64,7 +56,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 module.exports = app;

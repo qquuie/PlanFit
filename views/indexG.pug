@@ -1,0 +1,281 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='icon' href='/img/LOGO_icon.png' type='image/x-icon')
+  // JavaScript Bundle with Popper
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  // 幻燈片
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js' type='text/javascript')
+  script(type='text/javascript' src='javascripts/jquery.waterwheelCarousel.js')
+  // CSS only
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+  link(rel='stylesheet' href='stylesheets/style.css')
+  link(rel='stylesheet' href='stylesheets/index.css')
+include includes/navigationG
+.page
+  //- div    
+  //-   .card-body.text-GreenLake.margin_0_auto
+  //-     ul.nav.nav-tabs.card-header-tabs
+  //-       li.nav-item
+  //-         a.nav-link
+  //-           img(src='img/icon_see_times.png' width='20px')
+  //-           p.see_times 10
+  //-       li.nav-item
+  //-         a.nav-link.folder
+  //-           img(src='img/icon_folder.png' width='25px')
+  //-       li.nav-item
+  //-         a.nav-link.calender
+  //-           img(src='img/icon_calender.png' width='20px')
+  //-       li
+  //-         p#pose_name 123
+  #carousel
+    img#item-1
+    img#item-2
+    img#item-3
+  // -----------------首頁月曆表格---------------------
+//-   #calendar_home.table-responsive-xxl
+//-     table#home_calender_table
+//-       thead.color
+//-         tr
+//-           th.border-color(colspan='7')
+//-             // <h4 id="cal-year">December ,2020</h4>
+//-             #home_Date.text-align_center
+//-               i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
+//-               h3#home_cal-month December ,2020
+//-               i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonth();')
+//-         tr
+//-           th.weekday.border-color Sun
+//-           th.weekday.border-color Mon
+//-           th.weekday.border-color Tue
+//-           th.weekday.border-color Wed
+//-           th.weekday.border-color Thu
+//-           th.weekday.border-color Fri
+//-           th.weekday.border-color Sat
+//-       tbody#home_table-body.border-color
+//-         tr
+//-           td#cal1.home_cal(onclick='dayClicked(this);' data-homecalid='1')
+//-           td#cal2.home_cal(onclick='dayClicked(this);' data-homecalid='2') 1
+//-           td#cal3.home_cal(onclick='dayClicked(this);' data-homecalid='3') 1
+//-           td#cal4.home_cal(onclick='dayClicked(this);' data-homecalid='4') 1
+//-           td#cal5.home_cal(onclick='dayClicked(this);' data-homecalid='5') 1
+//-           td#cal6.home_cal(onclick='dayClicked(this);' data-homecalid='6') 1
+//-           td#cal7.home_cal(onclick='dayClicked(this);' data-homecalid='7') 1
+//-         tr
+//-           td#cal8.home_cal(onclick='dayClicked(this);' data-homecalid='8') 1
+//-           td#cal9.home_cal(onclick='dayClicked(this);' data-homecalid='9') 1
+//-           td#cal10.home_cal(onclick='dayClicked(this);' data-homecalid='10') 1
+//-           td#cal11.home_cal(onclick='dayClicked(this);' data-homecalid='11') 1
+//-           td#cal12.home_cal(onclick='dayClicked(this);' data-homecalid='12') 1
+//-           td#cal13.home_cal(onclick='dayClicked(this);' data-homecalid='13') 1
+//-           td#cal14.home_cal(onclick='dayClicked(this);' data-homecalid='14') 1
+//-         tr
+//-           td#cal15.home_cal(onclick='dayClicked(this);' data-homecalid='15') 1
+//-           td#cal16.home_cal(onclick='dayClicked(this);' data-homecalid='16') 1
+//-           td#cal17.home_cal(onclick='dayClicked(this);' data-homecalid='17') 1
+//-           td#cal18.home_cal(onclick='dayClicked(this);' data-homecalid='18') 1
+//-           td#cal19.home_cal(onclick='dayClicked(this);' data-homecalid='19') 1
+//-           td#cal20.home_cal(onclick='dayClicked(this);' data-homecalid='20') 1
+//-           td#cal21.home_cal(onclick='dayClicked(this);' data-homecalid='21') 1
+//-         tr
+//-           td#cal22.home_cal(onclick='dayClicked(this);' data-homecalid='22') 1
+//-           td#cal23.home_cal(onclick='dayClicked(this);' data-homecalid='23') 1
+//-           td#cal24.home_cal(onclick='dayClicked(this);' data-homecalid='24') 1
+//-           td#cal25.home_cal(onclick='dayClicked(this);' data-homecalid='25') 1
+//-           td#cal26.home_cal(onclick='dayClicked(this);' data-homecalid='26') 1
+//-           td#cal27.home_cal(onclick='dayClicked(this);' data-homecalid='27') 1
+//-           td#cal28.home_cal(onclick='dayClicked(this);' data-homecalid='28') 1
+//-         tr
+//-           td#cal29.home_cal(onclick='dayClicked(this);' data-homecalid='29') 1
+//-           td#cal30.home_cal(onclick='dayClicked(this);' data-homecalid='30') 1
+//-           td#cal31.home_cal(onclick='dayClicked(this);' data-homecalid='31') 1
+//-           td#cal32.home_cal(onclick='dayClicked(this);' data-homecalid='32') 1
+//-           td#cal33.home_cal(onclick='dayClicked(this);' data-homecalid='33') 1
+//-           td#cal34.home_cal(onclick='dayClicked(this);' data-homecalid='34') 1
+//-           td#cal35.home_cal(onclick='dayClicked(this);' data-homecalid='35') 1
+//-         tr
+//-           td#cal36.home_cal(onclick='dayClicked(this);' data-homecalid='36') 1
+//-           td#cal37.home_cal(onclick='dayClicked(this);' data-homecalid='37') 1
+//-           td#cal38.home_cal(onclick='dayClicked(this);' data-homecalid='38') 1
+//-           td#cal39.home_cal(onclick='dayClicked(this);' data-homecalid='39') 1
+//-           td#cal40.home_cal(onclick='dayClicked(this);' data-homecalid='40') 1
+//-           td#cal41.home_cal(onclick='dayClicked(this);' data-homecalid='41') 1
+//-           td#cal42.home_cal(onclick='dayClicked(this);' data-homecalid='42') 1
+//-           // 點class，讀屬性
+//-     //
+//-       <button id="theme-portrait" type="button" name="button" class="font button color"
+//-       onclick="openFavColor();">Change Theme</button>
+//-   // -----------------加入資料夾---------------------
+//-   #folder_win
+//-     img#folder_close(src='img/close_r.png')
+//-     #folder_workout_block
+//-       // 預設資料夾
+//-       .folder_workout
+//-         .folder_name
+//-           p My favorite
+//-         .folder_add
+//-           p +
+//-     #folder_new_block
+//-       #folder_title
+//-         p New folder
+//-       input#new_name(type='text' name='')
+//-       #new_add
+//-         p +
+//-   // -----------------月曆表格-----------------
+//-   #calendar_win.table-responsive-sm
+//-     img#calender_close(src='img/close_g2.png')
+//-     table#calender_table
+//-       thead.color
+//-         tr
+//-           th.border-color(colspan='7')
+//-             // <h4 id="cal-year">December ,2020</h4>
+//-             #Date
+//-               i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
+//-               h3#cal-month December ,2020
+//-               i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonth();')
+//-         tr
+//-           th.weekday.border-color Sun
+//-           th.weekday.border-color Mon
+//-           th.weekday.border-color Tue
+//-           th.weekday.border-color Wed
+//-           th.weekday.border-color Thu
+//-           th.weekday.border-color Fri
+//-           th.weekday.border-color Sat
+//-       tbody#table-body.border-color
+//-         tr
+//-           td#calNO1.cal(onclick='dayClicked(this);')
+//-           td#calNO2.cal(onclick='dayClicked(this);')
+//-           td#calNO3.cal(onclick='dayClicked(this);')
+//-           td#calNO4.cal(onclick='dayClicked(this);')
+//-           td#calNO5.cal(onclick='dayClicked(this);')
+//-           td#calNO6.cal(onclick='dayClicked(this);')
+//-           td#calNO7.cal(onclick='dayClicked(this);')
+//-         tr
+//-           td#calNO8.cal(onclick='dayClicked(this);')
+//-           td#calNO9.cal(onclick='dayClicked(this);')
+//-           td#calNO10.cal(onclick='dayClicked(this);')
+//-           td#calNO11.cal(onclick='dayClicked(this);')
+//-           td#calNO12.cal(onclick='dayClicked(this);')
+//-           td#calNO13.cal(onclick='dayClicked(this);')
+//-           td#calNO14.cal(onclick='dayClicked(this);')
+//-         tr
+//-           td#calNO15.cal(onclick='dayClicked(this);')
+//-           td#calNO16.cal(onclick='dayClicked(this);')
+//-           td#calNO17.cal(onclick='dayClicked(this);')
+//-           td#calNO18.cal(onclick='dayClicked(this);')
+//-           td#calNO19.cal(onclick='dayClicked(this);')
+//-           td#calNO20.cal(onclick='dayClicked(this);')
+//-           td#calNO21.cal(onclick='dayClicked(this);')
+//-         tr
+//-           td#calNO22.cal(onclick='dayClicked(this);')
+//-           td#calNO23.cal(onclick='dayClicked(this);')
+//-           td#calNO24.cal(onclick='dayClicked(this);')
+//-           td#calNO25.cal(onclick='dayClicked(this);')
+//-           td#calNO26.cal(onclick='dayClicked(this);')
+//-           td#calNO27.cal(onclick='dayClicked(this);')
+//-           td#calNO28.cal(onclick='dayClicked(this);')
+//-         tr
+//-           td#calNO29.cal(onclick='dayClicked(this);')
+//-           td#calNO30.cal(onclick='dayClicked(this);')
+//-           td#calNO31.cal(onclick='dayClicked(this);')
+//-           td#calNO32.cal(onclick='dayClicked(this);')
+//-           td#calNO33.cal(onclick='dayClicked(this);')
+//-           td#calNO34.cal(onclick='dayClicked(this);')
+//-           td#calNO35.cal(onclick='dayClicked(this);')
+//-         tr
+//-           td#calNO36.cal(onclick='dayClicked(this);')
+//-           td#calNO37.cal(onclick='dayClicked(this);')
+//-           td#calNO38.cal(onclick='dayClicked(this);')
+//-           td#calNO39.cal(onclick='dayClicked(this);')
+//-           td#calNO40.cal(onclick='dayClicked(this);')
+//-           td#calNO41.cal(onclick='dayClicked(this);')
+//-           td#calNO42.cal(onclick='dayClicked(this);')
+//-     #check_btn
+//-       .btn.All(type='button' name='btnAll' onclick='Alldialog();') All
+//-       .btn.Next(type='button' name='btnNext' onclick='Nextdialog();') Next
+//-     // <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button>
+//-   // -----------------月曆表格新增記事-----------------
+//-   #modal_block
+//-     #modal_workout_name
+//-       p workout name
+//-     #modal_times
+//-       input#input_num(type='number' name='' min='1')
+//-       #times
+//-         p times
+//-     #modal_back
+//-       p back
+//-     #modal_OK
+//-       p OK
+script(type='text/javascript' src='javascripts/jquery.waterwheelCarousel.js')
+script(type='text/javascript').
+  $(document).ready(function() {
+  let arr = ["img_workout/abs/abs_bicycle_crunch.jpg", "img_workout/abs/abs_crunch.jpg",
+  "img_workout/abs/abs_crunch_knee_lift.jpg"
+  ];
+  document.getElementById("item-1").src = arr[0];
+  document.getElementById("item-2").src = arr[1];
+  document.getElementById("item-3").src = arr[2];
+  var carousel = $("#carousel").waterwheelCarousel({
+  flankingItems: 3,
+  movingToCenter: function($item) {
+  $('#callback-output').prepend('movingToCenter: ' + $item.attr('id') + '<br/>');
+  },
+  movedToCenter: function($item) {
+  $('#callback-output').prepend('movedToCenter: ' + $item.attr('id') + '<br/>');
+  },
+  movingFromCenter: function($item) {
+  $('#callback-output').prepend('movingFromCenter: ' + $item.attr('id') +
+  '<br/>');
+  },
+  movedFromCenter: function($item) {
+  $('#callback-output').prepend('movedFromCenter: ' + $item.attr('id') + '<br/>');
+  },
+  clickedCenter: function($item) {
+  $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
+  }
+  });
+  $('#prev').bind('click', function() {
+  carousel.prev();
+  return false
+  });
+  $('#next').bind('click', function() {
+  carousel.next();
+  return false;
+  });
+  // $('#reload').bind('click', function() {
+  //     newOptions = eval("(" + $('#newoptions').val() + ")");
+  //     carousel.reload(newOptions);
+  //     return false;
+  // });
+  jQuery(function($) {
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height();
+  $(window).resize(function() {
+  if (windowWidth != $(window).width() || windowHeight != $(window)
+  .height()) {
+  location.reload();
+  return;
+  }
+  });
+  });
+  });
+script(src='javascripts/workout.js')
+script(src='javascripts/home.js')
+script(src='javascripts/javascript.js')
+script(src='javascripts/login.js')
+
+//- script.
+//-   let today = new Date(); //新增一個Date物件，命名為today
+//-   let thisYear = today.getFullYear();
+//-   let thisMonth = today.getMonth();
+//-   let thisDate = today.getDate();
+//-   updateDates();
+//-   fillInMonth(thisYear, thisMonth, thisDate);

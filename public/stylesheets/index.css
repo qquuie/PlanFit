@@ -131,23 +131,24 @@
 
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
-#calendar_win {
-    /* display: none; */
-    width: 50%;
-    height: 700px;
-    top: 100px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    /* min-height: 100vh; */
+#cal_win {
+    display: none;
+    background-color: #f3f1de;
+    width: 50vw;
+    height: 50vw;
     margin: 0 auto;
+    left: 25%;
+    position: absolute;
+    top: 100px;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
 }
-
-#calender_close {
-    width: 30px;
-    position: relative;
-    right: -42%;
-    top: 4%;
+#cal_close {
+    width: 6%;
+    position: absolute;
+    left: 90%;
+    top: 3%;
 }
 
 #calender_table,
@@ -158,27 +159,22 @@
     color: #82A3A3;
 }
 
-#calender_table {
-
-}
-
 #check_btn {
     position: relative;
-    top: -64px;
+    width: 100%;
+    height: 20%;
 }
 
-#calendar_win h3 {
+#cal_win h3 {
     margin: 0;
     padding: 1.5vw 3vw;
     font-size: 40px;
     /* font-weight: 500; */
     display: inline-block;
     color: #82A3A3;
-    /* background-color:#82A3A3;*/
-    /*debug用 */
 }
 
-#calendar_win .weekday {
+#cal_win .weekday {
     font-size: large;
     padding: 8px 4px 10px;
     /*上右下左*/
@@ -187,29 +183,30 @@
     color: #f3f1de;
 }
 
-#calendar_win tbody td {
+#cal_win tbody td {
     height: 5vw;
     width: 5vw;
     font-size: 1.5vw;
+    font-weight: 500;
     vertical-align: top;
     padding: 0.5vw;
     border: 1px solid #82A3A3;
     transition: font-size 0.6s ease;
 }
 
-#calendar_win tbody td:hover {
+#cal_win tbody td:hover {
     font-size: 1.8vw;
 }
 
-#calendar_win .icon_btn {
+#cal_win .icon_btn {
     font-size: 1.5vw;
 }
 
-#calendar_win .icon_btn:hover {
+#cal_win .icon_btn:hover {
     opacity: 0.6;
 }
 
-#calendar_win {
+#cal_win {
     color: #f8f0ab;
 }
 
@@ -235,6 +232,44 @@
 
 
 /*-----------------------------------------------------*/
+#All,#Next{
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: absolute;
+    width: 10%;
+
+    text-align: center;
+    border-radius: 10%;
+    padding: 8px 0;
+}
+#All{
+    left: 10%;
+}
+#Next {
+    left: 80%;
+}
+/* #All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}
+
+#Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    top: -5%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+} */
 /* .All {
     background-color: #82A3A3;
     color: #f3f1de;

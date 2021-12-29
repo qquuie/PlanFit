@@ -285,8 +285,6 @@ $('.home_cal').click(function() {
     console.log(choice_d);
 });
 //紀錄運動名稱
-// let workout_sth_c = ""; //運動名稱
-// let workout_times; //運動次數或秒數
 $(".calender").click(function() {
     //---------------------------------------------------------初始化-------------------------------
     choice_d=[];

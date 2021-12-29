@@ -47,7 +47,6 @@ include includes/navigation
       thead.color
         tr
           th.border-color(colspan='7')
-            // <h4 id="cal-year">December ,2020</h4>
             #home_Date.text-align_center
               i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
               h3#home_cal-month December ,2020
@@ -129,9 +128,9 @@ include includes/navigation
       input#new_name(type='text' name='')
       #new_add
         p +
-  // -----------------月曆表格-----------------
-  #calendar_win.table-responsive-sm
-    img#calender_close(src='img/close_g2.png')
+  //-----------------月曆表格-----------------
+  #cal_win.table-responsive-sm
+    img#cal_close(src='img/close_g2.png')
     table#calender_table
       thead.color
         tr
@@ -199,10 +198,9 @@ include includes/navigation
           td#calNO41.cal(onclick='dayClicked(this);')
           td#calNO42.cal(onclick='dayClicked(this);')
     #check_btn
-      .btn.All(type='button' name='btnAll' onclick='Alldialog();') All
-      .btn.Next(type='button' name='btnNext' onclick='Nextdialog();') Next
-    // <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button>
-  // -----------------月曆表格新增記事-----------------
+      .btn#All(type='button' name='btnAll' onclick='Alldialog();') All
+      .btn#Next(type='button' name='btnNext' onclick='Nextdialog();') Next
+  //-----------------月曆表格新增記事-----------------
   #modal_block
     #modal_workout_name
       p workout name

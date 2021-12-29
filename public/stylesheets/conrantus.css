@@ -1,0 +1,14 @@
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.page {
+    background-image: url(../img/contact_back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px -46px;
+    position: relative;
+    height: 100%;
+}

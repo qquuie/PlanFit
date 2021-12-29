@@ -97,7 +97,7 @@ body
               img#closeBtnImg(src='./img/close_g2.png', width='30px', height='40px', alt)
           //  <---------------------------------signinDiv------------------------------
           .inputForm5.modal-body
-            form
+            form(action = "navi" method = "POST")
               .input-group-lg.mb-3
                 h2 Let's workout together!
               .input-group-lg.mb-3
@@ -154,10 +154,10 @@ body
               .input-group-lg.mb-3
                 input.form-control#signUpBirth(type='datetime', placeholder='    | Date of birth')
               .btn-group.mb-3
-                input.btn-check.btn-lg#signUpFemale(type='radio', name='options', autocomplete='off')
-                label.btn.me-5(for='signUpFemale') Female
-                input.btn-check.btn-lg#signUpMale(type='radio', name='options', autocomplete='off')
-                label.btn(for='signUpMale') Male
+                input.btn.btn-lg#signUpFemale(type='button', autocomplete='off',value="Female")
+                //- label.btn.me-5(for='signUpFemale') 
+                input.btn.btn-lg#signUpMale(type='button', autocomplete='off',value="Male") 
+                //- label.btn(for='signUpMale') Male
             .nextDiv.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
               button.btn.btn-lg#nextBtn Next

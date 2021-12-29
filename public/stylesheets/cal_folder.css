@@ -1,0 +1,402 @@
+.border-GreenLake {
+    border: 2px solid #82A3A3;
+}
+
+.border-darkgreen {
+    border: 2px solid #1D3124;
+}
+
+.text-GreenLake {
+    color: #82A3A3;
+}
+
+.text-darkgreen {
+    color: #1D3124;
+}
+
+.text-darkgreen1 {
+    color: #52795e;
+}
+
+.back-transparent {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.see_times {
+    float: right;
+    color: #1D3124;
+    position: relative;
+    left: 10%;
+}
+
+#folder_win,
+#calendar_win {
+    display: none;
+    background-color: #f3f1de;
+    width: 450px;
+    height: 500px;
+    position: absolute;
+    top: 100px;
+    left: 35%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+#folder_close {
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    left: 400px;
+    padding: 2px;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#folder_workout_block {
+    width: 80%;
+    height: 60%;
+    position: relative;
+    left: 10%;
+    top: 15%;
+    /* background-color: white; */
+    overflow-y: scroll;
+}
+
+.folder_workout {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    margin: 10px 0px;
+    /*上下 左右*/
+}
+
+.folder_name {
+    float: left;
+    color: #E59560;
+    font-size: 30px;
+    height: 100%;
+}
+
+.folder_name p,
+.folder_add p,
+#folder_title p,
+#new_add p,
+#times p {
+    margin: 8px;
+}
+
+.folder_add,
+#new_add {
+    background-color: #E59560;
+    float: right;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    height: 100%;
+    text-align: center;
+}
+
+.folder_add {
+    width: 18%;
+}
+
+#new_add {
+    width: 16%;
+}
+
+#folder_new_block {
+    background-color: #E59560;
+    width: 90%;
+    height: 12%;
+    position: relative;
+    left: 5%;
+    top: 20%;
+}
+
+#folder_title {
+    color: white;
+    font-size: 20px;
+    float: left;
+    margin: 6px;
+}
+
+#new_name {
+    padding: 10px;
+    margin: 6px;
+}
+
+
+/*------------------------------------------------日曆視窗---------------------------------------------*/
+
+#calendar_win {
+    /* display: none; */
+    width: 50%;
+    height: 90%;
+    /* top: 60px; */
+    left: 50%;
+    align-items: center;
+    transform: translateX(-50%);
+    color: #f3f1de;
+    /* 把div內的物件致中 */
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+    /* min-height: 100vh; */
+}
+
+#calender_close {
+    width: 30px;
+    position: relative;
+    left: 45%;
+    top: 3%;
+}
+
+#calender_table {
+    height: 80%;
+    width: 80%;
+    /*等比例縮放*/
+    /* position: relative;
+    top: 5%; */
+    color: #82A3A3;
+}
+
+
+/* #calendar_win thead tr:first-child th div {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }   */
+
+
+/* #calendar_win h4 {
+  margin: 0;
+  padding: 0.8vw 0 0.8vw;
+  text-align: center;
+  font-size: 6vw;
+  font-weight: 300px; */
+
+
+/* background-color:#82A3A3; */
+
+
+/*debug用*/
+
+
+/* } */
+
+#calendar_win h3 {
+    margin: 0;
+    padding: 1.5vw 3vw;
+    font-size: 40px;
+    /* font-weight: 500; */
+    display: inline-block;
+    color: #82A3A3;
+    /* background-color:#82A3A3;*/
+    /*debug用 */
+}
+
+#Date {
+    width: 100%;
+    text-align: center;
+}
+
+#calendar_win .weekday {
+    font-size: large;
+    padding: 8px 4px 10px;
+    /*上右下左*/
+    /*border-bottom: 1px solid #BACEC1 !important;*/
+    background-color: #82A3A3;
+    color: #f3f1de;
+}
+
+#calendar_win tbody td {
+    height: 5vw;
+    width: 5vw;
+    font-size: 1.5vw;
+    font-weight: 500;
+    vertical-align: top;
+    padding: 0.5vw;
+    border: 1px solid #82A3A3;
+    transition: font-size 0.6s ease;
+}
+
+#calendar_win tbody td:hover {
+    font-size: 1.8vw;
+}
+
+#calendar_win .icon_btn {
+    font-size: 1.5vw;
+}
+
+#calendar_win .icon_btn:hover {
+    opacity: 0.6;
+}
+
+
+/* #calendar_win tbody tr td[class*="prev-month-last-day"] {
+  border-right: 1px solid #9C9C9C !important;
+} */
+
+.tooltip img {
+    width: 3.8vw;
+    vertical-align: top;
+    position: relative;
+    top: 0.5vw;
+}
+
+.important {
+    background-color: #82A3A3;
+    color: #f3f1de;
+}
+
+.not_important {
+    background-color: #82a3a373;
+}
+
+.normal {
+    background-color: #f3f1de;
+}
+
+
+/*------------------------------放在style.css-----------------------*/
+
+
+/* .All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    top: 6%;
+    width: 12%;
+    padding: 4px 0;
+}
+
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    width: 12%;
+    padding: 4px 0;
+} */
+
+#modal_block {
+    display: none;
+    background-color: #f3f1de;
+    width: 450px;
+    height: 300px;
+    position: absolute;
+    top: 100px;
+    left: 35%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+}
+
+#modal_workout_name {
+    position: relative;
+    left: 10%;
+    top: 15%;
+    background-color: #ffffff;
+    color: #82A3A3;
+    font-size: 30px;
+    width: 80%;
+    height: 20%;
+}
+
+#modal_workout_name p {
+    text-align: center;
+    padding: 8px;
+}
+
+#modal_times {
+    position: relative;
+    left: 25%;
+    /* (100-width)/2 */
+    top: 30%;
+    background-color: #ffffff;
+    color: #82A3A3;
+    font-size: 15px;
+    width: 50%;
+    height: 20%;
+    margin: 10px 0px;
+    /*上下 左右*/
+}
+
+#input_num {
+    padding: 10px;
+    margin: 6px 10px;
+    width: 50%;
+    border-width: 0px;
+    /*只留下邊界*/
+    border-bottom: 1px solid #52795e;
+    /*輸入框的外圍*/
+    outline: none;
+    /*按下輸入框不會有除了下邊界的線*/
+    transition: 0.5s;
+    /*轉換過度效果*/
+    text-align: center;
+}
+
+#input_num:focus:hover {
+    /* 輸入 */
+    background-color: #82A3A3;
+    color: white;
+}
+
+#times {
+    background-color: #82A3A3;
+    float: right;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    width: 40%;
+    height: 100%;
+    text-align: center;
+}
+
+#modal_back,
+#modal_OK {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    top: 35%;
+    width: 15%;
+    border-radius: 5px;
+    text-align: center;
+    height: 12%;
+    padding: 8px 0;
+}
+
+#modal_back {
+    float: left;
+    left: 10%;
+}
+
+#modal_OK {
+    float: right;
+    left: -10%;
+}
+
+.All {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: -34%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.Next {
+    background-color: #82A3A3;
+    color: #f3f1de;
+    position: relative;
+    left: 34%;
+    top: -5%;
+    width: 12%;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10%;
+}

@@ -40,8 +40,8 @@ router.post('/addUser', function (req, res) {
 });
 
 //登入畫面擷取所有資料
-router.get('/getUser', function (req, res) {
-    loginModel.find({
+router.post('/getUser', function (req, res) {
+    loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
     }, function (err, data) {

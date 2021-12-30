@@ -1,116 +1,137 @@
     $(".dropdown-item").click(function() {
         var workout_part = $(this).text();
-        console.log(1);
     });
 
     /*--------------------------------生成workout_div--------------------------------------*/
-    var workout_name = "",
-        workout_name2 = "";
-    var diff = 0,
-        diff2 = 0;
-    var eq = "NO",
-        eq2 = "NO";
-    var jp = "NO",
-        jp2 = "NO";
-    var workout_img = "",
-        workout_img2 = "";
-    for (var i = 0; i < 3; i++) {
-        if (i == 0) {
-            workout_name = "Jumping Squat";
-            workout_name2 = "side plank";
-            diff = 3.5;
-            diff2 = 4;
-            jp = "Yes";
-            workout_img = "img_workout/full/full_jumping_squat.jpg";
-            workout_img2 = "/img_workout/full/full4.jpg";
-        } else if (i == 1) {
-            workout_name = "Sprinter";
-            workout_name2 = "Leg glute bridge"
-            diff = 3;
-            diff2 = 4.5;
-            eq = "NO";
-            jp = "NO";
-            workout_img = "img_workout/full/full_sprinter_right.jpg";
-            workout_img2 = "/img_workout/full/full5.jpg";
-        } else {
-            workout_name = "Squat boxing";
-            workout_name2 = "Triceps push up"
-            diff = 3.5;
-            diff = 4;
-            eq = "Yes";
-            jp = "NO";
-            workout_img = "img_workout/full/full_jumping_squat.jpg";
-            workout_img2 = "/img_workout/full/full6.jpg";
-        }
-        var row_block = `
-        <div class="card border-GreenLake">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <img src="img/icon_see_times.png" width="20px">
-                            <p class="see_times">10</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link folder">
-                            <img src="img/icon_folder.png" width="25px">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link calender">
-                            <img src="img/icon_calender.png" width="20px">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <img class="card-img-top" src="${workout_img}" alt="Card image cap">
-            <div class="card-body text-GreenLake">
-                <h3 class="card-title">${workout_name}</h3>
-                <p class="card-text">
-                    Difficulty：${diff}/5 <br>
-                    equipment：${eq} <br>
-                    Jumping：${jp}
-                </p>
-            </div>
-        </div>
-        `
-        var row_block2 = `
-        <div class="card border-GreenLake">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            <img src="img/icon_see_times.png" width="20px">
-                            <p class="see_times">10</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link folder">
-                            <img src="img/icon_folder.png" width="25px">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link calender">
-                            <img src="img/icon_calender.png" width="20px">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <img class="card-img-top" src="${workout_img2}" alt="Card image cap">
-            <div class="card-body text-GreenLake">
-                <h3 class="card-title">${workout_name2}</h3>
-                <p class="card-text">
-                    Difficulty：${diff2}/5 <br>
-                    equipment：${eq2} <br>
-                    Jumping：${jp2}
-                </p>
-            </div>
-        </div>
-        `
-        $(".card_row1").append(row_block);
-        $(".card_row2").append(row_block2);
+    // var workout_name = "",
+    //     workout_name2 = "";
+    // var diff = 0,
+    //     diff2 = 0;
+    // var eq = "NO",
+    //     eq2 = "NO";
+    // var jp = "NO",
+    //     jp2 = "NO";
+    // var workout_img = "",
+    //     workout_img2 = "";
+    // for (var i = 0; i < 3; i++) {
+    //     if (i == 0) {
+    //         workout_name = "Jumping Squat";
+    //         workout_name2 = "side plank";
+    //         diff = 3.5;
+    //         diff2 = 4;
+    //         jp = "Yes";
+    //         workout_img = "img_workout/full/full_jumping_squat.jpg";
+    //         workout_img2 = "/img_workout/full/full4.jpg";
+    //     } else if (i == 1) {
+    //         workout_name = "Sprinter";
+    //         workout_name2 = "Leg glute bridge"
+    //         diff = 3;
+    //         diff2 = 4.5;
+    //         eq = "NO";
+    //         jp = "NO";
+    //         workout_img = "img_workout/full/full_sprinter_right.jpg";
+    //         workout_img2 = "/img_workout/full/full5.jpg";
+    //     } else {
+    //         workout_name = "Squat boxing";
+    //         workout_name2 = "Triceps push up"
+    //         diff = 3.5;
+    //         diff = 4;
+    //         eq = "Yes";
+    //         jp = "NO";
+    //         workout_img = "img_workout/full/full_jumping_squat.jpg";
+    //         workout_img2 = "/img_workout/full/full6.jpg";
+    //     }
+    getposeList();
+
+    function getposeList() {
+        var api = "http://127.0.0.1:3000/api/getposeList";
+        $.get(api, function(data) {
+            for (let i = 0; i < data.length; i++) {
+                newList(data[i], i, data.length - 1);
+            }
+        });
     }
+
+    var tmp = "";
+
+    function newList(data, i, end) {
+        var col_num = parseInt(i / 3);
+        if (i % 3 == 0) {
+            console.log(1, col_num);
+            $('.totalPose').append(`<div class="card-group card_row${col_num} text-center"><\div>`);
+        }
+        tmp =
+            `<div class="card border-GreenLake">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <img src="img/icon_see_times.png" width="20px">
+                                <p class="see_times">10</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link folder">
+                                <img src="img/icon_folder.png" width="25px">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link calender">
+                                <img src="img/icon_calender.png" width="20px">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <img class="card-img-top" src="${data.img}" alt="Card image cap">
+                <div class="card-body text-GreenLake">
+                    <h3 class="card-title">${data.name}</h3>
+                    <p class="card-text">
+                        Difficulty：${data.level}/5 <br>
+                        equipment：${data.equipment} <br>
+                        Jumping：${data.Boolean}
+                    </p>
+                </div>
+            <\div>`
+        $('.card_row' + col_num).append(tmp);
+        console.log(2, col_num);
+    }
+    // var row_block = `
+    // <div class="card border-GreenLake">
+    //     <div class="card-header">
+    //         <ul class="nav nav-tabs card-header-tabs">
+    //             <li class="nav-item">
+    //                 <a class="nav-link">
+    //                     <img src="img/icon_see_times.png" width="20px">
+    //                     <p class="see_times">10</p>
+    //                 </a>
+    //             </li>
+    //             <li class="nav-item">
+    //                 <a class="nav-link folder">
+    //                     <img src="img/icon_folder.png" width="25px">
+    //                 </a>
+    //             </li>
+    //             <li class="nav-item">
+    //                 <a class="nav-link calender">
+    //                     <img src="img/icon_calender.png" width="20px">
+    //                 </a>
+    //             </li>
+    //         </ul>
+    //     </div>
+    //     <img class="card-img-top" src="${workout_img}" alt="Card image cap">
+    //     <div class="card-body text-GreenLake">
+    //         <h3 class="card-title">${workout_name}</h3>
+    //         <p class="card-text">
+    //             Difficulty：${diff}/5 <br>
+    //             equipment：${eq} <br>
+    //             Jumping：${jp}
+    //         </p>
+    //     </div>
+    // </div>
+    // `
+
+    // $(".card_row1").append(row_block);
+    // $(".card_row2").append(row_block2);
+    // }
 
     let workout_sth = "";
     /*--------------------------------folder--------------------------------------*/
@@ -160,7 +181,7 @@
         $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
     });
 
-    
+
     //------
     $(".calender").click(function() {
         $("#cal_win").show();

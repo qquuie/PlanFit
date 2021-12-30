@@ -9,7 +9,7 @@ mongoose.connect(url, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-    console.log("MongoDB連線成功");
+    console.log("login連線成功");
 });
 
 const loginSchema = new mongoose.Schema({

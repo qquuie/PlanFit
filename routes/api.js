@@ -34,13 +34,20 @@ router.post('/addUser', function (req, res) {
 });
 
 //登入畫面擷取所有資料
-router.get('/getUser', function (req, res) {
-    loginModel.find(function(err,data)
-    {
-        if(err) console.log(err);
-        else {console.log(res.json(data));
-        }
+router.get('/getUser', function(req, res) {
+    loginModel.find(function(err, data) {
+        if (err) console.log(err);
+        console.log(res.json(data));
     })
+});
+
+router.get('/getposeList', function(req, res) {
+    workoutModel.find(function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(data); //將資料回應給前端
+    });
 });
 
 // //修改與更新待辦事項

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var loginModel = require('../models/login.js');
+var workoutModel = require('../models/workout.js');
 
-router.post('/addUser', function (req, res) {
+
+router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
         acc: req.body.acc,
@@ -13,9 +15,9 @@ router.post('/addUser', function (req, res) {
         height: req.body.height,
         weight: req.body.weight,
         focusOption: req.body.focusOption,
-        needOption:req.body.needOption
+        needOption: req.body.needOption
     });
-    newUser.save(function (err, data) {
+    newUser.save(function(err, data) {
         if (err) {
             res.json({
                 "status": 1,
@@ -41,6 +43,7 @@ router.get('/getUser', function(req, res) {
     })
 });
 
+//workout載入
 router.get('/getposeList', function(req, res) {
     workoutModel.find(function(err, data) {
         if (err) {
@@ -49,6 +52,26 @@ router.get('/getposeList', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
+
+// //workout點擊更新
+// router.post('/updateposeClick', function(req, res) {
+//     var id = req.body.id;
+//     console.log(id);
+//     workoutModel.findById(id, function(err, data) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             // data.click = req.body.click+1;
+//             // console.log(data.click);
+//             // data.save(function(err) {
+//             //     if (err) {
+//             //         console.log(err);
+//             //     }
+//             // });
+//             console.log(2);
+//         }
+//     });
+// });
 
 // //修改與更新待辦事項
 // router.post('/updateList', function (req, res) {

@@ -86,7 +86,7 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    $.get(api, function (data) {
+    jQuery.get(api, function (data) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].acc === id && data[i].pw === pass) {
                     window.location.href = '/index';

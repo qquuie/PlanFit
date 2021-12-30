@@ -68,18 +68,28 @@ include includes/navigation
                   .infor_txt.col-3
                     p Which parts should you focus on?
                   .infor_data.infor_focus.col-10
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Butt')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Full Body')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Arms')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Back')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Shoulders')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Chest')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Thight')
-                    input(type='button' class="btn btn-group mx-1 mt-1" value='Abs')
+                    input.btn-check(type='radio' class=" mx-1 mt-1" id='butt' value='Butt')
+                    label.btn(for="butt") Butt
+                    input.btn-check(type='radio' class=" mx-1 mt-1" id="full" value='Full Body')
+                    label.btn(for="full") Full body
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="arm" value='Arms')
+                    label.btn(for="arm") Arms
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="back" value='Back')
+                    label.btn(for="back") Back 
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="shoulder" value='Shoulders')
+                    label.btn(for="shoulder") Shoulders 
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="chest" value='Chest')
+                    label.btn(for="chest") Chest 
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="thight" value='Thight')
+                    label.btn(for="thight") Thight 
+                    input.btn-check(type='radio' class="mx-1 mt-1" id="abs" value='Abs')
+                    label.btn(for="abs") Abs 
             .infor_OK
                 button(class="btn") Edit
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
 script(src='javascripts/javascript.js')
+script(src='javascripts/login.js')
+
 // CSS only
 link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
 link(rel='stylesheet' href='stylesheets/infor.css')

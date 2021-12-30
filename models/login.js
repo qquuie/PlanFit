@@ -15,7 +15,15 @@ db.once('open', () => {
 const loginSchema = new mongoose.Schema({
     acc: String,
     pw: String,
-    status: Boolean
+    email:String,
+    birth: Date,
+    sex: String,
+    focusOption:String,
+    needOption:String,
+    height:Number,
+    weight:Number,
+    age:Number,
+    status:Boolean
 });
 loginSchema.set('collection', 'list');
 const model = mongoose.model('list', loginSchema);

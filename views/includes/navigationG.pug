@@ -45,7 +45,7 @@ body
               //- li
               //-   a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder', href) File
               li
-                a.dropdown-item.btn#inforSign(data-toggle='modal', data-bs-target='#smallPageModal', href) Sign In/Sign Out
+                a.dropdown-item.btn#inforSign(data-toggle='modal', data-bs-target='#smallPageModal', href) Sign In
   //- //  -----------------------------Folder-------------------------------- 
   //- .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
   //-   .modal-dialog.modal-dialog-scrollable
@@ -86,7 +86,7 @@ body
   //-             img(src='img/add.png', alt)
   //  ---------------------------Signun/Signout------------------------------ 
   .smallPage.modal.fade.d-grid#smallPageModal(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
-    .smallPage.modal.d-grid#smallPageModal(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
+    .smallPage.modal.fade.d-grid#smallPageModal(tabindex='-1', role='dialog', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
       //  abby改 
       .modal-dialog
         .modalContainer.modal-content
@@ -112,28 +112,28 @@ body
                 button.btn#joinUs(href, data-mdb-target='#inputFormID1', data-mdb-toggle='modal', data-mdb-dismiss='modal') Join Us
           //  <---------------------------------signUpDiv1------------------------------  
           .inputForm1.modal-body#inputFormID1
-            form
+            form(action="addUser")
               .mb-3
                 h1 Which part should you focus on?
-              .row
-                .form4Btn.gap-1.col-6
-                  input.btn-check.btn-lg#signUpFullB(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpFullB') Full Body
-                  input.btn-check.btn-lg#signUpShou(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpShou') Shoulder
-                  input.btn-check.btn-lg#signUpBack(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpBack') Back
-                  input.btn-check.btn-lg#signUpThign(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpThign') Thigh
-                .form4Btn.gap-1.col-6
-                  input.btn-check.btn-lg#signUpArm(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpArm') Arm
-                  input.btn-check.btn-lg#signUpChest(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpChest') Chest
-                  input.btn-check.btn-lg#signUpAbs(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpAbs') Abs
-                  input.btn-check.btn-lg#signUpButt(type='button', name='options', autocomplete='off')
-                  label.btn.btn-lg(for='signUpButt') Butts
+              .row(role="group")
+                .form4Btn.gap-1.col-6#focusOptions
+                  input.btn-check#signUpFullB(type='checkbox', name='focusOptions', autocomplete='off',value='Full body')
+                  label.btn(for='signUpFullB') Full Body
+                  input.btn-check#signUpShou(type='checkbox', name='focusOptions', autocomplete='off',value='Shoulder')
+                  label.btn(for='signUpShou') Shoulder
+                  input.btn-check#signUpBack(type='checkbox', name='focusOptions', autocomplete='off',value='Back')
+                  label.btn(for='signUpBack') Back
+                  input.btn-check#signUpThign(type='checkbox', name='focusOptions', autocomplete='off',value='Thigh')
+                  label.btn(for='signUpThign') Thigh
+                .form4Btn.gap-1.col-6#focusOptions
+                  input.btn-check#signUpArm(type='checkbox', name='focusOptions', autocomplete='off',value='Arm')
+                  label.btn(for='signUpArm') Arm
+                  input.btn-check#signUpChest(type='checkbox', name='focusOptions', autocomplete='off',value='Chest')
+                  label.btn(for='signUpChest') Chest
+                  input.btn-check#signUpAbs(type='checkbox', name='focusOptions', autocomplete='off',value='Abs')
+                  label.btn(for='signUpAbs') Abs
+                  input.btn-check#signUpButt(type='checkbox', name='focusOptions', autocomplete='off',value='Butts')
+                  label.btn(for='signUpButt') Butts
             .nextDiv3.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
               button.btn.btn-lg#nextBtn3 Next
@@ -142,7 +142,7 @@ body
                 button.btn#signInBack Sign In
           //  <---------------------------------signUpDiv2------------------------------  
           .inputForm2.modal-body
-            form
+            form(action="addUser")
               .input-group-lg.mb-3
                 h3 Welcome to join us
               .input-group-lg.mb-3
@@ -150,34 +150,34 @@ body
               .input-group-lg.mb-3
                 input.form-control#signUpName(type='text', placeholder='    | Name')
               .input-group-lg.mb-3
-                input.form-control#signUpPass(type='password', placeholder='    | Passwork')
+                input.form-control#signUpPass(type='password', placeholder='    | Password')
               .input-group-lg.mb-3
-                input.form-control#signUpBirth(type='datetime', placeholder='    | Date of birth')
-              .btn-group.mb-3
-                input.btn.btn-lg#signUpFemale(type='button', autocomplete='off',value="Female")
-                //- label.btn.me-5(for='signUpFemale') 
-                input.btn.btn-lg#signUpMale(type='button', autocomplete='off',value="Male") 
-                //- label.btn(for='signUpMale') Male
+                input.form-control#signUpBirth(type='date', placeholder='    | Date of birth')
+              .btn-group.mb-3.mx-4#sex
+                input.btn-check#signUpFemale(type='checkbox', name="sex", autocomplete='off',value="Female")
+                label.btn(for='signUpFemale') Female
+                input.btn-check#signUpMale(type='checkbox', name="sex", autocomplete='off',value="Male") 
+                label.btn(for='signUpMale') Male
             .nextDiv.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
-              button.btn.btn-lg#nextBtn(onclick="addUser()") Next
+              button.btn.btn-lg#nextBtn() Next
               p
                 | Already a member?
                 button.btn#signInBack Sign In
           //  <---------------------------------signUpDiv3------------------------------  
           .inputForm3.modal-body
-            form
+            form(action="addUser")
               .mb-3
                 h1 What do you need?
-              .form3Btn.d-grid.gap-1
-                input.btn-check.btn-lg#loseWei(type='button', name='options', autocomplete='off')
-                label.btn.btn-lg(for='loseWei') Lose Weight
+              .form3Btn.d-grid.gap-1#needOptions(role="group")
+                input.btn-check#loseWei(type='checkbox', name='needOptions', autocomplete='off',value='Lose weight')
+                label.btn(for='loseWei') Lose weight
                 br
-                input.btn-check.btn-lg#gainMus(type='button', name='options', autocomplete='off')
-                label.btn.btn-lg(for='gainMus') Gain muscle
+                input.btn-check#gainMus(type='checkbox', name='needOptions', autocomplete='off',value='Gain muscle')
+                label.btn(for='gainMus') Gain muscle
                 br
-                input.btn-check.btn-lg#getFit(type='button', name='options', autocomplete='off')
-                label.btn.btn-lg(for='getFit') Get fitter
+                input.btn-check#getFit(type='checkbox', name='needOptions', autocomplete='off',value='Get fitter')
+                label.btn(for='getFit') Get fitter
             .nextDiv2.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
               button.btn.btn-lg#nextBtn2 Next
@@ -186,7 +186,7 @@ body
                 button.btn#signInBack Sign In
           //  <---------------------------------signUpDiv3------------------------------  
           .inputForm4.modal-body
-            form
+            form(action="addUser")
               .input-group-lg.mb-3
                 input.form-control#yourHeight(type='number', placeholder='    | Height(cm)')
               .input-group-lg.mb-3
@@ -195,7 +195,7 @@ body
                 input.form-control#yourAge(type='number', placeholder='    | Age')
             .signUpDiv.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
-              button.btn.btn-lg#signUpBtn(data-dismiss='modal', aria-label='Close') Sign Up
+              button.btn.btn-lg#signUpBtn(data-dismiss='modal', aria-label='Close',onclick="addUser()") Sign Up
               p
                 | Already a member?
                 button.btn#signInBack Sign In

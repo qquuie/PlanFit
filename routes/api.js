@@ -4,7 +4,7 @@ var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 
 
-router.post('/addUser', function(req, res) {
+router.post('/addUser', function (req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
         acc: req.body.acc,
@@ -17,7 +17,8 @@ router.post('/addUser', function(req, res) {
         focusOption: req.body.focusOption,
         needOption: req.body.needOption
     });
-    newUser.save(function(err, data) {
+
+    newUser.save(function (err, data) {
         if (err) {
             res.json({
                 "status": 1,
@@ -33,19 +34,47 @@ router.post('/addUser', function(req, res) {
             console.log("新增成功");
         }
     })
+
+
+
 });
 
 //登入畫面擷取所有資料
-router.get('/getUser', function(req, res) {
-    loginModel.find(function(err, data) {
+router.get('/getUser', function (req, res) {
+    loginModel.find({
+        acc: req.body.acc,
+        pw: req.body.pw
+    }, function (err, data) {
+        if (err) console.log(err);
+        
+        else {
+                console.log(data);
+        }
+    })
+});
+// router.get('/welcome', function (req, res) {
+//     loginModel.find(function (err, data) {
+//         if (err) console.log(err);
+//         console.log(res.json(data));
+//     })
+// });
+router.get('/getInfor', function (req, res) {
+    var id = req.body.acc;
+    var pw = req.body.pw;
+    loginModel.findOne(id, function (err, data) {
         if (err) console.log(err);
         console.log(res.json(data));
+        // data.comparePassword(pw,function(err,data)
+        // {
+        //     if (err) console.log(err);
+        //     console.log(data);
+        // })
     })
 });
 
 //workout載入
-router.get('/getposeList', function(req, res) {
-    workoutModel.find(function(err, data) {
+router.get('/getposeList', function (req, res) {
+    workoutModel.find(function (err, data) {
         if (err) {
             console.log(err);
         }

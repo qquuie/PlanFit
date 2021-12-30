@@ -67,7 +67,7 @@ function addUser() {
             'age': age
 
         };
-        $.post(api, data, function (res) {
+        jQuery.post(api, data, function (res) {
             alert(data.acc + data.pw + " 新增成功");
             $('#signUpName').val('');
             $('#signUpPass').val('');

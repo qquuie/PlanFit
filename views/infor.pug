@@ -38,8 +38,11 @@ include includes/navigation
                 .infor_txt
                   p Sex
                 .infor_data.infor_sex
-                  input(type='button' class="btn mx-1" value='Female')
-                  input(type='button' class="btn mx-1" value='Male' )
+                  input.btn-check(type='button' class="btn mx-1" id="F" value='Female')
+                  label.btn(for="F") Female
+                  input.btn-check(type='button' class="btn mx-1" id="M" value='Male' )
+                  label.btn(for="M") Male
+
             .col
                 .infor_txt
                   p Height
@@ -60,9 +63,12 @@ include includes/navigation
                   .infor_txt.col.col-3
                     p What do you need?
                   .infor_data.infor_need.col-10
-                    input(type='button' class="btn mx-1" value='Lose Weight')
-                    input(type='button' class="btn mx-1" value='Gain Muscle')
-                    input(type='button' class="btn mx-1" value='Get fitter')
+                    input.btn-check(type='button' class="btn mx-1" id="loseW" value='Lose Weight')
+                    label.btn(for="loseW") Lose Weight
+                    input.btn-check(type='button' class="btn mx-1" id="gainM" value='Gain Muscle')
+                    label.btn(for="gainM") Gain Muscle
+                    input.btn-check(type='button' class="btn mx-1" id="getF" value='Get fitter')
+                    label.btn(for="getF") Get Fitter
             .col
                 .row
                   .infor_txt.col-3

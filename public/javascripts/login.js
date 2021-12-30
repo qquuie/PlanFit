@@ -65,8 +65,7 @@ function addUser() {
             'needOption': needOption,
             'height': height,
             'weight': weight,
-            'age': age
-
+            'age': age,
         };
         jQuery.post(api, data, function (res) {
                 $('#signUpName').val('');

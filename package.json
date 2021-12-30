@@ -41,5 +41,8 @@
         "token-stream": "^1.0.0",
         "void-elements": "^3.1.0",
         "with": "^7.0.2"
+    },
+    "devDependencies": {
+        "ws": "3.3.2"
     }
 }

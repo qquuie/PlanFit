@@ -64,10 +64,9 @@ function addUser() {
             'needOption': needOption,
             'height': height,
             'weight': weight,
-            'age': age
-
+            'age': age,
         };
-        $.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             alert(data.acc + data.pw + " 新增成功");
             $('#signUpName').val('');
             $('#signUpPass').val('');
@@ -77,7 +76,6 @@ function addUser() {
             $('#yourWeight').val('');
             $('#yourAge').val('');
             window.location.href = '/index';
-
         });
     }
 }
@@ -86,10 +84,10 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    jQuery.get(api, function (data) {
+    jQuery.get(api, function(data) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].acc === id && data[i].pw === pass) {
-                    window.location.href = '/index';
+                window.location.href = '/index';
             }
         }
     });

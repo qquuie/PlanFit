@@ -3,7 +3,6 @@ var router = express.Router();
 var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 
-
 router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
@@ -53,25 +52,26 @@ router.get('/getposeList', function(req, res) {
     });
 });
 
-// //workout點擊更新
-// router.post('/updateposeClick', function(req, res) {
-//     var id = req.body.id;
-//     console.log(id);
-//     workoutModel.findById(id, function(err, data) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             // data.click = req.body.click+1;
-//             // console.log(data.click);
-//             // data.save(function(err) {
-//             //     if (err) {
-//             //         console.log(err);
-//             //     }
-//             // });
-//             console.log(2);
-//         }
-//     });
-// });
+//workout點擊更新//後端
+router.post('/updateposeClick', function(req, res) {
+    var id = req.body.id;
+    workoutModel.findById(id, function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            // console.log(req.body.click);
+            data.click = req.body.click;
+            // console.log(data);
+            data.save(function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.json(data);
+                }
+            });
+        }
+    });
+});
 
 // //修改與更新待辦事項
 // router.post('/updateList', function (req, res) {

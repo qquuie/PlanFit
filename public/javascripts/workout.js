@@ -24,13 +24,13 @@
         var e = (data.equipment) ? "Yes" : "No";
         var j = (data.Jumping) ? "Yes" : "No";
         tmp =
-            `<div class="card border-GreenLake" onclick="">
+            `<div class="card border-GreenLake">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
                             <a class="nav-link">
                                 <img src="img/icon_see_times.png" width="20px">
-                                <p id="see_times${data.id}">${data.click}</p>
+                                <p id="see_times${data._id}">${data.click}</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link calender">
+                            <a class="nav-link calender"  onclick="updateposeClick('${data._id}')">
                                 <img src="img/icon_calender.png" width="20px">
                             </a>
                         </li>
@@ -58,19 +58,20 @@
         $('.card_row' + col_num).append(tmp);
     }
 
-    // //更新待辦事項
-    // function updateposeClick(id) {
-    //     // console.log(id);
-    //     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
-    //     var data = {
-    //             "id": id,
-    //             "click": $('#see_times' + id).val(),
-    //         } //這邊給值//更改click+1
-    //     $.post(api, data, function(res) {
-    //         console.log(1);
-    //     });
-    // }
-
+    //更新待辦事項//前端
+    function updateposeClick(id) {
+        // console.log(id);
+        var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
+        var data = {
+            "id": id,
+            "click": parseInt($('#see_times' + id).text()) + 1,
+        }; //這邊給值//更改click+1
+        $('#see_times' + id).text(data.click);
+        console.log(data);
+        jQuery.post(api, data, function(res) {
+            console.log(res);
+        });
+    }
     let workout_sth = "";
     /*--------------------------------folder--------------------------------------*/
     $(".folder").click(function() {

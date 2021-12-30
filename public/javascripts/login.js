@@ -68,16 +68,16 @@ function addUser() {
             'age': age,
         };
         jQuery.post(api, data, function (res) {
-                $('#signUpName').val('');
-                $('#signUpPass').val('');
-                $('#signUpEmail').val('');
-                $('#signUpBirth').val('');
-                $('#yourHeight').val('');
-                $('#yourWeight').val('');
-                $('#yourAge').val('');
-                window.location.href = '/index';
-                alert(data.acc + data.pw + " 新增成功");
-            
+            $('#signUpName').val('');
+            $('#signUpPass').val('');
+            $('#signUpEmail').val('');
+            $('#signUpBirth').val('');
+            $('#yourHeight').val('');
+            $('#yourWeight').val('');
+            $('#yourAge').val('');
+            window.location.href = '/index';
+            alert(data.acc + data.pw + " 新增成功");
+
 
         });
     }
@@ -87,21 +87,28 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-
+    var user = {
+        'acc': id,
+        'pw': pass
+    };
     if (id == "" && pass == "") {
         alert("請輸入標題和內容!");
     } else {
+
         jQuery.post(api, {
             'acc': id,
             'pw': pass
         }, function (res) {
-            
-                $.cookie('acc',res.data.acc);
-                $.cookie('pw',res.data.pw);
-                window.location.href = 'about';
+            if (res.status == 1) {
+                console.log(res.msg);
+            } else {
+                $.cookie('acc', res.data.acc);
+                $.cookie('pw', res.data.pw);
+                location.href = 'index';
                 alert(1)
-            
+            }
         });
+
     }
 };
 

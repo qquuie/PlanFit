@@ -91,9 +91,6 @@ function getUser() {
             if (data[i].acc === id && data[i].pw === pass) {
                     window.location.href = '/index';
             }
-            else{
-                console.log('fail');
-            }
         }
     });
 }

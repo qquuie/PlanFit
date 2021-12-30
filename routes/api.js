@@ -37,6 +37,7 @@ router.get('/getUser', function(req, res) {
     })
 });
 
+//workout載入
 router.get('/getposeList', function(req, res) {
     workoutModel.find(function(err, data) {
         if (err) {
@@ -45,6 +46,26 @@ router.get('/getposeList', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
+
+// //workout點擊更新
+// router.post('/updateposeClick', function(req, res) {
+//     var id = req.body.id;
+//     console.log(id);
+//     workoutModel.findById(id, function(err, data) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             // data.click = req.body.click+1;
+//             // console.log(data.click);
+//             // data.save(function(err) {
+//             //     if (err) {
+//             //         console.log(err);
+//             //     }
+//             // });
+//             console.log(2);
+//         }
+//     });
+// });
 
 // //修改與更新待辦事項
 // router.post('/updateList', function (req, res) {

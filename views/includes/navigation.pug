@@ -41,11 +41,13 @@ body
             a#inforNav.nav-link.dropdown-toggle.border-0.px-1.link-dark.ms-5(type='button', aria-expanded='false') Information
             ul#inforMenu.dropdown-menu(aria-labelledby='inforNav')
               li
-                a.dropdown-item(href='infor') Edit
+                a.dropdown-item(href='infor',onclick="") Edit
               li
                 a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder', href) File
               li
-                a.dropdown-item.btn#logout(data-toggle='modal', data-bs-target='#smallPageModal', href='about') Log out
+                a.dropdown-item.btn#logout(data-toggle='modal', data-bs-target='#smallPageModal') Log out
+              li
+                h1.dropdown-item.mx-3.fs-5#welcome(data-toggle='modal', data-bs-target='#smallPageModal', ) Welcome 
   //  -----------------------------Folder-------------------------------- 
   .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
     .modal-dialog.modal-dialog-scrollable

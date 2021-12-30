@@ -1,18 +1,22 @@
 var express = require('express');
 var router = express.Router();
 var loginModel = require('../models/login.js');
-var workoutModel = require('../models/workout.js');
-// var allList = []; //存放所有待辦事項
-// var id = 1; //紀錄待辦事項的索引值
-router.post('/addUser', function(req, res) {
-    var newTodo = new loginModel({
+
+router.post('/addUser', function (req, res) {
+    // const body = _.pick(req.body, ['sex'])
+    var newUser = new loginModel({
         acc: req.body.acc,
         pw: req.body.pw,
-        status: false
+        email: req.body.email,
+        birth: req.body.birth,
+        sex: req.body.sex,
+        height: req.body.height,
+        weight: req.body.weight,
+        focusOption: req.body.focusOption,
+        needOption:req.body.needOption
     });
-    newTodo.save(function(err, data) {
+    newUser.save(function (err, data) {
         if (err) {
-
             res.json({
                 "status": 1,
                 // "msg": "error"

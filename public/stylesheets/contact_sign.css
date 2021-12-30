@@ -11,7 +11,7 @@ nav.navbar
     height: 100px;
 }
 
-nav.navbar,
+ul.navbar-nav,
 button#workOutNav,
 ul.dropdown-menu {
     background-color: #f3f1de;
@@ -219,8 +219,8 @@ div.form3Btn>label.btn:hover {
 
 }
 
-.btn.active,input.btn:active
-div.form3Btn>label.btn:active {
+input.btn:active, 
+label.btn.active,label.btn:focus {
     background-color: #1D3124;
     color: white;
     outline: 0;

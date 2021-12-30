@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('a#logout').click(function () {
+        window.location.href = '/indexG';
+    })
     // <--------------------------- Information-------------------------->
     $("div#smallPageModal").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
@@ -18,7 +21,7 @@ $(document).ready(function () {
     $("#inforNav").click(function () {
         $("#inforMenu.dropdown-menu").toggle();
         console.log(1)
-        
+
     })
     $('.page').click(function () {
         $("#inforMenu.dropdown-menu").hide();
@@ -41,6 +44,20 @@ $(document).ready(function () {
         $("div#smallPageModal").addClass("fade");
         $("div#smallPageModal").css('z-index', '-1');
         $(".page").css('z-index', '1000');
+        $('#signUpName').val('');
+        $('#signUpEmail').val('');
+        $('#signUpPass').val('');
+        $('#signUpBirth').val('');
+        $('#yourHeight').val('');
+        $('#yourAge').val('');
+        $('#yourWeight').val('');
+        $('form').find('label.btn.active').removeClass('active');
+        $(".inputForm5").show();
+        $(".inputForm1").hide();
+        $(".inputForm2").hide();
+        $(".inputForm4").hide();
+        $(".inputForm3").hide();
+        $("div.modalContainer").css("background-color", "#bacec1")
 
     })
 
@@ -107,6 +124,7 @@ $(document).ready(function () {
         $(".inputForm1").hide();
         $(".inputForm2").hide();
         $(".inputForm4").hide();
+        $(".inputForm3").hide();
         $("div.modalContainer").css("background-color", "#bacec1")
 
     })

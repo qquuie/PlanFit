@@ -9,98 +9,102 @@ head
 include includes/navigation
 .page
   .container#infor
-      //- .row.information
-      //-   .col-sm-3
-      //-     button#infor_headshot(class="btn" readonly='true')
-      //-   .col-8
-      //-     .row
-      //-       .col
-      //-         .infor_txt
-      //-           p Email
-      //-         .infor_data
-      //-           input(type='email' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Name
-      //-           .infor_data
-      //-             input(type='text' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Password
-      //-           .infor_data
-      //-             input(type='text' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Birthday
-      //-           .infor_data
-      //-             input(type='date' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Sex
-      //-           .infor_data.infor_sex
-      //-             input.btn-check(type='radio' class="btn mx-1" id="F" value='Female')
-      //-             label.btn(for="F") Female
-      //-             input.btn-check(type='radio' class="btn mx-1" id="M" value='Male' )
-      //-             label.btn(for="M") Male
+    //- .row#edit
+    //-     .col-sm-3
+    //-       button#infor_headshot(class="btn" readonly='true')
+    //-     .col-8
+    //-       .row
+    //-         .col
+    //-           .infor_txt
+    //-             p Email
+    //-           .infor_data
+    //-             input(type='email' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Name
+    //-             .infor_data
+    //-               input(type='text' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Password
+    //-             .infor_data
+    //-               input(type='text' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Birthday
+    //-             .infor_data
+    //-               input(type='date' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Sex
+    //-             .infor_data.infor_sex
+    //-               input.btn-check(type='radio' class="btn mx-1" id="F" value='Female')
+    //-               label.btn(for="F") Female
+    //-               input.btn-check(type='radio' class="btn mx-1" id="M" value='Male' )
+    //-               label.btn(for="M") Male
 
-      //-       .col
-      //-           .infor_txt
-      //-             p Height
-      //-           .infor_data
-      //-             input(type='text' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Weight
-      //-           .infor_data
-      //-             input(type='text' readonly='true')
-      //-       .col
-      //-           .infor_txt
-      //-             p Age
-      //-           .infor_data
-      //-             input(type='text' readonly='true')
-      //-       .col
-      //-           .row
-      //-             .infor_txt.col.col-3
-      //-               p What do you need?
-      //-             .infor_data.infor_need.col-10
-      //-               input.btn-check(type='button' class="btn mx-1" id="loseW" value='Lose Weight')
-      //-               label.btn(for="loseW") Lose Weight
-      //-               input.btn-check(type='button' class="btn mx-1" id="gainM" value='Gain Muscle')
-      //-               label.btn(for="gainM") Gain Muscle
-      //-               input.btn-check(type='button' class="btn mx-1" id="getF" value='Get fitter')
-      //-               label.btn(for="getF") Get Fitter
-      //-       .col
-      //-           .row
-      //-             .infor_txt.col-3
-      //-               p Which parts should you focus on?
-      //-             .infor_data.infor_focus.col-10
-      //-               input.btn-check(type='radio' class=" mx-1 mt-1" id='butt' value='Butt')
-      //-               label.btn(for="butt") Butt
-      //-               input.btn-check(type='radio' class=" mx-1 mt-1" id="full" value='Full Body')
-      //-               label.btn(for="full") Full body
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="arm" value='Arms')
-      //-               label.btn(for="arm") Arms
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="back" value='Back')
-      //-               label.btn(for="back") Back 
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="shoulder" value='Shoulders')
-      //-               label.btn(for="shoulder") Shoulders 
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="chest" value='Chest')
-      //-               label.btn(for="chest") Chest 
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="thight" value='Thight')
-      //-               label.btn(for="thight") Thight 
-      //-               input.btn-check(type='radio' class="mx-1 mt-1" id="abs" value='Abs')
-      //-               label.btn(for="abs") Abs 
-      //-       .infor_OK
-      //-           button(class="btn") Edit
+    //-         .col
+    //-             .infor_txt
+    //-               p Height
+    //-             .infor_data
+    //-               input(type='text' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Weight
+    //-             .infor_data
+    //-               input(type='text' readonly='true')
+    //-         .col
+    //-             .infor_txt
+    //-               p Age
+    //-             .infor_data
+    //-               input(type='text' readonly='true')
+    //-         .col
+    //-             .row
+    //-               .infor_txt.col.col-3
+    //-                 p What do you need?
+    //-               .infor_data.infor_need.col-10
+    //-                 input.btn-check(type='button' class="btn mx-1" id="loseW" value='Lose Weight')
+    //-                 label.btn(for="loseW") Lose Weight
+    //-                 input.btn-check(type='button' class="btn mx-1" id="gainM" value='Gain Muscle')
+    //-                 label.btn(for="gainM") Gain Muscle
+    //-                 input.btn-check(type='button' class="btn mx-1" id="getF" value='Get fitter')
+    //-                 label.btn(for="getF") Get Fitter
+    //-         .col
+    //-             .row
+    //-               .infor_txt.col-3
+    //-                 p Which parts should you focus on?
+    //-               .infor_data.infor_focus.col-10
+    //-                 input.btn-check(type='radio' class=" mx-1 mt-1" id='butt' value='Butt')
+    //-                 label.btn(for="butt") Butt
+    //-                 input.btn-check(type='radio' class=" mx-1 mt-1" id="full" value='Full Body')
+    //-                 label.btn(for="full") Full body
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="arm" value='Arms')
+    //-                 label.btn(for="arm") Arms
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="back" value='Back')
+    //-                 label.btn(for="back") Back 
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="shoulder" value='Shoulders')
+    //-                 label.btn(for="shoulder") Shoulders 
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="chest" value='Chest')
+    //-                 label.btn(for="chest") Chest 
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="thight" value='Thight')
+    //-                 label.btn(for="thight") Thight 
+    //-                 input.btn-check(type='radio' class="mx-1 mt-1" id="abs" value='Abs')
+    //-                 label.btn(for="abs") Abs 
+    //-         .infor_OK
+    //-             button(class="btn") Edit
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
 script(src='javascripts/javascript.js')
 script(src='javascripts/login.js')
+script(src='javascripts/contact-sign.js')
 
 // CSS only
 link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+
 link(rel='stylesheet' href='stylesheets/infor.css')
 link(rel='stylesheet' href='stylesheets/style.css')
-link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+link(rel='stylesheet' href='stylesheets/contact_sign.css')
+
 link(rel='icon' href='/img/LOGO_icon.png' type='image/x-icon')
 link(rel='icon' href='/img/LOGO_icon.png' type='image/x-icon')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')

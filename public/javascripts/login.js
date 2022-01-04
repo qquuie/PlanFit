@@ -75,16 +75,15 @@ function addUser() {
             'age': age,
         };
         jQuery.post(api, data, function (res) {
-            $('#signUpName').val('');
-            $('#signUpPass').val('');
-            $('#signUpEmail').val('');
-            $('#signUpBirth').val('');
-            $('#yourHeight').val('');
-            $('#yourWeight').val('');
-            $('#yourAge').val('');
-            if (res.status == 1) {
-                alert('Log in fail')
-            } else {
+            if (res.status == 0) {
+                $('#signUpName').val('');
+                $('#signUpPass').val('');
+                $('#signUpEmail').val('');
+                $('#signUpBirth').val('');
+                $('#yourHeight').val('');
+                $('#yourWeight').val('');
+                $('#yourAge').val('');
+
                 setCookie('username', res.data.acc)
                 setCookie('password', res.data.pw)
                 setCookie('email', res.data.email)
@@ -98,10 +97,12 @@ function addUser() {
 
                 window.location.href = 'index';
                 alert('Sign up successful')
+
+                // alert(data.acc + data.pw + " 新增成功");
+
+            } else if (res.status == 1) {
+                alert(res.msg)
             }
-            // alert(data.acc + data.pw + " 新增成功");
-
-
         });
     }
 }
@@ -110,20 +111,21 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    var user = {
-        'acc': id,
-        'pw': pass
-    };
+    // var user = {
+    //     'acc': id,
+    //     'pw': pass
+    // };
     if (id == "" && pass == "") {
         alert("請輸入標題和內容!");
     } else {
-
         jQuery.post(api, {
             'acc': id,
             'pw': pass
         }, function (res) {
             if (res.status == 1) {
                 console.log(res.msg);
+                alert('Log in fail')
+
             } else {
                 setCookie('username', res.data.acc)
                 setCookie('password', res.data.pw)
@@ -514,7 +516,7 @@ function changeInfor() {
 
         if (checkboxChange2[j].checked) {
             checkstr2.push(checkboxChange2[j].value);
-          
+
         }
 
     }
@@ -527,7 +529,7 @@ function changeInfor() {
 
         if (checkboxChange3[i].checked) {
             checkstr3.push(checkboxChange3[i].value)
-           
+
         }
 
     }
@@ -548,7 +550,7 @@ function changeInfor() {
     };
     var api = "http://127.0.0.1:3000/api/changeInfor";
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
-        alert('Please check e ')
+        alert('Please check all the check button ')
     } else {
         jQuery.post(api, data, function (res) {
             setCookie('username', res.data.acc)

@@ -20,19 +20,31 @@ router.post('/addUser', function (req, res) {
     });
 
     newUser.save(function (err, data) {
+        // if (err) {
+        //     res.json({
+        //         "status": 1,
+        //         // "msg": "error"
+        //     });
+        //     console.log("新增失敗");
+        // } else {
+        //     res.json({
+        //         "status": 0,
+        //         // "msg": "success",
+        //         "data": data
+        //     });
+        //     console.log("新增成功");
+        // }
         if (err) {
             res.json({
                 "status": 1,
-                // "msg": "error"
+                "msg": "error"
             });
-            console.log("新增失敗");
         } else {
             res.json({
                 "status": 0,
-                // "msg": "success",
+                "msg": "success",
                 "data": data
             });
-            console.log("新增成功");
         }
     })
 
@@ -46,12 +58,22 @@ router.post('/getUser', function (req, res) {
         acc: req.body.acc,
         pw: req.body.pw
     }, function (err, data) {
-        if (err) console.log(err);
-
-        else {
-            console.log(data);
+       
+        if (data == null) {
             res.json({
-                'data': data
+                "status": 1,
+                "msg": "帳號密碼錯誤!"
+            });
+        } else if (err) {
+            res.json({
+                "status": 1,
+                "msg": "error"
+            });
+        } else {
+            res.json({
+                "status": 0,
+                "msg": "success",
+                "data": data
             });
         }
     })

@@ -3,6 +3,7 @@ var router = express.Router();
 var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 
+
 router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
@@ -13,9 +14,11 @@ router.post('/addUser', function(req, res) {
         sex: req.body.sex,
         height: req.body.height,
         weight: req.body.weight,
+        age: req.body.age,
         focusOption: req.body.focusOption,
         needOption: req.body.needOption
     });
+
     newUser.save(function(err, data) {
         if (err) {
             res.json({
@@ -32,11 +35,17 @@ router.post('/addUser', function(req, res) {
             console.log("新增成功");
         }
     })
+
+
+
 });
 
 //登入畫面擷取所有資料
-router.get('/getUser', function(req, res) {
-    loginModel.find(function(err, data) {
+router.post('/getUser', function(req, res) {
+    loginModel.findOne({
+        acc: req.body.acc,
+        pw: req.body.pw
+    }, function(err, data) {
         if (err) console.log(err);
         // console.log(res.json(data));
     })
@@ -70,6 +79,62 @@ router.post('/getPose', function(req, res) {
 //workout載入
 router.post('/getposeList', function(req, res) {
     workoutModel.find({ 'status': false }, function(err, data) {
+        if (err) {
+
+        } else {
+            console.log(data);
+            res.json({
+                'data': data
+            });
+        }
+    })
+});
+
+router.post('/getInfor', function(req, res) {
+    // var id = req.body.acc;
+    loginModel.find({
+        acc: req.body.acc
+    }, function(err, data) {
+        if (err) console.log(err);
+        // console.log(data);
+        res.json({
+            data
+        })
+
+    })
+});
+router.post('/changeInfor', function(req, res) {
+
+    loginModel.findOne({
+        acc: req.body.acc
+    }, function(err, data) {
+        if (err) console.log(err);
+        else {
+            data.pw = req.body.newpw;
+            data.email = req.body.newemail;
+            data.birth = req.body.newbirth;
+            data.sex = req.body.newsex;
+            data.height = req.body.newheight;
+            data.weight = req.body.newweight;
+            data.age = req.body.newage;
+            data.focusOption = req.body.newfocusOption;
+            data.needOption = req.body.newneedOption;
+            console.log(data);
+
+            data.save(function(err) {
+                if (err) console.log(err);
+                console.log(data);
+                res.json({
+                    data
+                })
+            })
+
+        }
+    })
+});
+//workout載入
+router.get('/getposeList', function(req, res) {
+    workoutModel.find(function(err, data) {
         if (err) {
             console.log(err);
         }

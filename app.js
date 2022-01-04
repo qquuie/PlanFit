@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var api = require('./routes/api')
+var nodemailer=require('nodemailer');
 
 var app = express();
 // const mongoose = require("mongoose");

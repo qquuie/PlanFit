@@ -220,7 +220,7 @@ div.form3Btn>label.btn:hover {
 }
 
 input.btn:active, 
-label.btn.active,label.btn:focus {
+label.btn.active,label.btn:focus ,label.btn.checked{
     background-color: #1D3124;
     color: white;
     outline: 0;

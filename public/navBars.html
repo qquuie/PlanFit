@@ -90,7 +90,7 @@
     <!-- -----------------------------Folder-------------------------------- -->
     <div class="smallPage modal fade d-grid " tabindex="-1" id="smallPageModal_folder" role="dialog"
         data-backdrop="static" data-keyboard="false" data-bs-keyboard="false" aria-hidden="true" style="z-index: -1;">
-        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-scrollable allfolder">
             <!-- ---------------------------------所有文件夾-------------------------------->
             <div class="modal-content folder" id="folder">
                 <div class="modal-header">
@@ -165,15 +165,14 @@
                         </button>
                     </div>
                 </div>
+                
                 <div class="modal-body">
-                    <div id="">
-                        <input type="text">
-                    </div>
+                    <textarea name="" class="input-group-lg mb-3 d-flex flex-row position-relative" id="addinput" cols="30" rows="3"></textarea>
                     <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
-                        <div type="button" class="btn btn-sm add-btn" onclick="backBtn_act('1')">
+                        <div type="button" class="btn btn-sm addback-btn" onclick="backBtn_act('1')">
                             <p>Back</p>
                         </div>
-                        <div type="button" class="btn btn-sm add-btn" onclick=" ">
+                        <div type="button" class="btn btn-sm d-flex justify-content-between add-btn" onclick="">
                             <p>Add</p>
                         </div>
                     </div>
@@ -594,7 +593,7 @@
                     </div>
                 </div>
             </div>`;
-        $('.folder').append(content);
+        $('.allfolder').append(content);
     }
     // -----------------進入文件夾------------------
     function FolderList(id) {

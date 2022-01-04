@@ -83,7 +83,7 @@ function addUser() {
             $('#yourWeight').val('');
             $('#yourAge').val('');
             if (res.status == 1) {
-                console.log(1);
+                alert('Log in fail')
             } else {
                 setCookie('username', res.data.acc)
                 setCookie('password', res.data.pw)
@@ -97,9 +97,9 @@ function addUser() {
                 setCookie('weight', res.data.weight)
 
                 window.location.href = 'index';
-                alert(1)
+                alert('Sign up successful')
             }
-            alert(data.acc + data.pw + " 新增成功");
+            // alert(data.acc + data.pw + " 新增成功");
 
 
         });
@@ -137,7 +137,7 @@ function getUser() {
                 setCookie('weight', res.data.weight)
 
                 window.location.href = 'index';
-                alert(1)
+                alert('Log in successful')
             }
         });
 
@@ -343,11 +343,11 @@ function edit() {
                         <p>What do you need?</p>
                     </div>
                     <div class="infor_data infor_need col-10" >
-                    <input class="needChange btn-check mx-1" type="checkbox" id="loseW" autocomplete='off' value="Lose weight" />
+                    <input class="needChange btn-check mx-1" type="checkbox" name="needChange" id="loseW" autocomplete='off' value="Lose weight" />
                     <label class="btn" for="loseW">Lose Weight</label>
-                    <input class="needChange btn-check mx-1" type="checkbox" id="gainM" autocomplete='off' value="Gain muscle" />
+                    <input class="needChange btn-check mx-1" type="checkbox" name="needChange"  id="gainM" autocomplete='off' value="Gain muscle" />
                     <label class="btn" for="gainM" >Gain Muscle</label>
-                    <input class="needChange btn-check mx-1" type="checkbox" id="getF" autocomplete='off' value="Get fitter" />
+                    <input class="needChange btn-check mx-1" type="checkbox" name="needChange"  id="getF" autocomplete='off' value="Get fitter" />
                     <label class="btn" for="getF" >Get Fitter</label>
                     </div>
                 </div>
@@ -382,6 +382,27 @@ function edit() {
 </div>`
     $('div#infor.container').append(ctn);
     $('input#account').val(getCookie('username'))
+    $('input#ageChange').val(getCookie('age'))
+    $('input#weightChange').val(getCookie('weight'))
+    $('input#heightChange').val(getCookie('height'))
+    $('input#birthChange').val(getCookie('birth'))
+    $('input#pwChange').val(getCookie('password'))
+    $('input#emailChange').val(getCookie('email'))
+    // var tmp=$('div.infor_focus').find('input').next('label.btn').html()
+    // tmp==getCookie('focusOption')
+    // var tmp=[]
+    // var tmpLength=$('div.infor_focus').find('label.btn')
+    // for(var i=0;i<tmpLength.length;i++)
+    // {
+    //     tmp+= $('div.infor_focus').find('input')[i].value
+
+    //     if(tmp[i]===getCookie('focusOption'))
+    //     {
+    //         $('div.infor_focus').find('input')[i].labels.addClass('active');
+    //         $('div.infor_focus').find('input')[i].prop('checked',true)
+    //     }
+    // }
+
     var count = 0,
         total = 0;
     $('div.infor_data.infor_sex>label.btn').click(function () {
@@ -399,23 +420,25 @@ function edit() {
     $('div.infor_data.infor_focus>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
-        if (count.length > 1) {
-            alert('You only can choose one part to focus on')
-            $('div.infor_data.infor_focus>input').checked == false
+        $('div.infor_data.infor_focus>input').checked == false
+
+        // if (count.length > 1) {
+        //     // alert('You only can hoose one part to focus on')
 
 
-        }
+        // }
         console.log(count.length)
 
     })
     $('div.infor_data.infor_need>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_need').find('.active')
-        if (count.length > 1) {
-            alert('You only can choose one thing that you need ')
-            $('div.infor_data.infor_need>input').checked == false
+        $('div.infor_data.infor_need>input').checked == false
 
-        }
+        // if (count.length > 1) {
+        //     // alert('You only can choose one thing that you need ')
+
+        // }
         console.log(count.length)
     })
 
@@ -425,46 +448,46 @@ function edit() {
 function changeInfor() {
     var acc = getCookie('username');
     var pw;
-    if ($('#pwChange').val()==null) {
+    if ($('#pwChange').val() === null) {
         pw = getCookie('password');
     } else {
         pw = $('#pwChange').val();
 
     }
     var email;
-    if ($('#emailChange').val()==null) {
+    if ($('#emailChange').val() == null) {
         email = getCookie('email');
     } else {
         email = $('#emailChange').val();
 
     }
     var birth;
-    if ($('#birthChange').val()==null) {
+    if ($('#birthChange').val() === null) {
         birth = getCookie('birth');
     } else {
         birth = $('#birthChange').val();
 
     }
     var height;
-    if ($('#heightChange').val()==null) {
+    if ($('#heightChange').val() === null) {
         height = getCookie('height');
     } else {
         height = $('#heightChange').val();
 
     }
     var weight;
-    if ($('#weightChange').val()==null) {
+    if ($('#weightChange').val() === null) {
         weight = getCookie('weight');
     } else {
         weight = $('#weightChange').val();
     }
-    var age ;
-    if ($('#ageChange').val()==null) {
+    var age;
+    if ($('#ageChange').val() === null) {
         age = getCookie('age');
     } else {
         age = $('#ageChange').val();
     }
-    console.log(age,height,weight,pw)
+    console.log(age, height, weight, pw)
     var sex;
     var focusOption;
     var needOption;
@@ -474,48 +497,41 @@ function changeInfor() {
     var checkstr2 = [];
     var checkboxChange3;
     var checkstr3 = [];
-    if (checkstr1 = "") {
-        checkstr1 = getCookie('sex');
-    } else {
-        checkboxChange1 = $('.sexChange');
-        for (var i = 0; i < checkboxChange1.length; i++) {
-            if (checkboxChange1[i].checked) {
-                checkstr1+=checkboxChange1[i].value;
-            }
-    
+
+    checkboxChange1 = document.getElementsByName("sexChange");
+    for (var i = 0; i < checkboxChange1.length; i++) {
+        if (checkboxChange1[i].checked) {
+            checkstr1 += checkboxChange1[i].value;
         }
+
+
     }
     console.log(checkstr1);
-
     sex = checkstr1.toString();
 
-    if (checkstr2 = "") {
-        checkstr2 = getCookie('focusOption');
-    } else {
-        checkboxChange2 = $('.focusChange');
-        for (var j = 0; j < checkboxChange2.length; j++) {
-            if (checkboxChange2[j].checked) {
-                checkstr2+=checkboxChange2[j].value
-            }
-        }
-    }
-    console.log(checkstr2);
+    checkboxChange2 = document.getElementsByName("focusChange");
+    for (var j = 0; j < checkboxChange2.length; j++) {
 
+        if (checkboxChange2[j].checked) {
+            checkstr2.push(checkboxChange2[j].value);
+          
+        }
+
+    }
+
+    console.log(checkstr2);
     focusOption = checkstr2.toString();
 
-    if (checkstr3 = "") {
-        checkstr3 = getCookie('needOption');
-    } else {
-        checkboxChange3 = $('.needChange');
-        for (var i = 0; i < checkboxChange3.length; i++) {
-            if (checkboxChange3[i].checked) {
-                checkstr3+=checkboxChange3[i].value
-            }
-    
+    checkboxChange3 = document.getElementsByName("needChange");
+    for (var i = 0; i < checkboxChange3.length; i++) {
+
+        if (checkboxChange3[i].checked) {
+            checkstr3.push(checkboxChange3[i].value)
+           
         }
+
     }
     console.log(checkstr3);
-
     needOption = checkstr3.toString();
 
     var data = {
@@ -531,22 +547,24 @@ function changeInfor() {
         'newage': age,
     };
     var api = "http://127.0.0.1:3000/api/changeInfor";
-
-    jQuery.post(api, data, function (res) {
-        setCookie('username', res.data.acc)
-        setCookie('password', res.data.pw)
-        setCookie('email', res.data.email)
-        setCookie('sex', res.data.sex)
-        setCookie('focusOption', res.data.focusOption)
-        setCookie('needOption', res.data.needOption)
-        setCookie('age', res.data.age)
-        setCookie('birth', res.data.birth)
-        setCookie('height', res.data.height)
-        setCookie('weight', res.data.weight)
-        window.location.href = 'infor';
-        alert(1)
-    });
-
+    if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
+        alert('Please check e ')
+    } else {
+        jQuery.post(api, data, function (res) {
+            setCookie('username', res.data.acc)
+            setCookie('password', res.data.pw)
+            setCookie('email', res.data.email)
+            setCookie('sex', res.data.sex)
+            setCookie('focusOption', res.data.focusOption)
+            setCookie('needOption', res.data.needOption)
+            setCookie('age', res.data.age)
+            setCookie('birth', res.data.birth)
+            setCookie('height', res.data.height)
+            setCookie('weight', res.data.weight)
+            window.location.href = 'infor';
+            alert('Already save')
+        });
+    }
 }
 
 function setCookie(cname, cvalue) {

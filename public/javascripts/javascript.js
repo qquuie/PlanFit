@@ -18,7 +18,7 @@ $(document).ready(function () {
     tmp2.click(function () {
         count =  $('div#sex.btn-group').find('.active');
         if (count.length==1) {
-            alert('You only can choose one gender');
+            // alert('You only can choose one gender');
             // $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)
@@ -26,7 +26,7 @@ $(document).ready(function () {
     tmp3.click(function () {
         count = $('div#needOptions').find('.active') ;
         if (count.length==1) {
-            alert('You only can choose one thing that you need ');
+            // alert('You only can choose one thing that you need ');
             // $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)

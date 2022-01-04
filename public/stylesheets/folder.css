@@ -114,9 +114,23 @@ div.addfont>h1{
     font-weight: bold;
     text-align: center;
 }
+#addinput{
+    height: 60;
+    width: 90%;
+    margin: 0 auto;
+}
+div.addback-btn{
+    background-color: #bacec1;
+    color: #f6f4e8;
+}
+div.addback-btn>p {
+    margin: 5px;
+}
 div.add-btn{
     background-color: #bacec1;
     color: #f6f4e8;
+    position: absolute;
+    right: 0;
 }
 div.add-btn>p {
     margin: 5px;

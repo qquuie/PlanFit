@@ -52,42 +52,62 @@ body
                 h4.dropdown-item.mx-3#welcome(data-toggle='modal', data-bs-target='#smallPageModal', ) Welcome 
   //  -----------------------------Folder-------------------------------- 
   .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
-    .modal-dialog.modal-dialog-scrollable
-      .modal-content.folder
+    .modal-dialog.modal-dialog-scrollable.allfolder
+      //  ---------------------------------所有文件夾------------------------------
+      .modal-content.folder#folder
         .modal-header
-          .input-group-lg.mb-11
+          .input-group-lg
             h1 Your folder
           .input-group-lg.mb-1s
-            button.btn.col-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
-              img(src='./img/close_r.png', width='30px', height='40px', alt)
-        //  <---------------------------------所有文件夾------------------------------
-        .modal-body#folder
+            button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
+              img(src='./img/close_r.png', width='30px', height='40px')
+        .modal-body
           #all_fol
             .d-flex.flex-row.alr-folder.position-relative#1
               img(src='img/icon_folder.png')
-              p(onclick='FolderList(\'1\')') My favorite
-              img.close#del_folder1(src='img/close_r.png', onclick='removeFolder(\'1\')')
+              p(onclick="FolderList('1')") My favorite
+              img.close#del_folder1(src='img/close_r.png', onclick="removeFolder('1')")
           .modal-footer
             .input-group-lg.mb-3.d-flex.flex-row.add_folder.position-relative
               p Add folder
               input#yourfolder(type='text', placeholder='  | folder name')
               img#add_fol(src='img/add.png', alt)
-        //  <----------------------------------文件夾中的所有動作-----------------------------  
-        .modal-body.d-none#folder1
-          .input-group-lg.mt-3
+      //  ----------------------------------文件夾中的所有動作----------------------------- 
+      .modal-content.folder.d-none#folder1
+        .modal-header 
+          .input-group-lg
             h1
               img(src='img/icon_folder.png')
               | My favorite
+          .input-group-lg
+            button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
+              img(src='./img/close_r.png', width='30px', height='40px', alt)
+        .modal-body
           #fol_move1
             .d-flex.flex-row.position-relative.alr-folder#1
               p My favorite
-              img.close#del_list1(src='img/close_r.png', onclick='removeList(\'1\')')
+              img.close#del_list1(src='img/close_r.png', onclick="removeList('1')")
           .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
-            .btn.btn-sm.back-btn(type='button', onclick='backBtn(\'1\')')
+            .btn.btn-sm.back-btn(type='button', onclick="backBtn('1')")
               p Back
-            .btn.btn-sm.d-flex.justify-content-between.addelse-btn(type='button')
+            .btn.btn-sm.d-flex.justify-content-between.addelse-btn(type='button', onclick="addBtn_act('1')")
               p Add else
               img(src='img/add.png', alt)
+      //  ----------------------------------增加動作----------------------------- 
+      .modal-content.action.d-none#action1
+        .modal-header 
+          .input-group-lg.addfont
+            h1 Input something...
+          .input-group-lg.mb-1s
+            button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
+              img(src='./img/close_g1.png', width='30px', height='40px', alt)
+        .modal-body
+          textarea#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative(name='' cols='30' rows='3')
+          .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
+            .btn.btn-sm.addback-btn(type='button' onclick="backBtn_act('1')")
+              p Back
+            .btn.btn-sm.d-flex.justify-content-between.add-btn(type='button' onclick='')
+              p Add
   //  ---------------------------Signun/Signout------------------------------ 
   //- .smallPage.modal.fade.d-grid#smallPageModal(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
   //-   .smallPage.modal.d-grid#smallPageModal(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')

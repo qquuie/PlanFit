@@ -20,6 +20,7 @@
         "ejs": "^3.1.6",
         "express": "~4.16.1",
         "express-flash": "^0.0.2",
+        "express-formidable": "^1.2.0",
         "express-session": "^1.17.2",
         "forwarded": "^0.2.0",
         "http-errors": "~1.6.3",

@@ -16,23 +16,25 @@ body
             a.nav-link.px-2.link-dark.ms-5#homeNav(href='index') Home
           li.nav-item.dropdown.fs-3.mt-3
             a#workOutNav.nav-link.dropdown-toggle.border-0.px-1.link-dark.ms-5(type='button', aria-expanded='false') Workout
+            //12-30改，為了讀取值，寫出對應的姿勢
             ul#workOutMenu.dropdown-menu(aria-labelledby='workOutNav')
               li
-                a.dropdown-item(href='workout') Fullbody
+                a.dropdown-item(href='workout' onclick="getPose('Fullbody')") Fullbody
               li
-                a.dropdown-item(href='workout') Shoulders
+                a.dropdown-item(href='workout' onclick="getPose('Shoulders')") Shoulders
               li
-                a.dropdown-item(href='workout') Abs
+                a.dropdown-item(href='workout' onclick="getPose('Abs')") Abs
               li
-                a.dropdown-item(href='workout') Arms
+                a.dropdown-item(href='workout' onclick="getPose('Arms')") Arms
               li
-                a.dropdown-item(href='workout') Chest
+                a.dropdown-item(href='workout' onclick="getPose('Chest')") Chest
               li
-                a.dropdown-item(href='workout') Back
+                a.dropdown-item(href='workout' onclick="getPose('Back')") Back
               li
-                a.dropdown-item(href='workout') Thing
+                a.dropdown-item(href='workout' onclick="getPose('Thing')") Thing
               li
-                a.dropdown-item(href='workout') Butt
+                a.dropdown-item(href='workout' onclick="getPose('Butt')") Butt
+                //- href='workout' 
           li.nav-item.fs-3.mt-3
             a.nav-link.link-dark.ms-5#contactUsNav(href='contact') Contact Us
           li.nav-item.fs-3.mt-3

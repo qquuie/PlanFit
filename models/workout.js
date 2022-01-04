@@ -20,6 +20,8 @@ const pose = new mongoose.Schema({
     img: String,
     click: Number,
     describe: String,
+    class_pose: String, //關於屬於哪個部位
+    status: Boolean
 });
 
 pose.set('collection', 'pose');

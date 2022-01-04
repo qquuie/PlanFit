@@ -4,7 +4,7 @@ var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 
 
-router.post('/addUser', function (req, res) {
+router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
         acc: req.body.acc,
@@ -53,7 +53,7 @@ router.post('/addUser', function (req, res) {
 });
 
 //登入畫面擷取所有資料
-router.post('/getUser', function (req, res) {
+router.post('/getUser', function(req, res) {
     loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
@@ -79,11 +79,11 @@ router.post('/getUser', function (req, res) {
     })
 });
 
-router.post('/getInfor', function (req, res) {
+router.post('/getInfor', function(req, res) {
     // var id = req.body.acc;
     loginModel.find({
         acc: req.body.acc
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) console.log(err);
         // console.log(data);
         res.json({
@@ -92,11 +92,11 @@ router.post('/getInfor', function (req, res) {
 
     })
 });
-router.post('/changeInfor', function (req, res) {
+router.post('/changeInfor', function(req, res) {
 
     loginModel.findOne({
         acc: req.body.acc
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) console.log(err);
         else {
             data.pw = req.body.newpw;
@@ -110,7 +110,7 @@ router.post('/changeInfor', function (req, res) {
             data.needOption = req.body.newneedOption;
             console.log(data);
 
-            data.save(function (err) {
+            data.save(function(err) {
                 if (err) console.log(err);
                 console.log(data);
                 res.json({
@@ -122,8 +122,8 @@ router.post('/changeInfor', function (req, res) {
     })
 });
 //workout載入
-router.get('/getposeList', function (req, res) {
-    workoutModel.find(function (err, data) {
+router.get('/getposeList', function(req, res) {
+    workoutModel.find(function(err, data) {
         if (err) {
             console.log(err);
         }
@@ -132,16 +132,17 @@ router.get('/getposeList', function (req, res) {
 });
 
 //workout點擊更新//後端
-router.post('/updateposeClick', function (req, res) {
+router.post('/updateposeClick', function(req, res) {
     var id = req.body.id;
-    workoutModel.findById(id, function (err, data) {
+    console.log(req.body);
+    workoutModel.findById(id, function(err, data) {
         if (err) {
             console.log(err);
         } else {
             // console.log(req.body.click);
             data.click = req.body.click;
             // console.log(data);
-            data.save(function (err) {
+            data.save(function(err) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -151,11 +152,6 @@ router.post('/updateposeClick', function (req, res) {
         }
     });
 });
-
-// //修改與更新待辦事項
-// router.post('/updateList', function (req, res) {
-//     // ...
-// });
 
 // //刪除待辦事項
 // router.post('/removeList', function (req, res) {

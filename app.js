@@ -44,15 +44,15 @@ app.use('/index', indexRouter);
 app.use('/indexG', indexRouterG);
 
 app.use('/contact', contactRouter);
-app.use('/infor', inforRouter)
-app.use('/workout', workoutRouter)
-app.use('/workoutG', workoutRouterG)
+app.use('/infor', inforRouter);
+app.use('/workout', workoutRouter);
+app.use('/workoutG', workoutRouterG);
 
-app.use('/navi', navigationRouter)
-app.use('/navi', navigationRouterG)
+app.use('/navi', navigationRouter);
+app.use('/navi', navigationRouterG);
 
-app.use('/about', aboutRouter)
-app.use('/aboutG', aboutRouterG)
+app.use('/about', aboutRouter);
+app.use('/aboutG', aboutRouterG);
 
 
 app.use(logger('dev'));

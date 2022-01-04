@@ -104,12 +104,17 @@ function backBtn(id) {
     $('#folder' + id).addClass("d-none");
 }
 // -----------------進入新增動作------------------
-function addBtn_act(id){
-    $('#action'+id).removeClass("d-none");
-    $('#folder'+id).addClass("d-none");
+function addBtn_act(id) {
+    $('#action' + id).removeClass("d-none");
+    $('#folder' + id).addClass("d-none");
 }
 // -----------------回到上一個文件夾------------------
-function backBtn_act(id){
-    $('#folder'+id).removeClass("d-none");
-    $('#action'+id).addClass("d-none");
+function backBtn_act(id) {
+    $('#folder' + id).removeClass("d-none");
+    $('#action' + id).addClass("d-none");
 }
+$(document).ready(function () {
+    $('#add_fol').click(function () {
+        addFolder();
+    });
+})

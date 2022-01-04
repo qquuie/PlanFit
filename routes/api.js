@@ -19,20 +19,32 @@ router.post('/addUser', function(req, res) {
         needOption: req.body.needOption
     });
 
-    newUser.save(function(err, data) {
+    newUser.save(function (err, data) {
+        // if (err) {
+        //     res.json({
+        //         "status": 1,
+        //         // "msg": "error"
+        //     });
+        //     console.log("新增失敗");
+        // } else {
+        //     res.json({
+        //         "status": 0,
+        //         // "msg": "success",
+        //         "data": data
+        //     });
+        //     console.log("新增成功");
+        // }
         if (err) {
             res.json({
                 "status": 1,
-                // "msg": "error"
+                "msg": "error"
             });
-            console.log("新增失敗");
         } else {
             res.json({
                 "status": 0,
-                // "msg": "success",
+                "msg": "success",
                 "data": data
             });
-            console.log("新增成功");
         }
     })
 
@@ -45,46 +57,23 @@ router.post('/getUser', function(req, res) {
     loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
-    }, function(err, data) {
-        if (err) console.log(err);
-        // console.log(res.json(data));
-    })
-});
-
-//得到對應的列表
-router.post('/getPose', function(req, res) {
-    console.log(req.body);
-    workoutModel.find({ 'class_pose': req.body.pose }, function(err, data) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data);
-            data.status = true;
-            // data.save(function(err) {
-            //     if (err) {
-            //         console.log(err);
-            //     } else {
-            //         // res.json(data);
-            //     }
-            // });
-        }
-        // res.json(data); //將資料回應給前端
-    });
-    // db..update(
-    //     { age: { $gt: 25 } },
-    //     { $set: { username: "John" } },   { multi: true }
-    //  )
-});
-
-//workout載入
-router.post('/getposeList', function(req, res) {
-    workoutModel.find({ 'status': false }, function(err, data) {
-        if (err) {
-
-        } else {
-            console.log(data);
+    }, function (err, data) {
+       
+        if (data == null) {
             res.json({
-                'data': data
+                "status": 1,
+                "msg": "帳號密碼錯誤!"
+            });
+        } else if (err) {
+            res.json({
+                "status": 1,
+                "msg": "error"
+            });
+        } else {
+            res.json({
+                "status": 0,
+                "msg": "success",
+                "data": data
             });
         }
     })

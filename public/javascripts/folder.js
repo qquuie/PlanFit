@@ -2,7 +2,7 @@ let folder = [];
 
 // -----------------新增文件夾------------------
 function addFolder() {
-    let id = 1;
+    let id = 2;
     let title = $('#yourfolder').val();
     if (title == "") {
         alert("Please enter the folder name!");
@@ -88,39 +88,39 @@ function newFolderList(data) {
                 </div>
             </div>
         </div>`;
-    $('.Page').append(content);
+    $('#allfolder').append(content);
 }
 // -----------------進入文件夾------------------
-function FolderList(id) {
+function FolderList(data) {
     $('#folder').addClass("d-none");
-    $('#folder' + id).removeClass("d-none");
+    $('#folder' + data.id).removeClass("d-none");
 }
 // -----------------刪除文件夾------------------
-function removeFolder(id) {
-    let index = folder.findIndex(element => element.id == id);
+function removeFolder(data) {
+    let index = folder.findIndex(element => element.data.id == id);
     folder.splice(index, 1);
-    $('#' + id).remove();
+    $('#' + data.id).remove();
 }
 // -----------------刪除動作------------------
-function removeList(id) {
-    let index = folder.findIndex(element => element.id == id);
-    folder.splice(index, 1);
-    $('#' + id).remove();
-}
+// function removeList(data) {
+//     let index = folder.findIndex(element => element.data.id == id);
+//     folder.splice(index, 1);
+//     $('#' + data.id).remove();
+// }
 // -----------------回到所有文件夾------------------
-function backBtn(id) {
+function backBtn(data) {
     $('#folder').removeClass("d-none");
-    $('#folder' + id).addClass("d-none");
+    $('#folder' + data.id).addClass("d-none");
 }
 // -----------------進入新增動作------------------
-function addBtn_act(id) {
-    $('#action' + id).removeClass("d-none");
-    $('#folder' + id).addClass("d-none");
+function addBtn_act(data) {
+    $('#action' + data.id).removeClass("d-none");
+    $('#folder' + data.id).addClass("d-none");
 }
 // -----------------回到上一個文件夾------------------
-function backBtn_act(id) {
-    $('#folder' + id).removeClass("d-none");
-    $('#action' + id).addClass("d-none");
+function backBtn_act(data) {
+    $('#folder' + data.id).removeClass("d-none");
+    $('#action' + data.id).addClass("d-none");
 }
 $(document).ready(function () {
     $('#add_fol').click(function () {

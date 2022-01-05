@@ -1,12 +1,12 @@
 // const { parseChar } = require("character-parser");
 getInfor();
-getUSerCookie();
+// getUSerCookie();
 
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
+// function getUSerCookie() {
+//     var tmp = getCookie('username');
+//     $('h4#welcome').text('Wellcome ' + tmp);
 
-}
+// }
 // wellcome();
 function addUser() {
     var acc = $('#signUpName').val();
@@ -111,10 +111,7 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    // var user = {
-    //     'acc': id,
-    //     'pw': pass
-    // };
+ 
     if (id == "" && pass == "") {
         alert("請輸入標題和內容!");
     } else {
@@ -390,23 +387,8 @@ function edit() {
     $('input#birthChange').val(getCookie('birth'))
     $('input#pwChange').val(getCookie('password'))
     $('input#emailChange').val(getCookie('email'))
-    // var tmp=$('div.infor_focus').find('input').next('label.btn').html()
-    // tmp==getCookie('focusOption')
-    // var tmp=[]
-    // var tmpLength=$('div.infor_focus').find('label.btn')
-    // for(var i=0;i<tmpLength.length;i++)
-    // {
-    //     tmp+= $('div.infor_focus').find('input')[i].value
 
-    //     if(tmp[i]===getCookie('focusOption'))
-    //     {
-    //         $('div.infor_focus').find('input')[i].labels.addClass('active');
-    //         $('div.infor_focus').find('input')[i].prop('checked',true)
-    //     }
-    // }
-
-    var count = 0,
-        total = 0;
+    var count = 0;
     $('div.infor_data.infor_sex>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
@@ -424,11 +406,6 @@ function edit() {
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
 
-        // if (count.length > 1) {
-        //     // alert('You only can hoose one part to focus on')
-
-
-        // }
         console.log(count.length)
 
     })
@@ -437,10 +414,6 @@ function edit() {
         count = $('div.infor_data.infor_need').find('.active')
         $('div.infor_data.infor_need>input').checked == false
 
-        // if (count.length > 1) {
-        //     // alert('You only can choose one thing that you need ')
-
-        // }
         console.log(count.length)
     })
 

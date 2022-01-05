@@ -28,6 +28,7 @@ head
   script(src='https://code.jquery.com/jquery-3.1.1.min.js')
   script(type='' src='javascripts/javascript.js')
   script(src='javascripts/login.js')
+  script(src='javascripts/folder.js')
 
   // CSS only
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
@@ -38,15 +39,37 @@ body
   include includes/navigation
   .page
     .inputGroup
-      form
+      form(id='contact-from')
         .input-group-lg.mb-3
-          input#yourName.form-control(type='text' placeholder='    | Your Name')
+          input#from_name.form-control(type='text' placeholder='    | Your Name')
         .input-group-lg.mb-3
-          input#yourEmail.form-control(type='email' placeholder='    | Your Email')
+          input#email_to.form-control(type='email' placeholder='    | Your Email')
         .input-group-lg.mb-3
           input#subject.form-control(type='text' placeholder='    | Subject')
         .input-group.mb-3
-          textarea#yourMes.form-control(name='' cols='30' rows='10' style='font-size: 19.5px;' placeholder='    | Message')
+          textarea#message.form-control(name='' cols='30' rows='10' style='font-size: 19.5px;' placeholder='    | Message')
         .d-grid.gap-2
-          button#contactBtn.contactBtn.btn(type='submit') Send
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+          button#contactBtn.contactBtn.btn(type='submit' onclick="send()") Send
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+script(type='text/javascript' src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js')
+script(type='text/javascript').
+  (function() {
+  // https://dashboard.emailjs.com/admin/integration
+  emailjs.init('user_g7hmEF2Sjcno7y6WugMpI');
+  })();
+script(type='text/javascript').
+ 
+    function send() {
+      console.log(1);
+        emailjs.send("20220112", "template_tz2bfur", {
+            from_name: $('#from_name').val(),
+            to_name: "Mr.fitplant",
+            subject: $('#subject').val(),
+            message: $('#message').val(),
+            reply_to: "fitplan0112@gmail.com",
+        }).then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+        }, function (error) {
+            console.log('FAILED...', error);
+        });;
+    }

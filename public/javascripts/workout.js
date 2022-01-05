@@ -24,6 +24,7 @@ function getCookie(c_name) {
 }
 
 /*--------------------------------生成workout_div--------------------------------------*/
+getposeList();
 
 function getPose(p) {
     var api = "http://127.0.0.1:3000/api/getpose";
@@ -36,39 +37,55 @@ function getPose(p) {
     // getposeList(data.pose);
 }
 
-getposeList();
+
 
 function getposeList() {
     // console.log(p);
     var focus = getCookie('needOption');
     // console.log(focus);
-    // var needarr = new Array();　
-    // var dataneed = new Array(3);　
-    // posearr = focus.split(",");
-    // console.log(posearr);
-    // for (var i = 0; i < posearr.length; i++) {
-    //     if (needarr[i] == "Lose weight") {
-    //         dataneed[0] = 1;
-    //     }
-    //     if (needarr[i] == "Gain muscle") {
-    //         dataneed[1] = 1;
-    //     }
-    //     if (needarr[i] == "Get fitter") {
-    //         dataneed[2] = 1;
-    //     }
-    //     console.log(needarr[i]);
-    //     console.log(dataneed[i]);
-    // }
-
-    // var redata = {
-    //     "focus": dataneed[0],
-    // }
+    var needarr = new Array();　
+    var dataneed = new Array(3);　
+    needarr = focus.split(",");
+    // console.log(needarr);
+    for (var i = 0; i < needarr.length; i++) {
+        if (needarr[i] == "Lose weight") {
+            dataneed[0] = 1;
+        }
+        if (needarr[i] == "Gain muscle") {
+            dataneed[1] = 1;
+        }
+        if (needarr[i] == "Get fitter") {
+            dataneed[2] = 1;
+        }
+    }
 
     var api = "http://127.0.0.1:3000/api/getposeList";
+
+    var tmp = [];
     jQuery.post(api, function(data) {
+        var pose = new Array(data.length);
         for (let i = 0; i < data.length; i++) {
-            newList(data[i], i, data.length - 1);
+            pose[i] = 0;
+            if (data[i].need[0] == dataneed[0]) {
+                pose[i]++;
+            }
+            if (data[i].need[1] == dataneed[1]) {
+                pose[i]++;
+            }
+            if (data[i].need[2] == dataneed[2]) {
+                pose[i]++;
+            }
+            pose[i] = pose[i] * 1000 + data[i].click;
+            data[i].num = pose[i];
+            tmp.push(data[i]);
+            tmp.sort(function(a, b) {
+                return b.num - a.num
+            });
         }
+        for (let i = 0; i < data.length; i++) {
+            newList(tmp[i], i, data.length - 1);
+        }
+        console.log(tmp);
     });
 }
 
@@ -114,7 +131,7 @@ function newList(data, i, end) {
                 </div>
             </div>`
     $('.card_row' + col_num).append(tmp);
-  
+
 }
 
 //更新待辦事項//前端
@@ -135,9 +152,7 @@ function updateposeClick(id) {
 
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
-$(document).ready(function(){
-   
-})
+
 $(".folder").click(function() {
     console.log(1);
     // var $father = $(this).parent().parent().parent().parent();

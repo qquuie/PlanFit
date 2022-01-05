@@ -21,7 +21,7 @@ router.post('/addUser', function(req, res) {
     });
 
     newUser.save(function(err, data) {
-        
+
         if (err) {
             res.json({
                 "status": 1,
@@ -112,6 +112,18 @@ router.post('/changeInfor', function(req, res) {
 //workout載入
 
 router.post('/getpose', function(req, res) {
+    workoutModel.find(function(err, data) {
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].status == true) {
+                data[i].status = false;
+                data[i].save(function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        }
+    });
     workoutModel.find({
         class_pose: req.body.pose
     }, function(err, data) {
@@ -132,7 +144,6 @@ router.post('/getpose', function(req, res) {
 });
 
 router.post('/getposeList', function(req, res) {
-    console.log(req.body);
     workoutModel.find({
         status: true
     }, function(err, data) {
@@ -140,14 +151,6 @@ router.post('/getposeList', function(req, res) {
             console.log(err);
         }
         res.json(data); //將資料回應給前端
-        for (var i = 0; i < data.length; i++) {
-            data[i].status = false;
-            data[i].save(function(err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        }
     });
 });
 

@@ -30,7 +30,7 @@ function getPose(p) {
     // var pose = p;
     var data = {
         "pose": p,
-    };
+    }; //選擇之動作
     jQuery.post(api, data, function(res) {});
     // console.log(data.pose);
     // getposeList(data.pose);
@@ -40,7 +40,13 @@ getposeList();
 
 function getposeList() {
     // console.log(p);
-    console.log(getCookie('focusOption'));
+    console.log(getCookie('focusOption')); //得到使用者想要的資料
+    var focus = getCookie('focusOption');
+    var posearr = new Array();　
+    posearr = focus.split(",");
+    console.log(posearr);
+
+
     var api = "http://127.0.0.1:3000/api/getposeList";
     // console.log(data.pose);
     jQuery.post(api, function(data) {

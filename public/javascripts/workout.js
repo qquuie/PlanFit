@@ -38,8 +38,7 @@ function newList(data, i, end) {
     var e = (data.equipment) ? "Yes" : "No";
     var j = (data.Jumping) ? "Yes" : "No";
     tmp =
-        `<div class="card-group text-center">
-            <div class="card border-GreenLake">
+        `<div class="card border-GreenLake">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
@@ -69,8 +68,7 @@ function newList(data, i, end) {
                         Jumping：${j}
                     </p>
                 </div>
-            </div>
-        </div>`
+            </div>`
     $('.card_row' + col_num).append(tmp);
 }
 

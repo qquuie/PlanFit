@@ -74,6 +74,7 @@ function newList(data, i, end) {
 
 //更新待辦事項//前端
 function updateposeClick(id) {
+    $("#calendar_win").show();
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
     var data = {
@@ -90,10 +91,11 @@ function updateposeClick(id) {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 $(".folder").click(function() {
-    var $father = $(this).parent().parent().parent().parent();
-    workout_sth = $father.find(".card-body h3").text();
-    console.log(workout_sth);
-    $("#folder_win").show();
+    console.log(1);
+    // var $father = $(this).parent().parent().parent().parent();
+    // workout_sth = $father.find(".card-body h3").text();
+    // console.log(workout_sth);
+    // $("#folder_win").show();
 });
 $("#folder_close").click(function() {
     $("#folder_win").hide();
@@ -122,10 +124,10 @@ $('.folder_add').click(function() {
     console.log(workout_sth);
 });
 /*--------------------------------calender--------------------------------------*/
-$(".calender").click(function() {
-    $("#calendar_win").show();
-    $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#calendar_win").show();
+//     $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
+// });
 
 
 $("div#smallPageModal").css('z-index', '-1');
@@ -137,15 +139,15 @@ $(".calender").click(function() {
 
 
 //------
-$(".calender").click(function() {
-    $("#cal_win").show();
-    $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#cal_win").show();
+//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+// });
 
 
 $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
-$(".calender").click(function() {
-    $("#cal_win").show();
-    $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#cal_win").show();
+//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+// });

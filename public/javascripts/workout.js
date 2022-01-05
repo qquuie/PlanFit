@@ -1,6 +1,27 @@
-$(".dropdown-item").click(function() {
-    var workout_part = $(this).text();
-});
+// $(".dropdown-item").click(function() {
+//     var workout_part = $(this).text();
+// });
+
+function getUSerCookie() {
+    var tmp = getCookie('username');
+    $('h4#welcome').text('Wellcome ' + tmp);
+}
+
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
 
 /*--------------------------------生成workout_div--------------------------------------*/
 
@@ -19,6 +40,7 @@ getposeList();
 
 function getposeList() {
     // console.log(p);
+    console.log(getCookie('focusOption'));
     var api = "http://127.0.0.1:3000/api/getposeList";
     // console.log(data.pose);
     jQuery.post(api, function(data) {

@@ -3,6 +3,7 @@ var router = express.Router();
 var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 var folderModel = require('../models/folder.js');
+var bcrypt = require('bcryptjs');
 
 router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
@@ -20,20 +21,7 @@ router.post('/addUser', function(req, res) {
     });
 
     newUser.save(function(err, data) {
-        // if (err) {
-        //     res.json({
-        //         "status": 1,
-        //         // "msg": "error"
-        //     });
-        //     console.log("新增失敗");
-        // } else {
-        //     res.json({
-        //         "status": 0,
-        //         // "msg": "success",
-        //         "data": data
-        //     });
-        //     console.log("新增成功");
-        // }
+        
         if (err) {
             res.json({
                 "status": 1,
@@ -58,7 +46,7 @@ router.post('/getUser', function(req, res) {
         acc: req.body.acc,
         pw: req.body.pw
 
-    }, function(err, data) {}, function(err, data) {
+    }, function(err, data) {
         if (data == null) {
             res.json({
                 "status": 1,

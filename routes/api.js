@@ -140,10 +140,14 @@ router.post('/changeInfor', function (req, res) {
 
     loginModel.findOne({
         acc: req.body.acc
-    }, function (err, data) {
+    }, async function (err, data) {
         if (err) console.log(err);
         else {
-            data.pw = req.body.newpw;
+            const salt = await bcrypt.genSalt(8);
+            const hashpw = await req.body.newpw;
+            data.pw=bcrypt.hashSync(hashpw, salt);
+            
+            // data.pw = req.body.newpw;
             data.email = req.body.newemail;
             data.birth = req.body.newbirth;
             data.sex = req.body.newsex;

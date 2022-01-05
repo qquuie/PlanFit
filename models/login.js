@@ -26,7 +26,7 @@ const loginSchema = new mongoose.Schema({
         type: String,
         require:true
     },
-    birth: Date,
+    birth: String,
     sex: {
         type: String,
         require:true

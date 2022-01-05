@@ -1,6 +1,27 @@
-$(".dropdown-item").click(function() {
-    var workout_part = $(this).text();
-});
+// $(".dropdown-item").click(function() {
+//     var workout_part = $(this).text();
+// });
+
+function getUSerCookie() {
+    var tmp = getCookie('username');
+    $('h4#welcome').text('Wellcome ' + tmp);
+}
+
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
 
 /*--------------------------------生成workout_div--------------------------------------*/
 
@@ -9,7 +30,7 @@ function getPose(p) {
     // var pose = p;
     var data = {
         "pose": p,
-    };
+    }; //選擇之動作
     jQuery.post(api, data, function(res) {});
     // console.log(data.pose);
     // getposeList(data.pose);
@@ -19,6 +40,13 @@ getposeList();
 
 function getposeList() {
     // console.log(p);
+    console.log(getCookie('focusOption')); //得到使用者想要的資料
+    var focus = getCookie('focusOption');
+    var posearr = new Array();　
+    posearr = focus.split(",");
+    console.log(posearr);
+
+
     var api = "http://127.0.0.1:3000/api/getposeList";
     // console.log(data.pose);
     jQuery.post(api, function(data) {
@@ -75,6 +103,7 @@ function newList(data, i, end) {
 
 //更新待辦事項//前端
 function updateposeClick(id) {
+    $("#calendar_win").show();
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
     var data = {
@@ -94,10 +123,11 @@ $(document).ready(function(){
    
 })
 $(".folder").click(function() {
-    var $father = $(this).parent().parent().parent().parent();
-    workout_sth = $father.find(".card-body h3").text();
-    console.log(workout_sth);
-    $("#folder_win").show();
+    console.log(1);
+    // var $father = $(this).parent().parent().parent().parent();
+    // workout_sth = $father.find(".card-body h3").text();
+    // console.log(workout_sth);
+    // $("#folder_win").show();
 });
 
 $("#folder_close").click(function() {
@@ -127,10 +157,10 @@ $('.folder_add').click(function() {
     console.log(workout_sth);
 });
 /*--------------------------------calender--------------------------------------*/
-$(".calender").click(function() {
-    $("#calendar_win").show();
-    $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#calendar_win").show();
+//     $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
+// });
 
 
 $("div#smallPageModal").css('z-index', '-1');
@@ -142,15 +172,15 @@ $(".calender").click(function() {
 
 
 //------
-$(".calender").click(function() {
-    $("#cal_win").show();
-    $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#cal_win").show();
+//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+// });
 
 
 $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
-$(".calender").click(function() {
-    $("#cal_win").show();
-    $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-});
+// $(".calender").click(function() {
+//     $("#cal_win").show();
+//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
+// });

@@ -21,7 +21,8 @@ const pose = new mongoose.Schema({
     click: Number,
     describe: String,
     class_pose: String, //關於屬於哪個部位
-    status: Boolean
+    status: Boolean,
+    need: Array
 });
 
 pose.set('collection', 'pose');

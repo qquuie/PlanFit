@@ -1,22 +1,30 @@
 let folder = [];
-let id = 2;
+
 // -----------------新增文件夾------------------
 function addFolder() {
-    let title = $('input#yourfolder').val();
-    console.log(title)
+    let id = 1;
+    let title = $('#yourfolder').val();
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
-        let newFolderdiv = {
+        var api = "http://127.0.0.1:3000/api/addFolder";
+        let data = {
             'id': id,
             'title': title,
             'status': false
         };
-        folder.push(newFolderdiv);
-        newFolder(newFolderdiv);
-        newFolderList(newFolderdiv);
-        id++;
-        $('#yourfolder').val('');
+        jQuery.post(api, data, function (res) {
+            if (res.status == 0) {
+                folder.push(data);
+                newFolderList(data);
+                newFolder(data);
+                id++;
+                $('#yourfolder').val('');
+            } else if (res.status == 1) {
+                alert(res.msg)
+            }
+        });
+
     }
 
 }

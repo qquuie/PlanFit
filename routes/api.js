@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
-
+var folderModel = require('../models/folder.js');
 
 router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
@@ -57,8 +57,8 @@ router.post('/getUser', function(req, res) {
     loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
-    }, function(err, data) {
 
+    }, function(err, data) {}, function(err, data) {
         if (data == null) {
             res.json({
                 "status": 1,
@@ -194,5 +194,36 @@ router.post('/updateposeClick', function(req, res) {
 // router.post('/checkStatus', function (req, res) {
 //     // ...
 // });
+
+//新增文件夾
+router.post('/addFolder', function(req, res) {
+    var newfolder = new folderModel({
+        id: req.body.id,
+        title: req.body.title,
+        status: false
+    });
+    newfolder.save(function(err, data) {
+        if (err) {
+            res.json({
+                "status": 1,
+                "msg": "error"
+            });
+        } else {
+            res.json({
+                "status": 0,
+                "msg": "success",
+                "data": data
+            });
+        }
+    })
+});
+router.get('/getFolder', function(req, res) {
+    folderModel.find(function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(data); //將資料回應給前端
+    });
+});
 
 module.exports = router;

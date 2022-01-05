@@ -1,13 +1,5 @@
-// const { parseChar } = require("character-parser");
 getInfor();
-// getUSerCookie();
 
-// function getUSerCookie() {
-//     var tmp = getCookie('username');
-//     $('h4#welcome').text('Wellcome ' + tmp);
-
-// }
-// wellcome();
 function addUser() {
     var acc = $('#signUpName').val();
     var pw = $('#signUpPass').val();

@@ -49,7 +49,7 @@ body
         .input-group.mb-3
           textarea#message.form-control(name='' cols='30' rows='10' style='font-size: 19.5px;' placeholder='    | Message')
         .d-grid.gap-2
-          button#contactBtn.contactBtn.btn(type='submit' onclick="send()") Send
+          button#contactBtn.contactBtn.btn(type='button' onclick="send()") Send
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
 script(type='text/javascript' src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js')
 script(type='text/javascript').
@@ -57,10 +57,8 @@ script(type='text/javascript').
   // https://dashboard.emailjs.com/admin/integration
   emailjs.init('user_g7hmEF2Sjcno7y6WugMpI');
   })();
-script(type='text/javascript').
- 
-    function send() {
-      console.log(1);
+  function send() {
+        console.log($('#from_name').val());
         emailjs.send("20220112", "template_tz2bfur", {
             from_name: $('#from_name').val(),
             to_name: "Mr.fitplant",
@@ -69,6 +67,9 @@ script(type='text/javascript').
             reply_to: "fitplan0112@gmail.com",
         }).then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
+            alert('Sending successful!!! We will reply you as soon as possible');
+            history.go(0);
+
         }, function (error) {
             console.log('FAILED...', error);
         });;

@@ -40,15 +40,31 @@ getposeList();
 
 function getposeList() {
     // console.log(p);
-    console.log(getCookie('focusOption')); //得到使用者想要的資料
-    var focus = getCookie('focusOption');
-    var posearr = new Array();　
-    posearr = focus.split(",");
-    console.log(posearr);
+    var focus = getCookie('needOption');
+    // console.log(focus);
+    // var needarr = new Array();　
+    // var dataneed = new Array(3);　
+    // posearr = focus.split(",");
+    // console.log(posearr);
+    // for (var i = 0; i < posearr.length; i++) {
+    //     if (needarr[i] == "Lose weight") {
+    //         dataneed[0] = 1;
+    //     }
+    //     if (needarr[i] == "Gain muscle") {
+    //         dataneed[1] = 1;
+    //     }
+    //     if (needarr[i] == "Get fitter") {
+    //         dataneed[2] = 1;
+    //     }
+    //     console.log(needarr[i]);
+    //     console.log(dataneed[i]);
+    // }
 
+    // var redata = {
+    //     "focus": dataneed[0],
+    // }
 
     var api = "http://127.0.0.1:3000/api/getposeList";
-    // console.log(data.pose);
     jQuery.post(api, function(data) {
         for (let i = 0; i < data.length; i++) {
             newList(data[i], i, data.length - 1);

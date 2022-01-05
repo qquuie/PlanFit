@@ -144,6 +144,7 @@ router.post('/getpose', function(req, res) {
 });
 
 router.post('/getposeList', function(req, res) {
+    console.log(req.body);
     workoutModel.find({
         status: true
     }, function(err, data) {
@@ -152,7 +153,6 @@ router.post('/getposeList', function(req, res) {
         }
         res.json(data); //將資料回應給前端
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i], i);
             data[i].status = false;
             data[i].save(function(err) {
                 if (err) {

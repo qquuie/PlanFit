@@ -33,10 +33,10 @@ function newFolder(data) {
     let status = (data.status) ? "checked" : "";
     let content =
         `<div class="d-flex flex-row alr-folder position-relative" id="${data.id}">
-        <img src="img/icon_folder.png">
-        <p onclick="FolderList('${data.id}')">${data.title}</p>
-        <img src="img/close_r.png" class="close" id="del_folder${data.id} onclick="removeFolder('${data.id}')">
-    </div>`;
+            <img src="img/icon_folder.png">
+            <p onclick="FolderList('${data.id}')">${data.title}</p>
+            <img src="img/close_r.png" class="close" id="del_folder${data.id}" onclick="removeFolder('${data.id}')">
+        </div>`;
     $('#all_fol').append(content);
 }
 // -----------------新增文件夾動作div------------------
@@ -88,7 +88,7 @@ function newFolderList(data) {
                 </div>
             </div>
         </div>`;
-    $('.allfolder').append(content);
+    $('.Page').append(content);
 }
 // -----------------進入文件夾------------------
 function FolderList(id) {

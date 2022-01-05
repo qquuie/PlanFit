@@ -19,7 +19,7 @@ router.post('/addUser', function (req, res) {
         needOption: req.body.needOption
     });
 
-    newUser.save(function(err, data) {
+    newUser.save(function (err, data) {
         // if (err) {
         //     res.json({
         //         "status": 1,
@@ -57,12 +57,8 @@ router.post('/getUser', function (req, res) {
     loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
-<<<<<<< HEAD
-    }, function (err, data) {
-=======
-    }, function(err, data) {
->>>>>>> 3977b3f6a39ad90dfc39541a439420577e905943
 
+    }, function (err, data) {}, function (err, data) {
         if (data == null) {
             res.json({
                 "status": 1,
@@ -126,112 +122,111 @@ router.post('/changeInfor', function (req, res) {
     })
 });
 //workout載入
-<<<<<<< HEAD
+
 router.get('/getposeList', function (req, res) {
     workoutModel.find(function (err, data) {
-=======
-
-router.post('/getpose', function(req, res) {
-    workoutModel.find({
-        class_pose: req.body.pose
-    }, function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i], i);
-            data[i].status = true;
-            data[i].save(function(err) {
+        router.post('/getpose', function (req, res) {
+            workoutModel.find({
+                class_pose: req.body.pose
+            }, function (err, data) {
                 if (err) {
                     console.log(err);
                 }
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i], i);
+                    data[i].status = true;
+                    data[i].save(function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+                res.json(data); //將資料回應給前端
             });
-        }
-        res.json(data); //將資料回應給前端
-    });
-});
+        });
 
-router.post('/getposeList', function(req, res) {
-    workoutModel.find({
-        status: true
-    }, function(err, data) {
->>>>>>> 3977b3f6a39ad90dfc39541a439420577e905943
-        if (err) {
-            console.log(err);
-        }
-        res.json(data); //將資料回應給前端
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i], i);
-            data[i].status = false;
-            data[i].save(function(err) {
+        router.post('/getposeList', function (req, res) {
+            workoutModel.find({
+                status: true
+            }, function (err, data) {
                 if (err) {
                     console.log(err);
                 }
+                res.json(data); //將資料回應給前端
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i], i);
+                    data[i].status = false;
+                    data[i].save(function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+                }
             });
-        }
-    });
-});
+        });
 
-//workout點擊更新//後端
-router.post('/updateposeClick', function (req, res) {
-    var id = req.body.id;
-    console.log(req.body);
-    workoutModel.findById(id, function (err, data) {
-        if (err) {
-            console.log(err);
-        } else {
-            // console.log(req.body.click);
-            data.click = req.body.click;
-            // console.log(data);
-            data.save(function (err) {
+        //workout點擊更新//後端
+        router.post('/updateposeClick', function (req, res) {
+            var id = req.body.id;
+            console.log(req.body);
+            workoutModel.findById(id, function (err, data) {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.json(data);
+                    // console.log(req.body.click);
+                    data.click = req.body.click;
+                    // console.log(data);
+                    data.save(function (err) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.json(data);
+                        }
+                    });
                 }
             });
-        }
-    });
-});
+        });
 
-// //刪除待辦事項
-// router.post('/removeList', function (req, res) {
-//     // ...
-// });
+        // //刪除待辦事項
+        // router.post('/removeList', function (req, res) {
+        //     // ...
+        // });
 
-// // 改變待辦事項外觀設計
-// router.post('/checkStatus', function (req, res) {
-//     // ...
-// });
+        // // 改變待辦事項外觀設計
+        // router.post('/checkStatus', function (req, res) {
+        //     // ...
+        // });
 
-//新增文件夾
-router.post('/addFolder', function (req, res) {
-    var newfolder = new folderModel({
-        id: req.body.id,
-        title: req.body.title,
-        status: false
-    });
-    newfolder.save(function (err, data) {
-        if (err) {
-            res.json({
-                "status": 1,
-                "msg": "error"
+        //新增文件夾
+        router.post('/addFolder', function (req, res) {
+            var newfolder = new folderModel({
+                id: req.body.id,
+                title: req.body.title,
+                status: false
             });
-        } else {
-            res.json({
-                "status": 0,
-                "msg": "success",
-                "data": data
+            newfolder.save(function (err, data) {
+                if (err) {
+                    res.json({
+                        "status": 1,
+                        "msg": "error"
+                    });
+                } else {
+                    res.json({
+                        "status": 0,
+                        "msg": "success",
+                        "data": data
+                    });
+                }
+            })
+        });
+        router.get('/getFolder', function (req, res) {
+            folderModel.find(function (err, data) {
+                if (err) {
+                    console.log(err);
+                }
+                res.json(data); //將資料回應給前端
             });
-        }
-    })
-});
-router.get('/getFolder', function (req, res) {
-    folderModel.find(function (err, data) {
-        if (err) {
-            console.log(err);
-        }
-        res.json(data); //將資料回應給前端
+        });
     });
 });
 

@@ -59,7 +59,7 @@ function addUser() {
     console.log(needOption);
 
     if (acc == "" && pw == "") {
-        alert("請輸入標題和內容!");
+        alert("PLease enter your account and password!");
     } else {
         var api = "http://127.0.0.1:3000/api/addUser";
         var data = {
@@ -95,13 +95,22 @@ function addUser() {
                 setCookie('height', res.data.height)
                 setCookie('weight', res.data.weight)
 
-                window.location.href = 'index';
-                alert('Sign up successful')
+                // window.location.href = 'index';
+                alert('Sign up successful. You can log in now')
 
                 // alert(data.acc + data.pw + " 新增成功");
 
             } else if (res.status == 1) {
                 alert(res.msg)
+                // $('#signUpName').val('');
+                // $('#signUpPass').val('');
+                // $('#signUpEmail').val('');
+                // $('#signUpBirth').val('');
+                // $('#yourHeight').val('');
+                // $('#yourWeight').val('');
+                // $('#yourAge').val('');
+                history.go(0);
+
             }
         });
     }
@@ -111,20 +120,18 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    // var user = {
-    //     'acc': id,
-    //     'pw': pass
-    // };
-    if (id == "" && pass == "") {
-        alert("請輸入標題和內容!");
+ 
+    if (!id || !pass) {
+        alert("Please enter your account and password!");
     } else {
         jQuery.post(api, {
             'acc': id,
-            'pw': pass
-        }, function(res) {
+            'pw':pass
+        }, function (res) {
             if (res.status == 1) {
                 console.log(res.msg);
-                alert('Log in fail')
+                alert(res.msg)
+                history.go(0);
 
             } else {
                 setCookie('username', res.data.acc)
@@ -139,7 +146,7 @@ function getUser() {
                 setCookie('weight', res.data.weight)
 
                 window.location.href = 'index';
-                alert('Log in successful')
+                alert('Welcome to PlanFit ')
             }
         });
 
@@ -301,10 +308,12 @@ function edit() {
             </div>
             <div class="col">
                 <div class="infor_txt">
-                    <p>Password</p>
+                    <p> Password</p>
                 </div>
-                <div class="infor_data"><input type="text" id="pwChange" /></div>
+                <div class="infor_data"><input type="text" id="pwChange" readonly /><button type="button" class="changePw btn mx-4">Change password</button>
+                </div>
             </div>
+           
             <div class="col">
                 <div class="infor_txt">
                     <p>Birthday</p>
@@ -388,7 +397,7 @@ function edit() {
     $('input#weightChange').val(getCookie('weight'))
     $('input#heightChange').val(getCookie('height'))
     $('input#birthChange').val(getCookie('birth'))
-    $('input#pwChange').val(getCookie('password'))
+    // $('input#pwChange').val(getCookie('password'))
     $('input#emailChange').val(getCookie('email'))
         // var tmp=$('div.infor_focus').find('input').next('label.btn').html()
         // tmp==getCookie('focusOption')
@@ -443,6 +452,10 @@ function edit() {
         // }
         console.log(count.length)
     })
+    $('button.changePw').click(function()
+    {
+        
+    })
 
 
 }
@@ -453,9 +466,10 @@ function changeInfor() {
     if ($('#pwChange').val() === null) {
         pw = getCookie('password');
     } else {
-        pw = $('#pwChange').val();
+        pw = $('input#pwChange').val();
 
     }
+    alert($('#pwChange').val())
     var email;
     if ($('#emailChange').val() == null) {
         email = getCookie('email');

@@ -117,22 +117,22 @@ body
                 h1 Which part should you focus on?
               .row#focusbtn(role="group")
                 .form4Btn.gap-1.col-6#focusOptions
-                  input.btn-check#signUpFullB(type='radio', name='focusOptions', autocomplete='off',value='Full body')
+                  input.btn-check#signUpFullB(type='checkbox', name='focusOptions', autocomplete='off',value='Full body')
                   label.btn(for='signUpFullB') Full Body
-                  input.btn-check#signUpShou(type='radio', name='focusOptions', autocomplete='off',value='Shoulder')
+                  input.btn-check#signUpShou(type='checkbox', name='focusOptions', autocomplete='off',value='Shoulder')
                   label.btn(for='signUpShou') Shoulder
-                  input.btn-check#signUpBack(type='radio', name='focusOptions', autocomplete='off',value='Back')
+                  input.btn-check#signUpBack(type='checkbox', name='focusOptions', autocomplete='off',value='Back')
                   label.btn(for='signUpBack') Back
-                  input.btn-check#signUpThign(type='radio', name='focusOptions', autocomplete='off',value='Thigh')
+                  input.btn-check#signUpThign(type='checkbox', name='focusOptions', autocomplete='off',value='Thigh')
                   label.btn(for='signUpThign') Thigh
                 .form4Btn.gap-1.col-6#focusOptions
-                  input.btn-check#signUpArm(type='radio', name='focusOptions', autocomplete='off',value='Arm')
+                  input.btn-check#signUpArm(type='checkbox', name='focusOptions', autocomplete='off',value='Arm')
                   label.btn(for='signUpArm') Arm
-                  input.btn-check#signUpChest(type='radio', name='focusOptions', autocomplete='off',value='Chest')
+                  input.btn-check#signUpChest(type='checkbox', name='focusOptions', autocomplete='off',value='Chest')
                   label.btn(for='signUpChest') Chest
-                  input.btn-check#signUpAbs(type='radio', name='focusOptions', autocomplete='off',value='Abs')
+                  input.btn-check#signUpAbs(type='checkbox', name='focusOptions', autocomplete='off',value='Abs')
                   label.btn(for='signUpAbs') Abs
-                  input.btn-check#signUpButt(type='radio', name='focusOptions', autocomplete='off',value='Butts')
+                  input.btn-check#signUpButt(type='checkbox', name='focusOptions', autocomplete='off',value='Butts')
                   label.btn(for='signUpButt') Butts
             .nextDiv3.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
@@ -154,9 +154,9 @@ body
               .input-group-lg.mb-3
                 input.form-control#signUpBirth(type='date', placeholder='    | Date of birth')
               .btn-group.mb-3.mx-4#sex
-                input.btn-check#signUpFemale(type='radio', name="sex", autocomplete='off',value="Female")
+                input.btn-check#signUpFemale(type='checkbox', name="sex", autocomplete='off',value="Female")
                 label.btn(for='signUpFemale') Female
-                input.btn-check#signUpMale(type='radio', name="sex", autocomplete='off',value="Male") 
+                input.btn-check#signUpMale(type='checkbox', name="sex", autocomplete='off',value="Male") 
                 label.btn(for='signUpMale') Male
             .nextDiv.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
@@ -170,13 +170,13 @@ body
               .mb-3
                 h1 What do you need?
               .form3Btn.d-grid.gap-1#needOptions(role="group")
-                input.btn-check#loseWei(type='radio', name='needOptions', autocomplete='off',value='Lose weight')
+                input.btn-check#loseWei(type='checkbox', name='needOptions', autocomplete='off',value='Lose weight')
                 label.btn(for='loseWei') Lose weight
                 br
-                input.btn-check#gainMus(type='radio', name='needOptions', autocomplete='off',value='Gain muscle')
+                input.btn-check#gainMus(type='checkbox', name='needOptions', autocomplete='off',value='Gain muscle')
                 label.btn(for='gainMus') Gain muscle
                 br
-                input.btn-check#getFit(type='radio', name='needOptions', autocomplete='off',value='Get fitter')
+                input.btn-check#getFit(type='checkbox', name='needOptions', autocomplete='off',value='Get fitter')
                 label.btn(for='getFit') Get fitter
             .nextDiv2.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us

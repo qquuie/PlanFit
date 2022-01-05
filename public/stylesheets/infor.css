@@ -78,13 +78,3 @@ button.btn:hover,button.btn:active,button.btn:focus {
     background-color: white;
     color: #3e5a46;
 }
-button.changePw:hover,button.changePw:focus
-{
-    background-color: #3e5a46;
-    color: white;
-}
-button.changePw
-{
-    background-color: white;
-
-}

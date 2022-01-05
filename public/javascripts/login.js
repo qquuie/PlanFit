@@ -1,5 +1,13 @@
+// const { parseChar } = require("character-parser");
 getInfor();
+getUSerCookie();
 
+function getUSerCookie() {
+    var tmp = getCookie('username');
+    $('h4#welcome').text('Wellcome ' + tmp);
+}
+
+// wellcome();
 function addUser() {
     var acc = $('#signUpName').val();
     var pw = $('#signUpPass').val();
@@ -66,7 +74,7 @@ function addUser() {
             'weight': weight,
             'age': age,
         };
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             if (res.status == 0) {
                 $('#signUpName').val('');
                 $('#signUpPass').val('');
@@ -189,10 +197,10 @@ function getInfor() {
         'age': age,
     };
     var api = "http://127.0.0.1:3000/api/getInfor";
-    jQuery.post(api, data, function (res) {
+    jQuery.post(api, data, function(res) {
         // alert(data);
         console.log(data)
-        // edit(data)
+            // edit(data)
         infor(data)
     });
 
@@ -391,9 +399,24 @@ function edit() {
     $('input#birthChange').val(getCookie('birth'))
     // $('input#pwChange').val(getCookie('password'))
     $('input#emailChange').val(getCookie('email'))
+        // var tmp=$('div.infor_focus').find('input').next('label.btn').html()
+        // tmp==getCookie('focusOption')
+        // var tmp=[]
+        // var tmpLength=$('div.infor_focus').find('label.btn')
+        // for(var i=0;i<tmpLength.length;i++)
+        // {
+        //     tmp+= $('div.infor_focus').find('input')[i].value
 
-    var count = 0;
-    $('div.infor_data.infor_sex>label.btn').click(function () {
+    //     if(tmp[i]===getCookie('focusOption'))
+    //     {
+    //         $('div.infor_focus').find('input')[i].labels.addClass('active');
+    //         $('div.infor_focus').find('input')[i].prop('checked',true)
+    //     }
+    // }
+
+    var count = 0,
+        total = 0;
+    $('div.infor_data.infor_sex>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
         if (count.length > 1) {
@@ -405,19 +428,28 @@ function edit() {
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_focus>label.btn').click(function () {
+    $('div.infor_data.infor_focus>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
 
+        // if (count.length > 1) {
+        //     // alert('You only can hoose one part to focus on')
+
+
+        // }
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_need>label.btn').click(function () {
+    $('div.infor_data.infor_need>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_need').find('.active')
         $('div.infor_data.infor_need>input').checked == false
 
+        // if (count.length > 1) {
+        //     // alert('You only can choose one thing that you need ')
+
+        // }
         console.log(count.length)
     })
     $('button.changePw').click(function()
@@ -534,7 +566,7 @@ function changeInfor() {
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
         alert('Please check all the check button ')
     } else {
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             setCookie('username', res.data.acc)
             setCookie('password', res.data.pw)
             setCookie('email', res.data.email)

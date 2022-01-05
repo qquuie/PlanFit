@@ -195,15 +195,6 @@ router.post('/getposeList', function (req, res) {
             console.log(err);
         }
         res.json(data); //將資料回應給前端
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i], i);
-            data[i].status = false;
-            data[i].save(function (err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        }
     });
 });
 

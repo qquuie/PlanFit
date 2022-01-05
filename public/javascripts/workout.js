@@ -114,6 +114,7 @@ function newList(data, i, end) {
                 </div>
             </div>`
     $('.card_row' + col_num).append(tmp);
+  
 }
 
 //更新待辦事項//前端
@@ -134,6 +135,9 @@ function updateposeClick(id) {
 
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
+$(document).ready(function(){
+   
+})
 $(".folder").click(function() {
     console.log(1);
     // var $father = $(this).parent().parent().parent().parent();
@@ -141,6 +145,7 @@ $(".folder").click(function() {
     // console.log(workout_sth);
     // $("#folder_win").show();
 });
+
 $("#folder_close").click(function() {
     $("#folder_win").hide();
 });

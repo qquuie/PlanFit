@@ -19,7 +19,7 @@ router.post('/addUser', function(req, res) {
         needOption: req.body.needOption
     });
 
-    newUser.save(function (err, data) {
+    newUser.save(function(err, data) {
         // if (err) {
         //     res.json({
         //         "status": 1,
@@ -57,8 +57,8 @@ router.post('/getUser', function(req, res) {
     loginModel.findOne({
         acc: req.body.acc,
         pw: req.body.pw
-    }, function (err, data) {
-       
+    }, function(err, data) {
+
         if (data == null) {
             res.json({
                 "status": 1,
@@ -122,12 +122,44 @@ router.post('/changeInfor', function(req, res) {
     })
 });
 //workout載入
-router.get('/getposeList', function(req, res) {
-    workoutModel.find(function(err, data) {
+
+router.post('/getpose', function(req, res) {
+    workoutModel.find({
+        class_pose: req.body.pose
+    }, function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i], i);
+            data[i].status = true;
+            data[i].save(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+        res.json(data); //將資料回應給前端
+    });
+});
+
+router.post('/getposeList', function(req, res) {
+    workoutModel.find({
+        status: true
+    }, function(err, data) {
         if (err) {
             console.log(err);
         }
         res.json(data); //將資料回應給前端
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i], i);
+            data[i].status = false;
+            data[i].save(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
     });
 });
 

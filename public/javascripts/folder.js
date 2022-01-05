@@ -2,7 +2,8 @@ let folder = [];
 let id = 2;
 // -----------------新增文件夾------------------
 function addFolder() {
-    let title = $('#yourfolder').val();
+    let title = $('input#yourfolder').val();
+    console.log(title)
     if (title == "") {
         alert("Please enter the folder name!");
     } else {

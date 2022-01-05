@@ -131,8 +131,8 @@
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
 #calendar_win {
-    width: 50%;
-    height: 90%;
+    width: 60%;
+    height: 75%;
     top: -10px;
     left: 50%;
     align-items: center;
@@ -141,18 +141,19 @@
 }
 
 #calender_close {
-    width: 30px;
+    /* width: 30px;
     position: relative;
     left: 45%;
+    top: 3%; */
+    width: 6%;
+    position: relative;
+    left: 85%;
     top: 3%;
 }
 
 #calender_table {
-    height: 80%;
-    width: 80%;
-    /*等比例縮放*/
-    /* position: relative;
-    top: 5%; */
+    height: 70%;
+    width: 70%;
     color: #82A3A3;
 }
 
@@ -378,7 +379,7 @@
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
-    left: -34%;
+    left: 15%;
     width: 12%;
     padding: 8px 0;
     text-align: center;
@@ -389,8 +390,8 @@
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
-    left: 34%;
-    top: -5%;
+    left: 73%;
+    top: -6%;
     width: 12%;
     padding: 8px 0;
     text-align: center;

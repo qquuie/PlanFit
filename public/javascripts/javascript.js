@@ -1,37 +1,37 @@
-$(document).ready(function () {
-    $('a#logout').click(function () {
+$(document).ready(function() {
+    $('a#logout').click(function() {
         window.location.href = '/indexG';
     })
-    var count=0;
-    var tmp=$('div.row#focusbtn').children().find('label.btn');
-    var tmp2=$('div#sex.btn-group').find('label.btn');
-    var tmp3=$('div#needOptions').find('label.btn')
+    var count = 0;
+    var tmp = $('div.row#focusbtn').children().find('label.btn');
+    var tmp2 = $('div#sex.btn-group').find('label.btn');
+    var tmp3 = $('div#needOptions').find('label.btn')
 
-    tmp.click(function () {
-        count =  $('div.row#focusbtn').find('.active');
-        if (count.length==1) {
+    tmp.click(function() {
+        count = $('div.row#focusbtn').find('.active');
+        if (count.length == 1) {
             alert('You only can choose one focus part');
             // $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)
     })
-    tmp2.click(function () {
-        count =  $('div#sex.btn-group').find('.active');
-        if (count.length==1) {
+    tmp2.click(function() {
+        count = $('div#sex.btn-group').find('.active');
+        if (count.length == 1) {
             // alert('You only can choose one gender');
             // $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)
     })
-    tmp3.click(function () {
-        count = $('div#needOptions').find('.active') ;
-        if (count.length==1) {
-            // alert('You only can choose one thing that you need ');
-            // $('div.infor_data.infor_sex>input').checked == false
-        }
-        console.log(count.length)
-    })
-    // <--------------------------- Information-------------------------->
+    tmp3.click(function() {
+            count = $('div#needOptions').find('.active');
+            if (count.length == 1) {
+                // alert('You only can choose one thing that you need ');
+                // $('div.infor_data.infor_sex>input').checked == false
+            }
+            console.log(count.length)
+        })
+        // <--------------------------- Information-------------------------->
     $("div#smallPageModal").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
     $(".nav.navbar").css('z-index', '1050');
@@ -40,35 +40,33 @@ $(document).ready(function () {
     let id = 2;
     // -------------------folder----------------
 
-    $(".dropdown-item").click(function () {
+    $(".dropdown-item").click(function() {
         $('.dropdown-menu').css("display", "none");
     })
-    $("#workOutNav").click(function () {
+    $("#workOutNav").click(function() {
         $("#workOutMenu.dropdown-menu").toggle();
 
     })
-    $("#inforNav").click(function () {
+    $("#inforNav").click(function() {
         $("#inforMenu.dropdown-menu").toggle();
-        console.log(1)
-
     })
-    $('.page').click(function () {
+    $('.page').click(function() {
         $("#inforMenu.dropdown-menu").hide();
         $("#workOutMenu.dropdown-menu").hide();
 
     })
     $("div#navbars.navbar-collapse").addClass('hide');
 
-    $("button.navbar-toggler").click(function () {
+    $("button.navbar-toggler").click(function() {
         $("div#navbars.navbar-collapse").toggleClass("show")
         $("div#navbars.navbar-collapse").toggleClass("hide");
     })
 
-    $("ul#workOutMenu>a.dropdown-item").click(function () {
+    $("ul#workOutMenu>a.dropdown-item").click(function() {
         $("div#smallPageModal").css('z-index', '-1');
 
     })
-    $('button#closeBtn').click(function () {
+    $('button#closeBtn').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal").addClass("fade");
         $("div#smallPageModal").css('z-index', '-1');
@@ -90,14 +88,14 @@ $(document).ready(function () {
 
     })
 
-    $('button#signInBtn').click(function () {
+    $('button#signInBtn').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal").addClass("fade");
         $("div#smallPageModal").css('z-index', '-1');
         $(".page").css('z-index', '1000');
     })
 
-    $('button#signUpBtn').click(function () {
+    $('button#signUpBtn').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal").addClass("fade");
         $("div#smallPageModal").css('z-index', '-1');
@@ -105,7 +103,7 @@ $(document).ready(function () {
     })
     jQuery.noConflict();
 
-    $('#inforSign').click(function () {
+    $('#inforSign').click(function() {
         $("div#smallPageModal").toggle();
         $("div#smallPageModal").modal("toggle");
         $("div#smallPageModal").removeClass("fade");
@@ -120,26 +118,26 @@ $(document).ready(function () {
     $(".inputForm4").hide();
     $('div#inputFormID1.inputForm1').css('display', 'none')
 
-    $("button#joinUs").click(function () {
+    $("button#joinUs").click(function() {
         console.log(1);
         $(".inputForm1").show();
         $(".inputForm5").hide();
         $("div.modalContainer").css("background-color", "#f3f1de")
     })
-    $("button#nextBtn3").click(function () {
+    $("button#nextBtn3").click(function() {
         console.log(1);
         $(".inputForm2").show();
         $(".inputForm1").hide();
     })
 
-    $("button#nextBtn").click(function () {
+    $("button#nextBtn").click(function() {
         console.log(1);
         $(".inputForm3").show();
         $(".inputForm1").hide();
         $(".inputForm2").hide();
     })
 
-    $("button#nextBtn2").click(function () {
+    $("button#nextBtn2").click(function() {
         console.log(1);
         $(".inputForm4").show();
         $(".inputForm1").hide();
@@ -148,7 +146,7 @@ $(document).ready(function () {
 
     })
 
-    $('button#signInBack').click(function () {
+    $('button#signInBack').click(function() {
         $(".inputForm5").show();
         $(".inputForm1").hide();
         $(".inputForm2").hide();
@@ -157,12 +155,12 @@ $(document).ready(function () {
         $("div.modalContainer").css("background-color", "#bacec1")
 
     })
-    $("label.btn").click(function () {
-        $(this).button('toggle');
-    })
-    // ---------------------------------folder------------------------------------
+    $("label.btn").click(function() {
+            $(this).button('toggle');
+        })
+        // ---------------------------------folder------------------------------------
 
-    $('#inforFolder').click(function () {
+    $('#inforFolder').click(function() {
         $("div#smallPageModal_folder").toggle();
         $("div#smallPageModal_folder").modal("toggle");
         $("div#smallPageModal_folder").removeClass("fade");
@@ -172,11 +170,11 @@ $(document).ready(function () {
     })
     $("div#smallPageModal_folder").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
-    $("ul#workOutMenu>a.dropdown-item").click(function () {
+    $("ul#workOutMenu>a.dropdown-item").click(function() {
         $("div#smallPageModal_folder").css('z-index', '-1');
 
     })
-    $('button#closeBtnfolder').click(function () {
+    $('button#closeBtnfolder').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder").addClass("fade");
         $("div#smallPageModal_folder").css('z-index', '-1');
@@ -184,7 +182,7 @@ $(document).ready(function () {
     })
 
 
-    $('#add_fol').click(function () {
+    $('#add_fol').click(function() {
         addFolder();
     });
 

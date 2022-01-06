@@ -240,6 +240,18 @@ router.post('/listfile', function(req, res) {
     });
 });
 
+router.post('/removeFolder', function(req, res) {
+    folderModel.remove({ _id: req.body.id }, function(err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
+router.post('/FolderList', function(req, res) {
+    console.log(1);
+    folderModel.find({ _id: req.body.id }, function(err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
+
 
 
 module.exports = router;

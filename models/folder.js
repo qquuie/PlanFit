@@ -14,6 +14,7 @@ db.once('open', () => {
 
 const folderSchema = new mongoose.Schema({
     title: String,
+    pose: String,
     status: Boolean,
     acc: String
 });

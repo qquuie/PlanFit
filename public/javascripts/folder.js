@@ -22,6 +22,11 @@ function getCookie(c_name) {
 }
 
 $(document).ready(function() {
+    $('#folder1').addClass("d-none");
+    $('#action1').addClass("d-none");
+
+
+
     $('#add_fol').click(function() {
         addFolder();
     });
@@ -44,6 +49,10 @@ $(document).ready(function() {
         }
     })
 
+    // $('.delete_folder').click(function() {
+    //     console.log(this.id);
+    //     // removeFolder()
+    // })
 
 })
 
@@ -54,18 +63,19 @@ function listfile() {
     var acc = {
         acc: getCookie('username'),
     }
+    var fol = 0;
     jQuery.post(api, acc, function(data) {
         total = data.length;
+        var ar = new Array();
         for (var i = 0; i < data.length; i++) {
+            for (var j = 0; j < )
+                ar[i] = data[i].title;
             newFolder(data[i], i);
         }
-    });
-    // $('.delete_folder').click(function() {
-    //     console.log(this.id);
-    //     // removeFolder()
-    // })
-}
 
+    });
+
+}
 
 // -----------------新增文件夾------------------
 function addFolder() {
@@ -91,6 +101,18 @@ function addFolder() {
 
     }
 }
+// -----------------刪除文件夾------------------
+function removeFolder(data) {
+    $('#' + data).remove();
+    var api = "http://127.0.0.1:3000/api/removeFolder";
+    let acc = {
+        'acc': getCookie('username'),
+        'id': data
+    };
+    jQuery.post(api, acc, function(res) {
+
+    });
+}
 
 // -----------------新增文件夾div------------------
 function newFolder(data, i) {
@@ -104,68 +126,71 @@ function newFolder(data, i) {
     $('#all_fol').append(content);
 
 }
+
 // -----------------新增文件夾動作div------------------
 function newFolderList(data) {
-    let content =
-        `<div class="modal-content d-none" id="folder${data._id}">
-            <div class="modal-header">
-                <div class="input-group-lg ">
-                    <h1><img src="img/icon_folder.png">My favorite</h1>
-                </div>
-                <div class="input-group-lg mb-1s">
-                    <button type="button" class="btn col-auto me-auto" id="closeBtn" data-dismiss="modal"
-                        aria-label="Close">
-                        <img src="./img/close_r.png" width="30px" height="40px" alt="">
-                    </button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div id="fol_move${data._id}">
-                    <div class="d-flex flex-row position-relative alr-folder" id="${data._id}">
-                        <p>My favorite</p>
-                        <img src="img/close_r.png" class="close" id="del_list${data._id}" onclick="removeList('${data._id}')">
-                    </div>
-                </div>
-                <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
-                    <div type="button" class="btn btn-sm back-btn" onclick="backBtn('${data._id}')">
-                        <p>Back</p>
-                    </div>
-                    <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick="addBtn_act('${data._id}')">
-                        <p>Add else</p> <img src="img/add.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- -----------------增加動作------------------ -->
-            <div class="modal-body d-none" id="action${data._id}">
-                <div class="input-group-lg mt-3">
-                    <h1>Input something...</h1>
-                </div>
-                <div id="">
-                    <input type="text">
-                </div>
-                <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
-                    <div type="button" class="btn btn-sm back-btn" onclick="backBtn_act('${data._id}')">
-                        <p>Back</p>
-                    </div>
-                    <div type="button" class="btn btn-sm back-btn" onclick="">
-                        <p>Add</p>
-                    </div>
-                </div>
-            </div>
-        </div>`;
-    $('#allfolder').append(content);
+    // let content =
+    //     `<div class="modal-content d-none" id="folder${data._id}">
+    //         <div class="modal-header">
+    //             <div class="input-group-lg ">
+    //                 <h1><img src="img/icon_folder.png">My favorite</h1>
+    //             </div>
+    //             <div class="input-group-lg mb-1s">
+    //                 <button type="button" class="btn col-auto me-auto" id="closeBtn" data-dismiss="modal"
+    //                     aria-label="Close">
+    //                     <img src="./img/close_r.png" width="30px" height="40px" alt="">
+    //                 </button>
+    //             </div>
+    //         </div>
+    //         <div class="modal-body">
+    //             <div id="fol_move${data._id}">
+    //                 <div class="d-flex flex-row position-relative alr-folder" id="${data._id}">
+    //                     <p>My favorite</p>
+    //                     <img src="img/close_r.png" class="close" id="del_list${data._id}" onclick="removeList('${data._id}')">
+    //                 </div>
+    //             </div>
+    //             <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
+    //                 <div type="button" class="btn btn-sm back-btn" onclick="backBtn('${data._id}')">
+    //                     <p>Back</p>
+    //                 </div>
+    //                 <div type="button" class="btn btn-sm d-flex justify-content-between addelse-btn" onclick="addBtn_act('${data._id}')">
+    //                     <p>Add else</p> <img src="img/add.png" alt="">
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         <!-- -----------------增加動作------------------ -->
+    //         <div class="modal-body d-none" id="action${data._id}">
+    //             <div class="input-group-lg mt-3">
+    //                 <h1>Input something...</h1>
+    //             </div>
+    //             <div id="">
+    //                 <input type="text">
+    //             </div>
+    //             <div class="input-group-lg mb-3 d-flex flex-row position-relative fol-btn">
+    //                 <div type="button" class="btn btn-sm back-btn" onclick="backBtn_act('${data._id}')">
+    //                     <p>Back</p>
+    //                 </div>
+    //                 <div type="button" class="btn btn-sm back-btn" onclick="">
+    //                     <p>Add</p>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>`;
+    // $('#allfolder').append(content);
 }
 // -----------------進入文件夾------------------
 function FolderList(data) {
     $('#folder').addClass("d-none");
-    $('#folder' + data._id).removeClass("d-none");
+    $('#folder1').removeClass("d-none");
+    var api = "http://127.0.0.1:3000/api/FolderList";
+    let acc = {
+        'acc': getCookie('username')
+    };
+    jQuery.post(api, acc, function(res) {
+
+    });
 }
-// -----------------刪除文件夾------------------
-function removeFolder(data) {
-    // let index = folder.findIndex(element => element.data._id == id);
-    // folder.splice(index, 1);
-    $('#' + data._id).remove();
-}
+
 // -----------------刪除動作------------------
 // function removeList(data) {
 //     let index = folder.findIndex(element => element.data._id == id);
@@ -175,15 +200,15 @@ function removeFolder(data) {
 // -----------------回到所有文件夾------------------
 function backBtn(data) {
     $('#folder').removeClass("d-none");
-    $('#folder' + data._id).addClass("d-none");
+    $('#folder1').addClass("d-none");
 }
 // -----------------進入新增動作------------------
 function addBtn_act(data) {
-    $('#action' + data._id).removeClass("d-none");
-    $('#folder' + data._id).addClass("d-none");
+    $('#action1').removeClass("d-none");
+    $('#folder1').addClass("d-none");
 }
 // -----------------回到上一個文件夾------------------
 function backBtn_act(data) {
-    $('#folder' + data._id).removeClass("d-none");
-    $('#action' + data._id).addClass("d-none");
+    $('#folder1').removeClass("d-none");
+    $('#action1').addClass("d-none");
 }

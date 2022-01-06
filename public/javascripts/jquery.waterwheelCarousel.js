@@ -517,10 +517,14 @@
                 // Fire the 'moving' callbacks
                 options.movingFromCenter(data.currentCenterItem);
                 options.movingToCenter($(this));
-                if (itemPosition < 0) {
+                var tmp = this.name;
+
+                if (itemPosition < 0) { //左邊
+                    $('#pose_name').text(tmp);
                     data.currentDirection = 'backward';
                     rotateCarousel(rotations);
-                } else if (itemPosition > 0) {
+                } else if (itemPosition > 0) { //右邊
+                    $('#pose_name').text(tmp);
                     data.currentDirection = 'forward';
                     rotateCarousel(rotations);
                 }
@@ -534,6 +538,7 @@
          */
         $(this).find('a').bind("click", function(event) {
             var isCenter = $(this).find('img').data('currentPosition') == 0;
+
             // should we disable the links?
             if (options.linkHandling === 1 || // turn off all links
                 (options.linkHandling === 2 && !isCenter)) // turn off all links except center
@@ -576,7 +581,6 @@
                     data.currentDirection = 'forward';
                 }
             }
-
             rotateCarousel(1);
         }
 
@@ -633,13 +637,11 @@
         this.next = function() {
             autoPlay(true);
             options.autoPlay = 0;
-
             moveOnce('forward');
         }
         this.prev = function() {
             autoPlay(true);
             options.autoPlay = 0;
-
             moveOnce('backward');
         }
 

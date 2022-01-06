@@ -6,7 +6,7 @@ var folderModel = require('../models/folder.js');
 var bcrypt = require('bcryptjs');
 const createHttpError = require('http-errors');
 
-router.post('/addUser', function (req, res) {
+router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
         acc: req.body.acc,
@@ -22,7 +22,7 @@ router.post('/addUser', function (req, res) {
     });
     loginModel.countDocuments({
         acc: req.body.acc
-    }, async function (err, data) {
+    }, async function(err, data) {
 
         if (data > 0) {
             res.json({
@@ -32,8 +32,8 @@ router.post('/addUser', function (req, res) {
         } else {
             const salt = await bcrypt.genSalt(8);
             const hashpw = await req.body.pw;
-            newUser.pw=bcrypt.hashSync(hashpw, salt);
-            newUser.save(function (err, data) {
+            newUser.pw = bcrypt.hashSync(hashpw, salt);
+            newUser.save(function(err, data) {
                 if (err) {
                     res.json({
                         "status": 1,
@@ -54,23 +54,22 @@ router.post('/addUser', function (req, res) {
 });
 
 //登入畫面擷取所有資料
-router.post('/getUser', async function (req, res) {
+router.post('/getUser', async function(req, res) {
     const {
         acc,
         pw
     } = req.body;
     loginModel.findOne({
         acc
-    },async function (err,data) {
-        if (data==null) {
+    }, async function(err, data) {
+        if (data == null) {
             res.json({
                 "status": 1,
                 "msg": "You are not our menber yet!"
             });
-        }else{
+        } else {
             const isPw = await bcrypt.compare(req.body.pw, data.pw);
-            if (!isPw)
-            {
+            if (!isPw) {
                 res.json({
                     "status": 1,
                     "msg": "Your account or passwordwas wrong!"
@@ -83,51 +82,15 @@ router.post('/getUser', async function (req, res) {
                 "data": data
             });
         }
-       
+
     });
-    
-
-    // const isPw = await user.checkPw(pw);
-    // if (!isPw) {
-    //     res.json({
-    //         "status": 1,
-    //         "msg": "Your password was wrong!"
-    //     });
-    // }
-    // res.json({
-    //     "status": 0,
-    //     "msg": "success",
-    //     "data": user
-    // });
-    //    loginModel.findOne({
-    //         acc: req.body.acc
-    //     }, function (err, data) {
-    //         if (data == null) {
-    //             res.json({
-    //                 "status": 1,
-    //                 "msg": "Your account or password was wrong!"
-    //             });
-    //         } else if (err) {
-    //             res.json({
-    //                 "status": 1,
-    //                 "msg": "error"
-    //             });
-    //         } else {
-    //             res.json({
-    //                 "status": 0,
-    //                 "msg": "success",
-    //                 "data": data
-    //             });
-    //         }
-
-    //     })
 });
 
-router.post('/getInfor', function (req, res) {
+router.post('/getInfor', function(req, res) {
     // var id = req.body.acc;
     loginModel.find({
         acc: req.body.acc
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) console.log(err);
         // console.log(data);
         res.json({
@@ -136,17 +99,17 @@ router.post('/getInfor', function (req, res) {
 
     })
 });
-router.post('/changeInfor', function (req, res) {
+router.post('/changeInfor', function(req, res) {
 
     loginModel.findOne({
         acc: req.body.acc
-    }, async function (err, data) {
+    }, async function(err, data) {
         if (err) console.log(err);
         else {
             const salt = await bcrypt.genSalt(8);
             const hashpw = await req.body.newpw;
-            data.pw=bcrypt.hashSync(hashpw, salt);
-            
+            data.pw = bcrypt.hashSync(hashpw, salt);
+
             // data.pw = req.body.newpw;
             data.email = req.body.newemail;
             data.birth = req.body.newbirth;
@@ -158,7 +121,7 @@ router.post('/changeInfor', function (req, res) {
             data.needOption = req.body.newneedOption;
             console.log(data);
 
-            data.save(function (err) {
+            data.save(function(err) {
                 if (err) console.log(err);
                 console.log(data);
                 res.json({
@@ -171,17 +134,31 @@ router.post('/changeInfor', function (req, res) {
 });
 //workout載入
 
-router.post('/getpose', function (req, res) {
-    workoutModel.find({
-        class_pose: req.body.pose
-    }, function (err, data) {
+router.post('/getpose', function(req, res) {
+    workoutModel.find(function(err, data) {
         if (err) {
             console.log(err);
         }
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i], i);
+            if (data[i].status) {
+                data[i].status = false;
+                data[i].save(function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        }
+    });
+    workoutModel.find({
+        class_pose: req.body.pose
+    }, function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        for (var i = 0; i < data.length; i++) {
             data[i].status = true;
-            data[i].save(function (err) {
+            data[i].save(function(err) {
                 if (err) {
                     console.log(err);
                 }
@@ -191,10 +168,10 @@ router.post('/getpose', function (req, res) {
     });
 });
 
-router.post('/getposeList', function (req, res) {
+router.post('/getposeList', function(req, res) {
     workoutModel.find({
         status: true
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) {
             console.log(err);
         }
@@ -203,17 +180,17 @@ router.post('/getposeList', function (req, res) {
 });
 
 //workout點擊更新//後端
-router.post('/updateposeClick', function (req, res) {
+router.post('/updateposeClick', function(req, res) {
     var id = req.body.id;
     console.log(req.body);
-    workoutModel.findById(id, function (err, data) {
+    workoutModel.findById(id, function(err, data) {
         if (err) {
             console.log(err);
         } else {
             // console.log(req.body.click);
             data.click = req.body.click;
             // console.log(data);
-            data.save(function (err) {
+            data.save(function(err) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -225,13 +202,13 @@ router.post('/updateposeClick', function (req, res) {
 });
 
 //新增文件夾
-router.post('/addFolder', function (req, res) {
+router.post('/addFolder', function(req, res) {
     var newfolder = new folderModel({
         id: req.body.id,
         title: req.body.title,
         status: false
     });
-    newfolder.save(function (err, data) {
+    newfolder.save(function(err, data) {
         if (err) {
             res.json({
                 "status": 1,
@@ -246,13 +223,15 @@ router.post('/addFolder', function (req, res) {
         }
     })
 });
-router.get('/getFolder', function (req, res) {
-    folderModel.find(function (err, data) {
+router.get('/getFolder', function(req, res) {
+    folderModel.find(function(err, data) {
         if (err) {
             console.log(err);
         }
         res.json(data); //將資料回應給前端
     });
 });
+
+
 
 module.exports = router;

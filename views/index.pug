@@ -220,8 +220,14 @@ script(type='text/javascript').
   $(document).ready(function() {
   let arr = [`#{img1.img}`, `#{img2.img}`,`#{img3.img}`];
   document.getElementById("item-1").src = arr[0];
+  document.getElementById("item-1").name = `#{img1.name}`;
+  document.getElementById("item-1").class= `#{img1.id}`;
   document.getElementById("item-2").src = arr[1];
+  document.getElementById("item-2").name = `#{img2.name}`;
+  document.getElementById("item-2").class = `#{img2.id}`;
   document.getElementById("item-3").src = arr[2];
+  document.getElementById("item-3").name = `#{img3.name}`;
+  document.getElementById("item-3").class = `#{img3.id}`;
   var carousel = $("#carousel").waterwheelCarousel({
   flankingItems: 3,
   movingToCenter: function($item) {
@@ -259,8 +265,7 @@ script(type='text/javascript').
   var windowWidth = $(window).width();
   var windowHeight = $(window).height();
   $(window).resize(function() {
-  if (windowWidth != $(window).width() || windowHeight != $(window)
-  .height()) {
+  if (windowWidth != $(window).width() || windowHeight != $(window).height()) {
   location.reload();
   return;
   }

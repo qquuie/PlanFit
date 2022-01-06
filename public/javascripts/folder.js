@@ -132,9 +132,9 @@ function FolderList(data) {
 // -----------------文件中的動作div------------------
 function newFolderList(data){
     let content =
-    `<div >
-        <img src="img/icon_folder.png" />
-        <h1 id="fol_name">${data.title}</h1>
+    `<div ="input-group-lg">
+        <img class="d-inline" src="img/icon_folder.png" />
+        <h1 class="d-inline" id="fol_name">${data.title}</h1>
     </div>`;
     $('#fol_title').append(content);
 }

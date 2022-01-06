@@ -132,9 +132,10 @@ function FolderList(data) {
 // -----------------文件中的動作div------------------
 function newFolderList(data){
     let content =
-    `<h1>
-        <img src="img/icon_folder.png" />${data.title}
-    </h1>`;
+    `<div >
+        <img src="img/icon_folder.png" />
+        <h1 id="fol_name">${data.title}</h1>
+    </div>`;
     $('#fol_title').append(content);
 }
 // -----------------刪除動作------------------
@@ -149,10 +150,38 @@ function backBtn(data) {
     $('#folder1').addClass("d-none");
     $('#fol_title').empty();
 }
-// -----------------進入新增動作------------------
-function addBtn_act(data) {
+// -----------------進入新增動作介面------------------
+function addBtn(){
     $('#action1').removeClass("d-none");
     $('#folder1').addClass("d-none");
+}
+// -----------------新增動作------------------
+function newpose(){
+    let content =
+    ``;
+    $('#').append(content);
+}
+function addPose() {
+    let folder=document.getElementById("fol_name").innerText;;
+    console.log(folder);
+    let pose = $('#addinput').val();
+    if (pose == "") {
+        alert("Please enter the pose!");
+    } else {
+        var api = "http://127.0.0.1:3000/api/addPose";
+        let posedata = {
+            'pose': pose,
+            'acc': getCookie('username')
+        };
+        jQuery.post(api, posedata, function(res) {
+            if (res.status == 0) {
+                $('#addinput').val('');
+            } else if (res.status == 1) {
+                alert(res.msg);
+            }
+        });
+
+    }
 }
 // -----------------回到上一個文件夾------------------
 function backBtn_act(data) {

@@ -43,8 +43,8 @@ function getposeList() {
     // console.log(p);
     var focus = getCookie('needOption');
     // console.log(focus);
-    var needarr = new Array();　
-    var dataneed = new Array(3);　
+    var needarr = new Array();
+    var dataneed = new Array(3);
     needarr = focus.split(",");
     // console.log(needarr);
     for (var i = 0; i < needarr.length; i++) {
@@ -85,7 +85,6 @@ function getposeList() {
         for (let i = 0; i < data.length; i++) {
             newList(tmp[i], i, data.length - 1);
         }
-        console.log(tmp);
     });
 }
 

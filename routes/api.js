@@ -176,16 +176,6 @@ router.post('/updateposeClick', function(req, res) {
     });
 });
 
-// //刪除待辦事項
-// router.post('/removeList', function (req, res) {
-//     // ...
-// });
-
-// // 改變待辦事項外觀設計
-// router.post('/checkStatus', function (req, res) {
-//     // ...
-// });
-
 //新增文件夾
 router.post('/addFolder', function(req, res) {
     var newfolder = new folderModel({

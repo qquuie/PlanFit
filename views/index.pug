@@ -218,9 +218,7 @@ include includes/navigation
 script(type='text/javascript' src='javascripts/jquery.waterwheelCarousel.js')
 script(type='text/javascript').
   $(document).ready(function() {
-  let arr = ["img_workout/abs/abs_bicycle_crunch.jpg", "img_workout/abs/abs_crunch.jpg",
-  "img_workout/abs/abs_crunch_knee_lift.jpg"
-  ];
+  let arr = [`#{img1.img}`, `#{img2.img}`,`#{img3.img}`];
   document.getElementById("item-1").src = arr[0];
   document.getElementById("item-2").src = arr[1];
   document.getElementById("item-3").src = arr[2];
@@ -244,6 +242,7 @@ script(type='text/javascript').
   }
   });
   $('#prev').bind('click', function() {
+  $('#posename').text("1");
   carousel.prev();
   return false
   });

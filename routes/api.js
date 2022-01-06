@@ -246,12 +246,15 @@ router.post('/removeFolder', function(req, res) {
     });
 });
 router.post('/FolderList', function(req, res) {
-    console.log(1);
     folderModel.find({ _id: req.body.id }, function(err, data) {
         res.json(data); //將資料回應給前端
     });
 });
 
-
+router.post('/getindexwheel', function(req, res) {
+    workoutModel.find({ name: req.body.pose }, function(err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
 
 module.exports = router;

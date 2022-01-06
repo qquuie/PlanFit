@@ -42,7 +42,7 @@ function getposeList() {
     // console.log(p);
     console.log(getCookie('focusOption')); //得到使用者想要的資料
     var focus = getCookie('focusOption');
-    var posearr = new Array();　
+    var posearr = new Array();
     posearr = focus.split(",");
     console.log(posearr);
 
@@ -91,9 +91,9 @@ function newList(data, i, end) {
                 <div class="card-body text-GreenLake">
                     <h3 class="card-title">${data.name}</h3>
                     <p class="card-text">
-                        Difficulty：${data.level}/5 <br>
-                        equipment：${e} <br>
-                        Jumping：${j}
+                        Difficulty:${data.level}/5 <br>
+                        equipment:${e} <br>
+                        Jumping:${j}
                     </p>
                 </div>
             </div>`

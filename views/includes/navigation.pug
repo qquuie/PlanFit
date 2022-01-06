@@ -45,13 +45,13 @@ body
               li
                 a.dropdown-item(href='infor',onclick="getInfor()") Edit
               li
-                a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder',onclick="listfile()") File
+                a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder') File
               li
                 a.dropdown-item.btn#logout(data-toggle='modal', data-bs-target='#smallPageModal',onclick='logout()') Log out
              
   //  -----------------------------Folder-------------------------------- 
   .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
-    .modal-dialog.modal-dialog-scrollable#allfolder
+    #allfolder.modal-dialog.modal-dialog-scrollable(style='max-height: 70%')
       //  ---------------------------------所有文件夾------------------------------
       .modal-content.folder#folder
         .modal-header
@@ -62,10 +62,6 @@ body
               img(src='./img/close_r.png', width='30px', height='40px')
         .modal-body
           #all_fol
-            .d-flex.flex-row.alr-folder.position-relative#1
-              img(src='img/icon_folder.png')
-              p(onclick="FolderList('1')") My favorite
-              img.close#del_folder1(src='img/close_r.png', onclick="removeFolder('1')")
           .modal-footer
             .input-group-lg.mb-3.d-flex.flex-row.add_folder.position-relative
               p Add folder

@@ -204,10 +204,12 @@ router.post('/updateposeClick', function(req, res) {
 //新增文件夾
 router.post('/addFolder', function(req, res) {
     var newfolder = new folderModel({
-        id: req.body.id,
         title: req.body.title,
-        status: false
+        status: false,
+        acc: req.body.acc
     });
+    console.log(1);
+
     newfolder.save(function(err, data) {
         if (err) {
             res.json({
@@ -218,7 +220,7 @@ router.post('/addFolder', function(req, res) {
             res.json({
                 "status": 0,
                 "msg": "success",
-                "data": data
+                "data": data,
             });
         }
     })
@@ -233,11 +235,7 @@ router.get('/getFolder', function(req, res) {
 });
 
 router.post('/listfile', function(req, res) {
-    console.log(1);
-    folderModel.find(function(err, data) {
-        if (err) {
-            console.log(err);
-        }
+    folderModel.find({ acc: req.body.acc }, function(err, data) {
         res.json(data); //將資料回應給前端
     });
 });

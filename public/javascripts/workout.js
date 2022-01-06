@@ -123,9 +123,9 @@ function newList(data, i, end) {
                 <div class="card-body text-GreenLake">
                     <h3 class="card-title">${data.name}</h3>
                     <p class="card-text">
-                        Difficulty：${data.level}/5 <br>
-                        equipment：${e} <br>
-                        Jumping：${j}
+                        Difficulty:${data.level}/5 <br>
+                        equipment:${e} <br>
+                        Jumping:${j}
                     </p>
                 </div>
             </div>`
@@ -152,13 +152,13 @@ function updateposeClick(id) {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 
-$(".folder").click(function() {
-    console.log(1);
-    // var $father = $(this).parent().parent().parent().parent();
-    // workout_sth = $father.find(".card-body h3").text();
-    // console.log(workout_sth);
-    // $("#folder_win").show();
-});
+// $(".folder").click(function() {
+//     // console.log(1);
+//     // var $father = $(this).parent().parent().parent().parent();
+//     // workout_sth = $father.find(".card-body h3").text();
+//     // console.log(workout_sth);
+//     // $("#folder_win").show();
+// });
 
 $("#folder_close").click(function() {
     $("#folder_win").hide();

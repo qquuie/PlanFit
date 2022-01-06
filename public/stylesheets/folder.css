@@ -4,6 +4,7 @@ div.folder {
     /* padding: 5px; */
     /* margin: 0 auto; */
 }
+
 div.input-group-lg,
 div.input-group-lg>h1 {
     color: #e5945f;
@@ -105,33 +106,45 @@ div.addelse-btn>img {
     top: 0;
     right: 0;
 }
-div.action{
+
+div.action {
     background-color: #f6f4e8;
 }
-div.addfont>h1{
+
+div.addfont>h1 {
     color: #bacec1;
     position: relative;
     font-weight: bold;
     text-align: center;
 }
-#addinput{
+
+#addinput {
     height: 60;
     width: 90%;
     margin: 0 auto;
 }
-div.addback-btn{
+
+div.addback-btn {
     background-color: #bacec1;
     color: #f6f4e8;
 }
+
 div.addback-btn>p {
     margin: 5px;
 }
-div.add-btn{
+
+div.add-btn {
     background-color: #bacec1;
     color: #f6f4e8;
     position: absolute;
     right: 0;
 }
+
 div.add-btn>p {
     margin: 5px;
+}
+
+.modal-dialog-scrollable .modal-content {
+    max-height: 80%;
+    overflow: hidden;
 }

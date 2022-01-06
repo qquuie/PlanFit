@@ -256,6 +256,17 @@ router.post('/FolderList', function (req, res) {
         console.log(data);
     });
 });
+router.post('/addPose', function (req, res) {
+    console.log(req.body.folder);
+    console.log(req.body.acc);
+    folderModel.find({
+        title: req.body.folder,
+        acc:req.body.acc
+    }, function (err, data) {
+        console.log(data);
+        res.json(data); //將資料回應給前端
+    });
+});
 
 
 module.exports = router;

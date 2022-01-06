@@ -24,6 +24,7 @@ function getCookie(c_name) {
 }
 
 /*--------------------------------生成workout_div--------------------------------------*/
+getposeList();
 
 function getPose(p) {
     var api = "http://127.0.0.1:3000/api/getpose";
@@ -36,22 +37,53 @@ function getPose(p) {
     // getposeList(data.pose);
 }
 
-getposeList();
+
 
 function getposeList() {
     // console.log(p);
-    console.log(getCookie('focusOption')); //得到使用者想要的資料
-    var focus = getCookie('focusOption');
-    var posearr = new Array();
-    posearr = focus.split(",");
-    console.log(posearr);
-
+    var focus = getCookie('needOption');
+    // console.log(focus);
+    var needarr = new Array();
+    var dataneed = new Array(3);
+    needarr = focus.split(",");
+    // console.log(needarr);
+    for (var i = 0; i < needarr.length; i++) {
+        if (needarr[i] == "Lose weight") {
+            dataneed[0] = 1;
+        }
+        if (needarr[i] == "Gain muscle") {
+            dataneed[1] = 1;
+        }
+        if (needarr[i] == "Get fitter") {
+            dataneed[2] = 1;
+        }
+    }
 
     var api = "http://127.0.0.1:3000/api/getposeList";
-    // console.log(data.pose);
+
+    var tmp = [];
     jQuery.post(api, function(data) {
+        var pose = new Array(data.length);
         for (let i = 0; i < data.length; i++) {
-            newList(data[i], i, data.length - 1);
+            pose[i] = 0;
+            if (data[i].need[0] == dataneed[0]) {
+                pose[i]++;
+            }
+            if (data[i].need[1] == dataneed[1]) {
+                pose[i]++;
+            }
+            if (data[i].need[2] == dataneed[2]) {
+                pose[i]++;
+            }
+            pose[i] = pose[i] * 1000 + data[i].click;
+            data[i].num = pose[i];
+            tmp.push(data[i]);
+            tmp.sort(function(a, b) {
+                return b.num - a.num
+            });
+        }
+        for (let i = 0; i < data.length; i++) {
+            newList(tmp[i], i, data.length - 1);
         }
     });
 }
@@ -98,6 +130,7 @@ function newList(data, i, end) {
                 </div>
             </div>`
     $('.card_row' + col_num).append(tmp);
+
 }
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
@@ -164,13 +197,15 @@ function updateposeClick(id) {
 
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
-$(".folder").click(function() {
-    console.log(1);
-    // var $father = $(this).parent().parent().parent().parent();
-    // workout_sth = $father.find(".card-body h3").text();
-    // console.log(workout_sth);
-    // $("#folder_win").show();
-});
+
+// $(".folder").click(function() {
+//     // console.log(1);
+//     // var $father = $(this).parent().parent().parent().parent();
+//     // workout_sth = $father.find(".card-body h3").text();
+//     // console.log(workout_sth);
+//     // $("#folder_win").show();
+// });
+
 $("#folder_close").click(function() {
     $("#folder_win").hide();
 });

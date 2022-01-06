@@ -13,9 +13,10 @@ db.once('open', () => {
 });
 
 const folderSchema = new mongoose.Schema({
-    id: String,
     title: String,
-    status: Boolean
+    pose: String,
+    status: Boolean,
+    acc: String
 });
 folderSchema.set('collection', 'folder');
 const model = mongoose.model('folder', folderSchema);

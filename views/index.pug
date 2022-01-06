@@ -28,18 +28,20 @@ include includes/navigation
   div    
     .card-body.text-GreenLake.margin_0_auto
       ul.nav.nav-tabs.card-header-tabs
-        li.nav-item
+        li.nav-item.col-3
+        li.nav-item.col-1
           a.nav-link
             img(src='img/icon_see_times.png' width='20px')
             p.see_times 10
-        li.nav-item
+        li.nav-item.col-1
           a.nav-link.folder
             img(src='img/icon_folder.png' width='25px')
-        li.nav-item
+        li.nav-item.col-1
           a.nav-link.calender
-            img(src='img/icon_calender.png' width='20px')
-        li
+            img(src='img/icon_calender.png' width='20px' onclick="updateposeClick('')")
+        li.col-2
           p#pose_name 123
+        li.nav-item.col-3
   #carousel
     img#item-1
     img#item-2

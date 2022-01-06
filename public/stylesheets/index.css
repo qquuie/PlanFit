@@ -21,6 +21,8 @@
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
 } */
+
+
 /* #folder_win,
 #calendar_win {
     display: none;
@@ -35,6 +37,7 @@
     z-index: 5;
 } */
 
+
 /* #calendar_win {
     width: 50%;
     height: 110%;
@@ -44,6 +47,7 @@
     transform: translateX(-50%);
     color: #f3f1de;
 } */
+
 
 /* #folder_close {
     width: 30px;
@@ -65,13 +69,17 @@
     overflow-y: scroll;
 } */
 
+
 /* .folder_workout {
     width: 100%;
     height: 20%;
     background-color: white;
     margin: 10px 0px;
 } */
+
+
 /*上下 左右*/
+
 
 /* .folder_name {
     float: left;
@@ -144,6 +152,7 @@
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
 }
+
 #cal_close {
     width: 6%;
     position: absolute;
@@ -232,22 +241,27 @@
 
 
 /*-----------------------------------------------------*/
-#All,#Next{
+
+#All,
+#Next {
     background-color: #82A3A3;
     color: #f3f1de;
     position: absolute;
     width: 10%;
-
     text-align: center;
     border-radius: 10%;
     padding: 8px 0;
 }
-#All{
+
+#All {
     left: 10%;
 }
+
 #Next {
     left: 80%;
 }
+
+
 /* #All {
     background-color: #82A3A3;
     color: #f3f1de;
@@ -270,6 +284,8 @@
     text-align: center;
     border-radius: 10%;
 } */
+
+
 /* .All {
     background-color: #82A3A3;
     color: #f3f1de;
@@ -293,6 +309,7 @@
     text-align: center;
     border-radius: 10%;
 } */
+
 
 /* .All {
     background-color: #82A3A3;
@@ -321,6 +338,7 @@
 
 /*---------------------------------------------按下Next的視窗--------------------------------------------*/
 
+
 /* #modal_block {
     display: none;
     background-color: #f3f1de;
@@ -333,6 +351,7 @@
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
 } */
+
 
 /* #modal_workout_name {
     position: relative;
@@ -350,40 +369,74 @@
     padding: 8px;
 } */
 
+
 /* #modal_times {
     position: relative;
     left: 25%; */
-    /* (100-width)/2 */
-    /* top: 30%;
+
+
+/* (100-width)/2 */
+
+
+/* top: 30%;
     background-color: #ffffff;
     color: #82A3A3;
     font-size: 15px;
     width: 50%;
     height: 20%;
     margin: 10px 0px; */
-    /*上下 左右*/
+
+
+/*上下 左右*/
+
+
 /* } */
+
 
 /* #input_num {
     padding: 10px;
     margin: 6px 10px;
     width: 50%;
     border-width: 0px; */
-    /*只留下邊界*/
-    /* border-bottom: 1px solid #52795e; */
-    /*輸入框的外圍*/
-    /* outline: none; */
-    /*按下輸入框不會有除了下邊界的線*/
-    /* transition: 0.5s; */
-    /*轉換過度效果*/
-    /* text-align: center; */
+
+
+/*只留下邊界*/
+
+
+/* border-bottom: 1px solid #52795e; */
+
+
+/*輸入框的外圍*/
+
+
+/* outline: none; */
+
+
+/*按下輸入框不會有除了下邊界的線*/
+
+
+/* transition: 0.5s; */
+
+
+/*轉換過度效果*/
+
+
+/* text-align: center; */
+
+
 /* } */
 
+
 /* #input_num:focus:hover { */
-    /*輸入時*/
-    /* background-color: #82A3A3;
+
+
+/*輸入時*/
+
+
+/* background-color: #82A3A3;
     color: white;
 } */
+
 
 /* #times {
     background-color: #82A3A3;
@@ -543,7 +596,7 @@
 }
 
 #pose_name {
+    width: 500px;
     font-size: 30px;
     position: relative;
-    left: 500%;
 }

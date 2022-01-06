@@ -6,7 +6,8 @@ div.folder {
 }
 
 div.input-group-lg,
-div.input-group-lg>h1 {
+div.input-group-lg>h1,
+#fol_name {
     color: #e5945f;
     /* text-align: left; */
     position: relative;

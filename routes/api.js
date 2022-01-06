@@ -232,6 +232,16 @@ router.get('/getFolder', function(req, res) {
     });
 });
 
+router.post('/listfile', function(req, res) {
+    console.log(1);
+    folderModel.find(function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(data); //將資料回應給前端
+    });
+});
+
 
 
 module.exports = router;

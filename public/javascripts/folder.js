@@ -1,5 +1,15 @@
 let folder = [];
 
+function listfile() {
+    var api = "http://127.0.0.1:3000/api/listfile";
+    jQuery.post(api, function(data) {
+        // for (var i = 0; i < data.length; i++) {
+        //     console.log(1);
+        //     // newFolder(data[i]);
+        // }
+    });
+}
+
 // -----------------新增文件夾------------------
 function addFolder() {
     let id = 2;
@@ -9,11 +19,10 @@ function addFolder() {
     } else {
         var api = "http://127.0.0.1:3000/api/addFolder";
         let data = {
-            'id': id,
             'title': title,
             'status': false
         };
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             if (res.status == 0) {
                 folder.push(data);
                 newFolderList(data);
@@ -28,6 +37,7 @@ function addFolder() {
     }
 
 }
+
 // -----------------新增文件夾div------------------
 function newFolder(data) {
     let status = (data.status) ? "checked" : "";
@@ -122,8 +132,8 @@ function backBtn_act(data) {
     $('#folder' + data.id).removeClass("d-none");
     $('#action' + data.id).addClass("d-none");
 }
-$(document).ready(function () {
-    $('#add_fol').click(function () {
+$(document).ready(function() {
+    $('#add_fol').click(function() {
         addFolder();
     });
 })

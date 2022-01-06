@@ -68,7 +68,7 @@ function listfile() {
         total = data.length;
         var ar = new Array();
         for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < )
+            for (var j = 0; j < fol;j++)
                 ar[i] = data[i].title;
             newFolder(data[i], i);
         }

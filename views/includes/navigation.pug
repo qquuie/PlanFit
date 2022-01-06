@@ -70,10 +70,7 @@ body
       //  ----------------------------------文件夾中的所有動作----------------------------- 
       .modal-content.folder#folder1
         .modal-header 
-          .input-group-lg
-            h1
-              img(src='img/icon_folder.png')
-              | My favorite
+          .input-group-lg#fol_title
           .input-group-lg
             button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
               img(src='./img/close_r.png', width='30px', height='40px', alt)
@@ -97,7 +94,7 @@ body
             button#closeBtn.btn.col-auto.me-auto(type='button' data-dismiss='modal' aria-label='Close')
               img(src='./img/close_g1.png' width='30px' height='40px' alt='')
         .modal-body
-          textarea#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative(name='' cols='30' rows='3')
+          input(type="text")#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative
           .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
             .btn.btn-sm.addback-btn(type='button' onclick="backBtn_act('1')")
               p Back

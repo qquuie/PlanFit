@@ -32,7 +32,7 @@ function getPose(p) {
     var data = {
         "pose": p,
     }; //選擇之動作
-    jQuery.post(api, data, function(res) {});
+    jQuery.post(api, data, function (res) {});
     // console.log(data.pose);
     // getposeList(data.pose);
 }
@@ -62,7 +62,7 @@ function getposeList() {
     var api = "http://127.0.0.1:3000/api/getposeList";
 
     var tmp = [];
-    jQuery.post(api, function(data) {
+    jQuery.post(api, function (data) {
         var pose = new Array(data.length);
         for (let i = 0; i < data.length; i++) {
             pose[i] = 0;
@@ -78,7 +78,7 @@ function getposeList() {
             pose[i] = pose[i] * 1000 + data[i].click;
             data[i].num = pose[i];
             tmp.push(data[i]);
-            tmp.sort(function(a, b) {
+            tmp.sort(function (a, b) {
                 return b.num - a.num
             });
         }
@@ -109,7 +109,7 @@ function newList(data, i, end) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link folder">
-                                <img src="img/icon_folder.png" width="25px">
+                                <img src="img/icon_folder.png" width="25px" >
                             </a>
                         </li>
                         <li class="nav-item">
@@ -130,7 +130,18 @@ function newList(data, i, end) {
                 </div>
             </div>`
     $('.card_row' + col_num).append(tmp);
+    // const workout_modal=`
+    
+    // `;
+    // $('body').append(workout_modal)
 
+    // $('.card-img-top').click(function () {
+    //     var itemId = $(this).attr('id');
+    //     const tmp = $(this).parent().find('a.nav-link>p');
+    //     var img_id=tmp.attr('id').split('see_times')[1]
+    //     console.log(img_id)
+
+    // })
 }
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
@@ -190,7 +201,7 @@ function updateposeClick(id) {
     }; //這邊給值//更改click+1
     $('#see_times' + id).text(data.click);
     // console.log(data);
-    jQuery.post(api, data, function(res) {
+    jQuery.post(api, data, function (res) {
         // console.log(res);
     });
 }
@@ -198,19 +209,19 @@ function updateposeClick(id) {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 
-// $(".folder").click(function() {
-//     // console.log(1);
-//     // var $father = $(this).parent().parent().parent().parent();
-//     // workout_sth = $father.find(".card-body h3").text();
-//     // console.log(workout_sth);
-//     // $("#folder_win").show();
-// });
+$(".folder").click(function () {
+    console.log(1);
+    // var $father = $(this).parent().parent().parent().parent();
+    // workout_sth = $father.find(".card-body h3").text();
+    // console.log(workout_sth);
+    // $("#folder_win").show();
+});
 
-$("#folder_close").click(function() {
+$("#folder_close").click(function () {
     $("#folder_win").hide();
 });
 //新增資料夾#new_add
-$('#new_add').click(function() {
+$('#new_add').click(function () {
     let $father = $(this).parent(); //找按鈕的父元素
     let new_folder_name = $father.find('#new_name').val(); //尋找子元素輸入欄位的val
     if (new_folder_name != "") {
@@ -225,7 +236,7 @@ $('#new_add').click(function() {
     }
 });
 //加入資料夾.folder_add
-$('.folder_add').click(function() {
+$('.folder_add').click(function () {
     var $f = $(this).parent(); //找按鈕的父元素
     console.log($f);
     var add_item = $f.find('.folder_name p').text(); //尋找子元素檔案名稱的txt
@@ -241,9 +252,12 @@ $('.folder_add').click(function() {
 
 $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
-$(".calender").click(function() {
+$(".calender").click(function () {
     $("#calendar_win").show();
-    $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
+    $("#calendar_win").css({
+        "display": "flex",
+        "flex-direction": "column"
+    });
 });
 
 

@@ -59,7 +59,7 @@ function addUser() {
     console.log(needOption);
 
     if (acc == "" && pw == "") {
-        alert("請輸入標題和內容!");
+        alert("PLease enter your account and password!");
     } else {
         var api = "http://127.0.0.1:3000/api/addUser";
         var data = {
@@ -74,7 +74,7 @@ function addUser() {
             'weight': weight,
             'age': age,
         };
-        jQuery.post(api, data, function(res) {
+        jQuery.post(api, data, function (res) {
             if (res.status == 0) {
                 $('#signUpName').val('');
                 $('#signUpPass').val('');
@@ -95,13 +95,23 @@ function addUser() {
                 setCookie('height', res.data.height)
                 setCookie('weight', res.data.weight)
 
-                window.location.href = 'index';
-                alert('Sign up successful')
+                // window.location.href = 'index';
+                alert('Sign up successful. You can log in now')
+                history.go(0);
 
                 // alert(data.acc + data.pw + " 新增成功");
 
             } else if (res.status == 1) {
                 alert(res.msg)
+                // $('#signUpName').val('');
+                // $('#signUpPass').val('');
+                // $('#signUpEmail').val('');
+                // $('#signUpBirth').val('');
+                // $('#yourHeight').val('');
+                // $('#yourWeight').val('');
+                // $('#yourAge').val('');
+                history.go(0);
+
             }
         });
     }
@@ -111,20 +121,18 @@ function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
     var api = "http://127.0.0.1:3000/api/getUser";
-    // var user = {
-    //     'acc': id,
-    //     'pw': pass
-    // };
-    if (id == "" && pass == "") {
-        alert("請輸入標題和內容!");
+
+    if (!id || !pass) {
+        alert("Please enter your account and password!");
     } else {
         jQuery.post(api, {
             'acc': id,
             'pw': pass
-        }, function(res) {
+        }, function (res) {
             if (res.status == 1) {
                 console.log(res.msg);
-                alert('Log in fail')
+                alert(res.msg)
+                history.go(0);
 
             } else {
                 setCookie('username', res.data.acc)
@@ -139,7 +147,7 @@ function getUser() {
                 setCookie('weight', res.data.weight)
 
                 window.location.href = 'index';
-                alert('Log in successful')
+                alert('Welcome to PlanFit ')
             }
         });
 
@@ -190,10 +198,10 @@ function getInfor() {
         'age': age,
     };
     var api = "http://127.0.0.1:3000/api/getInfor";
-    jQuery.post(api, data, function(res) {
+    jQuery.post(api, data, function (res) {
         // alert(data);
         console.log(data)
-            // edit(data)
+        // edit(data)
         infor(data)
     });
 
@@ -299,12 +307,14 @@ function edit() {
                 </div>
                 <div class="infor_data"><input type="text" id="account" readonly="true"/></div>
             </div>
-            <div class="col">
+            <div class="pw col">
                 <div class="infor_txt">
-                    <p>Password</p>
+                    <p> Password</p>
                 </div>
-                <div class="infor_data"><input type="text" id="pwChange" /></div>
+                <div class="infor_data"><input type="password" id="pwChange" />
+                </div>
             </div>
+           
             <div class="col">
                 <div class="infor_txt">
                     <p>Birthday</p>
@@ -390,24 +400,11 @@ function edit() {
     $('input#birthChange').val(getCookie('birth'))
     $('input#pwChange').val(getCookie('password'))
     $('input#emailChange').val(getCookie('email'))
-        // var tmp=$('div.infor_focus').find('input').next('label.btn').html()
-        // tmp==getCookie('focusOption')
-        // var tmp=[]
-        // var tmpLength=$('div.infor_focus').find('label.btn')
-        // for(var i=0;i<tmpLength.length;i++)
-        // {
-        //     tmp+= $('div.infor_focus').find('input')[i].value
-
-    //     if(tmp[i]===getCookie('focusOption'))
-    //     {
-    //         $('div.infor_focus').find('input')[i].labels.addClass('active');
-    //         $('div.infor_focus').find('input')[i].prop('checked',true)
-    //     }
-    // }
+  
 
     var count = 0,
         total = 0;
-    $('div.infor_data.infor_sex>label.btn').click(function() {
+    $('div.infor_data.infor_sex>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
         if (count.length > 1) {
@@ -419,30 +416,35 @@ function edit() {
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_focus>label.btn').click(function() {
+    $('div.infor_data.infor_focus>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
 
-        // if (count.length > 1) {
-        //     // alert('You only can hoose one part to focus on')
-
-
-        // }
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_need>label.btn').click(function() {
+    $('div.infor_data.infor_need>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_need').find('.active')
         $('div.infor_data.infor_need>input').checked == false
 
-        // if (count.length > 1) {
-        //     // alert('You only can choose one thing that you need ')
-
-        // }
         console.log(count.length)
     })
+    // const changePwBtn = `
+    //  <div class="col">
+    //     <div class="infor_txt">
+    //         <p> New Passwork</p>
+    //     </div>
+    //     <div class="infor_data"><input type="password" id="newPw"  />
+    //     </div>
+    // </div>`
+    // $('button.changePw').click(function () {
+    //     $('div.pw.col').after(changePwBtn)
+    //     $('input#pwChange').attr('readonly', false)
+    //     $('button.changePw').hide()
+    // })
+    
 
 
 }
@@ -453,9 +455,21 @@ function changeInfor() {
     if ($('#pwChange').val() === null) {
         pw = getCookie('password');
     } else {
-        pw = $('#pwChange').val();
+        pw = $('input#pwChange').val();
 
     }
+    // if($('#newPw').val() === null)
+    // {
+    //     alert('Your new password is null');
+    //     history.go[0];
+    // }
+    // else
+    // {
+    //     newpw=$('#newPw').val();
+    // }
+    alert($('#pwChange').val())
+    // alert($('#newPw').val())
+
     var email;
     if ($('#emailChange').val() == null) {
         email = getCookie('email');
@@ -552,7 +566,7 @@ function changeInfor() {
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
         alert('Please check all the check button ')
     } else {
-        jQuery.post(api, data, function(res) {
+        jQuery.post(api, data, function (res) {
             setCookie('username', res.data.acc)
             setCookie('password', res.data.pw)
             setCookie('email', res.data.email)

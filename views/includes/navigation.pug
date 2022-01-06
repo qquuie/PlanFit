@@ -51,7 +51,7 @@ body
              
   //  -----------------------------Folder-------------------------------- 
   .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
-    .modal-dialog.modal-dialog-scrollable.allfolder
+    .modal-dialog.modal-dialog-scrollable#allfolder
       //  ---------------------------------所有文件夾------------------------------
       .modal-content.folder#folder
         .modal-header
@@ -92,4 +92,19 @@ body
             .btn.btn-sm.d-flex.justify-content-between.addelse-btn(type='button', onclick="addBtn_act('1')")
               p Add else
               img(src='img/add.png', alt)
+      //  ----------------------------------增加動作----------------------------- 
+      #action1.modal-content.action.d-none
+        .modal-header
+          .input-group-lg.addfont
+            h1 Input something...
+          .input-group-lg.mb-1s
+            button#closeBtn.btn.col-auto.me-auto(type='button' data-dismiss='modal' aria-label='Close')
+              img(src='./img/close_g1.png' width='30px' height='40px' alt='')
+        .modal-body
+          textarea#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative(name='' cols='30' rows='3')
+          .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
+            .btn.btn-sm.addback-btn(type='button' onclick="backBtn_act('1')")
+              p Back
+            .btn.btn-sm.d-flex.justify-content-between.add-btn(type='button' onclick='')
+              p Add
  

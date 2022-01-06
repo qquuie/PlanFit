@@ -3,34 +3,34 @@ $(document).ready(function() {
         window.location.href = '/indexG';
     })
     var count = 0;
-    // var tmp = $('div.row#focusbtn').children().find('label.btn');
+    var tmp = $('div.row#focusbtn').children().find('label.btn');
     var tmp2 = $('div#sex.btn-group').find('label.btn');
-    // var tmp3 = $('div#needOptions').find('label.btn')
+    var tmp3 = $('div#needOptions').find('label.btn')
 
-    // tmp.click(function () {
-    //     count = $('div.row#focusbtn').find('.active');
-    //     if (count.length == 1) {
-    //         alert('You only can choose one focus part');
-    //         // $('div.infor_data.infor_sex>input').checked == false
-    //     }
-    //     console.log(count.length)
-    // })
+    tmp.click(function () {
+        count = $('div.row#focusbtn').find('.active');
+        if (count.length == 1) {
+            // alert('You only can choose one focus part');
+            $('div.infor_data.infor_sex>input').checked == false
+        }
+        console.log(count.length)
+    })
     tmp2.click(function () {
         count = $('div#sex.btn-group').find('.active');
         if (count.length == 1) {
             alert('You only can choose one gender');
-            // $('div.infor_data.infor_sex>input').checked == false
+            $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)
     })
-    // tmp3.click(function () {
-    //     count = $('div#needOptions').find('.active');
-    //     if (count.length == 1) {
-    //         // alert('You only can choose one thing that you need ');
-    //         // $('div.infor_data.infor_sex>input').checked == false
-    //     }
-    //     console.log(count.length)
-    // })
+    tmp3.click(function () {
+        count = $('div#needOptions').find('.active');
+        if (count.length == 1) {
+            // alert('You only can choose one thing that you need ');
+            $('div.infor_data.infor_sex>input').checked == false
+        }
+        console.log(count.length)
+    })
     // <--------------------------- Information-------------------------->
     $("div#smallPageModal").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');

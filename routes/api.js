@@ -244,10 +244,17 @@ router.post('/removeFolder', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-router.post('/FolderList', function(req, res) {
+router.post('/removeList', function (req, res) {
+    folderModel.remove({
+        _id: req.body.id
+    }, function (err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
+router.post('/FolderList', function (req, res) {
     folderModel.find({
-        _id: req.body.id,
-        acc: req.body.acc
+        acc: req.body.acc,
+        title:req.body.folder
     }, function(err, data) {
         res.json(data); //將資料回應給前端
         // console.log(data);
@@ -279,13 +286,30 @@ router.post('/workoutcal', function(req, res) {
     // });
 
 });
-router.post('/addPose', function(req, res) {
-    folderModel.find({
+router.post('/addPose', function (req, res) {
+    var newpose = new folderModel({
         title: req.body.folder,
+        pose:req.body.pose,
+        status: false,
         acc: req.body.acc
-    }, function(err, data) {
-        console.log(data);
+    });
+
+    newpose.save(function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
+router.post('/listpose', function (req, res) {
+    folderModel.find({
+        acc: req.body.acc,
+        title:req.body.folder
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
+       
     });
 });
 

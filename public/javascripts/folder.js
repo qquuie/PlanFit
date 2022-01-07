@@ -143,10 +143,23 @@ function FolderList(data) {
     var api = "http://127.0.0.1:3000/api/FolderList";
     let acc = {
         'acc': getCookie('username'),
-        'id': data
+        'folder':data
     };
     jQuery.post(api, acc, function(res) {
-        newFolderList(res[0]);
+        // console.log(res);
+        newFolderList(res[0].title);
+    });
+
+    let folder = $("#fol_name").text();
+    var api1 = "http://127.0.0.1:3000/api/listpose";
+    var acc1 = {
+        acc: getCookie('username'),
+        folder:folder
+    }
+    jQuery.post(api1, acc1, function (data1) {
+        for(var i=0;i<data1.length;i++){
+            newpose(data1);
+        }
     });
 }
 // -----------------文件中的動作div------------------
@@ -154,16 +167,22 @@ function newFolderList(data) {
     let content =
         `<div style="padding-top: 20px;">
         <img class="d-inline" style="margin-bottom: 20px;" src="img/icon_folder.png" />
-        <p class="d-inline" id="fol_name">${data.title}</p>
+        <p class="d-inline" id="fol_name">${data}</p>
     </div>`;
     $('#fol_title').append(content);
 }
 // -----------------刪除動作------------------
-// function removeList(data) {
-//     let index = folder.findIndex(element => element.data._id == id);
-//     folder.splice(index, 1);
-//     $('#' + data._id).remove();
-// }
+function removeList(data) {
+    $('#' + data).remove();
+    var api = "http://127.0.0.1:3000/api/removeList";
+    let acc = {
+        'acc': getCookie('username'),
+        'id': data
+    };
+    jQuery.post(api, acc, function (res) {
+
+    });
+}
 // -----------------回到所有文件夾------------------
 function backBtn(data) {
     $('#folder').removeClass("d-none");
@@ -175,13 +194,32 @@ function addBtn() {
     $('#action1').removeClass("d-none");
     $('#folder1').addClass("d-none");
 }
-// -----------------新增動作------------------
-function newpose() {
-    let content =
-        ``;
-    $('#').append(content);
+// -----------------呈現動作------------------
+function listpose() {
+    let folder = document.getElementById("fol_name").innerText;
+    var api = "http://127.0.0.1:3000/api/listpose";
+    var acc = {
+        acc: getCookie('username'),
+        folder:folder
+    }
+    jQuery.post(api, acc, function (data) {
+        for(var i=0;i<data.length;i++){
+            newpose(data);
+        }
+    });
 }
-
+// -----------------新增動作div------------------
+function newpose(data) {
+    let content =
+        `<div class="d-flex flex-row position-relative alr-folder" id="pose${data._id}">
+            <p>${data.pose}</p>
+            <img class="close" id="del_list1" src="img/close_r.png" onclick="removeList('${data._id}')" />
+    </div>`;
+    $('#fol_move').append(content);
+    $('#folder1').removeClass("d-none");
+    $('#action1').addClass("d-none");
+}
+// -----------------新增動作------------------
 function addPose() {
     let folder = document.getElementById("fol_name").innerText;
     let pose = $('#addinput').val();
@@ -198,11 +236,11 @@ function addPose() {
         jQuery.post(api, posedata, function(res) {
             console.log(res);
             if (res.status == 0) {
-
                 $('#addinput').val('');
             } else if (res.status == 1) {
                 alert(res.msg);
             }
+            newpose(res);
         });
 
     }

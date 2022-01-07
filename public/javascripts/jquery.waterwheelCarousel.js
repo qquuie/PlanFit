@@ -489,6 +489,8 @@
          * to get the clicked item to the center, or will fire the custom event
          * the user passed in if the center item is clicked
          */
+        var click = 0;
+
         $(this).find('img').bind("click", function() {
             var itemPosition = $(this).data().currentPosition;
 
@@ -515,10 +517,8 @@
             var p = {
                 "pose": tmp,
             }; //選擇之動作
-            var click = 0;
             jQuery.post(api, p, function(res) {
                 click = res[0].click;
-                $('.see_times').text(click);
             });
 
             var rotations = Math.abs(itemPosition);
@@ -540,6 +540,8 @@
                     rotateCarousel(rotations);
                 }
             }
+            $('.see_times').text(click);
+
         });
 
 

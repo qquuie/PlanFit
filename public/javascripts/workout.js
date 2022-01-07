@@ -161,6 +161,7 @@ function updateposeClick(id) {
     //
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
+    var API = "http://127.0.0.1:3000/api/workoutcal";
     var data = {
         "id": id,
         "click": parseInt($('#see_times' + id).text()) + 1,
@@ -177,7 +178,7 @@ function updateposeClick(id) {
         sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
         //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
         workout_sth_c = res.name;
-        console.log(workout_sth_c);
+        // console.log(workout_sth_c);
         $("#modal_workout_name p").text(workout_sth_c);/*資料庫*/
 
         $("td").removeClass("important");

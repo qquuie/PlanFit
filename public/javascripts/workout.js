@@ -145,15 +145,15 @@ function newList(data, i, end) {
 }
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
-var pre_click_ym;//之前的年月(用來記錄當All被按下時，是否已經換月)
-var now_click_ym;//現在的年月(用來記錄當All被按下時，是否已經換月)
-var change=true;//判斷是否已經按下過該格子
-var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
-var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
+var pre_click_ym; //之前的年月(用來記錄當All被按下時，是否已經換月)
+var now_click_ym; //現在的年月(用來記錄當All被按下時，是否已經換月)
+var change = true; //判斷是否已經按下過該格子
+var workout_list = []; //儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
+var workout_item = {}; //"使用者儲存的運動項目&日期&次數秒數"的物件
 var workout_sth_c = ""; //運動名稱
 var workout_times; //運動次數或秒數
-var same=false;//判斷是否有存取過該運動
-var sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+var same = false; //判斷是否有存取過該運動
+var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 //更新待辦事項//前端
 function updateposeClick(id) {
     $("#calendar_win").show();//顯示視窗
@@ -193,12 +193,12 @@ function updateposeClick(id) {
             console.log(choice_d);
             var Days = document.getElementsByTagName("td");
             for (var k = 0; k <= 41; k++) {
-                for(var j=0;j<choice_d.length;j++){
-                    if($(Days[k]).attr("data-uid")==choice_d[j]){
+                for (var j = 0; j < choice_d.length; j++) {
+                    if ($(Days[k]).attr("data-uid") == choice_d[j]) {
                         $(Days[k]).addClass("important");
                         break;
                     }
-                } 
+                }
             }
             // console.log(workout_list[i].choice_d);
             // console.log(choice_d);

@@ -12,7 +12,7 @@
  * for use with the jQuery JavaScript Framework
  * http://www.jquery.com
  */
-;
+
 (function($) {
     'use strict';
 
@@ -489,6 +489,8 @@
          * to get the clicked item to the center, or will fire the custom event
          * the user passed in if the center item is clicked
          */
+        var click = 0;
+
         $(this).find('img').bind("click", function() {
             var itemPosition = $(this).data().currentPosition;
 
@@ -510,6 +512,15 @@
             autoPlay(true);
             options.autoPlay = 0;
 
+            var tmp = this.name;
+            var api = "http://127.0.0.1:3000/api/getindexwheel";
+            var p = {
+                "pose": tmp,
+            }; //選擇之動作
+            jQuery.post(api, p, function(res) {
+                click = res[0].click;
+            });
+
             var rotations = Math.abs(itemPosition);
             if (itemPosition == 0) {
                 options.clickedCenter($(this));
@@ -517,10 +528,10 @@
                 // Fire the 'moving' callbacks
                 options.movingFromCenter(data.currentCenterItem);
                 options.movingToCenter($(this));
-                var tmp = this.name;
 
                 if (itemPosition < 0) { //左邊
                     $('#pose_name').text(tmp);
+
                     data.currentDirection = 'backward';
                     rotateCarousel(rotations);
                 } else if (itemPosition > 0) { //右邊
@@ -529,6 +540,8 @@
                     rotateCarousel(rotations);
                 }
             }
+            $('.see_times').text(click);
+
         });
 
 

@@ -75,7 +75,7 @@ body
             button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
               img(src='./img/close_r.png', width='30px', height='40px', alt)
         .modal-body
-          #fol_move1
+          #fol_move
             .d-flex.flex-row.position-relative.alr-folder#1
               p My favorite
               img.close#del_list1(src='img/close_r.png', onclick="removeList('1')")
@@ -94,7 +94,7 @@ body
             button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
               img(src='./img/close_g1.png' width='30px' height='40px' alt='')
         .modal-body
-          input(type="text")#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative
+          input#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative(type='text', placeholder='  | Input pose')
           .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
             .btn.btn-sm.addback-btn(type='button' onclick="backBtn_act('1')")
               p Back

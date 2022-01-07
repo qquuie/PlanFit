@@ -109,7 +109,7 @@ function addFolder() {
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
-        retitle=0;
+        retitle = 0;
         for (var i = 0; i < f.length; i++) {
             if (title == f[i]) {
                 retitle++;
@@ -133,6 +133,10 @@ function addFolder() {
                 }
                 newFolder(res, total);
             });
+        } else {
+            $('#yourfolder').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
         }
 
     }

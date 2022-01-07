@@ -308,6 +308,7 @@ $('.home_cal').click(function() {
 //紀錄運動名稱
 $(".calender").click(function() {
     //---------------------------------------------------------初始化-------------------------------
+    var API = "http://127.0.0.1:3000/api/workoutcal";
     choice_d = [];
     same = false; //判斷是否有存取過該運動
     sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
@@ -379,13 +380,19 @@ $("#modal_OK").click(function() {
     //     choice_d_arr[i]=workout_item.choice_d[i];
     // }
 
-    var api = "http://127.0.0.1:3000/api/workoutcal";
+    var api = "http://127.0.0.1:3000/api/workoutcal";  
 
     var data = workout_item; //選擇之動作
     console.log(data);
-    jQuery.post(api, data, function (res) {
-
-    });
+    // jQuery.post(api, function (res) {//抓後端資料
+    //     console.log(1);
+    //     // console.log(res.acc);
+    //     // console.log(res.times);
+    //     // console.log(res.day);
+    //     // if(res.title == workout_sth_c && res.acc == getCookie('username')){
+    //     //     console.log(111222);
+    //     // }
+    // });
 
     // console.log(workout_item);
     // console.log(workout_list);

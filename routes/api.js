@@ -276,6 +276,11 @@ router.post('/workoutcal', function (req, res) {
             res.json(data);//將資料回應給前端
         });
     });
+    // calendarModel.find(function(err, d){//web->DB
+    //     if(err) console.log(err);//throw err
+    //     console.log(d);
+    //     res.json(d);//web->前端
+    // });
     
 });
 router.post('/addPose', function (req, res) {

@@ -154,6 +154,7 @@ var workout_sth_c = ""; //運動名稱
 var workout_times; //運動次數或秒數
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
+
 //更新待辦事項//前端
 function updateposeClick(id) {
     $("#calendar_win").show();//顯示視窗
@@ -161,14 +162,12 @@ function updateposeClick(id) {
     //
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
-    var API = "http://127.0.0.1:3000/api/workoutcal";
     var data = {
         "id": id,
         "click": parseInt($('#see_times' + id).text()) + 1,
     }; //這邊給值//更改click+1
     $('#see_times' + id).text(data.click);
-    // console.log(data);
-    
+    //---------------------------------------------------------初始化End----------------------------
     //----------------------------------------------------------------//
     jQuery.post(api, data, function (res) {//抓後端資料
         // console.log(res);
@@ -183,6 +182,10 @@ function updateposeClick(id) {
 
         $("td").removeClass("important");
     });
+    //----------------------------------------------------------------//
+    
+
+    //----------------------------------------------------------------//
     //---------------------------------------------------------初始化End----------------------------
     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
     for(var i=0;i<workout_list.length;i++){

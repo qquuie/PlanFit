@@ -218,13 +218,13 @@ function updateposeClick(id) {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 
-$(".folder").click(function () {
-    console.log(1);
-    // var $father = $(this).parent().parent().parent().parent();
-    // workout_sth = $father.find(".card-body h3").text();
-    // console.log(workout_sth);
-    // $("#folder_win").show();
-});
+// $(".folder").click(function () {
+//     // console.log(1);
+//     // var $father = $(this).parent().parent().parent().parent();
+//     // workout_sth = $father.find(".card-body h3").text();
+//     // console.log(workout_sth);
+//     // $("#folder_win").show();
+// });
 
 $("#folder_close").click(function () {
     $("#folder_win").hide();

@@ -231,13 +231,13 @@ $('#new_add').click(function () {
     let new_folder_name = $father.find('#new_name').val(); //尋找子元素輸入欄位的val
     if (new_folder_name != "") {
         console.log(new_folder_name);
-        let new_row = `
-          <div class="folder_workout">
-            <div class="folder_name"><p>${new_folder_name}</p></div>
-            <div class="folder_add"><p>+</p></div>
-          </div>
-        `;
-        $('#folder_workout_block').append(new_row);
+        // let new_row = `
+        //   <div class="folder_workout">
+        //     <div class="folder_name"><p>${new_folder_name}</p></div>
+        //     <div class="folder_add"><p>+</p></div>
+        //   </div>
+        // `;
+        // $('#folder_workout_block').append(new_row);
     }
 });
 //加入資料夾.folder_add

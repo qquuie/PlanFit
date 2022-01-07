@@ -182,31 +182,10 @@ $(document).ready(function() {
     })
 
 
-    $('#add_fol').click(function() {
-        addFolder();
-    });
-
     // ---------------------------------folder------------------------------------
 
     // -----------------新增文件夾------------------
-    function addFolder() {
-        let title = $('#yourfolder').val();
-        if (title == "") {
-            alert("Please enter the folder name!");
-        } else {
-            let newFolderdiv = {
-                'id': id,
-                'title': title,
-                'status': false
-            };
-            folder.push(newFolderdiv);
-            newFolder(newFolderdiv);
-            newFolderList(newFolderdiv);
-            id++;
-            $('#yourfolder').val('');
-        }
-
-    }
+    
     let today = new Date(); //新增一個Date物件，命名為today
     let thisYear = today.getFullYear();
     let thisMonth = today.getMonth();

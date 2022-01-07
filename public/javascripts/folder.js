@@ -21,17 +21,17 @@ function getCookie(c_name) {
     return c_value;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#folder1').addClass("d-none");
     $('#action1').addClass("d-none");
 
 
 
-    $('#add_fol').click(function() {
+    $('#add_fol').click(function () {
         addFolder();
     });
 
-    $("#inforFolder").click(function() {
+    $("#inforFolder").click(function () {
         listfile();
         //     // var $father = $(this).parent().parent().parent().parent();
         //     // workout_sth = $father.find(".card-body h3").text();
@@ -39,7 +39,7 @@ $(document).ready(function() {
         //     // $("#folder_win").show();
     });
 
-    $('button#closeBtnfolder').click(function() {
+    $('button#closeBtnfolder').click(function () {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder").addClass("fade");
         $("div#smallPageModal_folder").css('z-index', '-1');
@@ -64,16 +64,15 @@ function listfile() {
         acc: getCookie('username'),
     }
     var fol = 0;
-    jQuery.post(api, acc, function(data) {
+    jQuery.post(api, acc, function (data) {
         total = data.length;
         var ar = new Array();
         for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < fol;j++)
+            for (var j = 0; j < fol; j++) {
                 ar[i] = data[i].title;
+            }
             newFolder(data[i], i);
         }
-
-
     });
 
 }
@@ -91,15 +90,18 @@ function addFolder() {
             'acc': getCookie('username'),
         };
         total++;
-        jQuery.post(api, data, function(res) {
+        jQuery.post(api, data, function (res) {
+            console.log(res);
             if (res.status == 0) {
                 $('#yourfolder').val('');
             } else if (res.status == 1) {
                 alert(res.msg)
             }
+            newFolder(res,total);
         });
 
     }
+
 }
 // -----------------刪除文件夾------------------
 function removeFolder(data) {
@@ -109,7 +111,7 @@ function removeFolder(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function(res) {
+    jQuery.post(api, acc, function (res) {
 
     });
 }
@@ -118,23 +120,23 @@ function removeFolder(data) {
 function FolderList(data) {
     $('#folder').addClass("d-none");
     $('#folder1').removeClass("d-none");
-    
+
     var api = "http://127.0.0.1:3000/api/FolderList";
     let acc = {
         'acc': getCookie('username'),
-        'id':data
+        'id': data
     };
-    jQuery.post(api, acc, function(res) {
+    jQuery.post(api, acc, function (res) {
         // console.log(res[0].title);
         newFolderList(res[0]);
     });
 }
 // -----------------文件中的動作div------------------
-function newFolderList(data){
+function newFolderList(data) {
     let content =
-    `<div ="input-group-lg">
-        <img class="d-inline" src="img/icon_folder.png" />
-        <h1 class="d-inline" id="fol_name">${data.title}</h1>
+        `<div style="padding-top: 20px;">
+        <img class="d-inline" style="margin-bottom: 20px;" src="img/icon_folder.png" />
+        <p class="d-inline" id="fol_name">${data.title}</p>
     </div>`;
     $('#fol_title').append(content);
 }
@@ -151,18 +153,19 @@ function backBtn(data) {
     $('#fol_title').empty();
 }
 // -----------------進入新增動作介面------------------
-function addBtn(){
+function addBtn() {
     $('#action1').removeClass("d-none");
     $('#folder1').addClass("d-none");
 }
 // -----------------新增動作------------------
-function newpose(){
+function newpose() {
     let content =
-    ``;
+        ``;
     $('#').append(content);
 }
+
 function addPose() {
-    let folder=document.getElementById("fol_name").innerText;;
+    let folder = document.getElementById("fol_name").innerText;;
     console.log(folder);
     let pose = $('#addinput').val();
     if (pose == "") {
@@ -173,7 +176,7 @@ function addPose() {
             'pose': pose,
             'acc': getCookie('username')
         };
-        jQuery.post(api, posedata, function(res) {
+        jQuery.post(api, posedata, function (res) {
             if (res.status == 0) {
                 $('#addinput').val('');
             } else if (res.status == 1) {

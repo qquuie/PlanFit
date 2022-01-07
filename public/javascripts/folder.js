@@ -113,6 +113,10 @@ function addFolder() {
                 }
                 newFolder(res, total);
             });
+        } else {
+            $('#yourfolder').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
         }
 
     }

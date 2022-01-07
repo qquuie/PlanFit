@@ -308,6 +308,7 @@ $('.home_cal').click(function() {
 //紀錄運動名稱
 $(".calender").click(function() {
     //---------------------------------------------------------初始化-------------------------------
+    var API = "http://127.0.0.1:3000/api/workoutcal";
     choice_d = [];
     same = false; //判斷是否有存取過該運動
     sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
@@ -343,14 +344,22 @@ $(".calender").click(function() {
     }
 });
 //按下確定後，紀錄該運動的日期陣列、運動名稱、運動次數或秒數-->存進物件
+var choice_day="";//字串
 $("#modal_OK").click(function() {
     $("#modal_block").hide(); //視窗關閉
-
-    var $ff = $(this).parent();
-    workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
+    //把時間資料放進字串
+    for(var i=0;i<choice_d.length;i++){
+        choice_day+=choice_d[i];
+        if(i<choice_d.length-1){
+            choice_day+=',';
+        }
+    }
+    console.log(choice_day);
     // console.log(workout_times);
     // console.log(workout_sth_c);
-    console.log(choice_d);
+    // console.log(choice_d);
+    var $ff = $(this).parent();
+    workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     if (same == true) { // && workout_list[sameID].workout_times==workout_times-->
         //只要改變選擇日期
         workout_list[sameID].choice_d = choice_d;
@@ -359,23 +368,31 @@ $("#modal_OK").click(function() {
         workout_item = {
             workout_sth_c: workout_sth_c,
             workout_times: workout_times,
-            choice_d: choice_d,
-            acc:getCookie('username')
+            choice_d: choice_day,
+            acc:getCookie('username')//使用者名稱
         }
         workout_list.push(workout_item);
 
     }
 
-    var choice_d_arr = new Array();
-    for(var i=0;i<workout_item.choice_d[i].length;i++){
-        
-    }
+    // var choice_d_arr = new Array();
+    // for(var i=0;i<workout_item.choice_d[i].length;i++){
+    //     choice_d_arr[i]=workout_item.choice_d[i];
+    // }
 
-    var api = "http://127.0.0.1:3000/api/workoutcal";
+    var api = "http://127.0.0.1:3000/api/workoutcal";  
 
-    var data = workout_list[0]; //選擇之動作
-    // console.log(data);
-    jQuery.post(api, data, function (res) {});
+    var data = workout_item; //選擇之動作
+    console.log(data);
+    // jQuery.post(api, function (res) {//抓後端資料
+    //     console.log(1);
+    //     // console.log(res.acc);
+    //     // console.log(res.times);
+    //     // console.log(res.day);
+    //     // if(res.title == workout_sth_c && res.acc == getCookie('username')){
+    //     //     console.log(111222);
+    //     // }
+    // });
 
     // console.log(workout_item);
     // console.log(workout_list);

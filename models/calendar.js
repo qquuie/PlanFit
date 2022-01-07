@@ -14,12 +14,13 @@ db.once('open', () => {
 
 const calendarSchema = new mongoose.Schema({
     acc: String,
-    day:Array,
+    // day:Array,
+    day:String,
     title:String,
     times:String
     //Number
 });
-calendarSchema.set('collection', 'calendar');
+calendarSchema.set('collection', 'calendar');//後者為資料庫的資料夾名稱
 const model = mongoose.model('calendar', calendarSchema);
 
 module.exports = model;

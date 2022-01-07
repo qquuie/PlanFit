@@ -21,17 +21,17 @@ function getCookie(c_name) {
     return c_value;
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     $('#folder1').addClass("d-none");
     $('#action1').addClass("d-none");
 
 
 
-    $('#add_fol').click(function () {
+    $('#add_fol').click(function() {
         addFolder();
     });
 
-    $("#inforFolder").click(function () {
+    $("#inforFolder").click(function() {
         listfile();
         // var $father = $(this).parent().parent().parent().parent();
         // workout_sth = $father.find(".card-body h3").text();
@@ -39,7 +39,7 @@ $(document).ready(function () {
         // $("#folder_win").show();
     });
 
-    $('button#closeBtnfolder').click(function () {
+    $('button#closeBtnfolder').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder").addClass("fade");
         $("div#smallPageModal_folder").css('z-index', '-1');
@@ -49,57 +49,37 @@ $(document).ready(function () {
         }
     })
 
-    $('.delete_folder').click(function () {
+    $('.delete_folder').click(function() {
         // removeFolder()
     })
 
 })
 
 var total = 0;
-var f = [0];
+var f = [];
 
 function listfile() {
     var api = "http://127.0.0.1:3000/api/listfile";
     var acc = {
         acc: getCookie('username'),
     }
-    jQuery.post(api, acc, function (data) {
+    jQuery.post(api, acc, function(data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
-            // console.log(f[i]);
-
         }
-
-    });
-    // compareFloder();
-    jQuery.post(api, acc, function (data) {
-        // console.log(f[0]);
-
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].status == false) {
-                total++;
-                newFolder(data[i], i);
-            }
-        }
+        compareFloder(f);
     });
 }
 
-function compareFloder() {
-    // console.log(f[0]);
-    // for (var i=0; i < f[0].length; i++) {
-
-    //     console.log(f[0]);
-    //     // compareFloder(f[i]);
-    // }
-    var api = "http://127.0.0.1:3000/api/compareFloder";
-    var data = {
-        acc: getCookie('username'),
-        // folder: foldername
-    }
-    jQuery.post(api, function (res) {
-        console.log(res);
-        console.log(foldername);
+function compareFloder(file) {
+    var totalfile = "";
+    var filteredArray = file.filter(function(ele, pos) {
+        return file.indexOf(ele) == pos;
     });
+    for (var i = 0; i < filteredArray.length; i++) {
+        newFolder(filteredArray[i], i);
+    }
+
 }
 let retitle = 0;
 
@@ -109,7 +89,7 @@ function addFolder() {
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
-        retitle=0;
+        retitle = 0;
         for (var i = 0; i < f.length; i++) {
             if (title == f[i]) {
                 retitle++;
@@ -125,7 +105,7 @@ function addFolder() {
                 'acc': getCookie('username')
             };
             total++;
-            jQuery.post(api, data, function (res) {
+            jQuery.post(api, data, function(res) {
                 if (res.status == 0) {
                     $('#yourfolder').val('');
                 } else if (res.status == 1) {
@@ -146,7 +126,7 @@ function removeFolder(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function (res) {
+    jQuery.post(api, acc, function(res) {
 
     });
 }
@@ -161,7 +141,7 @@ function FolderList(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function (res) {
+    jQuery.post(api, acc, function(res) {
         newFolderList(res[0]);
     });
 }
@@ -211,7 +191,7 @@ function addPose() {
             'status': false,
             'acc': getCookie('username')
         };
-        jQuery.post(api, posedata, function (res) {
+        jQuery.post(api, posedata, function(res) {
             console.log(res);
             if (res.status == 0) {
 
@@ -231,12 +211,12 @@ function backBtn_act(data) {
 
 // -----------------新增文件夾div------------------
 function newFolder(data, i) {
-    let status = (data.status) ? "checked" : "";
+    // let status = (data.status) ? "checked" : "";
     let content =
-        `<div class="d-flex flex-row alr-folder position-relative ${i}" id="${data._id}">
+        `<div class="d-flex flex-row alr-folder position-relative ${i}">
             <img src="img/icon_folder.png">
-            <p onclick="FolderList('${data._id}')">${data.title}</p>
-            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data._id}" onclick="removeFolder('${data._id}')">
+            <p onclick="FolderList('${data}')">${data}</p>
+            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data._id}')">
         </div>`;
     $('#all_fol').append(content);
 

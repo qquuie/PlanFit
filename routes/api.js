@@ -212,16 +212,10 @@ router.post('/addFolder', function(req, res) {
 
     newfolder.save(function(err, data) {
         if (err) {
-            res.json({
-                "status": 1,
-                "msg": "error"
-            });
-        } else {
-            res.json({
-                "status": 0,
-                "msg": "success",
-                "data": data,
-            });
+            console.log(err);
+        }
+        else{
+            res.json(data);
         }
     })
 });

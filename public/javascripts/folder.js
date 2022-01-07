@@ -143,13 +143,14 @@ function FolderList(data) {
     var api = "http://127.0.0.1:3000/api/FolderList";
     let acc = {
         'acc': getCookie('username'),
-        'id': data
+        'folder':data
     };
     jQuery.post(api, acc, function(res) {
-        newFolderList(res[0]);
+        // console.log(res);
+        newFolderList(res[0].title);
     });
 
-    let folder = document.getElementById("fol_name").innerText;
+    let folder = $("#fol_name").text();
     var api1 = "http://127.0.0.1:3000/api/listpose";
     var acc1 = {
         acc: getCookie('username'),
@@ -166,7 +167,7 @@ function newFolderList(data) {
     let content =
         `<div style="padding-top: 20px;">
         <img class="d-inline" style="margin-bottom: 20px;" src="img/icon_folder.png" />
-        <p class="d-inline" id="fol_name">${data.title}</p>
+        <p class="d-inline" id="fol_name">${data}</p>
     </div>`;
     $('#fol_title').append(content);
 }

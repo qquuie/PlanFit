@@ -253,8 +253,8 @@ router.post('/removeList', function (req, res) {
 });
 router.post('/FolderList', function (req, res) {
     folderModel.find({
-        _id: req.body.id,
-        acc: req.body.acc
+        acc: req.body.acc,
+        title:req.body.folder
     }, function(err, data) {
         res.json(data); //將資料回應給前端
         // console.log(data);

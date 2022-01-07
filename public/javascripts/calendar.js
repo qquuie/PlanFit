@@ -23,6 +23,27 @@ var workout_times; //運動次數或秒數
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
+//抓取cookie
+function getUSerCookie() {
+    var tmp = getCookie('username');
+    $('h4#welcome').text('Wellcome ' + tmp);
+}
+
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
     var weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -338,11 +359,25 @@ $("#modal_OK").click(function() {
         workout_item = {
             workout_sth_c: workout_sth_c,
             workout_times: workout_times,
-            choice_d: choice_d
+            choice_d: choice_d,
+            acc:getCookie('username')
         }
         workout_list.push(workout_item);
+
     }
-    console.log(workout_item);
-    console.log(workout_list);
+
+    var choice_d_arr = new Array();
+    for(var i=0;i<workout_item.choice_d[i].length;i++){
+        
+    }
+
+    var api = "http://127.0.0.1:3000/api/workoutcal";
+
+    var data = workout_list[0]; //選擇之動作
+    // console.log(data);
+    jQuery.post(api, data, function (res) {});
+
+    // console.log(workout_item);
+    // console.log(workout_list);
     //之後將存放這些資料的變數清空
 });

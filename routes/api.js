@@ -3,6 +3,7 @@ var router = express.Router();
 var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 var folderModel = require('../models/folder.js');
+var calendarModel = require('../models/calendar.js');
 var bcrypt = require('bcryptjs');
 const createHttpError = require('http-errors');
 
@@ -253,7 +254,26 @@ router.post('/FolderList', function (req, res) {
         _id: req.body.id
     }, function (err, data) {
         res.json(data); //將資料回應給前端
+        // console.log(data);
+    });
+});
+
+router.post('/workoutcal', function (req, res) {
+    console.log(req.body);
+    calendarModel.find({
+        title: req.body.workout_sth_c,
+        //times:req.body.workout_times,
+        acc:req.body.acc
+    }, function (err, data) {
         console.log(data);
+        console.log(req.body.choice_d);
+        for(var i=0;i<req.body.choice_d.length;i++){
+            data[0].day.push(req.body.choice_d[i]);
+        }
+        data[0].day.push(req.body.choice_d);
+        console.log(data[0].day);
+        // data.save(function (err, data) {});
+        // res.json(data); //將資料回應給前端
     });
 });
 

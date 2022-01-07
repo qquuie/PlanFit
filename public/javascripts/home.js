@@ -273,6 +273,42 @@ $('.cal').click(function() {
     }
     console.log(choice_d);
 });
+//首頁日曆跳出視窗
+// $("#cal_win").click(function() {
+//     //---------------------------------------------------------初始化-------------------------------
+//     choice_d=[];
+//     same=false;//判斷是否有存取過該運動
+//     sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+//     //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
+//     workout_sth_c = $("#pose_name").text();
+//     $("#modal_workout_name p").text(workout_sth_c);
+//     console.log(workout_sth_c);
+
+//     $(".cal").removeClass("important");
+//     //---------------------------------------------------------初始化End----------------------------
+//     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
+//     for(var i=0;i<workout_list.length;i++){
+//         if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
+//             console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
+//             same=true;
+//             sameID=i;
+//             choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
+
+//             var Days = document.getElementsByClassName("cal");
+//             for (var k = 0; k <= 41; k++) {
+//                 for(var j=0;j<choice_d.length;j++){
+//                     if($(Days[k]).attr("data-uid")==choice_d[j]){
+//                         $(Days[k]).addClass("important");
+//                         break;
+//                     }
+//                 } 
+//             }
+//             console.log(workout_list[i].choice_d);
+//             console.log(choice_d);
+//             break;
+//         }
+//     }
+// });
 //紀錄運動名稱
 $(".calender").click(function() {
     //---------------------------------------------------------初始化-------------------------------

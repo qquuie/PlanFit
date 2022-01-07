@@ -63,18 +63,28 @@ function listfile() {
     var acc = {
         acc: getCookie('username'),
     }
-    var fol = 0;
     jQuery.post(api, acc, function (data) {
         total = data.length;
         var ar = new Array();
         for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < fol; j++) {
-                ar[i] = data[i].title;
-            }
+            compareFloder(data[i].title);
             newFolder(data[i], i);
         }
+        
     });
 
+}
+
+function compareFloder(foldername) {
+    var api = "http://127.0.0.1:3000/api/compareFloder";
+    var data = {
+        acc: getCookie('username'),
+        folder: foldername
+    }
+    jQuery.post(api, data, function (res) {
+        console.log(res);
+        console.log(foldername);
+    });
 }
 
 // -----------------新增文件夾------------------
@@ -87,7 +97,7 @@ function addFolder() {
         let data = {
             'title': title,
             'status': false,
-            'acc': getCookie('username'),
+            'acc': getCookie('username')
         };
         total++;
         jQuery.post(api, data, function (res) {
@@ -95,9 +105,9 @@ function addFolder() {
             if (res.status == 0) {
                 $('#yourfolder').val('');
             } else if (res.status == 1) {
-                alert(res.msg)
+                alert(res.msg);
             }
-            newFolder(res,total);
+            newFolder(res, total);
         });
 
     }
@@ -165,23 +175,26 @@ function newpose() {
 }
 
 function addPose() {
-    let folder = document.getElementById("fol_name").innerText;;
-    console.log(folder);
+    let folder = document.getElementById("fol_name").innerText;
     let pose = $('#addinput').val();
     if (pose == "") {
         alert("Please enter the pose!");
     } else {
         var api = "http://127.0.0.1:3000/api/addPose";
         let posedata = {
+            'folder': folder,
             'pose': pose,
+            'status': false,
             'acc': getCookie('username')
         };
         jQuery.post(api, posedata, function (res) {
-            if (res.status == 0) {
-                $('#addinput').val('');
-            } else if (res.status == 1) {
-                alert(res.msg);
-            }
+            console.log(res);
+            // if (res.status == 0) {
+            //     
+            //     $('#addinput').val('');
+            // } else if (res.status == 1) {
+            //     alert(res.msg);
+            // }
         });
 
     }
@@ -194,12 +207,15 @@ function backBtn_act(data) {
 
 // -----------------新增文件夾div------------------
 function newFolder(data, i) {
-    let status = (data.status) ? "checked" : "";
-    let content =
-        `<div class="d-flex flex-row alr-folder position-relative ${i}" id="${data._id}">
+    if (data.status == false) {
+        let status = (data.status) ? "checked" : "";
+        let content =
+            `<div class="d-flex flex-row alr-folder position-relative ${i}" id="${data._id}">
             <img src="img/icon_folder.png">
             <p onclick="FolderList('${data._id}')">${data.title}</p>
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data._id}" onclick="removeFolder('${data._id}')">
         </div>`;
-    $('#all_fol').append(content);
+        $('#all_fol').append(content);
+    }
+
 }

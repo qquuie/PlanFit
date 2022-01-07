@@ -230,9 +230,39 @@ router.get('/getFolder', function(req, res) {
 
 router.post('/listfile', function(req, res) {
     folderModel.find({
+        acc: req.body.acc,
+        status:true
+    }, function(err, data) {
+        for(var i=0;i<data.length;i++){
+            data[i].status=false;
+            data[i].save(function (err, data) {
+            });
+        }
+    });
+    folderModel.find({
         acc: req.body.acc
     }, function(err, data) {
         res.json(data); //將資料回應給前端
+    });
+});
+
+router.post('/compareFloder', function(req, res) { 
+    folderModel.find({
+        acc: req.body.acc,
+        title:req.body.folder,
+        status:false
+    }, function(err, data) {
+        // console.log(data.length);
+        for(var i=1;i<data.length;i++){
+            // console.log(data[i]);
+            data[i].status=true;
+            data[i].save(function (err, data) {
+                
+            });
+        }
+        if(data.length>1){
+            
+        }
     });
 });
 
@@ -245,10 +275,11 @@ router.post('/removeFolder', function(req, res) {
 });
 router.post('/FolderList', function(req, res) {
     folderModel.find({
-        _id: req.body.id
+        _id: req.body.id,
+        acc: req.body.acc
     }, function(err, data) {
         res.json(data); //將資料回應給前端
-        // console.log(data);
+        console.log(data);
     });
 });
 
@@ -278,8 +309,6 @@ router.post('/workoutcal', function (req, res) {
     
 });
 router.post('/addPose', function (req, res) {
-    console.log(req.body.folder);
-    console.log(req.body.acc);
     folderModel.find({
         title: req.body.folder,
         acc:req.body.acc

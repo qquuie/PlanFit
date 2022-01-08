@@ -71,7 +71,7 @@ $(document).ready(function () {
     });
     $('#add_fol_i').click(function () {
         addFolder_i();
-        
+
     });
     //----------------------workout--------------------
     $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改
@@ -407,7 +407,6 @@ function addFolder_i() {
 }
 //----------------------------index------------------------
 function workoutFolder(data) {
-    console.log(1);
     $("div#smallPageModal_folder_workout").toggle();
     $("div#smallPageModal_folder_workout").modal("toggle");
     $("div#smallPageModal_folder_workout").removeClass("fade");
@@ -416,6 +415,6 @@ function workoutFolder(data) {
     // $(".page").css('z-index', '-1');
     // $("divallfoldert").css('z-index', '20000'); //abby改
     // $(".page").css('z-index', '1000');
-    listfile_i();
+    // listfile_i();
 
 }

@@ -1,4 +1,3 @@
-// const { parseChar } = require("character-parser");
 getInfor();
 getUSerCookie();
 

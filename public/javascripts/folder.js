@@ -1,21 +1,3 @@
-let folder = [];
-
-function getCookie(c_name) {
-    var c_value = " " + document.cookie;
-    var c_start = c_value.indexOf(" " + c_name + "=");
-    if (c_start == -1) {
-        c_value = null;
-    } else {
-        c_start = c_value.indexOf("=", c_start) + 1;
-        var c_end = c_value.indexOf(";", c_start);
-        if (c_end == -1) {
-            c_end = c_value.length;
-        }
-        c_value = unescape(c_value.substring(c_start, c_end));
-    }
-    return c_value;
-}
-
 $(document).ready(function () {
     //----------------------infor--------------------------
     $('#folder1').hide();
@@ -71,6 +53,28 @@ $(document).ready(function () {
     });
     $('#add_fol_i').click(function () {
         addFolder_i();
+
+    });
+    //----------------------workout--------------------
+
+    $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改
+    $(".page").css('z-index', '1000');
+    $("ul#workOutMenu>a.dropdown-item").click(function () {
+        $("div#smallPageModal_folder_workout").css('z-index', '-1');
+
+    });
+    $('button#closeBtnfolder_workout').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#smallPageModal_folder_workout").addClass("fade");
+        $("div#smallPageModal_folder_workout").css('z-index', '-2');
+        $(".page").css('z-index', '1000');
+
+        $(".modal-backdrop").addClass("fade");
+        $(".modal-backdrop").addClass("show");
+        $('#all_fol_w').empty();
+    });
+    $('#add_fol_w').click(function () {
+        addFolder_w();
     });
 
 })
@@ -90,6 +94,25 @@ function listfile() {
         compareFloder(f);
     });
 }
+
+let folder = [];
+
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
+
 
 function compareFloder(file) {
     var totalfile = "";
@@ -136,11 +159,11 @@ function addFolder() {
 }
 // -----------------刪除文件夾------------------
 function removeFolder(data) {
-    $('#' + data).remove();
+    $('#delet' + data).remove();
     var api = "http://127.0.0.1:3000/api/removeFolder";
     let acc = {
         'acc': getCookie('username'),
-        'id': data
+        'title': data
     };
     jQuery.post(api, acc, function (res) {
 
@@ -237,7 +260,6 @@ function addPose() {
         alert("Please enter the pose!");
     } else {
         repose = 0;
-        console.log(p);
 
         for (var i = 0; i < p.length; i++) {
             if (pose == p[i]) {
@@ -245,7 +267,6 @@ function addPose() {
                 break;
             }
         }
-        console.log(repose);
         if (repose == 0) {
             var api = "http://127.0.0.1:3000/api/addPose";
             let posedata = {
@@ -261,6 +282,8 @@ function addPose() {
                 } else if (res.status == 1) {
                     alert(res.msg);
                 }
+                f.push(res.title);
+                p.push(res.pose);
                 newpose(res);
                 backBtn_act();
             });
@@ -282,7 +305,7 @@ function backBtn_act() {
 function newFolder(data, i) {
     // let status = (data.status) ? "checked" : "";
     let content =
-        `<div class="d-flex flex-row alr-folder position-relative ${i}">
+        `<div class="d-flex flex-row alr-folder position-relative ${i}" id="delet${data}">
             <img src="img/icon_folder.png">
             <p onclick="FolderList('${data}')">${data}</p>
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
@@ -298,6 +321,7 @@ function listfile_i() {
     jQuery.post(api, acc, function (data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
+            p[i] = data[i].pose;
         }
         compareFloder_i(f);
     });
@@ -312,7 +336,7 @@ function compareFloder_i(file) {
 
     }
     for (var i = 0; i < filteredArray.length; i++) {
-        newFolder_i(filteredArray[i], i);
+        newFolder_i(filteredArray[i]);
     }
 }
 
@@ -329,14 +353,16 @@ function newFolder_i(data) {
     $('#all_fol_i').append(content);
 }
 //首頁.pose增加到folder
-function posetofolder(data) {
+function posetofolder(data, ) {
     let folder1 = data;
     let pose = document.getElementById("pose_name").innerText;
     repose = 0;
     for (var i = 0; i < p.length; i++) {
         if (pose == p[i]) {
-            repose++;
-            break;
+            if (folder1 == f[i]) {
+                repose++;
+                break;
+            }
         }
     }
     if (repose == 0) {
@@ -358,7 +384,6 @@ function posetofolder(data) {
 
 function addFolder_i() {
     let title = $('#yourfolder_i').val();
-    console.log(title);
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
@@ -381,6 +406,114 @@ function addFolder_i() {
             });
         } else {
             $('#yourfolder_i').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
+        }
+    }
+}
+//----------------------------workout------------------------
+function workoutFolder(data) {
+    $("div#smallPageModal_folder_workout").toggle();
+    $("div#smallPageModal_folder_workout").modal("toggle");
+    $("div#smallPageModal_folder_workout").removeClass("fade");
+    $(".modal-backdrop").removeClass("fade");
+    $(".modal-backdrop").removeClass("show");
+    $(".modal-backdrop").hide();
+    $("div#smallPageModal_folder_workout").css('z-index', '1050');
+    listfile_w(data);
+    window.localStorage.setItem('newpose',data);
+}
+
+function listfile_w() {
+    var api = "http://127.0.0.1:3000/api/listfile";
+    var acc = {
+        acc: getCookie('username'),
+    }
+    jQuery.post(api, acc, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            f[i] = data[i].title;
+            p[i] = data[i].pose;
+        }
+        compareFloder_w(f);
+    });
+}
+
+function compareFloder_w(file) {
+    var filteredArray = file.filter(function (ele, pos) {
+        return file.indexOf(ele) == pos;
+    });
+    for (var i = 0; i < filteredArray.length; i++) {
+        newFolder_w(filteredArray[i]);
+    }
+}
+
+function newFolder_w(data) {
+    // let status = (data.status) ? "checked" : "";
+    let content =
+        `<div class="d-flex flex-row alr-folder position-relative" id="pose_${data}">
+            <img src="img/icon_folder.png">
+            <p>${data}</p>
+            <div class="position-absolute add_ptof" onclick="posetofolder_w('${data}')">
+            <img src="img/add.png">
+            </div>
+        </div>`;
+    $('#all_fol_w').append(content);
+    
+}
+//首頁.pose增加到folder
+function posetofolder_w(data) {
+    let folder1 = data;
+    let pose = window.localStorage.getItem('newpose');
+    repose = 0;
+    for (var i = 0; i < p.length; i++) {
+        if (pose == p[i]) {
+            if (folder1 == f[i]) {
+                repose++;
+                break;
+            }
+        }
+    }
+    if (repose == 0) {
+        var api = "http://127.0.0.1:3000/api/addPose";
+        let posedata = {
+            'folder': folder1,
+            'pose': pose,
+            'status': false,
+            'acc': getCookie('username')
+        };
+        jQuery.post(api, posedata, function (res) {
+            // console.log(res.title);
+            $("#pose_" + res.title).remove();
+        });
+    } else {
+        alert("Added to this folder!");
+    }
+}
+
+function addFolder_w() {
+    let title = $('#yourfolder_w').val();
+    if (title == "") {
+        alert("Please enter the folder name!");
+    } else {
+        retitle = 0;
+        for (var i = 0; i < f.length; i++) {
+            if (title == f[i]) {
+                retitle++;
+                break;
+            }
+        }
+        if (retitle == 0) {
+            var api = "http://127.0.0.1:3000/api/addFolder";
+            let data = {
+                'title': title,
+                'acc': getCookie('username')
+            };
+            jQuery.post(api, data, function (res) {
+                $('#yourfolder_w').val('');
+                newFolder_w(title,window.localStorage.getItem('newpose'));
+            });
+        } else {
+            $('#yourfolder_w').val('');
             alert("Duplicate folder name! Please re-enter!");
 
         }

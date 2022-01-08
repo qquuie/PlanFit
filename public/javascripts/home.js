@@ -403,3 +403,7 @@ $(".HOME_cal").click(function(){
 $("#HOME_div_close").click(function(){
     
 });
+
+function PleaseSign() {
+    alert("Sign in! Please!!");
+}

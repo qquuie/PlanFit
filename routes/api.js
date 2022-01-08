@@ -66,14 +66,14 @@ router.post('/getUser', async function(req, res) {
         if (data == null) {
             res.json({
                 "status": 1,
-                "msg": "You are not our menber yet!"
+                "msg": "You are not our member yet!"
             });
         } else {
             const isPw = await bcrypt.compare(req.body.pw, data.pw);
             if (!isPw) {
                 res.json({
                     "status": 1,
-                    "msg": "Your account or passwordwas wrong!"
+                    "msg": "Your account or password was wrong!"
                 });
             }
             // console.log(data)
@@ -224,7 +224,7 @@ router.post('/addFolder', function(req, res) {
 
 router.post('/removeFolder', function(req, res) {
     folderModel.remove({
-        _id: req.body.id
+        title:req.body.title
     }, function(err, data) {
         res.json(data); //將資料回應給前端
     });
@@ -324,6 +324,14 @@ router.post('/listpose', function(req, res) {
     }, function(err, data) {
         res.json(data); //將資料回應給前端
 
+    });
+});
+
+router.post('/getPose', function(req, res) {
+    workoutModel.findOne({
+        id: req.body.acc
+    }, async function(err, data) {
+        
     });
 });
 

@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
         img3 = data[tmp].img;
         name3 = data[tmp].name;
 
-        res.render('index', {
+        res.render('indexG', {
             img1: {
                 id: id1,
                 name: name1,

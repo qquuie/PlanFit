@@ -307,71 +307,25 @@ $('.home_cal').click(function() {
 });
 //紀錄運動名稱
 $(".calender").click(function() {
-    choice_d = [];
-    same = false; //判斷是否有存取過該運動
-    sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
-    //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
-    var $father = $(this).parent().parent().parent().parent();
-    workout_sth_c = $father.find(".card-body h3").text();
-    $("#modal_workout_name p").text(workout_sth_c);
-    console.log(workout_sth_c);
+    // choice_d = [];
+    // same = false; //判斷是否有存取過該運動
+    // sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
+    // //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
+    // var $father = $(this).parent().parent().parent().parent();
+    // workout_sth_c = $father.find(".card-body h3").text();
+    // $("#modal_workout_name p").text(workout_sth_c);
+    // console.log(workout_sth_c);
 
-    $("td").removeClass("important");
-    //---------------------------------------------------------初始化End----------------------------
-    //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
-    for (var i = 0; i < workout_list.length; i++) {
-        if (workout_sth_c == workout_list[i].workout_sth_c) { //有存取過該運動
-            console.log("已存取過運動名稱:" + workout_list[i].workout_sth_c);
-            same = true;
-            sameID = i;
-            choice_d = workout_list[i].choice_d; //當前日期陣列的值=資料庫物件裡面日期陣列的值
+    // $("td").removeClass("important");
+    // //---------------------------------------------------------初始化End----------------------------
+    // //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
+    // for (var i = 0; i < workout_list.length; i++) {
+    //     if (workout_sth_c == workout_list[i].workout_sth_c) { //有存取過該運動
+    //         console.log("已存取過運動名稱:" + workout_list[i].workout_sth_c);
+    //         same = true;
+    //         sameID = i;
+    //         choice_d = workout_list[i].choice_d; //當前日期陣列的值=資料庫物件裡面日期陣列的值
 
-            var Days = document.getElementsByTagName("td");
-            for (var k = 0; k <= 41; k++) {
-                for (var j = 0; j < choice_d.length; j++) {
-                    if ($(Days[k]).attr("data-uid") == choice_d[j]) {
-                        $(Days[k]).addClass("important");
-                        break;
-                    }
-                }
-            }
-            console.log(workout_list[i].choice_d);
-            console.log(choice_d);
-            break;
-        }
-    }
-});
-
-
-
-//User一開始登入的日曆
-function getUserCal(){
-    //---------------------------------------------------------初始化-------------------------------
-    var api = "http://127.0.0.1:3000/api/getUserCal";
-    var data = {
-        acc:getCookie('username')
-    };
-    jQuery.post(api, data, function (res) {//抓後端資料
-        // console.log(res);
-        //-----------------------------------------日曆初始化-------------------------------
-        choice_d=[];
-        same=false;//判斷是否有存取過該運動
-        sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
-        //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
-        workout_sth_c = res.name;
-        // console.log(workout_sth_c);
-        $("#modal_workout_name p").text(workout_sth_c);/*資料庫*/
-        $("td").removeClass("important"); 
-    });
-
-    //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
-    // for(var i=0;i<workout_list.length;i++){
-    //     if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
-    //         // console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
-    //         same=true;
-    //         sameID=i;
-    //         choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
-    //         console.log(choice_d);
     //         var Days = document.getElementsByTagName("td");
     //         for (var k = 0; k <= 41; k++) {
     //             for (var j = 0; j < choice_d.length; j++) {
@@ -381,14 +335,12 @@ function getUserCal(){
     //                 }
     //             }
     //         }
-    //         // console.log(workout_list[i].choice_d);
-    //         // console.log(choice_d);
+    //         console.log(workout_list[i].choice_d);
+    //         console.log(choice_d);
     //         break;
     //     }
     // }
-}
-getUserCal();
-
+});
 
 //按下確定後，紀錄該運動的日期陣列、運動名稱、運動次數或秒數-->存進物件
 var choice_day="";//字串

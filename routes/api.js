@@ -288,7 +288,7 @@ router.post('/getUserCal', function (req, res) {
         acc: req.body.acc
     }, function (err, data) {
         res.json(data);//將資料回應給前端
-        console.log(data);
+        // console.log(data);
     });
 }); 
 

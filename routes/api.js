@@ -213,7 +213,7 @@ router.post('/addFolder', function(req, res) {
         title: req.body.title,
         status: false,
         acc: req.body.acc
-    },function(err, data) {
+    }, function(err, data) {
         if (err) {
             console.log(err);
         } else {

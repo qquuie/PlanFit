@@ -71,6 +71,7 @@ $(document).ready(function () {
     });
     $('#add_fol_i').click(function () {
         addFolder_i();
+        
     });
     //----------------------workout--------------------
     $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改

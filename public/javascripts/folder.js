@@ -18,8 +18,8 @@ function getCookie(c_name) {
 
 $(document).ready(function () {
     //----------------------infor--------------------------
-    $('#folder1').addClass("d-none");
-    $('#action1').addClass("d-none");
+    $('#folder1').hide();
+    $('#action1').hide();
 
     $('#add_fol').click(function () {
         addFolder();
@@ -47,28 +47,31 @@ $(document).ready(function () {
         // removeFolder()
     });
     //----------------------index--------------------
-    $('#indexFolder').click(function() {
+    $('#indexFolder').click(function () {
         $("div#smallPageModal_folder_index").toggle();
         $("div#smallPageModal_folder_index").modal("toggle");
         $("div#smallPageModal_folder_index").removeClass("fade");
         $(".modal-backdrop").removeClass("fade");
         $("div#smallPageModal_folder_index").css('z-index', '1050');
         $(".page").css('z-index', '-1');
-        listfile();
-    })
+        listfile_i();
+    });
     $("div#smallPageModal_folder_index").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
-    $("ul#workOutMenu>a.dropdown-item").click(function() {
+    $("ul#workOutMenu>a.dropdown-item").click(function () {
         $("div#smallPageModal_folder_index").css('z-index', '-1');
 
-    })
-    $('button#closeBtnfolder_index').click(function() {
+    });
+    $('button#closeBtnfolder_index').click(function () {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder_index").addClass("fade");
         $("div#smallPageModal_folder_index").css('z-index', '-1');
         $(".page").css('z-index', '1000');
         $('#all_fol_i').empty();
-    })
+    });
+    $('#add_fol_i').click(function () {
+        addFolder_i();
+    });
 
 })
 
@@ -148,8 +151,8 @@ function removeFolder(data) {
 var p = [];
 
 function FolderList(data) {
-    $('#folder').addClass("d-none");
-    $('#folder1').removeClass("d-none");
+    $('#folder').hide();
+    $('#folder1').show();
 
     newFolderList(data);
     // -----------------呈現動作------------------
@@ -164,7 +167,9 @@ function FolderList(data) {
             p[i] = data1[i].pose;
             newpose(data1[i]);
         }
+
     });
+
 }
 // -----------------文件中的動作div------------------
 function newFolderList(data) {
@@ -189,15 +194,15 @@ function removeList(data) {
 }
 // -----------------回到所有文件夾------------------
 function backBtn(data) {
-    $('#folder').removeClass("d-none");
-    $('#folder1').addClass("d-none");
+    $('#folder').show();
+    $('#folder1').hide();
     $('#fol_title').empty();
     $('#fol_move').empty();
 }
 // -----------------進入新增動作介面------------------
 function addBtn() {
-    $('#action1').removeClass("d-none");
-    $('#folder1').addClass("d-none");
+    $('#action1').show();
+    $('#folder1').hide();
 }
 // -----------------呈現動作------------------
 // function listpose() {
@@ -232,12 +237,15 @@ function addPose() {
         alert("Please enter the pose!");
     } else {
         repose = 0;
+        console.log(p);
+
         for (var i = 0; i < p.length; i++) {
             if (pose == p[i]) {
                 repose++;
                 break;
             }
         }
+        console.log(repose);
         if (repose == 0) {
             var api = "http://127.0.0.1:3000/api/addPose";
             let posedata = {
@@ -256,7 +264,7 @@ function addPose() {
                 newpose(res);
                 backBtn_act();
             });
-        }else{
+        } else {
             $('#addinput').val('');
             alert("Duplicate pose name! Please re-enter!");
         }
@@ -266,8 +274,8 @@ function addPose() {
 }
 // -----------------回到上一個文件夾------------------
 function backBtn_act() {
-    $('#folder1').removeClass("d-none");
-    $('#action1').addClass("d-none");
+    $('#folder1').show();
+    $('#action1').hide();
 }
 
 // -----------------新增文件夾div------------------
@@ -280,5 +288,101 @@ function newFolder(data, i) {
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
         </div>`;
     $('#all_fol').append(content);
+}
+//----------------------------index------------------------
+function listfile_i() {
+    var api = "http://127.0.0.1:3000/api/listfile";
+    var acc = {
+        acc: getCookie('username'),
+    }
+    jQuery.post(api, acc, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            f[i] = data[i].title;
+        }
+        compareFloder_i(f);
+    });
+}
+
+function compareFloder_i(file) {
+    var filteredArray = file.filter(function (ele, pos) {
+        return file.indexOf(ele) == pos;
+    });
+    var pose = document.getElementById("pose_name").innerText;
+    for (var j = 0; j < p.length; j++) {
+
+    }
+    for (var i = 0; i < filteredArray.length; i++) {
+        newFolder_i(filteredArray[i], i);
+    }
+}
+
+function newFolder_i(data) {
+    // let status = (data.status) ? "checked" : "";
+    let content =
+        `<div class="d-flex flex-row alr-folder position-relative" id="pose_${data}">
+            <img src="img/icon_folder.png">
+            <p>${data}</p>
+            <div class="position-absolute add_ptof" onclick="posetofolder('${data}')">
+            <img src="img/add.png">
+            </div>
+        </div>`;
     $('#all_fol_i').append(content);
+}
+//首頁.pose增加到folder
+function posetofolder(data) {
+    let folder1 = data;
+    let pose = document.getElementById("pose_name").innerText;
+    repose = 0;
+    for (var i = 0; i < p.length; i++) {
+        if (pose == p[i]) {
+            repose++;
+            break;
+        }
+    }
+    if (repose == 0) {
+        var api = "http://127.0.0.1:3000/api/addPose";
+        let posedata = {
+            'folder': folder1,
+            'pose': pose,
+            'status': false,
+            'acc': getCookie('username')
+        };
+        jQuery.post(api, posedata, function (res) {
+            // console.log(res.title);
+            $("#pose_" + res.title).remove();
+        });
+    } else {
+        alert("Added to this folder!");
+    }
+}
+
+function addFolder_i() {
+    let title = $('#yourfolder_i').val();
+    console.log(title);
+    if (title == "") {
+        alert("Please enter the folder name!");
+    } else {
+        retitle = 0;
+        for (var i = 0; i < f.length; i++) {
+            if (title == f[i]) {
+                retitle++;
+                break;
+            }
+        }
+        if (retitle == 0) {
+            var api = "http://127.0.0.1:3000/api/addFolder";
+            let data = {
+                'title': title,
+                'acc': getCookie('username')
+            };
+            jQuery.post(api, data, function (res) {
+                $('#yourfolder_i').val('');
+                newFolder_i(title);
+            });
+        } else {
+            $('#yourfolder_i').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
+        }
+    }
 }

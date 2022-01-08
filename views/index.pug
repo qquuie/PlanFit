@@ -125,17 +125,17 @@ include includes/navigation
       .modal-content.folder_i#folder_i
         .modal-header
           .input-group-lg
-            h1(style="color: #bbccc4;") Your folder
+            h1 Your folder
           .input-group-lg.mb-1s
             button.btn.col-auto.me-auto#closeBtnfolder_index(type='button', data-dismiss='modal', aria-label='Close')
-              img(src='./img/close_g1.png', width='30px', height='40px')
-        .modal-body(style="padding-bottom: 45px;")
+              img(src='./img/close_r.png', width='30px', height='40px')
+        .modal-body
           #all_fol_i
           .modal-footer
-            .input-group-lg.d-flex.flex-row.position-relative.fol-btn
-              .btn.btn-sm.d-flex.addelse-btn_i(type='button', onclick="addBtn()")
-                p Add
-                img(src='img/add.png', alt)
+            .input-group-lg.mb-3.d-flex.flex-row.add_folder.position-relative
+              p Add folder
+              input#yourfolder_i(type='text', placeholder='  | folder name')
+              img#add_fol_i(src='img/add.png', alt)
       //- //  ----------------------------------文件夾中的所有動作----------------------------- 
       //- .modal-content.folder#folder1
       //-   .modal-header 

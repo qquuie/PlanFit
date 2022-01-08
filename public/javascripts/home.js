@@ -398,10 +398,10 @@ $(".HOME_cal").click(function() {
 });
 //-----------------------folder---------------------------
 $(".HOME_cal").click(function(){
-
+    $("#HOME_div").show();
 });
 $("#HOME_div_close").click(function(){
-    
+    $("#HOME_div").hide();
 });
 
 function PleaseSign() {

@@ -33,10 +33,10 @@ $(document).ready(function() {
 
     $("#inforFolder").click(function() {
         listfile();
-        //     // var $father = $(this).parent().parent().parent().parent();
-        //     // workout_sth = $father.find(".card-body h3").text();
-        //     // console.log(workout_sth);
-        //     // $("#folder_win").show();
+        // var $father = $(this).parent().parent().parent().parent();
+        // workout_sth = $father.find(".card-body h3").text();
+        // console.log(workout_sth);
+        // $("#folder_win").show();
     });
 
     $('button#closeBtnfolder').click(function() {
@@ -49,34 +49,39 @@ $(document).ready(function() {
         }
     })
 
-    // $('.delete_folder').click(function() {
-    //     console.log(this.id);
-    //     // removeFolder()
-    // })
+    $('.delete_folder').click(function() {
+        // removeFolder()
+    })
 
 })
 
 var total = 0;
+var f = [];
 
 function listfile() {
     var api = "http://127.0.0.1:3000/api/listfile";
     var acc = {
         acc: getCookie('username'),
     }
-    var fol = 0;
     jQuery.post(api, acc, function(data) {
-        total = data.length;
-        var ar = new Array();
         for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < fol;j++)
-                ar[i] = data[i].title;
-            newFolder(data[i], i);
+            f[i] = data[i].title;
         }
-
-
+        compareFloder(f);
     });
+}
+
+function compareFloder(file) {
+    var totalfile = "";
+    var filteredArray = file.filter(function(ele, pos) {
+        return file.indexOf(ele) == pos;
+    });
+    for (var i = 0; i < filteredArray.length; i++) {
+        newFolder(filteredArray[i], i);
+    }
 
 }
+let retitle = 0;
 
 // -----------------新增文件夾------------------
 function addFolder() {
@@ -84,22 +89,38 @@ function addFolder() {
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
-        var api = "http://127.0.0.1:3000/api/addFolder";
-        let data = {
-            'title': title,
-            'status': false,
-            'acc': getCookie('username'),
-        };
-        total++;
-        jQuery.post(api, data, function(res) {
-            if (res.status == 0) {
-                $('#yourfolder').val('');
-            } else if (res.status == 1) {
-                alert(res.msg)
+        retitle = 0;
+        for (var i = 0; i < f.length; i++) {
+            if (title == f[i]) {
+                retitle++;
+                break;
             }
-        });
+        }
+        // reFolder();{}
+        if (retitle == 0) {
+            var api = "http://127.0.0.1:3000/api/addFolder";
+            let data = {
+                'title': title,
+                'status': false,
+                'acc': getCookie('username')
+            };
+            total++;
+            jQuery.post(api, data, function(res) {
+                if (res.status == 0) {
+                    $('#yourfolder').val('');
+                } else if (res.status == 1) {
+                    alert(res.msg);
+                }
+                newFolder(res, total);
+            });
+        } else {
+            $('#yourfolder').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
+        }
 
     }
+
 }
 // -----------------刪除文件夾------------------
 function removeFolder(data) {
@@ -118,32 +139,50 @@ function removeFolder(data) {
 function FolderList(data) {
     $('#folder').addClass("d-none");
     $('#folder1').removeClass("d-none");
-    
+
     var api = "http://127.0.0.1:3000/api/FolderList";
     let acc = {
         'acc': getCookie('username'),
-        'id':data
+        'folder':data
     };
     jQuery.post(api, acc, function(res) {
-        // console.log(res[0].title);
-        newFolderList(res[0]);
+        // console.log(res);
+        newFolderList(res[0].title);
+    });
+
+    let folder = $("#fol_name").text();
+    var api1 = "http://127.0.0.1:3000/api/listpose";
+    var acc1 = {
+        acc: getCookie('username'),
+        folder:folder
+    }
+    jQuery.post(api1, acc1, function (data1) {
+        for(var i=0;i<data1.length;i++){
+            newpose(data1);
+        }
     });
 }
 // -----------------文件中的動作div------------------
-function newFolderList(data){
+function newFolderList(data) {
     let content =
-    `<div ="input-group-lg">
-        <img class="d-inline" src="img/icon_folder.png" />
-        <h1 class="d-inline" id="fol_name">${data.title}</h1>
+        `<div style="padding-top: 20px;">
+        <img class="d-inline" style="margin-bottom: 20px;" src="img/icon_folder.png" />
+        <p class="d-inline" id="fol_name">${data}</p>
     </div>`;
     $('#fol_title').append(content);
 }
 // -----------------刪除動作------------------
-// function removeList(data) {
-//     let index = folder.findIndex(element => element.data._id == id);
-//     folder.splice(index, 1);
-//     $('#' + data._id).remove();
-// }
+function removeList(data) {
+    $('#' + data).remove();
+    var api = "http://127.0.0.1:3000/api/removeList";
+    let acc = {
+        'acc': getCookie('username'),
+        'id': data
+    };
+    jQuery.post(api, acc, function (res) {
+
+    });
+}
 // -----------------回到所有文件夾------------------
 function backBtn(data) {
     $('#folder').removeClass("d-none");
@@ -151,34 +190,57 @@ function backBtn(data) {
     $('#fol_title').empty();
 }
 // -----------------進入新增動作介面------------------
-function addBtn(){
+function addBtn() {
     $('#action1').removeClass("d-none");
     $('#folder1').addClass("d-none");
 }
-// -----------------新增動作------------------
-function newpose(){
-    let content =
-    ``;
-    $('#').append(content);
+// -----------------呈現動作------------------
+function listpose() {
+    let folder = document.getElementById("fol_name").innerText;
+    var api = "http://127.0.0.1:3000/api/listpose";
+    var acc = {
+        acc: getCookie('username'),
+        folder:folder
+    }
+    jQuery.post(api, acc, function (data) {
+        for(var i=0;i<data.length;i++){
+            newpose(data);
+        }
+    });
 }
+// -----------------新增動作div------------------
+function newpose(data) {
+    let content =
+        `<div class="d-flex flex-row position-relative alr-folder" id="pose${data._id}">
+            <p>${data.pose}</p>
+            <img class="close" id="del_list1" src="img/close_r.png" onclick="removeList('${data._id}')" />
+    </div>`;
+    $('#fol_move').append(content);
+    $('#folder1').removeClass("d-none");
+    $('#action1').addClass("d-none");
+}
+// -----------------新增動作------------------
 function addPose() {
-    let folder=document.getElementById("fol_name").innerText;;
-    console.log(folder);
+    let folder = document.getElementById("fol_name").innerText;
     let pose = $('#addinput').val();
     if (pose == "") {
         alert("Please enter the pose!");
     } else {
         var api = "http://127.0.0.1:3000/api/addPose";
         let posedata = {
+            'folder': folder,
             'pose': pose,
+            'status': false,
             'acc': getCookie('username')
         };
         jQuery.post(api, posedata, function(res) {
+            console.log(res);
             if (res.status == 0) {
                 $('#addinput').val('');
             } else if (res.status == 1) {
                 alert(res.msg);
             }
+            newpose(res);
         });
 
     }
@@ -191,12 +253,13 @@ function backBtn_act(data) {
 
 // -----------------新增文件夾div------------------
 function newFolder(data, i) {
-    let status = (data.status) ? "checked" : "";
+    // let status = (data.status) ? "checked" : "";
     let content =
-        `<div class="d-flex flex-row alr-folder position-relative ${i}" id="${data._id}">
+        `<div class="d-flex flex-row alr-folder position-relative ${i}">
             <img src="img/icon_folder.png">
-            <p onclick="FolderList('${data._id}')">${data.title}</p>
-            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data._id}" onclick="removeFolder('${data._id}')">
+            <p onclick="FolderList('${data}')">${data}</p>
+            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data._id}')">
         </div>`;
     $('#all_fol').append(content);
+
 }

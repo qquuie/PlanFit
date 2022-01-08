@@ -91,22 +91,16 @@ function addFolder() {
                 break;
             }
         }
-        // reFolder();{}
         if (retitle == 0) {
             var api = "http://127.0.0.1:3000/api/addFolder";
             let data = {
                 'title': title,
-                'status': false,
                 'acc': getCookie('username')
             };
             total++;
             jQuery.post(api, data, function (res) {
-                if (res.status == 0) {
-                    $('#yourfolder').val('');
-                } else if (res.status == 1) {
-                    alert(res.msg);
-                }
-                newFolder(res.title, total);
+                $('#yourfolder').val('');
+                newFolder(title, total);
             });
         } else {
             $('#yourfolder').val('');
@@ -129,21 +123,15 @@ function removeFolder(data) {
 }
 
 // -----------------進入文件夾------------------
+var p = [];
+
 function FolderList(data) {
     $('#folder').addClass("d-none");
     $('#folder1').removeClass("d-none");
 
-    var api = "http://127.0.0.1:3000/api/FolderList";
-    let acc = {
-        'acc': getCookie('username'),
-        'folder': data
-    };
-    jQuery.post(api, acc, function (res) {
-        // console.log(res);
-        newFolderList(res[0].title);
-    });
+    newFolderList(data);
     // -----------------呈現動作------------------
-    let folder1 = $("#fol_name").text();
+    let folder1 = data;
     var api1 = "http://127.0.0.1:3000/api/listpose";
     var acc1 = {
         acc: getCookie('username'),
@@ -151,7 +139,8 @@ function FolderList(data) {
     }
     jQuery.post(api1, acc1, function (data1) {
         for (var i = 0; i < data1.length; i++) {
-            newpose(data1);
+            p[i] = data1[i].pose;
+            newpose(data1[i]);
         }
     });
 }
@@ -181,6 +170,7 @@ function backBtn(data) {
     $('#folder').removeClass("d-none");
     $('#folder1').addClass("d-none");
     $('#fol_title').empty();
+    $('#fol_move').empty();
 }
 // -----------------進入新增動作介面------------------
 function addBtn() {
@@ -211,30 +201,44 @@ function newpose(data) {
     $('#fol_move').append(content);
 }
 // -----------------新增動作------------------
+let repose = 0;
+
 function addPose() {
     let folder1 = document.getElementById("fol_name").innerText;
     let pose = $('#addinput').val();
     if (pose == "") {
         alert("Please enter the pose!");
     } else {
-        var api = "http://127.0.0.1:3000/api/addPose";
-        let posedata = {
-            'folder': folder1,
-            'pose': pose,
-            'status': false,
-            'acc': getCookie('username')
-        };
-        jQuery.post(api, posedata, function (res) {
-            console.log(res);
-            if (res.status == 0) {
-                $('#addinput').val('');
-                
-            } else if (res.status == 1) {
-                alert(res.msg);
+        repose = 0;
+        for (var i = 0; i < p.length; i++) {
+            if (pose == p[i]) {
+                repose++;
+                break;
             }
-            newpose(res);
-            backBtn_act();
-        });
+        }
+        if (repose == 0) {
+            var api = "http://127.0.0.1:3000/api/addPose";
+            let posedata = {
+                'folder': folder1,
+                'pose': pose,
+                'status': false,
+                'acc': getCookie('username')
+            };
+            jQuery.post(api, posedata, function (res) {
+                if (res.status == 0) {
+                    $('#addinput').val('');
+
+                } else if (res.status == 1) {
+                    alert(res.msg);
+                }
+                newpose(res);
+                backBtn_act();
+            });
+        }else{
+            $('#addinput').val('');
+            alert("Duplicate pose name! Please re-enter!");
+        }
+
 
     }
 }
@@ -254,5 +258,4 @@ function newFolder(data, i) {
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
         </div>`;
     $('#all_fol').append(content);
-
 }

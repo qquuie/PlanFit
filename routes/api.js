@@ -222,13 +222,11 @@ router.post('/listfile', function(req, res) {
 
 //新增文件夾
 router.post('/addFolder', function(req, res) {
-    var newfolder = new folderModel({
+    folderModel.find({
         title: req.body.title,
         status: false,
         acc: req.body.acc
-    });
-
-    newfolder.save(function(err, data) {
+    },function(err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -251,15 +249,15 @@ router.post('/removeList', function (req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-router.post('/FolderList', function (req, res) {
-    folderModel.find({
-        acc: req.body.acc,
-        title:req.body.folder
-    }, function(err, data) {
-        res.json(data); //將資料回應給前端
-        // console.log(data);
-    });
-});
+// router.post('/FolderList', function (req, res) {
+//     folderModel.find({
+//         acc: req.body.acc,
+//         title:req.body.folder
+//     }, function(err, data) {
+//         res.json(data); //將資料回應給前端
+//         console.log(data);
+//     });
+// });
 
 router.post('/workoutcal', function(req, res) {
     // console.log(req.body);

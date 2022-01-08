@@ -13,6 +13,7 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
   // JavaScript Bundle with Popper
   script(type='javascript' src='javascripts/login.js')
+  script(src='javascripts/folder.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')
   script(src='https://code.jquery.com/jquery-3.5.1.min.js')
   script(src='https://kit.fontawesome.com/e45ac9a14a.js' crossorigin='anonymous')
@@ -23,21 +24,23 @@ include includes/navigation
       input#findtxt(type='text')
       input#find(type='button', name='find', value='find')
   // -----------------加入資料夾---------------------
-  #folder_win
-    img#folder_close(src='img/close_r.png')
-    #folder_workout_block
-      // 預設資料夾
-      .folder_workout
-        .folder_name
-          p My favorite
-        .folder_add
-          p +
-    #folder_new_block
-      #folder_title
-        p New folder
-      input#new_name(type='text' name='')
-      #new_add
-        p +
+  .smallPage.modal.fade.d-grid#smallPageModal_folder_workout(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
+    #allfolder.modal-dialog.modal-dialog-scrollable(style='max-height: 70%;')
+      //  ---------------------------------所有文件夾------------------------------
+      .modal-content.folder_i#folder_i
+        .modal-header
+          .input-group-lg
+            h1 Your folder
+          .input-group-lg.mb-1s
+            button.btn.col-auto.me-auto#closeBtnfolder_workout(type='button', data-dismiss='modal', aria-label='Close')
+              img(src='./img/close_r.png', width='30px', height='40px')
+        //- .modal-body
+        //-   #all_fol_i
+        //-   .modal-footer
+        //-     .input-group-lg.mb-3.d-flex.flex-row.add_folder.position-relative
+        //-       p Add folder
+        //-       input#yourfolder_i(type='text', placeholder='  | folder name')
+        //-       img#add_fol_i(src='img/add.png', alt)
   // -----------------月曆表格-----------------
   #calendar_win.table-responsive-sm
     img#calender_close(src='img/close_g2.png')
@@ -129,6 +132,7 @@ script(src='javascripts/workout.js')
 script(src='javascripts/save_sth.js')
 script(src='javascripts/calendar.js')
 script(src='javascripts/javascript.js')
+
 script.
   let today = new Date(); //新增一個Date物件，命名為today
   let thisYear = today.getFullYear();

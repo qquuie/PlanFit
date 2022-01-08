@@ -224,7 +224,7 @@ router.post('/addFolder', function(req, res) {
 
 router.post('/removeFolder', function(req, res) {
     folderModel.remove({
-        _id: req.body.id
+        title:req.body.title
     }, function(err, data) {
         res.json(data); //將資料回應給前端
     });

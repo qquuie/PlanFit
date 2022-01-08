@@ -115,7 +115,7 @@ function newList(data, i, end) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link folder">
-                                <img src="img/icon_folder.png" width="25px" >
+                                <img src="img/icon_folder.png" width="25px"  onclick="workoutFolder('${data._id}')">
                             </a>
                         </li>
                         <li class="nav-item">
@@ -384,40 +384,6 @@ $("#calender_close").click(function() {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 
-$(".folder").click(function() {
-    console.log(1);
-    // var $father = $(this).parent().parent().parent().parent();
-    // workout_sth = $father.find(".card-body h3").text();
-    // console.log(workout_sth);
-    // $("#folder_win").show();
-});
-
-$("#folder_close").click(function() {
-    $("#folder_win").hide();
-});
-//新增資料夾#new_add
-$('#new_add').click(function() {
-    let $father = $(this).parent(); //找按鈕的父元素
-    let new_folder_name = $father.find('#new_name').val(); //尋找子元素輸入欄位的val
-    if (new_folder_name != "") {
-        console.log(new_folder_name);
-        let new_row = `
-          <div class="folder_workout">
-            <div class="folder_name"><p>${new_folder_name}</p></div>
-            <div class="folder_add"><p>+</p></div>
-          </div>
-        `;
-        $('#folder_workout_block').append(new_row);
-    }
-});
-//加入資料夾.folder_add
-$('.folder_add').click(function() {
-    var $f = $(this).parent(); //找按鈕的父元素
-    console.log($f);
-    var add_item = $f.find('.folder_name p').text(); //尋找子元素檔案名稱的txt
-    console.log(add_item);
-    console.log(workout_sth);
-});
 /*--------------------------------calender--------------------------------------*/
 // $(".calender").click(function() {
 //     $("#calendar_win").show();

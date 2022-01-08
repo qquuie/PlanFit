@@ -23,6 +23,7 @@ head
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
   link(rel='stylesheet' href='stylesheets/style.css')
   link(rel='stylesheet' href='stylesheets/index.css')
+  link(rel='stylesheet' href='stylesheets/folder.css')
 include includes/navigation
 .page
   div    
@@ -34,7 +35,7 @@ include includes/navigation
             img(src='img/icon_see_times.png' width='20px')
             p.see_times 10
         li.nav-item.col-1
-          a.nav-link.folder
+          a.nav-link.folder#indexFolder
             img(src='img/icon_folder.png' width='25px')
         li.nav-item.col-1
           a.nav-link.calender
@@ -118,21 +119,53 @@ include includes/navigation
       <button id="theme-portrait" type="button" name="button" class="font button color"
       onclick="openFavColor();">Change Theme</button>
   // -----------------加入資料夾---------------------
-  #folder_win
-    img#folder_close(src='img/close_r.png')
-    #folder_workout_block
-      // 預設資料夾
-      .folder_workout
-        .folder_name
-          p My favorite
-        .folder_add
-          p +
-    #folder_new_block
-      #folder_title
-        p New folder
-      input#new_name(type='text' name='')
-      #new_add
-        p +
+  .smallPage.modal.fade.d-grid#smallPageModal_folder_index(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
+    #allfolder.modal-dialog.modal-dialog-scrollable(style='max-height: 70%')
+      //  ---------------------------------所有文件夾------------------------------
+      .modal-content.folder_i#folder_i
+        .modal-header
+          .input-group-lg
+            h1(style="color: #bbccc4;") Your folder
+          .input-group-lg.mb-1s
+            button.btn.col-auto.me-auto#closeBtnfolder_index(type='button', data-dismiss='modal', aria-label='Close')
+              img(src='./img/close_g1.png', width='30px', height='40px')
+        .modal-body(style="padding-bottom: 45px;")
+          #all_fol_i
+          .modal-footer
+            .input-group-lg.d-flex.flex-row.position-relative.fol-btn
+              .btn.btn-sm.d-flex.addelse-btn_i(type='button', onclick="addBtn()")
+                p Add
+                img(src='img/add.png', alt)
+      //- //  ----------------------------------文件夾中的所有動作----------------------------- 
+      //- .modal-content.folder#folder1
+      //-   .modal-header 
+      //-     .input-group-lg#fol_title
+      //-     .input-group-lg
+      //-       button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
+      //-         img(src='./img/close_r.png', width='30px', height='40px', alt)
+      //-   .modal-body
+      //-     #fol_move
+      //-     .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
+      //-       .btn.btn-sm.back-btn(type='button', onclick="backBtn('1')")
+      //-         p Back
+      //-       .btn.btn-sm.d-flex.justify-content-between.addelse-btn(type='button', onclick="addBtn()")
+      //-         p Add else
+      //-         img(src='img/add.png', alt)
+      //- //  ----------------------------------增加動作----------------------------- 
+      //- #action1.modal-content.action
+      //-   .modal-header
+      //-     .input-group-lg.addfont
+      //-       h1 Input something...
+      //-     .input-group-lg.mb-1s
+      //-       button.btn.col-auto.me-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
+      //-         img(src='./img/close_g1.png' width='30px' height='40px' alt='')
+      //-   .modal-body
+      //-     input#addinput.input-group-lg.mb-3.d-flex.flex-row.position-relative(type='text', placeholder='  | Input pose')
+      //-     .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
+      //-       .btn.btn-sm.addback-btn(type='button' onclick="backBtn_act('1')")
+      //-         p Back
+      //-       .btn.btn-sm.d-flex.justify-content-between.add-btn(type='button' onclick="addPose()")
+      //-         p Add
   //-----------------月曆表格-----------------
   #cal_win.table-responsive-sm
     img#cal_close(src='img/close_g2.png')

@@ -17,10 +17,9 @@ function getCookie(c_name) {
 }
 
 $(document).ready(function () {
+    //----------------------infor--------------------------
     $('#folder1').addClass("d-none");
     $('#action1').addClass("d-none");
-
-
 
     $('#add_fol').click(function () {
         addFolder();
@@ -42,10 +41,33 @@ $(document).ready(function () {
         for (var i = 0; i < total; i++) {
             $('.' + i).remove();
         }
-    })
+    });
 
     $('.delete_folder').click(function () {
         // removeFolder()
+    });
+    //----------------------index--------------------
+    $('#indexFolder').click(function() {
+        $("div#smallPageModal_folder_index").toggle();
+        $("div#smallPageModal_folder_index").modal("toggle");
+        $("div#smallPageModal_folder_index").removeClass("fade");
+        $(".modal-backdrop").removeClass("fade");
+        $("div#smallPageModal_folder_index").css('z-index', '1050');
+        $(".page").css('z-index', '-1');
+        listfile();
+    })
+    $("div#smallPageModal_folder_index").css('z-index', '-1'); //abby改
+    $(".page").css('z-index', '1000');
+    $("ul#workOutMenu>a.dropdown-item").click(function() {
+        $("div#smallPageModal_folder_index").css('z-index', '-1');
+
+    })
+    $('button#closeBtnfolder_index').click(function() {
+        $(".modal-backdrop").addClass("fade");
+        $("div#smallPageModal_folder_index").addClass("fade");
+        $("div#smallPageModal_folder_index").css('z-index', '-1');
+        $(".page").css('z-index', '1000');
+        $('#all_fol_i').empty();
     })
 
 })
@@ -258,4 +280,5 @@ function newFolder(data, i) {
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
         </div>`;
     $('#all_fol').append(content);
+    $('#all_fol_i').append(content);
 }

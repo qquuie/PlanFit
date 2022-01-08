@@ -1,15 +1,15 @@
 //---------------------------------------初始化變數---------------------------------------------------
 var choice_d = []; //存放所有選擇日期陣列
 var choice; //選擇某格日期
-var pre_click_ym;//之前的年月(用來記錄當All被按下時，是否已經換月)
-var now_click_ym;//現在的年月(用來記錄當All被按下時，是否已經換月)
-var change=true;//判斷是否已經按下過該格子
-var workout_list=[];//儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
-var workout_item={};//"使用者儲存的運動項目&日期&次數秒數"的物件
+var pre_click_ym; //之前的年月(用來記錄當All被按下時，是否已經換月)
+var now_click_ym; //現在的年月(用來記錄當All被按下時，是否已經換月)
+var change = true; //判斷是否已經按下過該格子
+var workout_list = []; //儲存"使用者儲存的運動項目&日期&次數秒數的物件"的陣列
+var workout_item = {}; //"使用者儲存的運動項目&日期&次數秒數"的物件
 var workout_sth_c = ""; //運動名稱
 var workout_times; //運動次數或秒數
-var same=false;//判斷是否有存取過該運動
-var sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+var same = false; //判斷是否有存取過該運動
+var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
 //每換一頁日曆就要先removeclass，再判斷一次陣列裡面的data-uid的數值後去改變css
 // 使用陣列來取得週天的名稱
@@ -55,7 +55,7 @@ function updateDates() {
 }
 
 function previousMonth() {
-    $(".cal").removeClass("important");//先把效果清除
+    $(".cal").removeClass("important"); //先把效果清除
     thisMonth--;
     if (thisMonth === -1) {
         thisMonth = 11;
@@ -72,18 +72,18 @@ function previousMonth() {
     //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
     for (var i = 0; i <= 41; i++) {
         // console.log($(Days[i]).attr("data-uid"));
-        for(var j=0;j<choice_d.length;j++){
-            if($(Days[i]).attr("data-uid")==choice_d[j]){
-                console.log($(Days[i]).attr("data-uid")+","+choice_d[j]);
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
                 $(Days[i]).addClass("important");
                 break;
             }
-        } 
+        }
     }
 }
 
 function nextMonth() {
-    $(".cal").removeClass("important");//先把效果清除
+    $(".cal").removeClass("important"); //先把效果清除
     thisMonth++;
     if (thisMonth === 12) {
         thisMonth = 0;
@@ -100,13 +100,13 @@ function nextMonth() {
     //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
     for (var i = 0; i <= 41; i++) {
         // console.log($(Days[i]).attr("data-uid"));
-        for(var j=0;j<choice_d.length;j++){
-            if($(Days[i]).attr("data-uid")==choice_d[j]){
-                console.log($(Days[i]).attr("data-uid")+","+choice_d[j]);
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
                 $(Days[i]).addClass("important");
                 break;
             }
-        } 
+        }
     }
 }
 // ----------------------------------表格日期-----------------------------------//
@@ -200,12 +200,12 @@ function Alldialog() {
     //清空陣列再把所有data-uid的數值推入
     //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
     for (var i = 0; i <= 41; i++) {
-        for(var j=0;j<choice_d.length;j++){
-            if($(Days[i]).attr("data-uid")==choice_d[j]){
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
                 //choice_d[j]從陣列中移除
                 choice_d.splice(j, 1);
             }
-        } 
+        }
     }
     //將該月所有資料推進陣列
     if ($(".cal").hasClass("important") == false) {
@@ -215,7 +215,7 @@ function Alldialog() {
             choice_d.push($(Days[i]).attr("data-uid"));
             //console.log($(Days[i]).attr("data-uid")); 
         }
-    } else if($(".cal").hasClass("important") == true){
+    } else if ($(".cal").hasClass("important") == true) {
         $(".cal").removeClass("important");
     }
     console.log(choice_d);
@@ -247,17 +247,17 @@ $("#cal_close").click(function() {
 /*--------------------------------------以下為要存的資料------------------------------*/
 //----------------------------------------按下日期格子----------------------------------
 $('.cal').click(function() {
-    change=true;
+    change = true;
     choice = $(this).attr("data-uid");
     for (let value of choice_d) {
         if (value == choice) {
-            change=false;
+            change = false;
             break;
-        }else{
-            change=true;
+        } else {
+            change = true;
         }
     }
-    if ($(this).hasClass("important") == false && change==true) {
+    if ($(this).hasClass("important") == false && change == true) {
         $(this).addClass("important");
         choice_d.push(choice); //儲存選擇年月日-->推入陣列
     } else {
@@ -311,61 +311,50 @@ $('.cal').click(function() {
 // });
 //紀錄運動名稱
 $(".calender").click(function() {
-    //---------------------------------------------------------初始化-------------------------------
-    choice_d=[];
-    same=false;//判斷是否有存取過該運動
-    sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
-    //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
-    workout_sth_c = $("#pose_name").text();
-    $("#modal_workout_name p").text(workout_sth_c);
-    console.log(workout_sth_c);
 
-    $(".cal").removeClass("important");
-    //---------------------------------------------------------初始化End----------------------------
-    //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
-    for(var i=0;i<workout_list.length;i++){
-        if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
-            console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
-            same=true;
-            sameID=i;
-            choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
+    console.log("如果有做介紹欄");
+    // var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
+    // var data = {
+    //     "id": id,
+    //     "click": parseInt($('#see_times').text()) + 1,
+    // }; //這邊給值//更改click+1
+    // $('#see_times').text(data.click);
+    // //---------------------------------------------------------初始化End----------------------------
+    // //----------------------------------------------------------------//
+    // jQuery.post(api, data, function(res) { //抓後端資料
+    // console.log(res);
+    // //---------------------------------------------------------日曆初始化-------------------------------
+    // choice_d = [];
+    // same = false; //判斷是否有存取過該運動
+    // sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
+    // //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
+    // workout_sth_c = res.name;
+    // // console.log(workout_sth_c);
+    // $("#modal_workout_name p").text(workout_sth_c); /*資料庫*/
 
-            var Days = document.getElementsByClassName("cal");
-            for (var k = 0; k <= 41; k++) {
-                for(var j=0;j<choice_d.length;j++){
-                    if($(Days[k]).attr("data-uid")==choice_d[j]){
-                        $(Days[k]).addClass("important");
-                        break;
-                    }
-                } 
-            }
-            console.log(workout_list[i].choice_d);
-            console.log(choice_d);
-            break;
-        }
-    }
+    // $("td").removeClass("important");
+    // });
 });
 $("#modal_OK").click(function() {
     //存選擇的日期、運動名稱、運動次數或秒數-->存進物件
     //之後將存放這些資料的變數清空
 
-    $("#modal_block").hide();//視窗關閉
+    $("#modal_block").hide(); //視窗關閉
 
     var $ff = $(this).parent();
     workout_times = $ff.find("#input_num").val() + $ff.find("#times p").text();
     // console.log(workout_times);
     // console.log(workout_sth_c);
     console.log(choice_d);
-    if(same==true){// && workout_list[sameID].workout_times==workout_times-->
+    if (same == true) { // && workout_list[sameID].workout_times==workout_times-->
         //只要改變選擇日期
-        workout_list[sameID].choice_d=choice_d;
-        workout_list[sameID].workout_times=workout_times;
-    }
-    else if(same==false){
-        workout_item={
-            workout_sth_c:workout_sth_c,
-            workout_times:workout_times,
-            choice_d:choice_d
+        workout_list[sameID].choice_d = choice_d;
+        workout_list[sameID].workout_times = workout_times;
+    } else if (same == false) {
+        workout_item = {
+            workout_sth_c: workout_sth_c,
+            workout_times: workout_times,
+            choice_d: choice_d
         }
         workout_list.push(workout_item);
     }
@@ -375,8 +364,8 @@ $("#modal_OK").click(function() {
 });
 
 //----------------------------------------------------------------------------
-var choice_home_cal;//
-var homecalID;//首頁表格
+var choice_home_cal; //
+var homecalID; //首頁表格
 $(".home_cal").click(function() {
     if ($(this).hasClass("important") == false) {
         $(".home_cal").removeClass("important");
@@ -386,3 +375,5 @@ $(".home_cal").click(function() {
         $(this).addClass("important");
     }
 });
+
+//-----------------------folder---------------------------

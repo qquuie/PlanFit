@@ -19,65 +19,75 @@ function getCookie(c_name) {
 }
 
 /*--------------------------------生成workout_div--------------------------------------*/
-getposeList();
+
+
 
 function getPose(p) {
-    var api = "http://127.0.0.1:3000/api/getpose";
-    // var pose = p;
-    var data = {
-        "pose": p,
-    }; //選擇之動作
-    jQuery.post(api, data, function(res) {});
-    // console.log(data.pose);
-    // getposeList(data.pose);
+    window.localStorage.setItem('pose', p);
+    window.localStorage.setItem('find', 0);
 }
 
-
+getposeList();
 
 function getposeList() {
-    // console.log(p);
-    var focus = getCookie('needOption');
-    // console.log(focus);
-    var needarr = new Array();
-    var dataneed = new Array(3);
-    needarr = focus.split(",");
-    // console.log(needarr);
-    for (var i = 0; i < needarr.length; i++) {
-        if (needarr[i] == "Lose weight") {
-            dataneed[0] = 1;
-        }
-        if (needarr[i] == "Gain muscle") {
-            dataneed[1] = 1;
-        }
-        if (needarr[i] == "Get fitter") {
-            dataneed[2] = 1;
+    if (getCookie('needOption') != null) {
+        var focus = getCookie('needOption');
+        var needarr = new Array();
+        var dataneed = new Array(3);
+        needarr = focus.split(",");
+        for (var i = 0; i < needarr.length; i++) {
+            if (needarr[i] == "Lose weight") {
+                dataneed[0] = 1;
+            }
+            if (needarr[i] == "Gain muscle") {
+                dataneed[1] = 1;
+            }
+            if (needarr[i] == "Get fitter") {
+                dataneed[2] = 1;
+            }
         }
     }
 
     var api = "http://127.0.0.1:3000/api/getposeList";
 
+    p = {
+        pose: window.localStorage.getItem('pose'),
+        find: window.localStorage.getItem('find'),
+    }
+    console.log(p.pose);
     var tmp = [];
-    jQuery.post(api, function(data) {
-        var pose = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-            pose[i] = 0;
-            if (data[i].need[0] == dataneed[0]) {
-                pose[i]++;
+    jQuery.post(api, p, function(data) {
+        console.log(data);
+        if (getCookie('needOption') != null) {
+            var pose = new Array(data.length);
+            for (let i = 0; i < data.length; i++) {
+                pose[i] = 0;
+                if (data[i].need[0] == dataneed[0]) {
+                    pose[i]++;
+                }
+                if (data[i].need[1] == dataneed[1]) {
+                    pose[i]++;
+                }
+                if (data[i].need[2] == dataneed[2]) {
+                    pose[i]++;
+                }
+                pose[i] = pose[i] * 1000 + data[i].click;
+                data[i].num = pose[i];
+                tmp.push(data[i]);
+                tmp.sort(function(a, b) {
+                    return b.num - a.num
+                });
+
             }
-            if (data[i].need[1] == dataneed[1]) {
-                pose[i]++;
+        } else {
+            for (let i = 0; i < data.length; i++) {
+                tmp.push(data[i]);
+                tmp.sort(function(a, b) {
+                    return b.click - a.click
+                });
+
             }
-            if (data[i].need[2] == dataneed[2]) {
-                pose[i]++;
-            }
-            pose[i] = pose[i] * 1000 + data[i].click;
-            data[i].num = pose[i];
-            tmp.push(data[i]);
-            tmp.sort(function(a, b) {
-                return b.num - a.num
-            });
         }
-        // console.log(data);
         for (let i = 0; i < data.length; i++) {
             newList(tmp[i], i, data.length - 1);
         }
@@ -153,25 +163,25 @@ var workout_times_status = "times";
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
-getUserCal();//User一開始登入的日曆
+getUserCal(); //User一開始登入的日曆
 
 //User一開始登入的日曆
-function getUserCal(){
-    choice_d = [];//清空陣列
+function getUserCal() {
+    choice_d = []; //清空陣列
     workout_item = {};
     workout_list = [];
-    // same=false;//判斷是否有存取過該運動
-    // sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+    same = false; //判斷是否有存取過該運動
+    sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
     //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
     //---------------------------------------------------------初始化-------------------------------
     var api = "http://127.0.0.1:3000/api/getUserCal";
     var data = {
-        acc:getCookie('username')
+        acc: getCookie('username')
     };
-    jQuery.post(api, data, function (res) {//抓後端資料
+    jQuery.post(api, data, function(res) { //抓後端資料
         //-----------------------------------------日曆初始化-------------------------------
         // console.log(res);
-        for(var i=0;i<res.length;i++){
+        for (var i = 0; i < res.length; i++) {
             // console.log(res[i].acc);
             // console.log(res[i].day);
             // console.log(res[i].title);
@@ -246,12 +256,12 @@ function updateposeClick(id) {
         console.log("same:"+same);
     });
     //----------------------------------------------------------------//
-    
-    
+
+
     //----------------------------------------------------------------//
     //---------------------------------------------------------初始化End----------------------------
     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
-    
+
 }
 
 $('.home_cal').click(function() {
@@ -372,7 +382,7 @@ $("#calender_close").click(function() {
 let workout_sth = "";
 /*--------------------------------folder--------------------------------------*/
 
-$(".folder").click(function () {
+$(".folder").click(function() {
     console.log(1);
     // var $father = $(this).parent().parent().parent().parent();
     // workout_sth = $father.find(".card-body h3").text();
@@ -437,3 +447,14 @@ $(".page").css('z-index', '1000');
 //     $("#cal_win").show();
 //     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
 // });
+
+$('#find').click(function() {
+    if ($('#findtxt').val() == "") {
+        alert("無法查詢");
+    } else {
+        window.localStorage.setItem('pose', $('#findtxt').val());
+        window.localStorage.setItem('find', 1);
+        location.reload();
+
+    }
+});

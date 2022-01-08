@@ -135,49 +135,36 @@ router.post('/changeInfor', function(req, res) {
 });
 //workout載入
 
-router.post('/getpose', function(req, res) {
-    workoutModel.find(function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].status) {
-                data[i].status = false;
+
+router.post('/getposeList', function(req, res) {
+    if (req.body.find == 1) {
+        workoutModel.find({
+            name: { $regex: req.body.pose }
+        }, function(err, data) {
+            for (var i = 0; i < data.length; i++) {
+                data[i].status = true;
                 data[i].save(function(err) {
                     if (err) {
                         console.log(err);
                     }
                 });
             }
-        }
-    });
-    workoutModel.find({
-        class_pose: req.body.pose
-    }, function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-        for (var i = 0; i < data.length; i++) {
-            data[i].status = true;
-            data[i].save(function(err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        }
-        res.json(data); //將資料回應給前端
-    });
-});
+            if (err) {
+                console.log(err);
+            }
+            res.json(data); //將資料回應給前端
+        });
+    } else {
+        workoutModel.find({
+            class_pose: req.body.pose
+        }, function(err, data) {
+            if (err) {
+                console.log(err);
+            }
+            res.json(data); //將資料回應給前端
+        });
+    }
 
-router.post('/getposeList', function(req, res) {
-    workoutModel.find({
-        status: true
-    }, function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-        res.json(data); //將資料回應給前端
-    });
 });
 
 //workout點擊更新//後端
@@ -222,13 +209,11 @@ router.post('/listfile', function(req, res) {
 
 //新增文件夾
 router.post('/addFolder', function(req, res) {
-    var newfolder = new folderModel({
+    folderModel.find({
         title: req.body.title,
         status: false,
         acc: req.body.acc
-    });
-
-    newfolder.save(function(err, data) {
+    }, function(err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -244,22 +229,22 @@ router.post('/removeFolder', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-router.post('/removeList', function (req, res) {
+router.post('/removeList', function(req, res) {
     folderModel.remove({
         _id: req.body.id
-    }, function (err, data) {
-        res.json(data); //將資料回應給前端
-    });
-});
-router.post('/FolderList', function (req, res) {
-    folderModel.find({
-        acc: req.body.acc,
-        title:req.body.folder
     }, function(err, data) {
         res.json(data); //將資料回應給前端
-        // console.log(data);
     });
 });
+// router.post('/FolderList', function (req, res) {
+//     folderModel.find({
+//         acc: req.body.acc,
+//         title:req.body.folder
+//     }, function(err, data) {
+//         res.json(data); //將資料回應給前端
+//         console.log(data);
+//     });
+// });
 
 router.post('/workoutcal', function(req, res) {
     console.log("req.body.times_staus:"+req.body.workout_times_status);
@@ -313,17 +298,17 @@ router.post('/getUserCal', function (req, res) {
         res.json(data);//將資料回應給前端
         console.log(data);
     });
-}); 
+});
 
-router.post('/addPose', function (req, res) {
+router.post('/addPose', function(req, res) {
     var newpose = new folderModel({
         title: req.body.folder,
-        pose:req.body.pose,
+        pose: req.body.pose,
         status: false,
         acc: req.body.acc
     });
 
-    newpose.save(function (err, data) {
+    newpose.save(function(err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -332,13 +317,13 @@ router.post('/addPose', function (req, res) {
     });
 });
 
-router.post('/listpose', function (req, res) {
+router.post('/listpose', function(req, res) {
     folderModel.find({
         acc: req.body.acc,
-        title:req.body.folder
-    }, function (err, data) {
+        title: req.body.folder
+    }, function(err, data) {
         res.json(data); //將資料回應給前端
-       
+
     });
 });
 

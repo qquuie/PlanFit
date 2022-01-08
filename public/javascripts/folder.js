@@ -72,6 +72,23 @@ $(document).ready(function () {
     $('#add_fol_i').click(function () {
         addFolder_i();
     });
+    //----------------------workout--------------------
+    $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改
+    $(".page").css('z-index', '1000');
+    $("ul#workOutMenu>a.dropdown-item").click(function () {
+        $("div#smallPageModal_folder_workout").css('z-index', '-1');
+
+    });
+    $('button#closeBtnfolder_index').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#smallPageModal_folder_workout").addClass("fade");
+        $("div#smallPageModal_folder_workout").css('z-index', '-1');
+        $(".page").css('z-index', '1000');
+        // $('#all_fol_i').empty();
+    });
+    // $('#add_fol_i').click(function () {
+    //     addFolder_i();
+    // });
 
 })
 
@@ -136,11 +153,11 @@ function addFolder() {
 }
 // -----------------刪除文件夾------------------
 function removeFolder(data) {
-    $('#' + data).remove();
+    $('#delet' + data).remove();
     var api = "http://127.0.0.1:3000/api/removeFolder";
     let acc = {
         'acc': getCookie('username'),
-        'id': data
+        'title': data
     };
     jQuery.post(api, acc, function (res) {
 
@@ -237,7 +254,6 @@ function addPose() {
         alert("Please enter the pose!");
     } else {
         repose = 0;
-        console.log(p);
 
         for (var i = 0; i < p.length; i++) {
             if (pose == p[i]) {
@@ -245,7 +261,6 @@ function addPose() {
                 break;
             }
         }
-        console.log(repose);
         if (repose == 0) {
             var api = "http://127.0.0.1:3000/api/addPose";
             let posedata = {
@@ -282,7 +297,7 @@ function backBtn_act() {
 function newFolder(data, i) {
     // let status = (data.status) ? "checked" : "";
     let content =
-        `<div class="d-flex flex-row alr-folder position-relative ${i}">
+        `<div class="d-flex flex-row alr-folder position-relative ${i}" id="delet${data}">
             <img src="img/icon_folder.png">
             <p onclick="FolderList('${data}')">${data}</p>
             <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
@@ -298,6 +313,7 @@ function listfile_i() {
     jQuery.post(api, acc, function (data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
+            p[i] = data[i].pose;
         }
         compareFloder_i(f);
     });
@@ -329,14 +345,16 @@ function newFolder_i(data) {
     $('#all_fol_i').append(content);
 }
 //首頁.pose增加到folder
-function posetofolder(data) {
+function posetofolder(data, ) {
     let folder1 = data;
     let pose = document.getElementById("pose_name").innerText;
     repose = 0;
     for (var i = 0; i < p.length; i++) {
         if (pose == p[i]) {
-            repose++;
-            break;
+            if (folder1 == f[i]) {
+                repose++;
+                break;
+            }
         }
     }
     if (repose == 0) {
@@ -385,4 +403,18 @@ function addFolder_i() {
 
         }
     }
+}
+//----------------------------index------------------------
+function workoutFolder(data) {
+    console.log(1);
+    $("div#smallPageModal_folder_workout").toggle();
+    $("div#smallPageModal_folder_workout").modal("toggle");
+    $("div#smallPageModal_folder_workout").removeClass("fade");
+    $(".modal-backdrop").removeClass("fade");
+    $("div#smallPageModal_folder_workout").css('z-index', '1050');
+    // $(".page").css('z-index', '-1');
+    // $("divallfoldert").css('z-index', '20000'); //abby改
+    // $(".page").css('z-index', '1000');
+    listfile_i();
+
 }

@@ -540,7 +540,8 @@
                     rotateCarousel(rotations);
                 }
             }
-            $('.see_times').text(click);
+            // $('.see_times').text(click);
+
 
         });
 

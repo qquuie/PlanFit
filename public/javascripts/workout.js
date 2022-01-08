@@ -77,7 +77,7 @@ function getposeList() {
                 return b.num - a.num
             });
         }
-        console.log(data);
+        // console.log(data);
         for (let i = 0; i < data.length; i++) {
             newList(tmp[i], i, data.length - 1);
         }
@@ -279,3 +279,7 @@ $(".page").css('z-index', '1000');
 //     $("#cal_win").show();
 //     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
 // });
+
+$('#find').click(function() {
+    // console.loglog($('#findtxt').val());
+});

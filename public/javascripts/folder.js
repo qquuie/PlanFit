@@ -16,17 +16,17 @@ function getCookie(c_name) {
     return c_value;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#folder1').addClass("d-none");
     $('#action1').addClass("d-none");
 
 
 
-    $('#add_fol').click(function() {
+    $('#add_fol').click(function () {
         addFolder();
     });
 
-    $("#inforFolder").click(function() {
+    $("#inforFolder").click(function () {
         listfile();
         // var $father = $(this).parent().parent().parent().parent();
         // workout_sth = $father.find(".card-body h3").text();
@@ -34,7 +34,7 @@ $(document).ready(function() {
         // $("#folder_win").show();
     });
 
-    $('button#closeBtnfolder').click(function() {
+    $('button#closeBtnfolder').click(function () {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder").addClass("fade");
         $("div#smallPageModal_folder").css('z-index', '-1');
@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     })
 
-    $('.delete_folder').click(function() {
+    $('.delete_folder').click(function () {
         // removeFolder()
     })
 
@@ -58,7 +58,7 @@ function listfile() {
     var acc = {
         acc: getCookie('username'),
     }
-    jQuery.post(api, acc, function(data) {
+    jQuery.post(api, acc, function (data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
         }
@@ -68,7 +68,7 @@ function listfile() {
 
 function compareFloder(file) {
     var totalfile = "";
-    var filteredArray = file.filter(function(ele, pos) {
+    var filteredArray = file.filter(function (ele, pos) {
         return file.indexOf(ele) == pos;
     });
     for (var i = 0; i < filteredArray.length; i++) {
@@ -100,7 +100,7 @@ function addFolder() {
                 'acc': getCookie('username')
             };
             total++;
-            jQuery.post(api, data, function(res) {
+            jQuery.post(api, data, function (res) {
                 if (res.status == 0) {
                     $('#yourfolder').val('');
                 } else if (res.status == 1) {
@@ -123,7 +123,7 @@ function removeFolder(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function(res) {
+    jQuery.post(api, acc, function (res) {
 
     });
 }
@@ -138,18 +138,18 @@ function FolderList(data) {
         'acc': getCookie('username'),
         'folder': data
     };
-    jQuery.post(api, acc, function(res) {
+    jQuery.post(api, acc, function (res) {
         // console.log(res);
         newFolderList(res[0].title);
     });
-
-    let folder = $("#fol_name").text();
+    // -----------------呈現動作------------------
+    let folder1 = $("#fol_name").text();
     var api1 = "http://127.0.0.1:3000/api/listpose";
     var acc1 = {
         acc: getCookie('username'),
-        folder: folder
+        folder: folder1
     }
-    jQuery.post(api1, acc1, function(data1) {
+    jQuery.post(api1, acc1, function (data1) {
         for (var i = 0; i < data1.length; i++) {
             newpose(data1);
         }
@@ -172,7 +172,7 @@ function removeList(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function(res) {
+    jQuery.post(api, acc, function (res) {
 
     });
 }
@@ -188,19 +188,19 @@ function addBtn() {
     $('#folder1').addClass("d-none");
 }
 // -----------------呈現動作------------------
-function listpose() {
-    let folder = document.getElementById("fol_name").innerText;
-    var api = "http://127.0.0.1:3000/api/listpose";
-    var acc = {
-        acc: getCookie('username'),
-        folder: folder
-    }
-    jQuery.post(api, acc, function(data) {
-        for (var i = 0; i < data.length; i++) {
-            newpose(data);
-        }
-    });
-}
+// function listpose() {
+//     let folder1 = document.getElementById("fol_name").innerText;
+//     var api = "http://127.0.0.1:3000/api/listpose";
+//     var acc = {
+//         acc: getCookie('username'),
+//         folder: folder1
+//     }
+//     jQuery.post(api, acc, function(data) {
+//         for (var i = 0; i < data.length; i++) {
+//             newpose(data);
+//         }
+//     });
+// }
 // -----------------新增動作div------------------
 function newpose(data) {
     let content =
@@ -209,37 +209,37 @@ function newpose(data) {
             <img class="close" id="del_list1" src="img/close_r.png" onclick="removeList('${data._id}')" />
     </div>`;
     $('#fol_move').append(content);
-    $('#folder1').removeClass("d-none");
-    $('#action1').addClass("d-none");
 }
 // -----------------新增動作------------------
 function addPose() {
-    let folder = document.getElementById("fol_name").innerText;
+    let folder1 = document.getElementById("fol_name").innerText;
     let pose = $('#addinput').val();
     if (pose == "") {
         alert("Please enter the pose!");
     } else {
         var api = "http://127.0.0.1:3000/api/addPose";
         let posedata = {
-            'folder': folder,
+            'folder': folder1,
             'pose': pose,
             'status': false,
             'acc': getCookie('username')
         };
-        jQuery.post(api, posedata, function(res) {
+        jQuery.post(api, posedata, function (res) {
             console.log(res);
             if (res.status == 0) {
                 $('#addinput').val('');
+                
             } else if (res.status == 1) {
                 alert(res.msg);
             }
             newpose(res);
+            backBtn_act();
         });
 
     }
 }
 // -----------------回到上一個文件夾------------------
-function backBtn_act(data) {
+function backBtn_act() {
     $('#folder1').removeClass("d-none");
     $('#action1').addClass("d-none");
 }

@@ -1,10 +1,10 @@
 getInfor();
-getUSerCookie();
+// getUSerCookie();
 
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
-}
+// function getUSerCookie() {
+//     var tmp = getCookie('username');
+//     $('h4#welcome').text('Wellcome ' + tmp);
+// }
 
 // wellcome();
 function addUser() {
@@ -94,21 +94,12 @@ function addUser() {
                 setCookie('height', res.data.height)
                 setCookie('weight', res.data.weight)
 
-                // window.location.href = 'index';
                 alert('Sign up successful. You can log in now')
                 history.go(0);
 
-                // alert(data.acc + data.pw + " 新增成功");
 
             } else if (res.status == 1) {
                 alert(res.msg)
-                    // $('#signUpName').val('');
-                    // $('#signUpPass').val('');
-                    // $('#signUpEmail').val('');
-                    // $('#signUpBirth').val('');
-                    // $('#yourHeight').val('');
-                    // $('#yourWeight').val('');
-                    // $('#yourAge').val('');
                 history.go(0);
 
             }
@@ -119,6 +110,8 @@ function addUser() {
 function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
+    var passlength= pass.length;
+    // alert(passlength);
     var api = "http://127.0.0.1:3000/api/getUser";
 
     if (!id || !pass) {
@@ -135,7 +128,7 @@ function getUser() {
 
             } else {
                 setCookie('username', res.data.acc)
-                setCookie('password', res.data.pw)
+                setCookie('password', res.data.pw.substring(0,passlength))
                 setCookie('email', res.data.email)
                 setCookie('sex', res.data.sex)
                 setCookie('focusOption', res.data.focusOption)
@@ -488,16 +481,7 @@ function changeInfor() {
         pw = $('input#pwChange').val();
 
     }
-    // if($('#newPw').val() === null)
-    // {
-    //     alert('Your new password is null');
-    //     history.go[0];
-    // }
-    // else
-    // {
-    //     newpw=$('#newPw').val();
-    // }
-    alert($('#pwChange').val())
+    // alert($('#pwChange').val())
         // alert($('#newPw').val())
 
     var email;
@@ -598,7 +582,7 @@ function changeInfor() {
     } else {
         jQuery.post(api, data, function(res) {
             setCookie('username', res.data.acc)
-            setCookie('password', res.data.pw)
+            setCookie('password',  res.data.pw)
             setCookie('email', res.data.email)
             setCookie('sex', res.data.sex)
             setCookie('focusOption', res.data.focusOption)

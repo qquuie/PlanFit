@@ -66,14 +66,14 @@ router.post('/getUser', async function(req, res) {
         if (data == null) {
             res.json({
                 "status": 1,
-                "msg": "You are not our menber yet!"
+                "msg": "You are not our member yet!"
             });
         } else {
             const isPw = await bcrypt.compare(req.body.pw, data.pw);
             if (!isPw) {
                 res.json({
                     "status": 1,
-                    "msg": "Your account or passwordwas wrong!"
+                    "msg": "Your account or password was wrong!"
                 });
             }
             // console.log(data)

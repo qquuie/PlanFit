@@ -160,3 +160,49 @@ div.add-btn>p {
     max-height: 80%;
     overflow: hidden;
 }
+/* ------------------------index--------------------------- */
+div.folder_i {
+    background-color: #f3f1de;
+}
+
+#closeBtnfolder_index {
+    position: relative;
+    right: -55px;
+}
+
+.alr-folder_i {
+    background-color: #ffffff;
+    width: 90%;
+    padding: 5px;
+    margin: 3% auto;
+    text-align: center;
+}
+
+div.alr-folder_i>p {
+    color: #e5945f;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.alr-folder_i>img {
+    width: 45px;
+}
+
+div.addelse-btn_i {
+    background-color: #bbccc4;
+    color: #ffffff;
+    position: absolute;
+    right: 40%;
+}
+
+div.addelse-btn_i>p {
+    margin: 5px;
+}
+
+div.addelse-btn_i>img {
+    margin: 5px;
+    width: 20px;
+}

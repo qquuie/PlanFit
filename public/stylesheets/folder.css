@@ -170,6 +170,20 @@ div.folder_i {
     right: -55px;
 }
 
+div.add_ptof{
+    background-color: #e5945f;
+    right: 0;
+    height: 100%;
+    width: initial;
+    margin-top: -5px;
+    cursor: pointer;
+}
+div.add_ptof>img{
+    width: 50%;
+    text-align: center;
+    margin-top: 7px;
+}
+
 .alr-folder_i {
     background-color: #ffffff;
     width: 90%;
@@ -189,20 +203,4 @@ div.alr-folder_i>p {
 
 .alr-folder_i>img {
     width: 45px;
-}
-
-div.addelse-btn_i {
-    background-color: #bbccc4;
-    color: #ffffff;
-    position: absolute;
-    right: 40%;
-}
-
-div.addelse-btn_i>p {
-    margin: 5px;
-}
-
-div.addelse-btn_i>img {
-    margin: 5px;
-    width: 20px;
 }

@@ -269,23 +269,29 @@ router.post('/workoutcal', function(req, res) {
     calendarModel.find({
         title: req.body.workout_sth_c,
         acc: req.body.acc
-    }, function(err, data) {
-        data[0].times = req.body.workout_times;
-        data[0].day = req.body.choice_d;
-        data[0].title = req.body.workout_sth_c;
-        console.log(data[0]);
-        data[0].save(function(err, data) {
-            console.log(1);
-            res.json(data); //將資料回應給前端
-        });
-    });
-    // calendarModel.find(function(err, d){//web->DB
-    //     if(err) console.log(err);//throw err
-    //     console.log(d);
-    //     res.json(d);//web->前端
-    // });
-
+    }, function (err, data) {
+        data[0].times=req.body.workout_times;
+        data[0].day=req.body.choice_d;
+        data[0].title=req.body.workout_sth_c;
+        // console.log(data[0]);
+        data[0].save(function (err, data) {});
+        res.json(data[0]);//將資料回應給前端
+    }); 
 });
+
+router.post('/getUserCal', function (req, res) {
+    // console.log(req.body);
+    // var status=true;
+    // console.log(req.body.workout_sth_c);
+    // console.log(req.body.acc);
+    calendarModel.find({
+        acc: req.body.acc
+    }, function (err, data) {
+        res.json(data);//將資料回應給前端
+        // console.log(data);
+    });
+}); 
+
 router.post('/addPose', function (req, res) {
     var newpose = new folderModel({
         title: req.body.folder,

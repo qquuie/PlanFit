@@ -27,18 +27,20 @@ include includes/navigationG
   div    
     .card-body.text-GreenLake.margin_0_auto
       ul.nav.nav-tabs.card-header-tabs
-        li.nav-item
+        li.nav-item.col-3
+        li.nav-item.col-1
           a.nav-link
             img(src='img/icon_see_times.png' width='20px')
             p.see_times 10
-        li.nav-item
+        li.nav-item.col-1
           a.nav-link.folder
             img(src='img/icon_folder.png' width='25px')
-        li.nav-item
+        li.nav-item.col-1
           a.nav-link.calender
-            img(src='img/icon_calender.png' width='20px')
-        li
+            img(src='img/icon_calender.png' width='20px' onclick="updateposeClick('')")
+        li.col-2
           p#pose_name 123
+        li.nav-item.col-3
   #carousel
     img#item-1
     img#item-2
@@ -219,12 +221,16 @@ include includes/navigationG
 script(type='text/javascript' src='javascripts/jquery.waterwheelCarousel.js')
 script(type='text/javascript').
   $(document).ready(function() {
-  let arr = ["img_workout/abs/abs_bicycle_crunch.jpg", "img_workout/abs/abs_crunch.jpg",
-  "img_workout/abs/abs_crunch_knee_lift.jpg"
-  ];
+  let arr = [`#{img1.img}`, `#{img2.img}`,`#{img3.img}`];
   document.getElementById("item-1").src = arr[0];
+  document.getElementById("item-1").name = `#{img1.name}`;
+  document.getElementById("item-1").class= `#{img1.id}`;
   document.getElementById("item-2").src = arr[1];
+  document.getElementById("item-2").name = `#{img2.name}`;
+  document.getElementById("item-2").class = `#{img2.id}`;
   document.getElementById("item-3").src = arr[2];
+  document.getElementById("item-3").name = `#{img3.name}`;
+  document.getElementById("item-3").class = `#{img3.id}`;
   var carousel = $("#carousel").waterwheelCarousel({
   flankingItems: 3,
   movingToCenter: function($item) {

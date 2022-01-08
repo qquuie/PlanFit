@@ -293,7 +293,7 @@ $('.home_cal').click(function() {
 });
 
 $("#modal_OK").click(function() {
-    console.log(choice_d);
+    console.log("choice_d的長度:"+choice_d.length);
     //還要判斷曾經選擇過&&未選擇日期)
     var $ff = $(this).parent();
     workout_times = $ff.find("#input_num").val();
@@ -309,15 +309,17 @@ $("#modal_OK").click(function() {
         $("#modal_block").hide(); //視窗關閉
         //把時間資料放進字串
         for (var i = 0; i < choice_d.length; i++) {
-            choice_day += choice_d[i];
+            if(choice_d != "" && i < choice_d.length){//如果陣列裡有數值
+                choice_day += choice_d[i];
+            }
             if (i < choice_d.length - 1) {
                 choice_day += ',';
             }
         }
-        // console.log(choice_day);
+        console.log(choice_day);
         // console.log(workout_times);
         // console.log(workout_sth_c);
-        // console.log(choice_d);
+        console.log(choice_d);
         // console.log("次數或秒數:"+workout_times+workout_times_staus);
         if (same == true) { // && workout_list[sameID].workout_times==workout_times-->
             //只要改變選擇日期
@@ -333,7 +335,6 @@ $("#modal_OK").click(function() {
             jQuery.post(API,Data, function (res) {//抓後端資料
                 $("#modal_block input").val('');//資料清空
                 $("#modal_block #times p").text('times');
-
             });
             // console.log(workout_list);
             //之後將存放這些資料的變數清空
@@ -368,6 +369,7 @@ $("#modal_OK").click(function() {
             //之後將存放這些資料的變數清空
         }
     }
+    choice_d = [];//清空陣列
 });
 
 

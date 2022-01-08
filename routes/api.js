@@ -249,7 +249,7 @@ router.post('/removeList', function(req, res) {
 router.post('/workoutcal', function(req, res) {
     console.log("req.body.times_staus:"+req.body.workout_times_status);
     console.log("req.body.times:"+req.body.workout_times);
-    console.log("req.body.choice_d:"+req.body.choice_d);
+    console.log("req.body.choice_d:"+req.body.choice_day);
     console.log("req.body.title:"+req.body.workout_sth_c);
     calendarModel.find({
         title: req.body.workout_sth_c,

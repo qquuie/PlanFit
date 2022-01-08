@@ -50,7 +50,7 @@ function getposeList() {
 
     var api = "http://127.0.0.1:3000/api/getposeList";
 
-    p = {
+    var p = {
         pose: window.localStorage.getItem('pose'),
         find: window.localStorage.getItem('find'),
     }

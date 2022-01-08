@@ -519,6 +519,8 @@
             }; //選擇之動作
             jQuery.post(api, p, function(res) {
                 click = res[0].click;
+                $('.see_times').text(click);
+
             });
 
             var rotations = Math.abs(itemPosition);
@@ -540,7 +542,7 @@
                     rotateCarousel(rotations);
                 }
             }
-            $('.see_times').text(click);
+
 
         });
 

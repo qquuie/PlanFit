@@ -204,3 +204,47 @@ div.alr-folder_i>p {
 .alr-folder_i>img {
     width: 45px;
 }
+/* ------------------------workout--------------------------- */
+div.folder_w {
+    background-color: #f3f1de;
+}
+
+#closeBtnfolder_workout {
+    position: relative;
+    right: -55px;
+}
+
+div.add_ptof{
+    background-color: #e5945f;
+    right: 0;
+    height: 100%;
+    width: initial;
+    margin-top: -5px;
+    cursor: pointer;
+}
+div.add_ptof>img{
+    width: 50%;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.alr-folder_w {
+    background-color: #ffffff;
+    width: 90%;
+    padding: 5px;
+    margin: 3% auto;
+    text-align: center;
+}
+
+div.alr-folder_w>p {
+    color: #e5945f;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.alr-folder_w>img {
+    width: 45px;
+}

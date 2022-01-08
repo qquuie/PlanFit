@@ -327,6 +327,14 @@ router.post('/listpose', function(req, res) {
     });
 });
 
+router.post('/getPose', function(req, res) {
+    workoutModel.findOne({
+        id: req.body.acc
+    }, async function(err, data) {
+        
+    });
+});
+
 router.post('/getindexwheel', function(req, res) {
     workoutModel.find({
         name: req.body.pose

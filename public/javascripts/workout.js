@@ -77,6 +77,7 @@ function getposeList() {
                 return b.num - a.num
             });
         }
+        console.log(data);
         for (let i = 0; i < data.length; i++) {
             newList(tmp[i], i, data.length - 1);
         }

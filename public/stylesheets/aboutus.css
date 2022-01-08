@@ -2,31 +2,41 @@
     font-family: "微軟正黑體";
 }
 
-#n1,#n2,#n3,#n4{
+#n1,
+#n2,
+#n3,
+#n4 {
     color: #82A3A3;
     background-color: #F6F4E8;
 }
 
-#n1,#n2,#n3,#n4,#aboutWeb,#about_sb {
-    
+#n1,
+#n2,
+#n3,
+#n4,
+#aboutWeb,
+#about_sb {
     font-weight: bold;
     border-style: none;
     padding: 10px;
     font-size: 20px;
     text-align: center;
 }
-#aboutWeb,#about_sb {
+
+#aboutWeb,
+#about_sb {
     color: #F6F4E8;
     border-width: 0px;
     /*只留下邊界*/
     border-bottom: 1.5px solid #F6F4E8;
     background-color: #BACEC1;
 }
-#about_sb{
+
+#about_sb {
     margin-bottom: 10px;
 }
 
-.about{
+.about {
     color: #F6F4E8;
     font-weight: bolder;
     font-size: 15px;
@@ -46,21 +56,24 @@
     margin: 0 auto;
 }
 
-.profile-pic ,#about_logo_pic{
+.profile-pic,
+#about_logo_pic {
     display: inline;
     margin: 0 auto;
     height: 50%;
 }
-.profile-pic{
+
+.profile-pic {
     border-radius: 50%;
     width: 150px;
 }
 
-#about_logo_pic{
+#about_logo_pic {
     position: relative;
     left: 80%;
 }
-.aboutWeb_li{
+
+.aboutWeb_li {
     position: relative;
     left: 20%;
 }
@@ -71,11 +84,13 @@
     font-size: 15px;
     font-weight: normal;
 }
-.intro{
+
+.intro {
     height: 280px;
 }
 
-.introAll1,.introAll2{
+.introAll1,
+.introAll2 {
     padding: 10px 0px;
     height: 250px;
 }

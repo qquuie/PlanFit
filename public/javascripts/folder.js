@@ -1,10 +1,5 @@
 let folder = [];
 
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
-}
-
 function getCookie(c_name) {
     var c_value = " " + document.cookie;
     var c_start = c_value.indexOf(" " + c_name + "=");

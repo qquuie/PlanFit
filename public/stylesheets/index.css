@@ -588,13 +588,6 @@
     height: 30%;
 }
 
-.card-body {
-    /* 複寫原本的改變寬度 */
-    /* // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-    // as much space as possible, ensuring footers are aligned to the bottom. */
-    /* width: 60%; */
-}
-
 #pose_name {
     width: 500px;
     font-size: 30px;

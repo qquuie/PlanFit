@@ -23,11 +23,7 @@ var workout_times; //運動次數或秒數
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
-//抓取cookie
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
-}
+//抓取cookiess
 
 function getCookie(c_name) {
     var c_value = " " + document.cookie;

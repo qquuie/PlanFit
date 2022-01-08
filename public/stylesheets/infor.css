@@ -24,17 +24,21 @@
 .infor_txt>p {
     width: 100%;
 }
+
 input.btn:hover {
     background-color: #1D3124;
     color: white;
     outline: 0;
 }
-input.btn:active,input.btn:focus,input.btn.active {
+
+input.btn:active,
+input.btn:focus,
+input.btn.active {
     background-color: #1D3124;
     color: white;
     outline: 0;
-
 }
+
 .infor_data {
     font-size: 20px;
     /* float: right; */
@@ -73,8 +77,10 @@ input.btn:active,input.btn:focus,input.btn.active {
     background-color: #3e5a46;
     color: white;
 }
-button.btn:hover,button.btn:active,button.btn:focus {
- 
+
+button.btn:hover,
+button.btn:active,
+button.btn:focus {
     background-color: white;
     color: #3e5a46;
 }

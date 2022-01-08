@@ -4,7 +4,8 @@ div.folder {
     /* padding: 5px; */
     /* margin: 0 auto; */
 }
-#fol_name{
+
+#fol_name {
     color: #e5945f;
     /* text-align: left; */
     position: relative;
@@ -13,6 +14,7 @@ div.folder {
     font-size: x-large;
     /* left: 30%; */
 }
+
 div.input-group-lg,
 div.input-group-lg>h1 {
     color: #e5945f;
@@ -22,7 +24,6 @@ div.input-group-lg>h1 {
     text-align: center;
     /* left: 30%; */
 }
-
 
 .alr-folder {
     background-color: #ffffff;

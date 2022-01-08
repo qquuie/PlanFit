@@ -2,11 +2,6 @@
 //     var workout_part = $(this).text();
 // });
 
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
-}
-
 function getCookie(c_name) {
     var c_value = " " + document.cookie;
     var c_start = c_value.indexOf(" " + c_name + "=");
@@ -32,7 +27,7 @@ function getPose(p) {
     var data = {
         "pose": p,
     }; //選擇之動作
-    jQuery.post(api, data, function (res) {});
+    jQuery.post(api, data, function(res) {});
     // console.log(data.pose);
     // getposeList(data.pose);
 }
@@ -62,7 +57,7 @@ function getposeList() {
     var api = "http://127.0.0.1:3000/api/getposeList";
 
     var tmp = [];
-    jQuery.post(api, function (data) {
+    jQuery.post(api, function(data) {
         var pose = new Array(data.length);
         for (let i = 0; i < data.length; i++) {
             pose[i] = 0;
@@ -78,7 +73,7 @@ function getposeList() {
             pose[i] = pose[i] * 1000 + data[i].click;
             data[i].num = pose[i];
             tmp.push(data[i]);
-            tmp.sort(function (a, b) {
+            tmp.sort(function(a, b) {
                 return b.num - a.num
             });
         }
@@ -131,7 +126,7 @@ function newList(data, i, end) {
             </div>`
     $('.card_row' + col_num).append(tmp);
     // const workout_modal=`
-    
+
     // `;
     // $('body').append(workout_modal)
 
@@ -157,8 +152,8 @@ var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引�
 
 //更新待辦事項//前端
 function updateposeClick(id) {
-    $("#calendar_win").show();//顯示視窗
-    $("#cal_win").show();//顯示視窗
+    $("#calendar_win").show(); //顯示視窗
+    $("#cal_win").show(); //顯示視窗
     //
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
@@ -169,31 +164,31 @@ function updateposeClick(id) {
     $('#see_times' + id).text(data.click);
     //---------------------------------------------------------初始化End----------------------------
     //----------------------------------------------------------------//
-    jQuery.post(api, data, function (res) {//抓後端資料
+    jQuery.post(api, data, function(res) { //抓後端資料
         // console.log(res);
         //---------------------------------------------------------日曆初始化-------------------------------
-        choice_d=[];
-        same=false;//判斷是否有存取過該運動
-        sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+        choice_d = [];
+        same = false; //判斷是否有存取過該運動
+        sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
         //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
         workout_sth_c = res.name;
         // console.log(workout_sth_c);
-        $("#modal_workout_name p").text(workout_sth_c);/*資料庫*/
+        $("#modal_workout_name p").text(workout_sth_c); /*資料庫*/
 
         $("td").removeClass("important");
     });
     //----------------------------------------------------------------//
-    
+
 
     //----------------------------------------------------------------//
     //---------------------------------------------------------初始化End----------------------------
     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
-    for(var i=0;i<workout_list.length;i++){
-        if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
+    for (var i = 0; i < workout_list.length; i++) {
+        if (workout_sth_c == workout_list[i].workout_sth_c) { //有存取過該運動
             // console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
-            same=true;
-            sameID=i;
-            choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
+            same = true;
+            sameID = i;
+            choice_d = workout_list[i].choice_d; //當前日期陣列的值=資料庫物件裡面日期陣列的值
             console.log(choice_d);
             var Days = document.getElementsByTagName("td");
             for (var k = 0; k <= 41; k++) {
@@ -226,11 +221,11 @@ let workout_sth = "";
 //     // $("#folder_win").show();
 // });
 
-$("#folder_close").click(function () {
+$("#folder_close").click(function() {
     $("#folder_win").hide();
 });
 //新增資料夾#new_add
-$('#new_add').click(function () {
+$('#new_add').click(function() {
     let $father = $(this).parent(); //找按鈕的父元素
     let new_folder_name = $father.find('#new_name').val(); //尋找子元素輸入欄位的val
     if (new_folder_name != "") {
@@ -245,7 +240,7 @@ $('#new_add').click(function () {
     }
 });
 //加入資料夾.folder_add
-$('.folder_add').click(function () {
+$('.folder_add').click(function() {
     var $f = $(this).parent(); //找按鈕的父元素
     console.log($f);
     var add_item = $f.find('.folder_name p').text(); //尋找子元素檔案名稱的txt
@@ -261,7 +256,7 @@ $('.folder_add').click(function () {
 
 $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
-$(".calender").click(function () {
+$(".calender").click(function() {
     $("#calendar_win").show();
     $("#calendar_win").css({
         "display": "flex",

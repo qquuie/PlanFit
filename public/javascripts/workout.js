@@ -352,7 +352,6 @@ $("#modal_OK").click(function() {
             var api = "http://127.0.0.1:3000/api/addNew_workoutcal";
             var data = workout_item; //選擇之動作
             console.log(data);
-
             jQuery.post(api,data, function (res) {//抓後端資料
                 $("#modal_block input").val('');//資料清空
                 $("#modal_block #times p").text('times');

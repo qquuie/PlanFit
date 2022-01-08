@@ -1,7 +1,67 @@
+#HOME_div{
+    /* display: none; */
+    background-color: #f3f1de;
+    width: 450px;
+    height: 500px;
+    /* margin: 0 auto; */
+    position: absolute;
+    top: 750px;
+    left: 30%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0 0 0 / 50%);
+}
+#HOME_div_close{
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    left: 400px;
+    padding: 2px;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+#HOME_div_block{
+    width: 80%;
+    height: 60%;
+    position: relative;
+    left: 10%;
+    top: 15%;
+    overflow-y: scroll;
+}
+.HOME_item {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    margin: 10px 0px;
+    /*上下 左右*/
+}
+.HOME_item_name {
+    float: left;
+    color: #82A3A3;
+    font-size: 30px;
+    height: 100%;
+    margin: 8px;
+}
+
+.HOME_item_add {
+    background-color: #82A3A3;
+    position: absolute;
+    top: 80%;
+    width: 40%;
+    left: 25%;
+    color: #f3f1de;
+    height: 10%;
+}
+.HOME_item_add  p{
+    text-align: center;
+    font-size: 25px;
+    margin: 5px;
+}
+
 /* .text-GreenLake {
     color: #82A3A3;
 }
-
 .see_times {
     float: right;
     color: #1D3124;
@@ -48,8 +108,7 @@
     color: #f3f1de;
 } */
 
-
-/* #folder_close {
+#folder_close {
     width: 30px;
     position: absolute;
     top: 10px;
@@ -67,7 +126,7 @@
     left: 10%;
     top: 15%;
     overflow-y: scroll;
-} */
+} 
 
 
 /* .folder_workout {
@@ -585,6 +644,9 @@
 }
 
 .home_cal {
+    height: 30%;
+}
+.HOME_cal{
     height: 30%;
 }
 

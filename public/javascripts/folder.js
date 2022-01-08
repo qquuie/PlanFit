@@ -1,10 +1,5 @@
 let folder = [];
 
-function getUSerCookie() {
-    var tmp = getCookie('username');
-    $('h4#welcome').text('Wellcome ' + tmp);
-}
-
 function getCookie(c_name) {
     var c_value = " " + document.cookie;
     var c_start = c_value.indexOf(" " + c_name + "=");
@@ -111,16 +106,14 @@ function addFolder() {
                 } else if (res.status == 1) {
                     alert(res.msg);
                 }
-                newFolder(res, total);
+                newFolder(res.title, total);
             });
         } else {
             $('#yourfolder').val('');
             alert("Duplicate folder name! Please re-enter!");
 
         }
-
     }
-
 }
 // -----------------刪除文件夾------------------
 function removeFolder(data) {
@@ -143,7 +136,7 @@ function FolderList(data) {
     var api = "http://127.0.0.1:3000/api/FolderList";
     let acc = {
         'acc': getCookie('username'),
-        'folder':data
+        'folder': data
     };
     jQuery.post(api, acc, function(res) {
         // console.log(res);
@@ -154,10 +147,10 @@ function FolderList(data) {
     var api1 = "http://127.0.0.1:3000/api/listpose";
     var acc1 = {
         acc: getCookie('username'),
-        folder:folder
+        folder: folder
     }
-    jQuery.post(api1, acc1, function (data1) {
-        for(var i=0;i<data1.length;i++){
+    jQuery.post(api1, acc1, function(data1) {
+        for (var i = 0; i < data1.length; i++) {
             newpose(data1);
         }
     });
@@ -179,7 +172,7 @@ function removeList(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function (res) {
+    jQuery.post(api, acc, function(res) {
 
     });
 }
@@ -200,10 +193,10 @@ function listpose() {
     var api = "http://127.0.0.1:3000/api/listpose";
     var acc = {
         acc: getCookie('username'),
-        folder:folder
+        folder: folder
     }
-    jQuery.post(api, acc, function (data) {
-        for(var i=0;i<data.length;i++){
+    jQuery.post(api, acc, function(data) {
+        for (var i = 0; i < data.length; i++) {
             newpose(data);
         }
     });
@@ -258,7 +251,7 @@ function newFolder(data, i) {
         `<div class="d-flex flex-row alr-folder position-relative ${i}">
             <img src="img/icon_folder.png">
             <p onclick="FolderList('${data}')">${data}</p>
-            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data._id}')">
+            <img src="img/close_r.png" class="close delete_folder" id="del_folder${data}" onclick="removeFolder('${data}')">
         </div>`;
     $('#all_fol').append(content);
 

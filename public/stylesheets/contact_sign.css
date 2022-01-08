@@ -2,8 +2,7 @@ html body {
     background-color: #BACEC1;
 }
 
-nav.navbar
-{
+nav.navbar {
     position: fixed;
     left: 0;
     top: 0;
@@ -196,7 +195,8 @@ button#nextBtn.btn {
     color: #1D3124;
 }
 
-label.btn,input.btn {
+label.btn,
+input.btn {
     width: 186px;
     border: 1px solid #c5c3c3;
     background-color: white;
@@ -211,20 +211,20 @@ div.form4Btn {
     padding-left: 16px;
 }
 
-label.btn:hover,input.btn:hover
-div.form3Btn>label.btn:hover {
+label.btn:hover,
+input.btn:hover div.form3Btn>label.btn:hover {
     background-color: #1D3124;
     color: white;
     outline: 0;
-
 }
 
-input.btn:active, 
-label.btn.active,label.btn:focus ,label.btn.checked{
+input.btn:active,
+label.btn.active,
+label.btn:focus,
+label.btn.checked {
     background-color: #1D3124;
     color: white;
     outline: 0;
-
 }
 
 div.form3Btn>label.btn {

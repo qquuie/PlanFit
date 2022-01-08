@@ -74,7 +74,7 @@ function addUser() {
             'weight': weight,
             'age': age,
         };
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             if (res.status == 0) {
                 $('#signUpName').val('');
                 $('#signUpPass').val('');
@@ -103,13 +103,13 @@ function addUser() {
 
             } else if (res.status == 1) {
                 alert(res.msg)
-                // $('#signUpName').val('');
-                // $('#signUpPass').val('');
-                // $('#signUpEmail').val('');
-                // $('#signUpBirth').val('');
-                // $('#yourHeight').val('');
-                // $('#yourWeight').val('');
-                // $('#yourAge').val('');
+                    // $('#signUpName').val('');
+                    // $('#signUpPass').val('');
+                    // $('#signUpEmail').val('');
+                    // $('#signUpBirth').val('');
+                    // $('#yourHeight').val('');
+                    // $('#yourWeight').val('');
+                    // $('#yourAge').val('');
                 history.go(0);
 
             }
@@ -128,7 +128,7 @@ function getUser() {
         jQuery.post(api, {
             'acc': id,
             'pw': pass
-        }, function (res) {
+        }, function(res) {
             if (res.status == 1) {
                 console.log(res.msg);
                 alert(res.msg)
@@ -198,10 +198,10 @@ function getInfor() {
         'age': age,
     };
     var api = "http://127.0.0.1:3000/api/getInfor";
-    jQuery.post(api, data, function (res) {
+    jQuery.post(api, data, function(res) {
         // alert(data);
         console.log(data)
-        // edit(data)
+            // edit(data)
         infor(data)
     });
 
@@ -211,68 +211,99 @@ var content = "";
 function infor(data) {
     $('div#edit.row').addClass('d-none');
     content =
-        ` <div class="row information">      
+        ` <div class="row information">
 
-            <div class="col">
-                <div class="infor_txt"><p>Email: </p></div>
-                
-                <div class="infor_data"><p class='_email'>${data.email}</p>
-                </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Email: </p>
             </div>
-            <div class="col">
-                <div class="infor_txt"><p>Name: </p></div>
-                
-                <div class="infor_data"><p>${data.acc}</p></div>
-                
+    
+            <div class="infor_data">
+                <p class='_email'>${data.email}</p>
             </div>
-            <div class="col">
-                <div class="infor_txt"><p>Birthday: </p></div>
-                
-                <div class="infor_data"><p>${data.birth}</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="infor_txt"><p>Sex: </p></div>
-                
-                <div class="infor_data infor_sex"><p id='sexData'>${data.sex}</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="infor_txt"><p>Height: </p></div>
-                
-                <div class="infor_data"><p>${data.height}</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="infor_txt"><p>Weight: </p></div>
-                
-                <div class="infor_data"><p>${data.weight}</p></div>
-                
-            </div>
-            <div class="col">
-                <div class="infor_txt"><p>Age: </p></div>
-                
-                <div class="infor_data"><p>${data.age}</p></div>
-                
-            </div>
-            <div class="col">
-                    <div class="infor_txt col col-3"><p>Do you need to: </p></div>
-                    
-                    <div class="infor_data"><p id='#needData'>${data.needOption}</p>
-                    </div>
-                </div>
-            
-            <div class="col">
-                    <div class="infor_txt col-3"><p>You want to focus on:</p></div>
-                    
-                    <div class="infor_data"><p id='focusData'>${data.focusOption}</p></div>
-                    
-            
-            </div>
-            <div class="infor_OK"><button class="btn" onclick='edit()'>Edit</button></div>
-        </div></div>
         </div>
-                    `;
+        <div class="col">
+            <div class="infor_txt">
+                <p>Name: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p>${data.acc}</p>
+            </div>
+    
+        </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Birthday: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p>${data.birth}</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Sex: </p>
+            </div>
+    
+            <div class="infor_data infor_sex">
+                <p id='sexData'>${data.sex}</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Height: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p>${data.height}</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Weight: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p>${data.weight}</p>
+            </div>
+    
+        </div>
+        <div class="col">
+            <div class="infor_txt">
+                <p>Age: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p>${data.age}</p>
+            </div>
+    
+        </div>
+        <div class="col">
+            <div class="infor_txt col col-3">
+                <p>Do you need to: </p>
+            </div>
+    
+            <div class="infor_data">
+                <p id='#needData'>${data.needOption}</p>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="infor_txt col-3">
+                <p>You want to focus on:</p>
+            </div>
+    
+            <div class="infor_data">
+                <p id='focusData'>${data.focusOption}</p>
+            </div>
+    
+    
+        </div>
+        <div class="infor_OK">
+            <button class="btn" onclick='edit()'>Edit</button>
+        </div>
+    </div>`;
     $('div#infor.container').append(content);
 }
 
@@ -400,11 +431,11 @@ function edit() {
     $('input#birthChange').val(getCookie('birth'))
     $('input#pwChange').val(getCookie('password'))
     $('input#emailChange').val(getCookie('email'))
-  
+
 
     var count = 0,
         total = 0;
-    $('div.infor_data.infor_sex>label.btn').click(function () {
+    $('div.infor_data.infor_sex>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
         if (count.length > 1) {
@@ -416,7 +447,7 @@ function edit() {
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_focus>label.btn').click(function () {
+    $('div.infor_data.infor_focus>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
@@ -424,27 +455,27 @@ function edit() {
         console.log(count.length)
 
     })
-    $('div.infor_data.infor_need>label.btn').click(function () {
-        $(this).toggleClass('active')
-        count = $('div.infor_data.infor_need').find('.active')
-        $('div.infor_data.infor_need>input').checked == false
+    $('div.infor_data.infor_need>label.btn').click(function() {
+            $(this).toggleClass('active')
+            count = $('div.infor_data.infor_need').find('.active')
+            $('div.infor_data.infor_need>input').checked == false
 
-        console.log(count.length)
-    })
-    // const changePwBtn = `
-    //  <div class="col">
-    //     <div class="infor_txt">
-    //         <p> New Passwork</p>
-    //     </div>
-    //     <div class="infor_data"><input type="password" id="newPw"  />
-    //     </div>
-    // </div>`
-    // $('button.changePw').click(function () {
-    //     $('div.pw.col').after(changePwBtn)
-    //     $('input#pwChange').attr('readonly', false)
-    //     $('button.changePw').hide()
-    // })
-    
+            console.log(count.length)
+        })
+        // const changePwBtn = `
+        //  <div class="col">
+        //     <div class="infor_txt">
+        //         <p> New Passwork</p>
+        //     </div>
+        //     <div class="infor_data"><input type="password" id="newPw"  />
+        //     </div>
+        // </div>`
+        // $('button.changePw').click(function () {
+        //     $('div.pw.col').after(changePwBtn)
+        //     $('input#pwChange').attr('readonly', false)
+        //     $('button.changePw').hide()
+        // })
+
 
 
 }
@@ -468,7 +499,7 @@ function changeInfor() {
     //     newpw=$('#newPw').val();
     // }
     alert($('#pwChange').val())
-    // alert($('#newPw').val())
+        // alert($('#newPw').val())
 
     var email;
     if ($('#emailChange').val() == null) {
@@ -566,7 +597,7 @@ function changeInfor() {
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
         alert('Please check all the check button ')
     } else {
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             setCookie('username', res.data.acc)
             setCookie('password', res.data.pw)
             setCookie('email', res.data.email)

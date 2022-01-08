@@ -213,7 +213,7 @@ router.post('/addFolder', function(req, res) {
         title: req.body.title,
         status: false,
         acc: req.body.acc
-    },function(err, data) {
+    }, function(err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -236,17 +236,6 @@ router.post('/removeList', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-<<<<<<< HEAD
-router.post('/FolderList', function(req, res) {
-    folderModel.find({
-        acc: req.body.acc,
-        title: req.body.folder
-    }, function(err, data) {
-        res.json(data); //將資料回應給前端
-        // console.log(data);
-    });
-});
-=======
 // router.post('/FolderList', function (req, res) {
 //     folderModel.find({
 //         acc: req.body.acc,
@@ -256,7 +245,6 @@ router.post('/FolderList', function(req, res) {
 //         console.log(data);
 //     });
 // });
->>>>>>> f83f75f5603a652d465b5fc58371d91c8d12f368
 
 router.post('/workoutcal', function(req, res) {
     // console.log(req.body);

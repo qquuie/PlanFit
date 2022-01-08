@@ -77,7 +77,7 @@ function getposeList() {
                 return b.num - a.num
             });
         }
-        console.log(data);
+        // console.log(data);
         for (let i = 0; i < data.length; i++) {
             newList(tmp[i], i, data.length - 1);
         }
@@ -89,7 +89,7 @@ var tmp = "";
 function newList(data, i, end) {
     var col_num = parseInt(i / 3);
     if (i % 3 == 0) {
-        $('.totalPose').append(`<div class="card-group card_row${col_num} text-center"><\div>`);
+        $('.totalPose').append(`<div class="card-group card_row${col_num} text-center"></div>`);
     }
     var e = (data.equipment) ? "Yes" : "No";
     var j = (data.Jumping) ? "Yes" : "No";
@@ -141,7 +141,6 @@ function newList(data, i, end) {
 }
 var choice_d = []; //存放所有選擇日期陣列
 var choice_d_arr = [];
-var string_choice_d = [];
 var choice; //選擇某格日期
 var pre_click_ym; //之前的年月(用來記錄當All被按下時，是否已經換月)
 var now_click_ym; //現在的年月(用來記錄當All被按下時，是否已經換月)
@@ -150,6 +149,7 @@ var workout_list = []; //儲存"使用者儲存的運動項目&日期&次數秒�
 var workout_item = {}; //"使用者儲存的運動項目&日期&次數秒數"的物件
 var workout_sth_c = ""; //運動名稱
 var workout_times; //運動次數或秒數
+var workout_times_status = "times";
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
@@ -160,8 +160,8 @@ function getUserCal(){
     choice_d = [];//清空陣列
     workout_item = {};
     workout_list = [];
-    same=false;//判斷是否有存取過該運動
-    sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+    // same=false;//判斷是否有存取過該運動
+    // sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
     //是:讀取該物件的日期陣列，並把他們加入choice_d裡面，其該位置表格也要變色
     //---------------------------------------------------------初始化-------------------------------
     var api = "http://127.0.0.1:3000/api/getUserCal";
@@ -176,22 +176,29 @@ function getUserCal(){
             // console.log(res[i].day);
             // console.log(res[i].title);
             // console.log(res[i].times);
-            workout_item = {
-                workout_sth_c: res[i].title,
-                workout_times: res[i].times,
-                choice_d: res[i].day.split(','),
-                acc:res[i].acc//使用者名稱
+            // console.log(res[i].times_status);
+            if(res[i].day != ""){//日期不為空
+                workout_item = {
+                    workout_sth_c: res[i].title,
+                    workout_times: res[i].times,
+                    choice_day:res[i].day,
+                    acc:res[i].acc,//使用者名稱
+                    workout_times_status:res[i].times_status
+                }
+                workout_list.push(workout_item);
             }
-            workout_list.push(workout_item);
         }
     });
+    
 }
 
 //更新待辦事項//前端
 function updateposeClick(id) {
     $("#calendar_win").show(); //顯示視窗
     $("#cal_win").show(); //顯示視窗
-    //
+    same=false;//判斷是否有存取過該運動
+    sameID=-1;//有存取過該運動，紀錄該運動在陣列中的索引值
+    // console.log(workout_list);
     // console.log(id);
     var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
     var data = {
@@ -204,18 +211,23 @@ function updateposeClick(id) {
     jQuery.post(api, data, function(res) { //抓後端資料
         // console.log(res);
         workout_sth_c = res.name;//存取點擊的運動名稱
-        console.log("JQ:"+workout_sth_c);
+        // console.log("JQ:"+workout_sth_c);
         $("#modal_workout_name p").text(workout_sth_c);/*資料庫*/
 
         $("td").removeClass("important");//把所有特效清空
         for(var i=0;i<workout_list.length;i++){
-            console.log("workout_sth_c陣列:"+workout_list[i].workout_sth_c);
-            console.log("workout_sth_c單個:"+workout_sth_c);
+            // console.log("workout_sth_c陣列:"+workout_list[i].workout_sth_c);
+            // console.log("workout_sth_c單個:"+workout_sth_c);
             if(workout_sth_c==workout_list[i].workout_sth_c){//有存取過該運動
-                console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
+                // console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
+                workout_times = workout_list[i].workout_times;
+                workout_times_status = workout_list[i].workout_times_status;
+                // console.log(workout_times + workout_times_status);
+                $("#modal_block input").val(workout_times);
+                $("#modal_block #times p").text(workout_times_status);
                 same=true;
                 sameID=i;
-                choice_d=workout_list[i].choice_d;//當前日期陣列的值=資料庫物件裡面日期陣列的值
+                choice_d=workout_list[i].choice_day.split(',');//當前日期陣列的值=資料庫物件裡面日期陣列的值
                 console.log(choice_d);
                 var Days = document.getElementsByTagName("td");
                 for (var k = 0; k <= 41; k++) {
@@ -231,6 +243,7 @@ function updateposeClick(id) {
                 break;
             }
         }
+        console.log("same:"+same);
     });
     //----------------------------------------------------------------//
     
@@ -240,6 +253,115 @@ function updateposeClick(id) {
     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
     
 }
+
+$('.home_cal').click(function() {
+    change = true;
+    choice = $(this).attr("data-uid");
+    for (let value of choice_d) {
+        if (value == choice) {
+            change = false;
+            break;
+        } else {
+            change = true;
+        }
+    }
+    if ($(this).hasClass("important") == false && change == true) {
+        $(this).addClass("important");
+        choice_d.push(choice); //儲存選擇年月日-->推入陣列
+    } else if (change == false) {
+        $(this).removeClass("important");
+        // var ind = choice_d.indexOf(choice);
+        for (let value of choice_d) {
+            if (value == choice) {
+                var ind = choice_d.indexOf(choice);
+                choice_d.splice(ind, 1);
+                break;
+            }
+        }
+    }
+    console.log(choice_d);
+});
+
+$("#modal_OK").click(function() {
+    console.log(choice_d);
+    //還要判斷曾經選擇過&&未選擇日期)
+    var $ff = $(this).parent();
+    workout_times = $ff.find("#input_num").val();
+    workout_times_staus = $ff.find("#times p").text();
+    if(choice_d.length==0){//未選擇日期
+        alert("No date selected");
+    }else if(workout_times == ""){
+        alert("No times or second selected");
+    }
+    else
+    {//存取過
+        alert(workout_sth_c +" is saved in calendar");
+        $("#modal_block").hide(); //視窗關閉
+        //把時間資料放進字串
+        for (var i = 0; i < choice_d.length; i++) {
+            choice_day += choice_d[i];
+            if (i < choice_d.length - 1) {
+                choice_day += ',';
+            }
+        }
+        // console.log(choice_day);
+        // console.log(workout_times);
+        // console.log(workout_sth_c);
+        // console.log(choice_d);
+        // console.log("次數或秒數:"+workout_times+workout_times_staus);
+        if (same == true) { // && workout_list[sameID].workout_times==workout_times-->
+            //只要改變選擇日期
+            workout_list[sameID].choice_day = choice_day;
+            workout_list[sameID].workout_times = workout_times;
+            workout_list[sameID].workout_times_status = workout_times_status;
+            console.log(sameID+":"+workout_times+workout_times_status);
+
+            var API = "http://127.0.0.1:3000/api/workoutcal";
+            var Data = workout_list[sameID]; //選擇之動作
+            console.log(Data);
+
+            jQuery.post(API,Data, function (res) {//抓後端資料
+                $("#modal_block input").val('');//資料清空
+                $("#modal_block #times p").text('times');
+
+            });
+            // console.log(workout_list);
+            //之後將存放這些資料的變數清空
+        } else if (same == false) {
+            console.log(choice_day);
+            workout_item = {
+                workout_sth_c: workout_sth_c,
+                workout_times: workout_times,
+                workout_times_status: workout_times_status,
+                choice_day: choice_day,
+                acc: getCookie('username') //使用者名稱
+            }
+            workout_list.push(workout_item);
+            
+            var api = "http://127.0.0.1:3000/api/addNew_workoutcal";
+            var data = workout_item; //選擇之動作
+            console.log(data);
+
+            jQuery.post(api,data, function (res) {//抓後端資料
+                $("#modal_block input").val('');//資料清空
+                $("#modal_block #times p").text('times');
+                workout_item = {
+                    workout_sth_c: res.title,
+                    workout_times: res.times,
+                    choice_day:res.day,
+                    acc:res.acc,//使用者名稱
+                    workout_times_status:res.times_status
+                }
+                workout_list.push(workout_item);
+            });
+            // console.log(workout_list);
+            //之後將存放這些資料的變數清空
+        }
+    }
+});
+
+
+
 //---------------------------------------------------------abbyEND-------------------------------
 $("#calender_close").click(function() {
     console.log(workout_list);

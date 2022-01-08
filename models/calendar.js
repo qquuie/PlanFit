@@ -17,7 +17,8 @@ const calendarSchema = new mongoose.Schema({
     // day:Array,
     day:String,
     title:String,
-    times:String
+    times:String,
+    times_status:String
     //Number
 });
 calendarSchema.set('collection', 'calendar');//後者為資料庫的資料夾名稱

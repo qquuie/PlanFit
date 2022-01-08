@@ -269,7 +269,6 @@ router.post('/workoutcal', function(req, res) {
     calendarModel.find({
         title: req.body.workout_sth_c,
         acc: req.body.acc
-<<<<<<< HEAD
     }, function (err, data) {
         data[0].times=req.body.workout_times;
         data[0].day=req.body.choice_d;
@@ -278,24 +277,6 @@ router.post('/workoutcal', function(req, res) {
         data[0].save(function (err, data) {});
         res.json(data[0]);//將資料回應給前端
     }); 
-=======
-    }, function(err, data) {
-        data[0].times = req.body.workout_times;
-        data[0].day = req.body.choice_d;
-        data[0].title = req.body.workout_sth_c;
-        console.log(data[0]);
-        data[0].save(function(err, data) {
-            console.log(1);
-            res.json(data); //將資料回應給前端
-        });
-    });
-    // calendarModel.find(function(err, d){//web->DB
-    //     if(err) console.log(err);//throw err
-    //     console.log(d);
-    //     res.json(d);//web->前端
-    // });
-
->>>>>>> 30bd365f74b5dfc433eaf832db8e81a3dc86a044
 });
 
 router.post('/getUserCal', function (req, res) {

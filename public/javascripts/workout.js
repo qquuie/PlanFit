@@ -92,6 +92,7 @@ function getposeList() {
             newList(tmp[i], i, data.length - 1);
         }
     });
+
 }
 
 var tmp = "";
@@ -114,8 +115,8 @@ function newList(data, i, end) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link folder">
-                                <img src="img/icon_folder.png" width="25px"  onclick="workoutFolder('${data._id}')">
+                            <a class="nav-link folder" onclick="workoutFolder('${data.name}')" id="workoutFolder">
+                                <img class="workoutFolder" src="img/icon_folder.png" width="25px">
                             </a>
                         </li>
                         <li class="nav-item">

@@ -19,30 +19,22 @@ function getCookie(c_name) {
 }
 
 /*--------------------------------生成workout_div--------------------------------------*/
-getposeList();
+
+
 
 function getPose(p) {
-    var api = "http://127.0.0.1:3000/api/getpose";
-    // var pose = p;
-    var data = {
-        "pose": p,
-    }; //選擇之動作
-    jQuery.post(api, data, function(res) {});
-    // console.log(data.pose);
-    // getposeList(data.pose);
+    window.localStorage.setItem('pose', p);
+    window.localStorage.setItem('find', 0);
 }
 
-
+getposeList();
 
 function getposeList() {
-    // console.log(p);
     if (getCookie('needOption') != null) {
         var focus = getCookie('needOption');
-        // console.log(focus);
         var needarr = new Array();
         var dataneed = new Array(3);
         needarr = focus.split(",");
-        // console.log(needarr);
         for (var i = 0; i < needarr.length; i++) {
             if (needarr[i] == "Lose weight") {
                 dataneed[0] = 1;
@@ -58,8 +50,14 @@ function getposeList() {
 
     var api = "http://127.0.0.1:3000/api/getposeList";
 
+    p = {
+        pose: window.localStorage.getItem('pose'),
+        find: window.localStorage.getItem('find'),
+    }
+    console.log(p.pose);
     var tmp = [];
-    jQuery.post(api, function(data) {
+    jQuery.post(api, p, function(data) {
+        console.log(data);
         if (getCookie('needOption') != null) {
             var pose = new Array(data.length);
             for (let i = 0; i < data.length; i++) {
@@ -81,8 +79,6 @@ function getposeList() {
                 });
 
             }
-
-            // console.log(data);
         } else {
             for (let i = 0; i < data.length; i++) {
                 tmp.push(data[i]);
@@ -331,5 +327,12 @@ $(".page").css('z-index', '1000');
 // });
 
 $('#find').click(function() {
-    // console.loglog($('#findtxt').val());
+    if ($('#findtxt').val() == "") {
+        alert("無法查詢");
+    } else {
+        window.localStorage.setItem('pose', $('#findtxt').val());
+        window.localStorage.setItem('find', 1);
+        location.reload();
+
+    }
 });

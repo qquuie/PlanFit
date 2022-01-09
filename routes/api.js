@@ -271,27 +271,20 @@ router.post('/workoutcal', function(req, res) {
 });
 
 router.post('/workoutCalChoice', function(req, res) {
-    // console.log("req.body:" + req.body);
-    calendarModel.find({ acc: req.body.acc, title: req.body.title }, function(err, data) {
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i].title);
-            data[i].day = req.body.choice_day;
-            data[i].times = req.body.workout_times;
-            data[i].times_status = req.body.workout_times_status;
-            data[i].save(function(err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        }
+    console.log(req.body, 274);
+    calendarModel.find({
+        acc: req.body.acc,
+        title: req.body.title
+    }, function(err, data) {
+        console.log(data);
         res.json(data); //將資料回應給前端
     });
 });
 
 router.post('/addNew_workoutcal', function(req, res) {
-    console.log("req.body.times_staus:" + req.body.workout_times_status);
-    console.log("req.body.times:" + req.body.workout_times);
-    console.log("req.body.choice_d:" + req.body.choice_day);
+    // console.log("req.body.times_staus:" + req.body.workout_times_status);
+    // console.log("req.body.times:" + req.body.workout_times);
+    // console.log("req.body.choice_d:" + req.body.choice_day);
     console.log("req.body.title:" + req.body.workout_sth_c);
     var new_workout = new calendarModel({
         title: req.body.workout_sth_c,
@@ -300,6 +293,7 @@ router.post('/addNew_workoutcal', function(req, res) {
         times_status: req.body.workout_times_status,
         day: req.body.choice_day
     });
+    console.log(new_workout, 296);
     new_workout.save(function(err, data) {
         if (err) {
             console.log(err);

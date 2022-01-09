@@ -209,42 +209,43 @@ function workout_cal_choice(name) {
         "acc": getCookie('username'),
         "title": name,
     }; //這邊給值//更改click+1
+    console.log(data1);
     jQuery.post(api, data1, function(res) { //抓後端資料
         console.log(res);
-        // workout_sth_c = res.name; //存取點擊的運動名稱
-        // // console.log("JQ:"+workout_sth_c);
-        // $("#modal_workout_name p").text(workout_sth_c); /*資料庫*/
+        workout_sth_c = res.name; //存取點擊的運動名稱
+        // console.log("JQ:"+workout_sth_c);
+        $("#modal_workout_name p").text(workout_sth_c); /*資料庫*/
 
-        // $("td").removeClass("important"); //把所有特效清空
-        // for (var i = 0; i <res.length; i++) {
-        //     // console.log("workout_sth_c陣列:"+workout_list[i].workout_sth_c);
-        //     // console.log("workout_sth_c單個:"+workout_sth_c);
-        //     if (workout_sth_c == workout_list[i].workout_sth_c) { //有存取過該運動
-        //         // console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
-        //         workout_times = workout_list[i].workout_times;
-        //         workout_times_status = workout_list[i].workout_times_status;
-        //         // console.log(workout_times + workout_times_status);
-        //         $("#modal_block input").val(workout_times);
-        //         $("#modal_block #times p").text(workout_times_status);
-        //         same = true;
-        //         sameID = i
-        //         choice_d = workout_list[i].choice_day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
-        //         console.log(choice_d);
-        //         var Days = document.getElementsByTagName("td");
-        //         for (var k = 0; k <= 41; k++) {
-        //             for (var j = 0; j < choice_d.length; j++) {
-        //                 if ($(Days[k]).attr("data-uid") == choice_d[j]) {
-        //                     $(Days[k]).addClass("important");
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //         // console.log(workout_list[i].choice_d);
-        //         // console.log(choice_d);
-        //         break;
-        //     }
-        // }
-        // console.log("same:" + same);
+        $("td").removeClass("important"); //把所有特效清空
+        for (var i = 0; i < res.length; i++) {
+            // console.log("workout_sth_c陣列:"+workout_list[i].workout_sth_c);
+            // console.log("workout_sth_c單個:"+workout_sth_c);
+            if (workout_sth_c == workout_list[i].workout_sth_c) { //有存取過該運動
+                // console.log("已存取過運動名稱:"+workout_list[i].workout_sth_c);
+                workout_times = workout_list[i].workout_times;
+                workout_times_status = workout_list[i].workout_times_status;
+                // console.log(workout_times + workout_times_status);
+                $("#modal_block input").val(workout_times);
+                $("#modal_block #times p").text(workout_times_status);
+                same = true;
+                sameID = i
+                choice_d = workout_list[i].choice_day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
+                console.log(choice_d);
+                var Days = document.getElementsByTagName("td");
+                for (var k = 0; k <= 41; k++) {
+                    for (var j = 0; j < choice_d.length; j++) {
+                        if ($(Days[k]).attr("data-uid") == choice_d[j]) {
+                            $(Days[k]).addClass("important");
+                            break;
+                        }
+                    }
+                }
+                // console.log(workout_list[i].choice_d);
+                // console.log(choice_d);
+                break;
+            }
+        }
+        console.log("same:" + same);
     });
 }
 

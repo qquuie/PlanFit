@@ -61,6 +61,12 @@ function previousMonth() {
         thisMonth = 11;
         thisYear--;
     }
+    $(".HOME_cal").removeClass("important"); //先把效果清除
+    thisMonth--;
+    if (thisMonth === -1) {
+        thisMonth = 11;
+        thisYear--;
+    }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
@@ -84,6 +90,12 @@ function previousMonth() {
 
 function nextMonth() {
     $(".cal").removeClass("important"); //先把效果清除
+    thisMonth++;
+    if (thisMonth === 12) {
+        thisMonth = 0;
+        thisYear++;
+    }
+    $(".HOME_cal").removeClass("important"); //先把效果清除
     thisMonth++;
     if (thisMonth === 12) {
         thisMonth = 0;
@@ -366,14 +378,32 @@ $("#modal_OK").click(function() {
 //----------------------------------------------------------------------------
 var choice_home_cal; //
 var homecalID; //首頁表格
-$(".home_cal").click(function() {
+// $(".home_cal").click(function() {
+//     if ($(this).hasClass("important") == false) {
+//         $(".home_cal").removeClass("important");
+//         choice_home_cal = $(this).attr("data-uid");
+//         homecalID = $(this).attr("data-uid"); //哪一格
+//         console.log(homecalID);
+//         $(this).addClass("important");
+//     }
+// });
+$(".HOME_cal").click(function() {
     if ($(this).hasClass("important") == false) {
-        $(".home_cal").removeClass("important");
+        $(".HOME_cal").removeClass("important");
         choice_home_cal = $(this).attr("data-uid");
         homecalID = $(this).attr("data-uid"); //哪一格
         console.log(homecalID);
         $(this).addClass("important");
     }
 });
-
 //-----------------------folder---------------------------
+$(".HOME_cal").click(function(){
+    $("#HOME_div").show();
+});
+$("#HOME_div_close").click(function(){
+    $("#HOME_div").hide();
+});
+
+function PleaseSign() {
+    alert("Sign in! Please!!");
+}

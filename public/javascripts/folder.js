@@ -56,22 +56,26 @@ $(document).ready(function () {
 
     });
     //----------------------workout--------------------
+
     $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
     $("ul#workOutMenu>a.dropdown-item").click(function () {
         $("div#smallPageModal_folder_workout").css('z-index', '-1');
 
     });
-    $('button#closeBtnfolder_index').click(function () {
+    $('button#closeBtnfolder_workout').click(function () {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder_workout").addClass("fade");
-        $("div#smallPageModal_folder_workout").css('z-index', '-1');
+        $("div#smallPageModal_folder_workout").css('z-index', '-2');
         $(".page").css('z-index', '1000');
-        // $('#all_fol_i').empty();
+
+        $(".modal-backdrop").addClass("fade");
+        $(".modal-backdrop").addClass("show");
+        $('#all_fol_w').empty();
     });
-    // $('#add_fol_i').click(function () {
-    //     addFolder_i();
-    // });
+    $('#add_fol_w').click(function () {
+        addFolder_w();
+    });
 
 })
 
@@ -278,6 +282,8 @@ function addPose() {
                 } else if (res.status == 1) {
                     alert(res.msg);
                 }
+                f.push(res.title);
+                p.push(res.pose);
                 newpose(res);
                 backBtn_act();
             });
@@ -330,7 +336,7 @@ function compareFloder_i(file) {
 
     }
     for (var i = 0; i < filteredArray.length; i++) {
-        newFolder_i(filteredArray[i], i);
+        newFolder_i(filteredArray[i]);
     }
 }
 
@@ -378,7 +384,6 @@ function posetofolder(data, ) {
 
 function addFolder_i() {
     let title = $('#yourfolder_i').val();
-    console.log(title);
     if (title == "") {
         alert("Please enter the folder name!");
     } else {
@@ -406,16 +411,111 @@ function addFolder_i() {
         }
     }
 }
-//----------------------------index------------------------
+//----------------------------workout------------------------
 function workoutFolder(data) {
     $("div#smallPageModal_folder_workout").toggle();
     $("div#smallPageModal_folder_workout").modal("toggle");
     $("div#smallPageModal_folder_workout").removeClass("fade");
     $(".modal-backdrop").removeClass("fade");
+    $(".modal-backdrop").removeClass("show");
+    $(".modal-backdrop").hide();
     $("div#smallPageModal_folder_workout").css('z-index', '1050');
-    // $(".page").css('z-index', '-1');
-    // $("divallfoldert").css('z-index', '20000'); //abby改
-    // $(".page").css('z-index', '1000');
-    // listfile_i();
+    listfile_w(data);
+    window.localStorage.setItem('newpose',data);
+}
 
+function listfile_w() {
+    var api = "http://127.0.0.1:3000/api/listfile";
+    var acc = {
+        acc: getCookie('username'),
+    }
+    jQuery.post(api, acc, function (data) {
+        for (var i = 0; i < data.length; i++) {
+            f[i] = data[i].title;
+            p[i] = data[i].pose;
+        }
+        compareFloder_w(f);
+    });
+}
+
+function compareFloder_w(file) {
+    var filteredArray = file.filter(function (ele, pos) {
+        return file.indexOf(ele) == pos;
+    });
+    for (var i = 0; i < filteredArray.length; i++) {
+        newFolder_w(filteredArray[i]);
+    }
+}
+
+function newFolder_w(data) {
+    // let status = (data.status) ? "checked" : "";
+    let content =
+        `<div class="d-flex flex-row alr-folder position-relative" id="pose_${data}">
+            <img src="img/icon_folder.png">
+            <p>${data}</p>
+            <div class="position-absolute add_ptof" onclick="posetofolder_w('${data}')">
+            <img src="img/add.png">
+            </div>
+        </div>`;
+    $('#all_fol_w').append(content);
+    
+}
+//首頁.pose增加到folder
+function posetofolder_w(data) {
+    let folder1 = data;
+    let pose = window.localStorage.getItem('newpose');
+    repose = 0;
+    for (var i = 0; i < p.length; i++) {
+        if (pose == p[i]) {
+            if (folder1 == f[i]) {
+                repose++;
+                break;
+            }
+        }
+    }
+    if (repose == 0) {
+        var api = "http://127.0.0.1:3000/api/addPose";
+        let posedata = {
+            'folder': folder1,
+            'pose': pose,
+            'status': false,
+            'acc': getCookie('username')
+        };
+        jQuery.post(api, posedata, function (res) {
+            // console.log(res.title);
+            $("#pose_" + res.title).remove();
+        });
+    } else {
+        alert("Added to this folder!");
+    }
+}
+
+function addFolder_w() {
+    let title = $('#yourfolder_w').val();
+    if (title == "") {
+        alert("Please enter the folder name!");
+    } else {
+        retitle = 0;
+        for (var i = 0; i < f.length; i++) {
+            if (title == f[i]) {
+                retitle++;
+                break;
+            }
+        }
+        if (retitle == 0) {
+            var api = "http://127.0.0.1:3000/api/addFolder";
+            let data = {
+                'title': title,
+                'acc': getCookie('username')
+            };
+            jQuery.post(api, data, function (res) {
+                $('#yourfolder_w').val('');
+                newFolder_w(title,window.localStorage.getItem('newpose'));
+            });
+        } else {
+            $('#yourfolder_w').val('');
+            alert("Duplicate folder name! Please re-enter!");
+
+        }
+    }
 }

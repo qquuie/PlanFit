@@ -251,11 +251,15 @@ router.post('/workoutcal', function(req, res) {
     console.log("req.body.times:"+req.body.workout_times);
     console.log("req.body.choice_d:"+req.body.choice_day);
     console.log("req.body.title:"+req.body.workout_sth_c);
-    calendarModel.find({
+    calendarModel.find({//找尋相同姿勢&帳號
         title: req.body.workout_sth_c,
         acc: req.body.acc
     }, function (err, data) {
         for (var i = 0; i < data.length; i++) {
+            console.log(data[i].title);
+            data[i].day=req.body.choice_day;
+            data[i].times=req.body.workout_times;
+            data[i].times_status=req.body.workout_times_status;
             data[i].save(function(err) {
                 if (err) {
                     console.log(err);
@@ -263,6 +267,28 @@ router.post('/workoutcal', function(req, res) {
             });
         }
         res.json(data);//將資料回應給前端
+    }); 
+});
+
+router.post('/workoutCalChoice', function(req, res) {
+    console.log("req.body:"+req.body);
+    calendarModel.find({//找尋相同姿勢&帳號
+        title: req.body.title,
+        acc: req.body.acc
+    }, function (err, data) {
+        console.log(data);
+    //     // for (var i = 0; i < data.length; i++) {
+    //     //     console.log(data[i].title);
+    //     //     data[i].day=req.body.choice_day;
+    //     //     data[i].times=req.body.workout_times;
+    //     //     data[i].times_status=req.body.workout_times_status;
+    //     //     data[i].save(function(err) {
+    //     //         if (err) {
+    //     //             console.log(err);
+    //     //         }
+    //     //     });
+    //     // }
+    //     // res.json(data);//將資料回應給前端
     }); 
 });
 
@@ -324,6 +350,14 @@ router.post('/listpose', function(req, res) {
     }, function(err, data) {
         res.json(data); //將資料回應給前端
 
+    });
+});
+
+router.post('/getPose', function(req, res) {
+    workoutModel.findOne({
+        id: req.body.acc
+    }, async function(err, data) {
+        
     });
 });
 

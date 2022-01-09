@@ -181,7 +181,6 @@ function getUserCal() {
     };
     jQuery.post(api, data, function(res) { //抓後端資料
         //-----------------------------------------日曆初始化-------------------------------
-        // console.log(res);
         for (var i = 0; i < res.length; i++) {
             if (res[i].day != "") { //日期不為空
                 workout_item = {
@@ -205,51 +204,65 @@ function workout_cal_choice(name) {
     var data1 = {
         "acc": getCookie('username'),
         "title": name,
-    }; //這邊給值//更改click+1
-    // console.log(data1);
+    };
     jQuery.post(api, data1, function(res) { //抓後端資料
         console.log(res.length);
+        var tmp = new Array();
         if (res.length != 0) {
-            // $("td").removeClass("important"); //把所有特效清空
-            // $("td").removeClass("have"); //把所有特效清空
             same = true;
             for (var i = 0; i < res.length; i++) {
-                //     // console.log(res[i].day);
-                //     // workout_times = workout_list[i].workout_times;
-                //     // workout_times_status = workout_list[i].workout_times_status;
-                //     // console.log(workout_times + workout_times_status);
-                //     //         $("#modal_block input").val(workout_times);
-                //     //         $("#modal_block #times p").text(workout_times_status);
-                //     //         sameID = i
-                //     console.log(res[i]);
-                if (res[i].day.search(',') != -1) {
-                    // choice_d = res[i].day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
-                    have = res[i].day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
 
+                if (res[i].day.search(',') != -1) {
+                    tmp = res[i].day.split(',');
+                    for (var j = 0; j < tmp.length; j++) {
+                        have.push(tmp[j]); //當前日期陣列的值=資料庫物件裡面日期陣列的值
+                    }
                 } else {
-                    have[0] = res[i].day;
+                    have.push(res[i].day);
                 }
-                //     
-                //     //         // console.log(workout_list[i].choice_d);
-                //     //         // console.log(choice_d);
-                //     //         break;
             }
             var havearr = have.filter(function(ele, pos) {
                 return have.indexOf(ele) == pos;
             });
-            console.log(havearr);
+
+            var num_day = [];
+            for (var i = 0; i < havearr.length; i++) {
+                num_day[i] = 0;
+            }
+            for (var i = 0; i < havearr.length; i++) {
+                for (var j = 0; j < have.length; j++) {
+                    if (have[j] == havearr[i]) {
+                        num_day[i]++;
+                    }
+                }
+            }
 
             var Days = document.getElementsByTagName("td");
             for (var k = 0; k <= 41; k++) {
                 for (var j = 0; j < havearr.length; j++) {
                     if ($(Days[k]).attr("data-uid") == havearr[j]) {
-                        $(Days[k]).addClass("have");
+                        if (num_day[j] <= 3) {
+                            $(Days[k]).addClass("have_s");
+                        } else if (num_day[j] > 3 && num_day[j] < 8) {
+                            $(Days[k]).addClass("have_m");
+                        } else {
+                            $(Days[k]).addClass("have_h");
+                        }
                         break;
                     }
                 }
             }
-            console.log("same:" + same);
+            have = [];
+            havearr = [];
         }
+        // console.log(res[i].day);
+        // workout_times = workout_list[i].workout_times;
+        // workout_times_status = workout_list[i].workout_times_status;
+        // console.log(workout_times + workout_times_status);
+        //         $("#modal_block input").val(workout_times);
+        //         $("#modal_block #times p").text(workout_times_status);
+        //         sameID = i
+        // console.log(res[i]);
     });
 }
 
@@ -279,9 +292,11 @@ function updateposeClick(id, name) {
     var Days = document.getElementsByTagName("td");
     for (var j = 0; j < Days.length; j++) {
         $(Days[j]).removeClass("important");
-        $(Days[j]).removeClass("have");
+        $(Days[j]).removeClass("have_s");
+        $(Days[j]).removeClass("have_m");
+        $(Days[j]).removeClass("have_h");
     }
-    choice_d = [];
+    // choice_d = [];
     // console.log(choice_d);
     workout_cal_choice(name);
     //----------------------------------------------------------------//
@@ -318,11 +333,9 @@ $('.home_cal').click(function() {
             }
         }
     }
-    // console.log(choice_d);
 });
 
 function Nextdialog() {
-
     if (choice_d.length == 0) { //未選擇日期
         alert("No date selected");
     } else {
@@ -359,13 +372,6 @@ $("#modal_OK").click(function() {
         // console.log(choice_d);
         // console.log("次數或秒數:"+workout_times+workout_times_staus);
         if (same == true) { // && workout_list[sameID].workout_times==workout_times-->
-            //只要改變選擇日期
-            // workout_list[sameID].choice_day = choice_day;
-            // workout_list[sameID].workout_times = workout_times;
-            // workout_list[sameID].workout_times_status = workout_times_status;
-            // workout_list[sameID].workout_sth_c = window.localStorage.getItem('newpose');
-            // console.log(sameID + ":" + workout_times + workout_times_status);
-
             var API = "http://127.0.0.1:3000/api/workoutcal";
             var Data = {
                     acc: getCookie('username'),
@@ -380,8 +386,6 @@ $("#modal_OK").click(function() {
                 $("#modal_block input").val(''); //資料清空
                 $("#modal_block #times p").text('times');
             });
-            // console.log(workout_list);
-            //之後將存放這些資料的變數清空
         } else if (same == false) {
             console.log(choice_day);
             workout_item = {
@@ -399,34 +403,12 @@ $("#modal_OK").click(function() {
             jQuery.post(api, data, function(res) { //抓後端資料
                 $("#modal_block input").val(''); //資料清空
                 $("#modal_block #times p").text('times');
-                // workout_item = {
-                //         workout_sth_c: res.title,
-                //         workout_times: res.times,
-                //         choice_day: res.day,
-                //         acc: res.acc, //使用者名稱
-                //         workout_times_status: res.times_status
-                //     }
-                //     workout_list.push(workout_item);
             });
-            // console.log(workout_list);
-            //之後將存放這些資料的變數清空
         }
     }
     choice_d = []; //清空陣列
-    // console.log(choice_d);
+
 });
-
-
-
-//---------------------------------------------------------abbyEND-------------------------------
-$("#calender_close").click(function() {
-    choice_d = [];
-});
-
-
-
-let workout_sth = "";
-/*--------------------------------folder--------------------------------------*/
 
 /*--------------------------------calender--------------------------------------*/
 // $(".calender").click(function() {

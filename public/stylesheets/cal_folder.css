@@ -239,8 +239,18 @@
     top: 0.5vw;
 }
 
-.have {
-    background-color: #112020;
+.have_s {
+    background-color: #9BCFB8;
+    color: #f3f1de;
+}
+
+.have_m {
+    background-color: #85B8CB;
+    color: #f3f1de;
+}
+
+.have_h {
+    background-color: #FFC2C3;
     color: #f3f1de;
 }
 

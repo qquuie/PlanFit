@@ -55,12 +55,12 @@ router.post('/HomeUpdate', function(req, res) {
                 data[i].inputS += ",";
                 data[i].inputS += req.body.inputS;
                 console.log(data[i].inputS);
-                data[i].save(function(err) { });
+                data[i].save(function(err) {});
                 same = true;
                 break;
             }
         }
-        if (same==false) {
+        if (same == false) {
             console.log("new");
             var new_HOMEinput = new HOMEinputModel({
                 acc: req.body.acc,
@@ -247,25 +247,14 @@ router.post('/updateposeClick', function(req, res) {
             data.save(function(err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json(data);
                 }
             });
+            res.json(data);
         }
     });
 });
 
 router.post('/listfile', function(req, res) {
-    // folderModel.find({
-    //     acc: req.body.acc,
-    //     status: true
-    // }, function(err, data) {
-    //     for (var i = 0; i < data.length; i++) {
-    //         data[i].status = false;
-    //         data[i].save(function(err, data) {});
-    //     }
-    // });
-
     folderModel.find({
         acc: req.body.acc
     }, function(err, data) {
@@ -322,7 +311,12 @@ router.post('/workoutcal', function(req, res) {
         console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             if (req.body.times == data[i].times && req.body.times_status == data[i].times_status) {
-                data[i].day = req.body.day;
+                var tmp = data[i].day + ',' + req.body.day;
+                var arr = tmp.split(",");
+                var finalarr = arr.filter(function(ele, pos) {
+                    return arr.indexOf(ele) == pos;
+                });
+                data[i].day = finalarr.toString();
                 data[i].save(function(err) {
                     if (err) {
                         console.log(err);
@@ -331,16 +325,6 @@ router.post('/workoutcal', function(req, res) {
                 same = true;
                 break;
             }
-
-            // console.log(data[i].title);
-            // data[i].day = req.body.day;
-            // data[i].times = req.body.times;
-            // data[i].times_status = req.body.times_status;
-            // data[i].save(function(err) {
-            //     if (err) {
-            //         console.log(err);
-            //     }
-            // });
         }
         if (!same) {
             var new_workout = new calendarModel({
@@ -354,8 +338,6 @@ router.post('/workoutcal', function(req, res) {
             new_workout.save(function(err, data) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json(data);
                 }
             });
         }
@@ -366,8 +348,11 @@ router.post('/workoutcal', function(req, res) {
 router.post('/workoutCalChoice', function(req, res) {
     calendarModel.find({
         acc: req.body.acc,
-        title: req.body.title
+        // title: req.body.title
     }, function(err, data) {
+        if (err) {
+            console.log(err);
+        }
         res.json(data); //將資料回應給前端
     });
 });

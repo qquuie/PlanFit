@@ -354,7 +354,7 @@ function newFolder_i(data) {
     $('#all_fol_i').append(content);
 }
 //首頁.pose增加到folder
-function posetofolder(data, ) {
+function posetofolder(data) {
     let folder1 = data;
     let pose = document.getElementById("pose_name").innerText;
     repose = 0;

@@ -84,3 +84,7 @@ button.btn:focus {
     background-color: white;
     color: #3e5a46;
 }
+
+.card-text>li {
+    color: #172c1e;
+}

@@ -43,12 +43,12 @@ router.post('/HomeUpdate', function(req, res) {
                 data[i].inputS += ",";
                 data[i].inputS += req.body.inputS;
                 console.log(data[i].inputS);
-                data[i].save(function(err) { });
+                data[i].save(function(err) {});
                 same = true;
                 break;
             }
         }
-        if (same==false) {
+        if (same == false) {
             console.log("new");
             var new_HOMEinput = new HOMEinputModel({
                 acc: req.body.acc,
@@ -299,7 +299,12 @@ router.post('/workoutcal', function(req, res) {
         console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             if (req.body.times == data[i].times && req.body.times_status == data[i].times_status) {
-                data[i].day = req.body.day;
+                var tmp = data[i].day + ',' + req.body.day;
+                var arr = tmp.split(",");
+                var finalarr = arr.filter(function(ele, pos) {
+                    return arr.indexOf(ele) == pos;
+                });
+                data[i].day = finalarr.toString();
                 data[i].save(function(err) {
                     if (err) {
                         console.log(err);

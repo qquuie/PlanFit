@@ -469,17 +469,18 @@ $(".HOME_cal").click(function() {
                 for(var j = 0; j<title.length;j++){
                     titleArr+=title[j]; 
                 }
-                var HOMEdiv = `  <div class="HOME_item ${titleArr}">
+                var HOMEdiv = `  <div class="HOME_item i${i}">
                                     <div class="HOME_item_name">
                                         ${sth}
                                     </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel(${titleArr})">X</div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel('i${i}','2','${res[i].title}')">X</div>
                                 </div>`
                 $("#HOME_div_block").append(HOMEdiv);
                 // console.log(dataWorkout);
             }
         }
     });
+
     var API = "http://127.0.0.1:3000/api/HOMEload";
     var Data = {
         acc: getCookie('username'),
@@ -497,14 +498,14 @@ $(".HOME_cal").click(function() {
             else{
                 sth[0] = res[0].inputS;
             }
-            console.log(res[0].day+"+"+choiceDay);
+            // console.log(res[0].day+"+"+choiceDay);
             console.log(sth);
             for(var i=0;i<sth.length;i++){
                 var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
                                     <div class="HOME_item_name">
                                         ${sth[i]}
                                     </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel(${sth[i]})">X</div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel('${sth[i]}','1','0')">X</div>
                                 </div>`
                 $("#HOME_div_block").append(HOMEdiv);
             }
@@ -529,7 +530,7 @@ $("#HOME_sth_add").click(function() {
                             <div class="HOME_item_name">
                                 ${HOMEinput}
                             </div>
-                            <div class="HOME_item_delete" onclick="HOMEdel(${HOMEinput})" >X</div>
+                            <div class="HOME_item_delete" onclick="HOMEdel('${HOMEinput}','1','0')" >X</div>
                         </div>`
         $("#HOME_div_block").append(HOMEdiv);
         
@@ -553,18 +554,31 @@ $("#HOME_sth_back").click(function() {
 });
 //按下X
 $("#HOME_div_close").click(function() {
+    $("#HOME_div_block").empty();//清空
     $("#HOME_div").hide();
 });
 //按下刪除資料按鍵
-function HOMEdel(HOMEinput){
+function HOMEdel(HOMEinput,ind,title){
     console.log(HOMEinput);
+    console.log(title);
     $('.' + HOMEinput).remove();
-    var api = "http://127.0.0.1:3000/api/removeHOME";
-    var data = {
-        acc : getCookie('username'),
-        day : choiceDay,
-        inputS : HOMEinput
-    };
+    if(ind=='1'){
+        var api = "http://127.0.0.1:3000/api/removeHOME";
+        var data = {
+            acc : getCookie('username'),
+            day : choiceDay,
+            inputS : HOMEinput
+        };
+    }else{
+        var api = "http://127.0.0.1:3000/api/removeworkoutCal";
+        var data = {
+            acc : getCookie('username'),
+            day : choiceDay,
+            title : title
+        };
+        console.log(choiceDay);
+    }
+    
     jQuery.post(api, data, function(res) {
         
     });

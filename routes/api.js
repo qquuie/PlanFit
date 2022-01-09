@@ -32,10 +32,15 @@ router.post('/removeHOME', function(req, res) {
                 var ind = sth.indexOf(req.body.inputS);
                 console.log(ind);
                 sth.splice(ind, 1);
+                data[0].inputS = sth.toString();
                 break;
             }
         }
-        console.log(sth);
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
         res.json(data); //將資料回應給前端
     });
 });
@@ -291,15 +296,27 @@ router.post('/removeList', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-// router.post('/FolderList', function (req, res) {
-//     folderModel.find({
-//         acc: req.body.acc,
-//         title:req.body.folder
-//     }, function(err, data) {
-//         res.json(data); //將資料回應給前端
-//         console.log(data);
-//     });
-// });
+
+router.post('/removeworkoutCal', function(req, res) {
+    console.log(req.body.title);
+    calendarModel.find({
+        acc: req.body.acc,
+        title: req.body.title
+        // title: req.body.title
+    }, function(err, data) {
+        var sth = data[0].day.split(',');
+        sth = sth.filter(function(item) {
+            return item != req.body.day
+        });
+        data[0].day = sth.toString(); 
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        res.json(data); //將資料回應給前端
+    });
+});
 
 router.post('/workoutcal', function(req, res) {
     console.log(req.body);

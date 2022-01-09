@@ -394,19 +394,19 @@ $("#modal_OK").click(function() {
 //----------------------------------------------------------------------------
 var choice_home_cal; //
 var homecalID; //首頁表格
-var choiceDayWorkout=[];//物件陣列，物件裡放運動名稱
-var choiceDay;//點擊的日期
-var dataDay=[];
+var choiceDayWorkout = []; //物件陣列，物件裡放運動名稱
+var choiceDay; //點擊的日期
+var dataDay = [];
 
 HOMEgetWorkoutName();
 
-function HOMEgetWorkoutName(){
+function HOMEgetWorkoutName() {
     var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
-    var data = { 
-        acc:getCookie('username')
+    var data = {
+        acc: getCookie('username')
     };
 
-    
+
     //清空陣列再把所有data-uid的數值推入
     //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
     // for (var i = 0; i <= 41; i++) {
@@ -414,8 +414,8 @@ function HOMEgetWorkoutName(){
     //     for (var j = 0; j < choice_d.length; j++) {
     //         if ($(Days[i]).attr("data-uid") == choice_d[j]) {
     //             console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
-                
-                
+
+
     //         }
     //     }
     //     // $(Days[i]).addClass("important");
@@ -423,12 +423,12 @@ function HOMEgetWorkoutName(){
 
     jQuery.post(api, data, function(res) { //抓後端資料
         var Days = document.getElementsByClassName(".HOME_cal");
-        console.log("Days:"+$(Days[i]).attr("data-uid"));
+        console.log("Days:" + $(Days[i]).attr("data-uid"));
         //放在jQuery.post裡面，testObj替換成後端傳回的資料
-        for(var i = 0;i < res.length;i++){
-            if(getCookie('username')==res[i].acc){//找帳號
+        for (var i = 0; i < res.length; i++) {
+            if (getCookie('username') == res[i].acc) { //找帳號
                 console.log(i);
-                choiceDay = res[i].day.split(',');//把日期存入陣列
+                choiceDay = res[i].day.split(','); //把日期存入陣列
                 // console.log(choiceDay);
                 // for(var j = 0;j < res.length;j++){
                 //     if(choiceDay[j]==)
@@ -437,9 +437,9 @@ function HOMEgetWorkoutName(){
         }
     });
 
-    
-   
-   
+
+
+
 }
 
 
@@ -455,23 +455,23 @@ $(".HOME_cal").click(function() {
     }
 
     var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
-    var data = { 
-        acc:getCookie('username')
+    var data = {
+        acc: getCookie('username')
     };
     console.log(data);
 
-    choiceDay = $(this).attr("data-uid");//請放在jQuery.post外面才能讀數值!!!
+    choiceDay = $(this).attr("data-uid"); //請放在jQuery.post外面才能讀數值!!!
     jQuery.post(api, data, function(res) { //抓後端資料
-        dataWorkout="";//要先清空
+        dataWorkout = ""; //要先清空
         //要先清空div裡的東西
         console.log(res.length);
-        for(var i = 0;i < res.length;i++){
+        for (var i = 0; i < res.length; i++) {
             // var index=0;
-            if(res[i].day.search(choiceDay)!=-1){//-1是沒有找到
+            if (res[i].day.search(choiceDay) != -1) { //-1是沒有找到
                 // index=res[i].day.indexOf(choiceDay);
                 // console.log(index);
                 // console.log(res[i].day.slice(index, index+8));
-                var HOMEdiv =`  <div class="HOME_item">
+                var HOMEdiv = `  <div class="HOME_item">
                         <div class="HOME_item_name">
                             <p>${res[i].title}</p>
                         </div>
@@ -481,11 +481,11 @@ $(".HOME_cal").click(function() {
             }
         }
     });
-    
-    
+
+
 });
 
-$("#HOME_div_close").click(function(){
+$("#HOME_div_close").click(function() {
     $("#HOME_div").hide();
 });
 
@@ -503,4 +503,3 @@ function PleaseSign() {
 //         $(this).addClass("important");
 //     }
 // });
-

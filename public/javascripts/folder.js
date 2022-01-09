@@ -1,13 +1,13 @@
-$(document).ready(function () {
+$(document).ready(function() {
     //----------------------infor--------------------------
     $('#folder1').hide();
     $('#action1').hide();
 
-    $('#add_fol').click(function () {
+    $('#add_fol').click(function() {
         addFolder();
     });
 
-    $("#inforFolder").click(function () {
+    $("#inforFolder").click(function() {
         listfile();
         // var $father = $(this).parent().parent().parent().parent();
         // workout_sth = $father.find(".card-body h3").text();
@@ -15,7 +15,7 @@ $(document).ready(function () {
         // $("#folder_win").show();
     });
 
-    $('button#closeBtnfolder').click(function () {
+    $('button#closeBtnfolder').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder").addClass("fade");
         $("div#smallPageModal_folder").css('z-index', '-1');
@@ -25,11 +25,11 @@ $(document).ready(function () {
         }
     });
 
-    $('.delete_folder').click(function () {
+    $('.delete_folder').click(function() {
         // removeFolder()
     });
     //----------------------index--------------------
-    $('#indexFolder').click(function () {
+    $('#indexFolder').click(function() {
         $("div#smallPageModal_folder_index").toggle();
         $("div#smallPageModal_folder_index").modal("toggle");
         $("div#smallPageModal_folder_index").removeClass("fade");
@@ -40,18 +40,18 @@ $(document).ready(function () {
     });
     $("div#smallPageModal_folder_index").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
-    $("ul#workOutMenu>a.dropdown-item").click(function () {
+    $("ul#workOutMenu>a.dropdown-item").click(function() {
         $("div#smallPageModal_folder_index").css('z-index', '-1');
 
     });
-    $('button#closeBtnfolder_index').click(function () {
+    $('button#closeBtnfolder_index').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder_index").addClass("fade");
         $("div#smallPageModal_folder_index").css('z-index', '-1');
         $(".page").css('z-index', '1000');
         $('#all_fol_i').empty();
     });
-    $('#add_fol_i').click(function () {
+    $('#add_fol_i').click(function() {
         addFolder_i();
 
     });
@@ -59,11 +59,11 @@ $(document).ready(function () {
 
     $("div#smallPageModal_folder_workout").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
-    $("ul#workOutMenu>a.dropdown-item").click(function () {
+    $("ul#workOutMenu>a.dropdown-item").click(function() {
         $("div#smallPageModal_folder_workout").css('z-index', '-1');
 
     });
-    $('button#closeBtnfolder_workout').click(function () {
+    $('button#closeBtnfolder_workout').click(function() {
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal_folder_workout").addClass("fade");
         $("div#smallPageModal_folder_workout").css('z-index', '-2');
@@ -73,7 +73,7 @@ $(document).ready(function () {
         $(".modal-backdrop").addClass("show");
         $('#all_fol_w').empty();
     });
-    $('#add_fol_w').click(function () {
+    $('#add_fol_w').click(function() {
         addFolder_w();
     });
 
@@ -87,7 +87,7 @@ function listfile() {
     var acc = {
         acc: getCookie('username'),
     }
-    jQuery.post(api, acc, function (data) {
+    jQuery.post(api, acc, function(data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
         }
@@ -116,7 +116,7 @@ function getCookie(c_name) {
 
 function compareFloder(file) {
     var totalfile = "";
-    var filteredArray = file.filter(function (ele, pos) {
+    var filteredArray = file.filter(function(ele, pos) {
         return file.indexOf(ele) == pos;
     });
     for (var i = 0; i < filteredArray.length; i++) {
@@ -146,7 +146,7 @@ function addFolder() {
                 'acc': getCookie('username')
             };
             total++;
-            jQuery.post(api, data, function (res) {
+            jQuery.post(api, data, function(res) {
                 $('#yourfolder').val('');
                 f.push(title);
                 newFolder(title, total);
@@ -166,7 +166,7 @@ function removeFolder(data) {
         'acc': getCookie('username'),
         'title': data
     };
-    jQuery.post(api, acc, function (res) {
+    jQuery.post(api, acc, function(res) {
 
     });
 }
@@ -186,7 +186,7 @@ function FolderList(data) {
         acc: getCookie('username'),
         folder: folder1
     }
-    jQuery.post(api1, acc1, function (data1) {
+    jQuery.post(api1, acc1, function(data1) {
         for (var i = 0; i < data1.length; i++) {
             p[i] = data1[i].pose;
             newpose(data1[i]);
@@ -212,7 +212,7 @@ function removeList(data) {
         'acc': getCookie('username'),
         'id': data
     };
-    jQuery.post(api, acc, function (res) {
+    jQuery.post(api, acc, function(res) {
 
     });
 }
@@ -276,7 +276,7 @@ function addPose() {
                 'status': false,
                 'acc': getCookie('username')
             };
-            jQuery.post(api, posedata, function (res) {
+            jQuery.post(api, posedata, function(res) {
                 if (res.status == 0) {
                     $('#addinput').val('');
 
@@ -319,7 +319,7 @@ function listfile_i() {
     var acc = {
         acc: getCookie('username'),
     }
-    jQuery.post(api, acc, function (data) {
+    jQuery.post(api, acc, function(data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
             p[i] = data[i].pose;
@@ -329,7 +329,7 @@ function listfile_i() {
 }
 
 function compareFloder_i(file) {
-    var filteredArray = file.filter(function (ele, pos) {
+    var filteredArray = file.filter(function(ele, pos) {
         return file.indexOf(ele) == pos;
     });
     var pose = document.getElementById("pose_name").innerText;
@@ -374,7 +374,7 @@ function posetofolder(data, ) {
             'status': false,
             'acc': getCookie('username')
         };
-        jQuery.post(api, posedata, function (res) {
+        jQuery.post(api, posedata, function(res) {
             // console.log(res.title);
             $("#pose_" + res.title).remove();
         });
@@ -401,7 +401,7 @@ function addFolder_i() {
                 'title': title,
                 'acc': getCookie('username')
             };
-            jQuery.post(api, data, function (res) {
+            jQuery.post(api, data, function(res) {
                 $('#yourfolder_i').val('');
                 f.push(title);
                 console.log(f);
@@ -424,7 +424,7 @@ function workoutFolder(data) {
     $(".modal-backdrop").hide();
     $("div#smallPageModal_folder_workout").css('z-index', '1050');
     listfile_w(data);
-    window.localStorage.setItem('newpose',data);
+    window.localStorage.setItem('newpose', data);
 }
 
 function listfile_w() {
@@ -432,7 +432,7 @@ function listfile_w() {
     var acc = {
         acc: getCookie('username'),
     }
-    jQuery.post(api, acc, function (data) {
+    jQuery.post(api, acc, function(data) {
         for (var i = 0; i < data.length; i++) {
             f[i] = data[i].title;
             p[i] = data[i].pose;
@@ -442,7 +442,7 @@ function listfile_w() {
 }
 
 function compareFloder_w(file) {
-    var filteredArray = file.filter(function (ele, pos) {
+    var filteredArray = file.filter(function(ele, pos) {
         return file.indexOf(ele) == pos;
     });
     for (var i = 0; i < filteredArray.length; i++) {
@@ -461,7 +461,7 @@ function newFolder_w(data) {
             </div>
         </div>`;
     $('#all_fol_w').append(content);
-    
+
 }
 //首頁.pose增加到folder
 function posetofolder_w(data) {
@@ -484,7 +484,7 @@ function posetofolder_w(data) {
             'status': false,
             'acc': getCookie('username')
         };
-        jQuery.post(api, posedata, function (res) {
+        jQuery.post(api, posedata, function(res) {
             // console.log(res.title);
             $("#pose_" + res.title).remove();
         });
@@ -511,10 +511,10 @@ function addFolder_w() {
                 'title': title,
                 'acc': getCookie('username')
             };
-            jQuery.post(api, data, function (res) {
+            jQuery.post(api, data, function(res) {
                 $('#yourfolder_w').val('');
                 f.push(title);
-                newFolder_w(title,window.localStorage.getItem('newpose'));
+                newFolder_w(title, window.localStorage.getItem('newpose'));
             });
         } else {
             $('#yourfolder_w').val('');

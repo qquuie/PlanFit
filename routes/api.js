@@ -247,19 +247,17 @@ router.post('/removeList', function(req, res) {
 // });
 
 router.post('/workoutcal', function(req, res) {
-    console.log("req.body.times_staus:" + req.body.workout_times_status);
-    console.log("req.body.times:" + req.body.workout_times);
-    console.log("req.body.choice_d:" + req.body.choice_day);
-    console.log("req.body.title:" + req.body.workout_sth_c);
+    console.log(req.body);
     calendarModel.find({ //找尋相同姿勢&帳號
-        title: req.body.workout_sth_c,
+        title: req.body.title,
         acc: req.body.acc
     }, function(err, data) {
+        console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             console.log(data[i].title);
-            data[i].day = req.body.choice_day;
-            data[i].times = req.body.workout_times;
-            data[i].times_status = req.body.workout_times_status;
+            data[i].day = req.body.day;
+            data[i].times = req.body.times;
+            data[i].times_status = req.body.times_status;
             data[i].save(function(err) {
                 if (err) {
                     console.log(err);
@@ -356,9 +354,9 @@ router.post('/getindexwheel', function(req, res) {
 
 router.post('/HOMEgetWorkoutName', function(req, res) {
     console.log(req.body.acc);
-    calendarModel.find({//找尋相同姿勢&帳號
-        acc: req.body.acc//只要找到a的資料
-    }, function (err, data) {
+    calendarModel.find({ //找尋相同姿勢&帳號
+        acc: req.body.acc //只要找到a的資料
+    }, function(err, data) {
         for (var i = 0; i < data.length; i++) {
             data[i].save(function(err) {
                 if (err) {
@@ -366,7 +364,7 @@ router.post('/HOMEgetWorkoutName', function(req, res) {
                 }
             });
         }
-        res.json(data);//將資料回應給前端
+        res.json(data); //將資料回應給前端
         console.log(data);
     });
 });

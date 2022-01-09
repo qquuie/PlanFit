@@ -209,11 +209,14 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
 // ----------------------------------標題年月END-----------------------------------//
 
 // ----------------------------------月曆按鈕按下-----------------------------------//
-function Nextdialog() {
-    $("#modal_block").show();
-    $("#calendar_win").hide();
-    $('#modal_workout_name>p').text(window.localStorage.getItem('newpose'));
-}
+// function Nextdialog() {
+//     $("#modal_block").show();
+//     $("#calendar_win").hide();
+//     $('#modal_workout_name>p').text(window.localStorage.getItem('newpose'));
+//     if (choice_d.length == 0) { //未選擇日期
+//         alert("No date selected");
+//     }
+// }
 
 function Alldialog() {
     var Days = document.getElementsByTagName("td");

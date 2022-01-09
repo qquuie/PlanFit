@@ -396,9 +396,7 @@ var choice_home_cal; //
 var homecalID; //首頁表格
 var choiceDayWorkout=[];//物件陣列，物件裡放運動名稱
 var choiceDay;//點擊的日期
-
 var dataDay=[];
-var testObj=[];
 
 HOMEgetWorkoutName();
 
@@ -461,42 +459,30 @@ $(".HOME_cal").click(function() {
         acc:getCookie('username')
     };
     console.log(data);
-    // for (var i = 0; i < res.length; i++) {
-    //     // console.log(res[i].acc);
-    //     // console.log(res[i].day);
-    //     // console.log(res[i].title);
-    //     // console.log(res[i].times);
-    //     // console.log(res[i].times_status);
-    //     if (res[i].day != "") { //日期不為空
-    //         workout_item = {
-    //             workout_sth_c: res[i].title,
-    //             workout_times: res[i].times,
-    //             choice_day: res[i].day,
-    //             acc: res[i].acc, //使用者名稱
-    //             workout_times_status: res[i].times_status
-    //         }
-    //         workout_list.push(workout_item);
-    //     }
-    // }
+
     choiceDay = $(this).attr("data-uid");//請放在jQuery.post外面才能讀數值!!!
     jQuery.post(api, data, function(res) { //抓後端資料
+        dataWorkout="";//要先清空
+        //要先清空div裡的東西
         console.log(res.length);
         for(var i = 0;i < res.length;i++){
-            console.log(res[i].acc+getCookie('username'));
-            if(res[i].day.indexOf(choiceDay)!=-1){//-1是沒有找到
-                console.log(res[i].day.indexOf(choiceDay));
-
+            // var index=0;
+            if(res[i].day.search(choiceDay)!=-1){//-1是沒有找到
+                // index=res[i].day.indexOf(choiceDay);
+                // console.log(index);
+                // console.log(res[i].day.slice(index, index+8));
+                var HOMEdiv =`  <div class="HOME_item">
+                        <div class="HOME_item_name">
+                            <p>${res[i].title}</p>
+                        </div>
+                    </div>`
+                $("#HOME_div_block").append(HOMEdiv);
+                // console.log(dataWorkout);
             }
         }
     });
     
-    //後端資料
-    var HOMEdiv =`  <div class="HOME_item">
-                        <div class="HOME_item_name">
-                            <p>database</p>
-                        </div>
-                    </div>`
-    $("#HOME_div_block").append(HOMEdiv);
+    
 });
 
 $("#HOME_div_close").click(function(){

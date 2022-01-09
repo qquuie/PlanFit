@@ -371,18 +371,15 @@ router.post('/HOMEgetWorkoutName', function(req, res) {
     calendarModel.find({//找尋相同姿勢&帳號
         acc: req.body.acc//只要找到a的資料
     }, function (err, data) {
-        console.log(data.length);
-        // for (var i = 0; i < data.length; i++) {
-        //     // console.log(data[i].title);
-        //     console.log(data[i]);
-        //     data[i].save(function(err) {
-        //         if (err) {
-        //             console.log(err);
-        //         }
-        //     });
-        // }
-        // res.json(data);//將資料回應給前端
-        // console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            data[i].save(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+        res.json(data);//將資料回應給前端
+        console.log(data);
     });
 });
 

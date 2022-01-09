@@ -248,19 +248,48 @@ router.post('/removeList', function(req, res) {
 
 router.post('/workoutcal', function(req, res) {
     console.log(req.body);
+    var same = false;
     calendarModel.find({ //找尋相同姿勢&帳號
         title: req.body.title,
         acc: req.body.acc
     }, function(err, data) {
         console.log(data.length);
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i].title);
-            data[i].day = req.body.day;
-            data[i].times = req.body.times;
-            data[i].times_status = req.body.times_status;
-            data[i].save(function(err) {
+            if (req.body.times == data[i].times && req.body.times_status == data[i].times_status) {
+                data[i].day = req.body.day;
+                data[i].save(function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+                same = true;
+                break;
+            }
+
+            // console.log(data[i].title);
+            // data[i].day = req.body.day;
+            // data[i].times = req.body.times;
+            // data[i].times_status = req.body.times_status;
+            // data[i].save(function(err) {
+            //     if (err) {
+            //         console.log(err);
+            //     }
+            // });
+        }
+        if (!same) {
+            var new_workout = new calendarModel({
+                title: req.body.title,
+                acc: req.body.acc,
+                times: req.body.times,
+                times_status: req.body.times_status,
+                day: req.body.day
+            });
+            // console.log(new_workout, 296);
+            new_workout.save(function(err, data) {
                 if (err) {
                     console.log(err);
+                } else {
+                    res.json(data);
                 }
             });
         }
@@ -290,7 +319,7 @@ router.post('/addNew_workoutcal', function(req, res) {
         times_status: req.body.workout_times_status,
         day: req.body.choice_day
     });
-    console.log(new_workout, 296);
+    // console.log(new_workout, 296);
     new_workout.save(function(err, data) {
         if (err) {
             console.log(err);

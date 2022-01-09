@@ -148,7 +148,7 @@ function addFolder() {
             total++;
             jQuery.post(api, data, function (res) {
                 $('#yourfolder').val('');
-                f+=title;
+                f.push(title);
                 newFolder(title, total);
             });
         } else {
@@ -403,7 +403,8 @@ function addFolder_i() {
             };
             jQuery.post(api, data, function (res) {
                 $('#yourfolder_i').val('');
-                f+=title;
+                f.push(title);
+                console.log(f);
                 newFolder_i(title);
             });
         } else {
@@ -512,7 +513,7 @@ function addFolder_w() {
             };
             jQuery.post(api, data, function (res) {
                 $('#yourfolder_w').val('');
-                f+=title;
+                f.push(title);
                 newFolder_w(title,window.localStorage.getItem('newpose'));
             });
         } else {

@@ -202,25 +202,14 @@ router.post('/updateposeClick', function(req, res) {
             data.save(function(err) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json(data);
                 }
             });
+            res.json(data);
         }
     });
 });
 
 router.post('/listfile', function(req, res) {
-    // folderModel.find({
-    //     acc: req.body.acc,
-    //     status: true
-    // }, function(err, data) {
-    //     for (var i = 0; i < data.length; i++) {
-    //         data[i].status = false;
-    //         data[i].save(function(err, data) {});
-    //     }
-    // });
-
     folderModel.find({
         acc: req.body.acc
     }, function(err, data) {
@@ -286,16 +275,6 @@ router.post('/workoutcal', function(req, res) {
                 same = true;
                 break;
             }
-
-            // console.log(data[i].title);
-            // data[i].day = req.body.day;
-            // data[i].times = req.body.times;
-            // data[i].times_status = req.body.times_status;
-            // data[i].save(function(err) {
-            //     if (err) {
-            //         console.log(err);
-            //     }
-            // });
         }
         if (!same) {
             var new_workout = new calendarModel({
@@ -309,8 +288,6 @@ router.post('/workoutcal', function(req, res) {
             new_workout.save(function(err, data) {
                 if (err) {
                     console.log(err);
-                } else {
-                    res.json(data);
                 }
             });
         }
@@ -321,17 +298,17 @@ router.post('/workoutcal', function(req, res) {
 router.post('/workoutCalChoice', function(req, res) {
     calendarModel.find({
         acc: req.body.acc,
-        title: req.body.title
+        // title: req.body.title
     }, function(err, data) {
+        if (err) {
+            console.log(err);
+        }
         res.json(data); //將資料回應給前端
     });
 });
 
 
 router.post('/addNew_workoutcal', function(req, res) {
-    // console.log("req.body.times_staus:" + req.body.workout_times_status);
-    // console.log("req.body.times:" + req.body.workout_times);
-    // console.log("req.body.choice_d:" + req.body.choice_day);
     console.log("req.body.title:" + req.body.workout_sth_c);
     var new_workout = new calendarModel({
         title: req.body.workout_sth_c,

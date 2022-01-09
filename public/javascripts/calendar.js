@@ -212,6 +212,7 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
 function Nextdialog() {
     $("#modal_block").show();
     $("#calendar_win").hide();
+    $('#modal_workout_name>p').text(window.localStorage.getItem('newpose'));
 }
 
 function Alldialog() {
@@ -325,7 +326,7 @@ $(".calender").click(function() {
 //按下確定後，紀錄該運動的日期陣列、運動名稱、運動次數或秒數-->存進物件
 var choice_day = ""; //字串
 // $("#modal_OK").click(function() {
-    
+
 //     $("#modal_block").hide(); //視窗關閉
 //     //把時間資料放進字串
 //     for (var i = 0; i < choice_d.length; i++) {
@@ -366,7 +367,7 @@ var choice_day = ""; //字串
 //     console.log(data);
 
 //     jQuery.post(api,data, function (res) {//抓後端資料
-        
+
 //     });
 
 //     /*

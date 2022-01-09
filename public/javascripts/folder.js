@@ -148,6 +148,7 @@ function addFolder() {
             total++;
             jQuery.post(api, data, function (res) {
                 $('#yourfolder').val('');
+                f+=title;
                 newFolder(title, total);
             });
         } else {
@@ -402,6 +403,7 @@ function addFolder_i() {
             };
             jQuery.post(api, data, function (res) {
                 $('#yourfolder_i').val('');
+                f+=title;
                 newFolder_i(title);
             });
         } else {
@@ -510,6 +512,7 @@ function addFolder_w() {
             };
             jQuery.post(api, data, function (res) {
                 $('#yourfolder_w').val('');
+                f+=title;
                 newFolder_w(title,window.localStorage.getItem('newpose'));
             });
         } else {

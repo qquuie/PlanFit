@@ -203,15 +203,14 @@ function getUserCal() {
 
 }
 
-function workout_cal_choice(name){
+function workout_cal_choice(name) {
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
         "acc": getCookie('username'),
         "title": name,
     }; //這邊給值//更改click+1
-    console.log(data1);
-    // jQuery.post(api, data1, function(res) { //抓後端資料
-        // console.log(res);
+    jQuery.post(api, data1, function(res) { //抓後端資料
+        console.log(res);
         // workout_sth_c = res.name; //存取點擊的運動名稱
         // // console.log("JQ:"+workout_sth_c);
         // $("#modal_workout_name p").text(workout_sth_c); /*資料庫*/
@@ -246,11 +245,11 @@ function workout_cal_choice(name){
         //     }
         // }
         // console.log("same:" + same);
-    // });
+    });
 }
 
 //更新待辦事項//前端
-function updateposeClick(id,name) {
+function updateposeClick(id, name) {
     // console.log(getCookie('username'));
     if (getCookie('username') == '') {
         alert("Sign in! Please!!");
@@ -266,11 +265,10 @@ function updateposeClick(id,name) {
         "id": id,
         "click": parseInt($('#see_times' + id).text()) + 1,
     }; //這邊給值//更改click+1
-    $('#see_times' + id).text(data.click);
     //---------------------------------------------------------初始化End----------------------------
     //----------------------------------------------------------------//
     jQuery.post(api, data, function(res) { //抓後端資料
-       
+        $('#see_times' + id).text(data.click);
     });
 
     workout_cal_choice(name);

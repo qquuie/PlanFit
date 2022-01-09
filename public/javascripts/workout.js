@@ -249,7 +249,7 @@ function workout_cal_choice(name) {
 //更新待辦事項//前端
 function updateposeClick(id, name) {
     // console.log(getCookie('username'));
-    if (getCookie('username') == '') {
+    if (getCookie('username') == null) {
         alert("Sign in! Please!!");
     }
     $("#calendar_win").show(); //顯示視窗
@@ -275,7 +275,7 @@ function updateposeClick(id, name) {
     }
     choice_d = [];
     // console.log(choice_d);
-    workout_cal_choice(name);
+    // workout_cal_choice(name);
     //----------------------------------------------------------------//
 
 

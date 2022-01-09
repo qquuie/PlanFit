@@ -416,6 +416,9 @@ function addFolder_i() {
 }
 //----------------------------workout------------------------
 function workoutFolder(data) {
+    if (getCookie('username') == null) {
+        alert("Sign in! Please!!");
+    }
     $("div#smallPageModal_folder_workout").toggle();
     $("div#smallPageModal_folder_workout").modal("toggle");
     $("div#smallPageModal_folder_workout").removeClass("fade");

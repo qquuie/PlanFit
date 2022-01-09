@@ -396,6 +396,7 @@ var choice_home_cal; //
 var homecalID; //首頁表格
 var choiceDayWorkout = []; //物件陣列，物件裡放運動名稱
 var choiceDay; //點擊的日期
+var data_input="";
 var dataDay = [];
 
 HOMEgetWorkoutName();
@@ -442,7 +443,6 @@ function HOMEgetWorkoutName() {
 
 }
 
-
 $(".HOME_cal").click(function() {
     //前端特效
     $("#HOME_div").show();
@@ -468,15 +468,16 @@ $(".HOME_cal").click(function() {
         console.log(res.length);
         for (var i = 0; i < res.length; i++) {
             // var index=0;
-            if (res[i].day.search(choiceDay) != -1) { //-1是沒有找到
+            if (res[i].day.search(choiceDay) != -1) {
                 // index=res[i].day.indexOf(choiceDay);
                 // console.log(index);
                 // console.log(res[i].day.slice(index, index+8));
                 var HOMEdiv = `  <div class="HOME_item">
-                        <div class="HOME_item_name">
-                            ${res[i].title} ${res[i].times} ${res[i].times_status}
-                        </div>
-                    </div>`
+                                    <div class="HOME_item_name">
+                                        ${res[i].title} ${res[i].times} ${res[i].times_status}
+                                    </div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
+                                </div>`
                 $("#HOME_div_block").append(HOMEdiv);
                 // console.log(dataWorkout);
             }
@@ -489,16 +490,28 @@ $(".HOME_cal").click(function() {
     };
     jQuery.post(API, Data, function(res) { //抓後端資料
         //要先清空div裡的東西
-        console.log(res.length);
-            if (res.length > 0) { 
-                var HOMEdiv = `  <div class="HOME_item">
-                        <div class="HOME_item_name">
-                            ${res[0].inputS}
-                        </div>
-                    </div>`
-                $("#HOME_div_block").append(HOMEdiv);
-                // console.log(dataWorkout);
+        // console.log(res.length);
+        // console.log(same_day);
+        var sth = [];
+        if(res.length>0){//該日期有資料
+            if(res[0].inputS.search(',')!=-1){
+                sth = res[0].inputS.split(',');
             }
+            else{
+                sth[0] = res[0].inputS;
+            }
+            console.log(res[0].day+"+"+choiceDay);
+            console.log(sth);
+            for(var i=0;i<sth.length;i++){
+                var HOMEdiv = `  <div class="HOME_item">
+                                    <div class="HOME_item_name">
+                                        ${sth[i]}
+                                    </div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
+                                </div>`
+                $("#HOME_div_block").append(HOMEdiv);
+            }
+        }
     });
 });
 //按下add else +
@@ -508,25 +521,28 @@ $("#HOME_item_add").click(function() {
 });
 //按下add
 $("#HOME_sth_add").click(function() {
-    if($("#HOME_sth_input").val()==""){
+    console.log(choiceDay);
+    if($("#HOME_sth_input").val() == ""){
         alert("You don't input pose!");
     }else{
         alert('add new pose!');
         var HOMEinput = $("#HOME_sth_input").val();
-        console.log(HOMEinput);
+        // console.log(HOMEinput);
         var HOMEdiv = `  <div class="HOME_item">
                             <div class="HOME_item_name">
                                 ${HOMEinput}
                             </div>
+                            <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
                         </div>`
         $("#HOME_div_block").append(HOMEdiv);
-        var api = "http://127.0.0.1:3000/api/HOMEinputNew";
-        var data = {
+        
+        var API = "http://127.0.0.1:3000/api/HomeUpdate";
+        var Data = {
             acc: getCookie('username'),
-            day:choice_home_cal,
+            day:choiceDay,
             inputS:HOMEinput
         };
-        jQuery.post(api, data, function(res) { 
+        jQuery.post(API, Data, function(res) { 
             
         });
         $("#HOME_model").hide();
@@ -542,6 +558,26 @@ $("#HOME_sth_back").click(function() {
 $("#HOME_div_close").click(function() {
     $("#HOME_div").hide();
 });
+//按下刪除資料按鍵
+$(".HOME_item_delete").click(function(){
+    console.log(1);
+    var del = $(this).parent.find(".HOME_item_name").val();
+    console.log(del);
+});
+// function HOMEdel(){
+//     console.log(1);
+//     var del = $(this).parent.find(".HOME_item_name").val();
+//     console.log(del);
+//     // var api = "http://127.0.0.1:3000/api/removeHOME";
+//     // var data = {
+//     //     acc : getCookie('username'),
+//     //     day : choiceDay,
+//     //     // inputS : 
+//     // };
+//     // jQuery.post(api, data, function(res) {
+//     //     $(this).parent().remove();
+//     // });
+// }
 
 function PleaseSign() {
     alert("Sign in! Please!!");

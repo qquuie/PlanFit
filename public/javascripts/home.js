@@ -474,7 +474,7 @@ $(".HOME_cal").click(function() {
                 // console.log(res[i].day.slice(index, index+8));
                 var HOMEdiv = `  <div class="HOME_item">
                         <div class="HOME_item_name">
-                            <p>${res[i].title}</p>
+                            ${res[i].title} ${res[i].times} ${res[i].times_status}
                         </div>
                     </div>`
                 $("#HOME_div_block").append(HOMEdiv);
@@ -485,11 +485,36 @@ $(".HOME_cal").click(function() {
 });
 
 $(".HOME_item_add").click(function() {
-
+    $("#HOME_div").hide();
+    if($("#HOME_sth_input").text()==""){
+        alert("You don't input pose!");
+    }else{
+        alert('add new pose!');
+        var HOMEinput = $("#HOME_sth_input").text();
+        console.log(HOMEinput);
+        var HOMEdiv = `  <div class="HOME_item">
+                            <div class="HOME_item_name">
+                                ${res[i].title} ${res[i].times} ${res[i].times_status}
+                            </div>
+                        </div>`
+        $("#HOME_div_block").append(HOMEdiv);
+        var api = "http://127.0.0.1:3000/api/HOMEinputNew";
+        var data = {
+            acc: getCookie('username'),
+            day:choice_home_cal,
+            inputS:HOMEinput
+        };
+        jQuery.post(api, data, function(res) { 
+            
+        });
+    }
+    $("#HOME_model").hide();
+    $("#HOME_div").hide();
 });
 
 $("#HOME_div_close").click(function() {
     $("#HOME_div").hide();
+    $("#HOME_model").show();
 });
 
 function PleaseSign() {

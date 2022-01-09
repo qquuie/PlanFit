@@ -4,8 +4,21 @@ var loginModel = require('../models/login.js');
 var workoutModel = require('../models/workout.js');
 var folderModel = require('../models/folder.js');
 var calendarModel = require('../models/calendar.js');
+var HOMEinputModel = require('../models/HOMEinput.js');
+//HOMEinput.js
 var bcrypt = require('bcryptjs');
 const createHttpError = require('http-errors');
+
+router.post('/HOMEinputNew', function(req, res) {
+    console.log(req.body);
+    var new_HOMEinput = new HOMEinputModel({
+        acc: req.body.acc,
+        day: req.body.day,
+        inputS: req.body.inputS
+    });
+    new_HOMEinput.save(function(err, data) {});
+    res.json(data);
+});
 
 router.post('/addUser', function(req, res) {
     // const body = _.pick(req.body, ['sex'])

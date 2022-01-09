@@ -304,10 +304,6 @@ router.post('/addNew_workoutcal', function(req, res) {
 });
 
 router.post('/getUserCal', function(req, res) {
-    // console.log(req.body);
-    // var status=true;
-    // console.log(req.body.workout_sth_c);
-    // console.log(req.body.acc);
     calendarModel.find({
         acc: req.body.acc
     }, function(err, data) {

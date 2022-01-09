@@ -18,7 +18,7 @@ const pose = new mongoose.Schema({
     inputS: String,
 });
 
-pose.set('collection', 'pose');
-const model = mongoose.model('pose', pose);
+pose.set('collection', 'HomePose');
+const model = mongoose.model('HomePose', pose);
 
 module.exports = model;

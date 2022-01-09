@@ -9,8 +9,16 @@ var HOMEinputModel = require('../models/HOMEinput.js');
 var bcrypt = require('bcryptjs');
 const createHttpError = require('http-errors');
 
+router.post('/HOMEload', function(req, res) {
+    HOMEinputModel.find({
+        acc: req.body.acc,
+        day: req.body.day
+    }, function(err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
+
 router.post('/HOMEinputNew', function(req, res) {
-    console.log(req.body);
     var new_HOMEinput = new HOMEinputModel({
         acc: req.body.acc,
         day: req.body.day,

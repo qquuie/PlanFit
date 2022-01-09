@@ -47,7 +47,7 @@
     padding: 4%
 }
 
-.HOME_item_add {
+#HOME_item_add {
     background-color: #82A3A3;
     position: absolute;
     top: 80%;
@@ -62,6 +62,7 @@
     padding: 1%;
 }
 #HOME_model{
+    display: none;
     background-color: #f3f1de;
     width: 450px;
     height: 250px;
@@ -131,7 +132,7 @@
     color: #f3f1de;
     background-color: #82A3A3;
 }
-#HOME_sth_back,#HOME_sth_add,.HOME_item_add:hover{
+#HOME_sth_back:hover,#HOME_sth_add:hover,#HOME_item_add:hover{
     color: #52795e;
     background-color: #82A3A3;
     cursor: pointer;

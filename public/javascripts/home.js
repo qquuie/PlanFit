@@ -463,6 +463,7 @@ $(".HOME_cal").click(function() {
     choiceDay = $(this).attr("data-uid");//請放在jQuery.post外面才能讀數值!!!
     jQuery.post(api, data, function(res) { //抓後端資料
         dataWorkout="";//要先清空
+        $(".HOME_item").remove();//要先清空
         //要先清空div裡的東西
         console.log(res.length);
         for(var i = 0;i < res.length;i++){
@@ -481,7 +482,9 @@ $(".HOME_cal").click(function() {
             }
         }
     });
-    
+});
+
+$(".HOME_item_add").click(function(){
     
 });
 

@@ -270,3 +270,7 @@ div.modal-header {
 #closeBtnImg {
     position: relative;
 }
+.navbar-collapse
+{
+    padding-right: 0;
+}

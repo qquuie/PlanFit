@@ -33,61 +33,18 @@ body
                 a.dropdown-item(href='workoutG' onclick="getPose('Thing')") Thing
               li
                 a.dropdown-item(href='workoutG' onclick="getPose('Butt')") Butt
-          //- li.nav-item.fs-3.mt-3
-          //-   a.nav-link.link-dark.ms-5#contactUsNav(href='contact') Contact Us
+         
           li.nav-item.fs-3.mt-3
             a.nav-link.link-dark.ms-5#aboutUsNav(href='aboutG') About Us
           li.nav-item.dropdown.fs-3.mt-3
             a#inforNav.nav-link.dropdown-toggle.border-0.px-1.link-dark.ms-5(type='button', aria-expanded='false') Information
             ul#inforMenu.dropdown-menu(aria-labelledby='inforNav')
-              //- li
-              //-   a.dropdown-item(href='infor') Edit
-              //- li
-              //-   a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder', href) File
               li
                 a.dropdown-item.btn#inforSign(data-toggle='modal', data-bs-target='#smallPageModal') Sign In
-  //- //  -----------------------------Folder-------------------------------- 
-  //- .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
-  //-   .modal-dialog.modal-dialog-scrollable
-  //-     .modal-content.folder
-  //-       .modal-header
-  //-         .input-group-lg.mb-11
-  //-           h1 Your folder
-  //-         .input-group-lg.mb-1s
-  //-           button.btn.col-auto#closeBtnfolder(type='button', data-dismiss='modal', aria-label='Close')
-  //-             img(src='./img/close_r.png', width='30px', height='40px', alt)
-  //-       //  <---------------------------------所有文件夾------------------------------
-  //-       .modal-body#folder
-  //-         #all_fol
-  //-           .d-flex.flex-row.alr-folder.position-relative#1
-  //-             img(src='img/icon_folder.png')
-  //-             p(onclick='FolderList(\'1\')') My favorite
-  //-             img.close#del_folder1(src='img/close_r.png', onclick='removeFolder(\'1\')')
-  //-         .modal-footer
-  //-           .input-group-lg.mb-3.d-flex.flex-row.add_folder.position-relative
-  //-             p Add folder
-  //-             input#yourfolder(type='text', placeholder='  | folder name')
-  //-             img#add_fol(src='img/add.png', alt)
-  //-       //  <----------------------------------文件夾中的所有動作-----------------------------  
-  //-       .modal-body.d-none#folder1
-  //-         .input-group-lg.mt-3
-  //-           h1
-  //-             img(src='img/icon_folder.png')
-  //-             | My favorite
-  //-         #fol_move1
-  //-           .d-flex.flex-row.position-relative.alr-folder#1
-  //-             p My favorite
-  //-             img.close#del_list1(src='img/close_r.png', onclick='removeList(\'1\')')
-  //-         .input-group-lg.mb-3.d-flex.flex-row.position-relative.fol-btn
-  //-           .btn.btn-sm.back-btn(type='button', onclick='backBtn(\'1\')')
-  //-             p Back
-  //-           .btn.btn-sm.d-flex.justify-content-between.addelse-btn(type='button')
-  //-             p Add else
-  //-             img(src='img/add.png', alt)
+ 
   //  ---------------------------Signun/Signout------------------------------ 
   .smallPage.modal.fade.d-grid#smallPageModal(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
     .smallPage.modal.fade.d-grid#smallPageModal(tabindex='-1', role='dialog', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
-      //  abby改 
       .modal-dialog
         .modalContainer.modal-content
           .logo.row.modal-header

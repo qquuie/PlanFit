@@ -206,7 +206,7 @@ function newFolderList(data) {
 }
 // -----------------刪除動作------------------
 function removeList(data) {
-    $('#' + data).remove();
+    $('#pose' + data).remove();
     var api = "http://127.0.0.1:3000/api/removeList";
     let acc = {
         'acc': getCookie('username'),

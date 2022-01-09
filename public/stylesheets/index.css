@@ -1,3 +1,9 @@
+td:hover{
+    background-color:#82A3A3;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
 #HOME_div{
     display: none;
     background-color: #f3f1de;
@@ -46,9 +52,18 @@
     font-size: 20px;
     padding: 4%
 }
+.HOME_item_delete{
+    float: right;
+    color: #82A3A3;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
 
 #HOME_item_add {
-    background-color: #82A3A3;
+    background-color: #bacec1;
+    color: white;
     position: absolute;
     top: 80%;
     width: 40%;
@@ -60,6 +75,7 @@
     font-size: 20px;
     margin: 5px;
     padding: 1%;
+    transition: 0.5s;
 }
 #HOME_model{
     display: none;

@@ -18,14 +18,47 @@ router.post('/HOMEload', function(req, res) {
     });
 });
 
-router.post('/HOMEinputNew', function(req, res) {
-    var new_HOMEinput = new HOMEinputModel({
-        acc: req.body.acc,
+router.post('/removeHOME', function(req, res) {
+    HOMEinputModel.find({
         day: req.body.day,
-        inputS: req.body.inputS
+        acc: req.body.acc
+    }, function(err, data) {
+        data[0].inputS = req.body.inputS
+        res.json(data); //將資料回應給前端
     });
-    new_HOMEinput.save(function(err, data) {});
-    res.json(data);
+});
+
+router.post('/HomeUpdate', function(req, res) {
+    console.log(req.body.acc);
+    console.log(req.body.day);
+    console.log(req.body.inputS);
+    var same = false;
+    HOMEinputModel.find({ //找尋相同姿勢&帳號
+        day: req.body.day,
+        acc: req.body.acc
+    }, function(err, data) {
+        // console.log(data.length);
+        for (var i = 0; i < data.length; i++) {
+            if (req.body.day == data[i].day) {
+                data[i].inputS += ",";
+                data[i].inputS += req.body.inputS;
+                console.log(data[i].inputS);
+                data[i].save(function(err) { });
+                same = true;
+                break;
+            }
+        }
+        if (same==false) {
+            console.log("new");
+            var new_HOMEinput = new HOMEinputModel({
+                acc: req.body.acc,
+                day: req.body.day,
+                inputS: req.body.inputS
+            });
+            new_HOMEinput.save(function(err, data) {});
+        }
+        res.json(data); //將資料回應給前端
+    });
 });
 
 router.post('/addUser', function(req, res) {

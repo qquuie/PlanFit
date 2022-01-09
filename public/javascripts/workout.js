@@ -198,6 +198,8 @@ function getUserCal() {
 
 }
 
+var have = [];
+
 function workout_cal_choice(name) {
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
@@ -208,41 +210,46 @@ function workout_cal_choice(name) {
     jQuery.post(api, data1, function(res) { //抓後端資料
         console.log(res.length);
         if (res.length != 0) {
-            $("td").removeClass("important"); //把所有特效清空
-
+            // $("td").removeClass("important"); //把所有特效清空
+            // $("td").removeClass("have"); //把所有特效清空
+            same = true;
             for (var i = 0; i < res.length; i++) {
-                // console.log(res[i].day);
-                // workout_times = workout_list[i].workout_times;
-                // workout_times_status = workout_list[i].workout_times_status;
-                // console.log(workout_times + workout_times_status);
-                //         $("#modal_block input").val(workout_times);
-                //         $("#modal_block #times p").text(workout_times_status);
-                same = true;
-                //         sameID = i
-                console.log(res[i]);
+                //     // console.log(res[i].day);
+                //     // workout_times = workout_list[i].workout_times;
+                //     // workout_times_status = workout_list[i].workout_times_status;
+                //     // console.log(workout_times + workout_times_status);
+                //     //         $("#modal_block input").val(workout_times);
+                //     //         $("#modal_block #times p").text(workout_times_status);
+                //     //         sameID = i
+                //     console.log(res[i]);
                 if (res[i].day.search(',') != -1) {
-                    choice_d = res[i].day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
+                    // choice_d = res[i].day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
+                    have = res[i].day.split(','); //當前日期陣列的值=資料庫物件裡面日期陣列的值
 
                 } else {
-                    choice_d[0] = res[i].day;
+                    have[0] = res[i].day;
                 }
-                console.log(choice_d);
-                var Days = document.getElementsByTagName("td");
-                for (var k = 0; k <= 41; k++) {
-                    for (var j = 0; j < choice_d.length; j++) {
-                        if ($(Days[k]).attr("data-uid") == choice_d[j]) {
-                            $(Days[k]).addClass("important");
-                            break;
-                        }
+                //     
+                //     //         // console.log(workout_list[i].choice_d);
+                //     //         // console.log(choice_d);
+                //     //         break;
+            }
+            var havearr = have.filter(function(ele, pos) {
+                return have.indexOf(ele) == pos;
+            });
+            console.log(havearr);
+
+            var Days = document.getElementsByTagName("td");
+            for (var k = 0; k <= 41; k++) {
+                for (var j = 0; j < havearr.length; j++) {
+                    if ($(Days[k]).attr("data-uid") == havearr[j]) {
+                        $(Days[k]).addClass("have");
+                        break;
                     }
                 }
-                //         // console.log(workout_list[i].choice_d);
-                //         // console.log(choice_d);
-                //         break;
             }
-            // console.log("same:" + same);
+            console.log("same:" + same);
         }
-        window.localStorage.setItem('newpose', name);
     });
 }
 
@@ -272,13 +279,13 @@ function updateposeClick(id, name) {
     var Days = document.getElementsByTagName("td");
     for (var j = 0; j < Days.length; j++) {
         $(Days[j]).removeClass("important");
+        $(Days[j]).removeClass("have");
     }
     choice_d = [];
     // console.log(choice_d);
-    // workout_cal_choice(name);
+    workout_cal_choice(name);
     //----------------------------------------------------------------//
-
-
+    window.localStorage.setItem('newpose', name);
     //----------------------------------------------------------------//
     //---------------------------------------------------------初始化End----------------------------
     //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
@@ -296,6 +303,7 @@ $('.home_cal').click(function() {
             change = true;
         }
     }
+
     if ($(this).hasClass("important") == false && change == true) {
         $(this).addClass("important");
         choice_d.push(choice); //儲存選擇年月日-->推入陣列

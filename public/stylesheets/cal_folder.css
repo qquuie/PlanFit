@@ -41,7 +41,6 @@
     z-index: 5;
 }
 
-
 #folder_close {
     width: 30px;
     position: absolute;
@@ -238,6 +237,11 @@
     vertical-align: top;
     position: relative;
     top: 0.5vw;
+}
+
+.have {
+    background-color: #112020;
+    color: #f3f1de;
 }
 
 .important {

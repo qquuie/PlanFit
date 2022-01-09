@@ -318,8 +318,9 @@ $("#modal_OK").click(function() {
         for (var i = 0; i < choice_d.length; i++) {
             if (choice_d != "" && i < choice_d.length) { //如果陣列裡有數值
                 choice_day += choice_d[i];
-            }
-            if (i < choice_d.length - 1) {
+                if (i == choice_d.length - 1) {
+                    break;
+                }
                 choice_day += ',';
             }
         }

@@ -279,6 +279,7 @@ router.post('/workoutCalChoice', function(req, res) {
     });
 });
 
+
 router.post('/addNew_workoutcal', function(req, res) {
     // console.log("req.body.times_staus:" + req.body.workout_times_status);
     // console.log("req.body.times:" + req.body.workout_times);
@@ -350,6 +351,23 @@ router.post('/getindexwheel', function(req, res) {
         name: req.body.pose
     }, function(err, data) {
         res.json(data); //將資料回應給前端
+    });
+});
+
+router.post('/HOMEgetWorkoutName', function(req, res) {
+    console.log(req.body.acc);
+    calendarModel.find({//找尋相同姿勢&帳號
+        acc: req.body.acc//只要找到a的資料
+    }, function (err, data) {
+        for (var i = 0; i < data.length; i++) {
+            data[i].save(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+        res.json(data);//將資料回應給前端
+        console.log(data);
     });
 });
 

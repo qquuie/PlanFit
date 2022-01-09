@@ -34,29 +34,108 @@
     height: 20%;
     background-color: white;
     margin: 10px 0px;
+    border-radius: 4px;
     /*上下 左右*/
 }
 .HOME_item_name {
     float: left;
     color: #82A3A3;
-    font-size: 30px;
+    font-size: 25px;
     height: 100%;
-    margin: 8px;
+    text-align: center;
+    font-size: 20px;
+    padding: 4%
 }
 
-.HOME_item_add {
+#HOME_item_add {
     background-color: #82A3A3;
     position: absolute;
     top: 80%;
     width: 40%;
-    left: 25%;
+    left: 30%;
     color: #f3f1de;
     height: 10%;
-}
-.HOME_item_add  p{
+    border-radius: 8px;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     margin: 5px;
+    padding: 1%;
+}
+#HOME_model{
+    display: none;
+    background-color: #f3f1de;
+    width: 450px;
+    height: 250px;
+    /* margin: 0 auto; */
+    position: absolute;
+    top: 750px;
+    left: 30%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0 0 0 / 50%);
+}
+#HOME_model_title{
+    position: relative;
+    top: 5%;
+    padding: 2px;
+    margin: 10px;
+    border-radius: 4px;
+    font-size: 30px;
+    text-align: center;
+    color: #bacec1;
+}
+#HOME_sth_add{
+    background-color: #bacec1;
+    color: white;
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    top: 20%;
+    left: -10%;
+    transition: 0.5s;
+}
+#HOME_sth_back{
+    background-color: #bacec1;
+    color: white;
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    top: 20%;
+    left: 10%;
+    transition: 0.5s;
+}
+#HOME_sth_input{
+    padding: 10px;
+    margin: 6px 10px;
+    position: relative;
+    left: 8%;
+    top: 10%;
+    width: 80%;
+    height: 40px;
+    border-radius: 5%;
+    border-width: 0px;
+    border-bottom: 1px solid #82A3A3;
+    outline: none;
+    transition: 0.5s;
+    color: #82A3A3;
+}
+#HOME_sth_input:focus{
+    color: #f3f1de;
+    background-color: #82A3A3;
+}
+#HOME_sth_back:hover,#HOME_sth_add:hover,#HOME_item_add:hover{
+    color: #52795e;
+    background-color: #82A3A3;
+    cursor: pointer;
 }
 
 /* .text-GreenLake {

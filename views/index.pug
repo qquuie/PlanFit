@@ -271,9 +271,15 @@ include includes/navigation
 
   #HOME_div
     img#HOME_div_close(src='img/close_g2.png')
+    //- #HOME_div_title Your plan
     #HOME_div_block
-    .HOME_item_add
-      p add else +
+    #HOME_item_add add else +
+  #HOME_model
+    #HOME_model_title Input Somethig...
+    input#HOME_sth_input(type="text", placeholder="| input pose")
+    #HOME_sth_add add
+    #HOME_sth_back back
+    
 
 script(type='text/javascript' src='javascripts/jquery.waterwheelCarousel.js')
 script(type='text/javascript').

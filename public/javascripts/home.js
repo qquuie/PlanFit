@@ -474,7 +474,7 @@ $(".HOME_cal").click(function() {
                 // console.log(res[i].day.slice(index, index+8));
                 var HOMEdiv = `  <div class="HOME_item">
                         <div class="HOME_item_name">
-                            <p>${res[i].title}</p>
+                            ${res[i].title} ${res[i].times} ${res[i].times_status}
                         </div>
                     </div>`
                 $("#HOME_div_block").append(HOMEdiv);
@@ -482,12 +482,63 @@ $(".HOME_cal").click(function() {
             }
         }
     });
+    var API = "http://127.0.0.1:3000/api/HOMEload";
+    var Data = {
+        acc: getCookie('username'),
+        day: choiceDay
+    };
+    jQuery.post(API, Data, function(res) { //抓後端資料
+        //要先清空div裡的東西
+        console.log(res.length);
+            if (res.length > 0) { 
+                var HOMEdiv = `  <div class="HOME_item">
+                        <div class="HOME_item_name">
+                            ${res[0].inputS}
+                        </div>
+                    </div>`
+                $("#HOME_div_block").append(HOMEdiv);
+                // console.log(dataWorkout);
+            }
+    });
 });
-
-$(".HOME_item_add").click(function() {
-
+//按下add else +
+$("#HOME_item_add").click(function() {
+    $("#HOME_model").show();
+    $("#HOME_div").hide();
 });
-
+//按下add
+$("#HOME_sth_add").click(function() {
+    if($("#HOME_sth_input").val()==""){
+        alert("You don't input pose!");
+    }else{
+        alert('add new pose!');
+        var HOMEinput = $("#HOME_sth_input").val();
+        console.log(HOMEinput);
+        var HOMEdiv = `  <div class="HOME_item">
+                            <div class="HOME_item_name">
+                                ${HOMEinput}
+                            </div>
+                        </div>`
+        $("#HOME_div_block").append(HOMEdiv);
+        var api = "http://127.0.0.1:3000/api/HOMEinputNew";
+        var data = {
+            acc: getCookie('username'),
+            day:choice_home_cal,
+            inputS:HOMEinput
+        };
+        jQuery.post(api, data, function(res) { 
+            
+        });
+        $("#HOME_model").hide();
+        $("#HOME_div").show();
+    }
+});
+//按下back
+$("#HOME_sth_back").click(function() {
+    $("#HOME_div").show();
+    $("#HOME_model").hide();
+});
+//按下X
 $("#HOME_div_close").click(function() {
     $("#HOME_div").hide();
 });

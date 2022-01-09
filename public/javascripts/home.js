@@ -72,17 +72,13 @@ function updateDates() {
 
 function previousMonth() {
     $(".cal").removeClass("important"); //先把效果清除
-    thisMonth--;
-    if (thisMonth === -1) {
-        thisMonth = 11;
-        thisYear--;
-    }
     $(".HOME_cal").removeClass("important"); //先把效果清除
     thisMonth--;
     if (thisMonth === -1) {
         thisMonth = 11;
         thisYear--;
     }
+    
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
@@ -106,11 +102,6 @@ function previousMonth() {
 
 function nextMonth() {
     $(".cal").removeClass("important"); //先把效果清除
-    thisMonth++;
-    if (thisMonth === 12) {
-        thisMonth = 0;
-        thisYear++;
-    }
     $(".HOME_cal").removeClass("important"); //先把效果清除
     thisMonth++;
     if (thisMonth === 12) {
@@ -472,11 +463,17 @@ $(".HOME_cal").click(function() {
                 // index=res[i].day.indexOf(choiceDay);
                 // console.log(index);
                 // console.log(res[i].day.slice(index, index+8));
-                var HOMEdiv = `  <div class="HOME_item">
+                var sth = res[i].title + " " + res[i].times + " " + res[i].times_status;
+                var title = res[i].title.split(' ');
+                var titleArr = "";
+                for(var j = 0; j<title.length;j++){
+                    titleArr+=title[j]; 
+                }
+                var HOMEdiv = `  <div class="HOME_item ${titleArr}">
                                     <div class="HOME_item_name">
-                                        ${res[i].title} ${res[i].times} ${res[i].times_status}
+                                        ${sth}
                                     </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel(${titleArr})">X</div>
                                 </div>`
                 $("#HOME_div_block").append(HOMEdiv);
                 // console.log(dataWorkout);
@@ -503,11 +500,11 @@ $(".HOME_cal").click(function() {
             console.log(res[0].day+"+"+choiceDay);
             console.log(sth);
             for(var i=0;i<sth.length;i++){
-                var HOMEdiv = `  <div class="HOME_item">
+                var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
                                     <div class="HOME_item_name">
                                         ${sth[i]}
                                     </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
+                                    <div class="HOME_item_delete" onclick="HOMEdel(${sth[i]})">X</div>
                                 </div>`
                 $("#HOME_div_block").append(HOMEdiv);
             }
@@ -528,11 +525,11 @@ $("#HOME_sth_add").click(function() {
         alert('add new pose!');
         var HOMEinput = $("#HOME_sth_input").val();
         // console.log(HOMEinput);
-        var HOMEdiv = `  <div class="HOME_item">
+        var HOMEdiv = `  <div class="HOME_item ${HOMEinput}">
                             <div class="HOME_item_name">
                                 ${HOMEinput}
                             </div>
-                            <div class="HOME_item_delete" onclick="HOMEdel()">X</div>
+                            <div class="HOME_item_delete" onclick="HOMEdel(${HOMEinput})" >X</div>
                         </div>`
         $("#HOME_div_block").append(HOMEdiv);
         
@@ -559,25 +556,19 @@ $("#HOME_div_close").click(function() {
     $("#HOME_div").hide();
 });
 //按下刪除資料按鍵
-$(".HOME_item_delete").click(function(){
-    console.log(1);
-    var del = $(this).parent.find(".HOME_item_name").val();
-    console.log(del);
-});
-// function HOMEdel(){
-//     console.log(1);
-//     var del = $(this).parent.find(".HOME_item_name").val();
-//     console.log(del);
-//     // var api = "http://127.0.0.1:3000/api/removeHOME";
-//     // var data = {
-//     //     acc : getCookie('username'),
-//     //     day : choiceDay,
-//     //     // inputS : 
-//     // };
-//     // jQuery.post(api, data, function(res) {
-//     //     $(this).parent().remove();
-//     // });
-// }
+function HOMEdel(HOMEinput){
+    console.log(HOMEinput);
+    $('.' + HOMEinput).remove();
+    var api = "http://127.0.0.1:3000/api/removeHOME";
+    var data = {
+        acc : getCookie('username'),
+        day : choiceDay,
+        inputS : HOMEinput
+    };
+    jQuery.post(api, data, function(res) {
+        
+    });
+}
 
 function PleaseSign() {
     alert("Sign in! Please!!");

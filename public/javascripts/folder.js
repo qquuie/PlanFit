@@ -167,7 +167,7 @@ function removeFolder(data) {
         'title': data
     };
     jQuery.post(api, acc, function(res) {
-
+        
     });
 }
 

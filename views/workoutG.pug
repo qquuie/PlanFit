@@ -18,96 +18,7 @@ head
 include includes/navigationG
 .page.container
   .card-group.card_row.text-center.totalPose
-    // js生成
-  // -----------------加入資料夾---------------------
-  //- #folder_win
-  //-   img#folder_close(src='img/close_r.png')
-  //-   #folder_workout_block
-  //-     // 預設資料夾
-  //-     .folder_workout
-  //-       .folder_name
-  //-         p My favorite
-  //-       .folder_add
-  //-         p +
-  //-   #folder_new_block
-  //-     #folder_title
-  //-       p New folder
-  //-     input#new_name(type='text' name='')
-  //-     #new_add
-  //-       p +
-  //- // -----------------月曆表格-----------------
-  //- #calendar_win.table-responsive-sm
-  //-   img#calender_close(src='img/close_g2.png')
-  //-   table#calender_table
-  //-     thead.color
-  //-       tr
-  //-         th.border-color(colspan='7')
-  //-           // <h4 id="cal-year">December ,2020</h4>
-  //-           #Date
-  //-             i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
-  //-             h3#cal-month December ,2020
-  //-             i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonth();')
-  //-       tr
-  //-         th.weekday.border-color Sun
-  //-         th.weekday.border-color Mon
-  //-         th.weekday.border-color Tue
-  //-         th.weekday.border-color Wed
-  //-         th.weekday.border-color Thu
-  //-         th.weekday.border-color Fri
-  //-         th.weekday.border-color Sat
-  //-     tbody#home_table-body.border-color
-  //-       tr
-  //-         td#cal1.home_cal(onclick='dayClicked(this);' data-homecalid='1')
-  //-         td#cal2.home_cal(onclick='dayClicked(this);' data-homecalid='2') 1
-  //-         td#cal3.home_cal(onclick='dayClicked(this);' data-homecalid='3') 1
-  //-         td#cal4.home_cal(onclick='dayClicked(this);' data-homecalid='4') 1
-  //-         td#cal5.home_cal(onclick='dayClicked(this);' data-homecalid='5') 1
-  //-         td#cal6.home_cal(onclick='dayClicked(this);' data-homecalid='6') 1
-  //-         td#cal7.home_cal(onclick='dayClicked(this);' data-homecalid='7') 1
-  //-       tr
-  //-         td#cal8.home_cal(onclick='dayClicked(this);' data-homecalid='8') 1
-  //-         td#cal9.home_cal(onclick='dayClicked(this);' data-homecalid='9') 1
-  //-         td#cal10.home_cal(onclick='dayClicked(this);' data-homecalid='10') 1
-  //-         td#cal11.home_cal(onclick='dayClicked(this);' data-homecalid='11') 1
-  //-         td#cal12.home_cal(onclick='dayClicked(this);' data-homecalid='12') 1
-  //-         td#cal13.home_cal(onclick='dayClicked(this);' data-homecalid='13') 1
-  //-         td#cal14.home_cal(onclick='dayClicked(this);' data-homecalid='14') 1
-  //-       tr
-  //-         td#cal15.home_cal(onclick='dayClicked(this);' data-homecalid='15') 1
-  //-         td#cal16.home_cal(onclick='dayClicked(this);' data-homecalid='16') 1
-  //-         td#cal17.home_cal(onclick='dayClicked(this);' data-homecalid='17') 1
-  //-         td#cal18.home_cal(onclick='dayClicked(this);' data-homecalid='18') 1
-  //-         td#cal19.home_cal(onclick='dayClicked(this);' data-homecalid='19') 1
-  //-         td#cal20.home_cal(onclick='dayClicked(this);' data-homecalid='20') 1
-  //-         td#cal21.home_cal(onclick='dayClicked(this);' data-homecalid='21') 1
-  //-       tr
-  //-         td#cal22.home_cal(onclick='dayClicked(this);' data-homecalid='22') 1
-  //-         td#cal23.home_cal(onclick='dayClicked(this);' data-homecalid='23') 1
-  //-         td#cal24.home_cal(onclick='dayClicked(this);' data-homecalid='24') 1
-  //-         td#cal25.home_cal(onclick='dayClicked(this);' data-homecalid='25') 1
-  //-         td#cal26.home_cal(onclick='dayClicked(this);' data-homecalid='26') 1
-  //-         td#cal27.home_cal(onclick='dayClicked(this);' data-homecalid='27') 1
-  //-         td#cal28.home_cal(onclick='dayClicked(this);' data-homecalid='28') 1
-  //-       tr
-  //-         td#cal29.home_cal(onclick='dayClicked(this);' data-homecalid='29') 1
-  //-         td#cal30.home_cal(onclick='dayClicked(this);' data-homecalid='30') 1
-  //-         td#cal31.home_cal(onclick='dayClicked(this);' data-homecalid='31') 1
-  //-         td#cal32.home_cal(onclick='dayClicked(this);' data-homecalid='32') 1
-  //-         td#cal33.home_cal(onclick='dayClicked(this);' data-homecalid='33') 1
-  //-         td#cal34.home_cal(onclick='dayClicked(this);' data-homecalid='34') 1
-  //-         td#cal35.home_cal(onclick='dayClicked(this);' data-homecalid='35') 1
-  //-       tr
-  //-         td#cal36.home_cal(onclick='dayClicked(this);' data-homecalid='36') 1
-  //-         td#cal37.home_cal(onclick='dayClicked(this);' data-homecalid='37') 1
-  //-         td#cal38.home_cal(onclick='dayClicked(this);' data-homecalid='38') 1
-  //-         td#cal39.home_cal(onclick='dayClicked(this);' data-homecalid='39') 1
-  //-         td#cal40.home_cal(onclick='dayClicked(this);' data-homecalid='40') 1
-  //-         td#cal41.home_cal(onclick='dayClicked(this);' data-homecalid='41') 1
-  //-         td#cal42.home_cal(onclick='dayClicked(this);' data-homecalid='42') 1
-  //-         // 點class，讀屬性
-  //-   .All(type='button' name='btnAll' onclick='Alldialog();') All
-  //-   .Next(type='button' name='btnNext' onclick='Nextdialog();') Next
-    // <button id="theme-portrait" type="button" name="button" class="font button color" onclick="opendialog();">All</button>
+    
   // -----------------月曆表格新增記事-----------------
   #modal_block
     #modal_workout_name
@@ -123,19 +34,7 @@ include includes/navigationG
 script(src='javascripts/workout.js')
 script(src='javascripts/javascript.js')
 script(src='javascripts/save_sth.js')
-//- script(src='javascripts/calendar.js')
-//- script.
-//-   let today = new Date(); //新增一個Date物件，命名為today
-//-   let thisYear = today.getFullYear();
-//-   let thisMonth = today.getMonth();
-//-   let thisDate = today.getDate();
-//-   updateDates();
-//-   fillInMonth(thisYear, thisMonth, thisDate);
-//-   $(document).ready(function()
-//-   {
-//-   $("div#smallPageModal").css('z-index', '-1');
-//-   $(".page").css('z-index', '1000');
-//-   })
+
 
 // JavaScript Bundle with Popper
 script(src='javascripts/login.js')

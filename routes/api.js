@@ -271,12 +271,10 @@ router.post('/workoutcal', function(req, res) {
 });
 
 router.post('/workoutCalChoice', function(req, res) {
-    console.log(req.body, 274);
     calendarModel.find({
         acc: req.body.acc,
         title: req.body.title
     }, function(err, data) {
-        console.log(data);
         res.json(data); //將資料回應給前端
     });
 });

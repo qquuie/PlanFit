@@ -11,6 +11,22 @@ var workout_times; //運動次數或秒數
 var same = false; //判斷是否有存取過該運動
 var sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
 
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
+
 //每換一頁日曆就要先removeclass，再判斷一次陣列裡面的data-uid的數值後去改變css
 // 使用陣列來取得週天的名稱
 function getWeekdayName(weekday) {
@@ -378,6 +394,120 @@ $("#modal_OK").click(function() {
 //----------------------------------------------------------------------------
 var choice_home_cal; //
 var homecalID; //首頁表格
+var choiceDayWorkout=[];//物件陣列，物件裡放運動名稱
+var choiceDay;//點擊的日期
+
+var dataDay=[];
+var testObj=[];
+
+HOMEgetWorkoutName();
+
+function HOMEgetWorkoutName(){
+    var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
+    var data = { 
+        acc:getCookie('username')
+    };
+
+    
+    //清空陣列再把所有data-uid的數值推入
+    //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
+    // for (var i = 0; i <= 41; i++) {
+    //     console.log($(Days[i]).attr("data-uid"));
+    //     for (var j = 0; j < choice_d.length; j++) {
+    //         if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+    //             console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
+                
+                
+    //         }
+    //     }
+    //     // $(Days[i]).addClass("important");
+    // }
+
+    jQuery.post(api, data, function(res) { //抓後端資料
+        var Days = document.getElementsByClassName(".HOME_cal");
+        console.log("Days:"+$(Days[i]).attr("data-uid"));
+        //放在jQuery.post裡面，testObj替換成後端傳回的資料
+        for(var i = 0;i < res.length;i++){
+            if(getCookie('username')==res[i].acc){//找帳號
+                console.log(i);
+                choiceDay = res[i].day.split(',');//把日期存入陣列
+                // console.log(choiceDay);
+                // for(var j = 0;j < res.length;j++){
+                //     if(choiceDay[j]==)
+                // }
+            }
+        }
+    });
+
+    
+   
+   
+}
+
+
+$(".HOME_cal").click(function() {
+    //前端特效
+    $("#HOME_div").show();
+    if ($(this).hasClass("important") == false) {
+        $(".HOME_cal").removeClass("important");
+        choice_home_cal = $(this).attr("data-uid");
+        homecalID = $(this).attr("data-uid"); //哪一格
+        console.log(homecalID);
+        $(this).addClass("important");
+    }
+
+    var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
+    var data = { 
+        acc:getCookie('username')
+    };
+    console.log(data);
+    // for (var i = 0; i < res.length; i++) {
+    //     // console.log(res[i].acc);
+    //     // console.log(res[i].day);
+    //     // console.log(res[i].title);
+    //     // console.log(res[i].times);
+    //     // console.log(res[i].times_status);
+    //     if (res[i].day != "") { //日期不為空
+    //         workout_item = {
+    //             workout_sth_c: res[i].title,
+    //             workout_times: res[i].times,
+    //             choice_day: res[i].day,
+    //             acc: res[i].acc, //使用者名稱
+    //             workout_times_status: res[i].times_status
+    //         }
+    //         workout_list.push(workout_item);
+    //     }
+    // }
+    choiceDay = $(this).attr("data-uid");//請放在jQuery.post外面才能讀數值!!!
+    jQuery.post(api, data, function(res) { //抓後端資料
+        console.log(res.length);
+        for(var i = 0;i < res.length;i++){
+            console.log(res[i].acc+getCookie('username'));
+            if(res[i].day.indexOf(choiceDay)!=-1){//-1是沒有找到
+                console.log(res[i].day.indexOf(choiceDay));
+
+            }
+        }
+    });
+    
+    //後端資料
+    var HOMEdiv =`  <div class="HOME_item">
+                        <div class="HOME_item_name">
+                            <p>database</p>
+                        </div>
+                    </div>`
+    $("#HOME_div_block").append(HOMEdiv);
+});
+
+$("#HOME_div_close").click(function(){
+    $("#HOME_div").hide();
+});
+
+function PleaseSign() {
+    alert("Sign in! Please!!");
+}
+
+
 // $(".home_cal").click(function() {
 //     if ($(this).hasClass("important") == false) {
 //         $(".home_cal").removeClass("important");
@@ -387,23 +517,4 @@ var homecalID; //首頁表格
 //         $(this).addClass("important");
 //     }
 // });
-$(".HOME_cal").click(function() {
-    if ($(this).hasClass("important") == false) {
-        $(".HOME_cal").removeClass("important");
-        choice_home_cal = $(this).attr("data-uid");
-        homecalID = $(this).attr("data-uid"); //哪一格
-        console.log(homecalID);
-        $(this).addClass("important");
-    }
-});
-//-----------------------folder---------------------------
-$(".HOME_cal").click(function(){
-    $("#HOME_div").show();
-});
-$("#HOME_div_close").click(function(){
-    $("#HOME_div").hide();
-});
 
-function PleaseSign() {
-    alert("Sign in! Please!!");
-}

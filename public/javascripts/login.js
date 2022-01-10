@@ -1,12 +1,5 @@
 getInfor();
-// getUSerCookie();
 
-// function getUSerCookie() {
-//     var tmp = getCookie('username');
-//     $('h4#welcome').text('Wellcome ' + tmp);
-// }
-
-// wellcome();
 function addUser() {
     var acc = $('#signUpName').val();
     var pw = $('#signUpPass').val();
@@ -53,10 +46,6 @@ function addUser() {
     }
     needOption = checked3.toString();
 
-    console.log(sex);
-    console.log(focusOption);
-    console.log(needOption);
-
     if (acc == "" && pw == "") {
         alert("PLease enter your account and password!");
     } else {
@@ -73,7 +62,7 @@ function addUser() {
             'weight': weight,
             'age': age,
         };
-        jQuery.post(api, data, function(res) {
+        jQuery.post(api, data, function (res) {
             if (res.status == 0) {
                 $('#signUpName').val('');
                 $('#signUpPass').val('');
@@ -110,8 +99,6 @@ function addUser() {
 function getUser() {
     var id = $('#yourAccount').val();
     var pass = $('#yourPass').val();
-    var passlength= pass.length;
-    // alert(passlength);
     var api = "http://127.0.0.1:3000/api/getUser";
 
     if (!id || !pass) {
@@ -120,7 +107,7 @@ function getUser() {
         jQuery.post(api, {
             'acc': id,
             'pw': pass
-        }, function(res) {
+        }, function (res) {
             if (res.status == 1) {
                 console.log(res.msg);
                 alert(res.msg)
@@ -128,7 +115,6 @@ function getUser() {
 
             } else {
                 setCookie('username', res.data.acc)
-                setCookie('password', res.data.pw)
                 setCookie('email', res.data.email)
                 setCookie('sex', res.data.sex)
                 setCookie('focusOption', res.data.focusOption)
@@ -190,10 +176,7 @@ function getInfor() {
         'age': age,
     };
     var api = "http://127.0.0.1:3000/api/getInfor";
-    jQuery.post(api, data, function(res) {
-        // alert(data);
-        console.log(data)
-            // edit(data)
+    jQuery.post(api, data, function (res) {
         infor(data)
     });
 
@@ -203,7 +186,7 @@ var content = "";
 function infor(data) {
     $('div#edit.row').addClass('d-none');
     content =
-        ` <div class="row information">
+        ` <div class="row information container">
 
         <div class="col">
             <div class="infor_txt">
@@ -292,31 +275,62 @@ function infor(data) {
     
     
         </div>
-        <div class="infor_OK">
-            <button class="btn" onclick='edit()'>Edit</button>
-        </div>
+        <div class="infor_OK row">
+            <button class="btn col-2" onclick='edit()'>Edit</button>
+            <a class="changePW col-10 fs-4" onclick='openChangePw()' data-toggle='modal' data-bs-target='#changePsModalID'>Or you want to change password</a>
+
+        </div>       
+
     </div>`;
     $('div#infor.container').append(content);
+}
+
+function openChangePw() {
+    $('#changePsModalDiv').removeClass('fade')
+    $('#changePsModalID').removeClass('fade')
+    $('#changePsModalDiv').css('z-index', '1050')
+    $('#changePsModalID').css('z-index', '1050')
+    $("div#changePsModalID").modal("toggle");
+}
+
+function saveNewPw() {
+    var _old = $('input#oldPw').val();
+    var _new = $('input#newPw').val();
+    // alert(_old + "," + _new)
+    if(!_old||!_new)
+    {
+        alert("Please enter both password before save")
+    }
+    else if(_old===_new)
+    {
+        alert("Your old password and new password cannot be the same!")
+
+    }
+    else{
+        var api = "http://127.0.0.1:3000/api/saveNewPw";
+        var data={
+            'acc':getCookie('username'),
+            'oldpw':_old,
+            'newpw':_new
+        }
+       
+        jQuery.post(api, data, function (res) {
+            console.log(data,res.status);
+            if(res.status==1)
+            {
+                alert(res.msg);
+            }
+            else{
+                alert(res.msg)
+                window.location.href = '/indexG';
+            }
+        });
+    }
 }
 
 function edit() {
     $('div#edit.row').removeClass('d-none');
     $('.row.information').addClass('d-none');
-
-    // focusCheck=getCookie('focusOption')
-    // need=getCookie('needOption')
-
-    // deleteCookie('email')
-    // deleteCookie('sex')
-    // deleteCookie('age')
-    // deleteCookie('birth')
-    // deleteCookie('height')
-    // deleteCookie('weight')
-    // deleteCookie('needOption')
-    // deleteCookie('focusOption')
-    // deleteCookie('password')
-
-    // console.log(sex)    ;
     var ctn = `<div class="row" id="edit">
             <div class="col">
                 <div class="infor_txt">
@@ -330,13 +344,7 @@ function edit() {
                 </div>
                 <div class="infor_data"><input type="text" id="account" readonly="true"/></div>
             </div>
-            <div class="pw col">
-                <div class="infor_txt">
-                    <p> Password</p>
-                </div>
-                <div class="infor_data"><input type="password" id="pwChange" />
-                </div>
-            </div>
+           
            
             <div class="col">
                 <div class="infor_txt">
@@ -422,14 +430,12 @@ function edit() {
     $('input#heightChange').val(getCookie('height'));
     $('input#birthChange').val(getCookie('birth'));
     $('input#emailChange').val(getCookie('email'));
-    var ps=$('input#pwChange').val(getCookie('password')).substring(0,passlength);
-    
-    $('input#pwChange').val(ps);
+ 
 
 
     var count = 0,
         total = 0;
-    $('div.infor_data.infor_sex>label.btn').click(function() {
+    $('div.infor_data.infor_sex>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
         if (count.length > 1) {
@@ -438,54 +444,27 @@ function edit() {
 
             console.log($(this))
         }
-        console.log(count.length)
 
     })
-    $('div.infor_data.infor_focus>label.btn').click(function() {
+    $('div.infor_data.infor_focus>label.btn').click(function () {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
 
-        console.log(count.length)
 
     })
-    $('div.infor_data.infor_need>label.btn').click(function() {
-            $(this).toggleClass('active')
-            count = $('div.infor_data.infor_need').find('.active')
-            $('div.infor_data.infor_need>input').checked == false
+    $('div.infor_data.infor_need>label.btn').click(function () {
+        $(this).toggleClass('active')
+        count = $('div.infor_data.infor_need').find('.active')
+        $('div.infor_data.infor_need>input').checked == false
 
-            console.log(count.length)
-        })
-        // const changePwBtn = `
-        //  <div class="col">
-        //     <div class="infor_txt">
-        //         <p> New Passwork</p>
-        //     </div>
-        //     <div class="infor_data"><input type="password" id="newPw"  />
-        //     </div>
-        // </div>`
-        // $('button.changePw').click(function () {
-        //     $('div.pw.col').after(changePwBtn)
-        //     $('input#pwChange').attr('readonly', false)
-        //     $('button.changePw').hide()
-        // })
-
-
-
+    })
+   
 }
 
 function changeInfor() {
     var acc = getCookie('username');
-    var pw;
-    if ($('#pwChange').val() === null) {
-        pw = getCookie('password');
-    } else {
-        pw = $('input#pwChange').val();
-
-    }
-    // alert($('#pwChange').val())
-        // alert($('#newPw').val())
-
+   
     var email;
     if ($('#emailChange').val() == null) {
         email = getCookie('email');
@@ -519,7 +498,6 @@ function changeInfor() {
     } else {
         age = $('#ageChange').val();
     }
-    console.log(age, height, weight, pw)
     var sex;
     var focusOption;
     var needOption;
@@ -538,7 +516,6 @@ function changeInfor() {
 
 
     }
-    console.log(checkstr1);
     sex = checkstr1.toString();
 
     checkboxChange2 = document.getElementsByName("focusChange");
@@ -551,7 +528,6 @@ function changeInfor() {
 
     }
 
-    console.log(checkstr2);
     focusOption = checkstr2.toString();
 
     checkboxChange3 = document.getElementsByName("needChange");
@@ -563,13 +539,11 @@ function changeInfor() {
         }
 
     }
-    console.log(checkstr3);
     needOption = checkstr3.toString();
 
     var data = {
         'acc': acc,
         "newemail": email,
-        'newpw': pw,
         "newbirth": birth,
         'newsex': sex,
         'newfocusOption': focusOption,
@@ -582,9 +556,8 @@ function changeInfor() {
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
         alert('Please check all the check button ')
     } else {
-        jQuery.post(api, data, function(res) {
+        jQuery.post(api, data, function (res) {
             setCookie('username', res.data.acc)
-            setCookie('password',  res.data.pw)
             setCookie('email', res.data.email)
             setCookie('sex', res.data.sex)
             setCookie('focusOption', res.data.focusOption)
@@ -602,7 +575,6 @@ function changeInfor() {
 function setCookie(cname, cvalue) {
     const d = new Date();
     d.setTime(d.getTime());
-    // let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + ";path=/";
 }
 

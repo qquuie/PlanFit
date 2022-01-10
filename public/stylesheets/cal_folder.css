@@ -365,6 +365,7 @@
     color: #82A3A3;
 }
 
+#modal_OK_home,
 #modal_back,
 #modal_OK {
     background-color: #82A3A3;
@@ -385,11 +386,13 @@
     left: 10%;
 }
 
+#modal_OK_home,
 #modal_OK {
     float: right;
     left: -10%;
 }
 
+#modal_OK_home:hover,
 #modal_OK:hover,
 #modal_back:hover {
     background-color: #f3fff7;
@@ -451,4 +454,11 @@
     color: #82A3A3;
 }
 
-.have-border {}
+.have-border {
+    border-width: 0px;
+    position: relative;
+    top: 13px;
+    margin-left: 13px;
+    font-size: 20px;
+    color: #82A3A3;
+}

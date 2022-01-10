@@ -27,13 +27,25 @@
     color: #1D3124;
 }
 
-#folder_win,
-#calendar_win {
+#folder_win {
     display: none;
     background-color: #f3f1de;
     width: 450px;
     height: 500px;
     position: absolute;
+    top: 100px;
+    left: 35%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+#calendar_win {
+    display: none;
+    background-color: #f3f1de;
+    position: absolute;
+    width: 80%;
+    height: 700px;
     top: 100px;
     left: 35%;
     border-radius: 4px;
@@ -129,8 +141,8 @@
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
 #calendar_win {
-    width: 60%;
-    height: 75%;
+    /* width: 60%;
+    height: 75%; */
     top: -10px;
     left: 50%;
     align-items: center;
@@ -147,6 +159,7 @@
     position: relative;
     left: 85%;
     top: 3%;
+    cursor: pointer;
 }
 
 #calender_table {
@@ -269,27 +282,6 @@
 
 
 /*------------------------------放在style.css-----------------------*/
-
-
-/* .All {
-    background-color: #82A3A3;
-    color: #f3f1de;
-    position: relative;
-    left: -34%;
-    top: 6%;
-    width: 12%;
-    padding: 4px 0;
-}
-
-.Next {
-    background-color: #82A3A3;
-    color: #f3f1de;
-    position: relative;
-    left: 34%;
-    width: 12%;
-    padding: 4px 0;
-} */
-
 #modal_block {
     display: none;
     background-color: #f3f1de;
@@ -363,6 +355,12 @@
     width: 40%;
     height: 100%;
     text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+#times:hover{
+    background-color: #f3fff7;
+    color:#82A3A3;
 }
 
 #modal_back,
@@ -376,6 +374,8 @@
     text-align: center;
     height: 12%;
     padding: 8px 0;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 #modal_back {
@@ -387,26 +387,46 @@
     float: right;
     left: -10%;
 }
+#modal_OK:hover,#modal_back:hover{
+    background-color: #f3fff7;
+    color:#82A3A3;
+}
+
 
 .All {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
     left: 15%;
-    width: 12%;
+    width: 15%;
+    height: 40px;
     padding: 8px 0;
     text-align: center;
     border-radius: 10%;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .Next {
     background-color: #82A3A3;
     color: #f3f1de;
     position: relative;
-    left: 73%;
+    left: 70%;
     top: -6%;
-    width: 12%;
+    width: 15%;
     padding: 8px 0;
     text-align: center;
     border-radius: 10%;
+    transition: 0.5s;
+    height: 40px;
+}
+.Next:hover{
+    cursor: pointer;
+    background-color: #f3fff7;
+    color:#82A3A3;
+}
+.All:hover{
+    cursor: pointer;
+    background-color: #f3fff7;
+    color:#82A3A3;
 }

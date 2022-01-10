@@ -41,8 +41,19 @@ router.post('/removeHOME', function(req, res) {
                 console.log(err);
             }
         });
-        res.json(data); //將資料回應給前端
+        res.json(data);
+        console.log(data[0].inputS,44);
     });
+    HOMEinputModel.remove({inputS: ""},function(err, data){
+        console.log(11111111111);
+        console.log(data);
+        if(err){
+
+        }else{
+            console.log("remove!!!");
+            
+        }
+    }); 
 });
 
 router.post('/HomeUpdate', function(req, res) {

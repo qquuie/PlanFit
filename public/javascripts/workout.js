@@ -107,10 +107,10 @@ function newList(data, i, end) {
     tmp =
         `<div class="card border-GreenLake">
                 <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
+                    <ul class="nav nav-tabs card-header-tabs ">
                         <li class="nav-item">
                             <a class="nav-link">
-                                <img src="img/icon_see_times.png" width="20px">
+                                <img src="img/icon_see_times.png" width="20px" >
                                 <p id="see_times${data._id}">${data.click}</p>
                             </a>
                         </li>
@@ -119,14 +119,26 @@ function newList(data, i, end) {
                                 <img class="workoutFolder" src="img/icon_folder.png" width="25px">
                             </a>
                         </li>
+<<<<<<< Updated upstream
                         <li class="nav-item">
                             <a class="nav-link calender"  onclick="updateposeClick('${data._id}','${data.name}')">
+=======
+                        <li class="nav-item ">
+                            <a class="nav-link calender"  onclick="updateposeClick('${data._id}')">
+>>>>>>> Stashed changes
                                 <img src="img/icon_calender.png" width="20px">
                             </a>
                         </li>
+                        <li class="nav-item">
+                        <button class="btn mt-1" style="width: 45px;height: 42px;" onclick="showModal('${data._id}','${data.describe}')" data-toggle='modal' data-bs-target='#workoutModalID' >
+                        <i class="bi bi-collection"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+                        </svg></i></button>
+                        </a>
+                    </li>
                     </ul>
                 </div>
-                <img class="card-img-top" src="${data.img}" alt="Card image cap">
+                <img class="card-img-top" src="${data.img}" alt="Card image cap" >
                 <div class="card-body text-GreenLake">
                     <h3 class="card-title">${data.name}</h3>
                     <p class="card-text">
@@ -142,13 +154,30 @@ function newList(data, i, end) {
     // `;
     // $('body').append(workout_modal)
 
-    // $('.card-img-top').click(function () {
-    //     var itemId = $(this).attr('id');
-    //     const tmp = $(this).parent().find('a.nav-link>p');
-    //     var img_id=tmp.attr('id').split('see_times')[1]
-    //     console.log(img_id)
+    // $('div.card.border-GreenLake').click(function () {
+    //     // console.log($(this).find(data._id))
+    //     console.log(1)
+        // $('workoutModalID').removeClass('fade')
+        // $('workoutModalID').css('z-index','1000')
+        // var itemId = $(this).attr('id');
+        // const tmp = $(this).parent().find('a.nav-link>p');
+        // var img_id=tmp.attr('id').split('see_times')[1]
+        // console.log(img_id)
 
     // })
+}
+function showModal(_ID,describe)
+{
+    console.log(_ID)
+    console.log(describe)
+
+    $('#workoutModalIDdiv').removeClass('fade')
+    $('#workoutModalID').removeClass('fade')
+    $('#workoutModalIDdiv').css('z-index','1050')
+    $('#workoutModalID').css('z-index','1050')
+    $("div#workoutModalID").modal("toggle");
+    $('div.modal-body>p').html(describe);
+
 }
 var choice_d = []; //存放所有選擇日期陣列
 var choice_d_arr = [];

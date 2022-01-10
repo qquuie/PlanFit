@@ -1,5 +1,12 @@
+<<<<<<< Updated upstream
 $(document).ready(function() {
     $('a#logout').click(function() {
+=======
+$(document).ready(function () {
+    console.log("DOM is ready");
+    
+    $('a#logout').click(function () {
+>>>>>>> Stashed changes
         window.location.href = '/indexG';
     })
     var count = 0;
@@ -33,12 +40,12 @@ $(document).ready(function() {
         })
         // <--------------------------- Information-------------------------->
     $("div#smallPageModal").css('z-index', '-1'); //abby改
+    $("div#workoutModalIDdiv").css('z-index', '-1'); //abby改
+
     $(".page").css('z-index', '1000');
     $(".nav.navbar").css('z-index', '1050');
-    // -------------------folder----------------
     let folder = [];
     let id = 2;
-    // -------------------folder----------------
 
     $(".dropdown-item").click(function() {
         $('.dropdown-menu').css("display", "none");
@@ -66,7 +73,37 @@ $(document).ready(function() {
         $("div#smallPageModal").css('z-index', '-1');
 
     })
+<<<<<<< Updated upstream
     $('button#closeBtn').click(function() {
+=======
+    $('button#closeBtnWorkout').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#workoutModalID").addClass("fade");
+        $("div#workoutModalIDdiv").addClass("fade");
+        $("div#workoutModalIDdiv").css('z-index', '-1');
+
+        $("div#workoutModalID").css('z-index', '-1');
+        $(".page").css('z-index', '1000');
+        $("div#workoutModalID").modal("toggle");
+
+        // $("div.modalContainer").css("background-color", "#bacec1")
+
+    })
+    $('button#closeBtnWorkoutImg').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#workoutModalID").addClass("fade");
+        $("div#workoutModalIDdiv").addClass("fade");
+        $("div#workoutModalIDdiv").css('z-index', '-1');
+
+        $("div#workoutModalID").css('z-index', '-1');
+        $(".page").css('z-index', '1000');
+        $("div#workoutModalID").modal("toggle");
+
+        // $("div.modalContainer").css("background-color", "#bacec1")
+
+    })
+    $('button#closeBtn').click(function () {
+>>>>>>> Stashed changes
         $(".modal-backdrop").addClass("fade");
         $("div#smallPageModal").addClass("fade");
         $("div#smallPageModal").css('z-index', '-1');
@@ -183,6 +220,7 @@ $(document).ready(function() {
 
 
     // ---------------------------------folder------------------------------------
+<<<<<<< Updated upstream
     $('button#closeBtnfolder').click(function() {
             $('#all_fol').empty();
         })
@@ -248,5 +286,11 @@ $(document).ready(function() {
     //         $('#folder').removeClass("d-none");
     //         $('#folder' + id).addClass("d-none");
     //     }
+=======
+    $('button#closeBtnfolder').click(function () {
+        $('#all_fol').empty();
+    })
+  
+>>>>>>> Stashed changes
 
 });

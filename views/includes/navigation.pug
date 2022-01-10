@@ -47,7 +47,7 @@ body
               li
                 a#inforFolder.dropdown-item.btn(data-toggle='modal', data-bs-target='#smallPageModal_folder') File
               li
-                a.dropdown-item.btn#logout(data-toggle='modal', data-bs-target='#smallPageModal',onclick='logout()') Log out
+                a.dropdown-item.btn#logout(onclick='logout()') Log out
              
   //  -----------------------------Folder-------------------------------- 
   .smallPage.modal.fade.d-grid#smallPageModal_folder(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
@@ -98,3 +98,18 @@ body
             .btn.btn-sm.d-flex.justify-content-between.add-btn(type='button' onclick="addPose()")
               p Add
  
+  .workOutModal.modal.fade.d-grid#workoutModalIDdiv(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
+      .workOutModal.modal.fade.d-grid#workoutModalID(tabindex='-1', role='dialog', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
+          .modal-dialog
+            .workOutModal.modal-content
+              .logo.row.modal-header
+                a.col.me-auto#logoImg(href='indexG')
+                  img(src='./img/LOGO.png', width='150px', height='70px', alt)
+                button.btn.col-auto#closeBtnWorkoutImg(type='button', data-dismiss='modal', aria-label='Close')
+                  img#closeBtnImg(src='./img/close_g2.png', width='30px', height='40px', alt)
+                //  <---------------------------------signinDiv------------------------------
+              .modal-body
+                h1#how How to do it?
+                p#des
+              .workoutFooter.modal-footer
+                  button.btn.btn-lg#closeBtnWorkout( data-mdb-target='#workoutModalID', data-mdb-toggle='modal', data-mdb-dismiss='modal') Close

@@ -44,20 +44,18 @@ router.post('/HOMEinputNew', function(req, res) {
 });
 
 router.post('/removeHOME', function(req, res) {
-
     HOMEinputModel.find({
         day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
         var sth = data[0].inputS.split(',');
         for (let value of sth) {
-            console.log(sth);
-            console.log(value);
             if (value == req.body.inputS) {
                 var ind = sth.indexOf(req.body.inputS);
                 console.log(ind);
                 sth.splice(ind, 1);
                 data[0].inputS = sth.toString();
+                console.log(data[0].inputS);
                 break;
             }
         }
@@ -66,16 +64,10 @@ router.post('/removeHOME', function(req, res) {
                 console.log(err);
             }
         });
-        res.json(data);
+        res.json(data[0]);
         console.log(data[0].inputS, 44);
+        if (err) console.log(err);
     });
-    // HOMEinputModel.remove({ inputS: "" }, function(err, data) {
-    //     console.log(11111111111);
-    //     console.log(data);
-    //     if (err) {} else {
-    //         console.log("remove!!!");
-    //     }
-    // });
 });
 
 
@@ -151,8 +143,6 @@ router.post('/HomeUpdate', function(req, res) {
         }
         res.json(data); //將資料回應給前端
     });
-    new_HOMEinput.save(function(err, data) {});
-    res.json(data);
 });
 
 router.post('/addUser', function(req, res) {

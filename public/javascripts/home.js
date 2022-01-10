@@ -429,7 +429,7 @@ $(".calender").click(function() {
     }
 });
 
-$("#modal_OK").click(function() {
+$("#modal_OK_home").click(function() {
     var $ff = $(this).parent(); //input
     workout_times = $ff.find("#input_num").val();
     workout_times_status = $ff.find("#times p").text();
@@ -517,6 +517,7 @@ function HOMEgetWorkoutName() {
 $(document).ready(function() {
     $(".HOME_cal").click(function() {
         $("#HOME_div").show();
+        $("#HOME_div_block").empty();
         if ($(this).hasClass("important") == false) {
             $(".HOME_cal").removeClass("important");
             choice_home_cal = $(this).attr("data-uid");
@@ -533,20 +534,24 @@ $(document).ready(function() {
             // $("#HOME_div_block").empty(); //要先清空
             for (var i = 0; i < res.length; i++) {
                 if (res[i].day.search(choiceDay) != -1) {
-                    var sth = res[i].title + "," + res[i].times + "," + res[i].times_status;
-                    // var title = res[i].title.split(',');
-                    // var titleArr = "";
-                    // for (var j = 0; j < title.length; j++) {
-                    //     titleArr += title[j];
-                    // }
-                    var HOMEdiv = `  <div class="HOME_item i${i}">
+                    if (res[i].inputS != '') {
+                        console.log(1);
+                        var sth = res[i].title + "," + res[i].times + "," + res[i].times_status;
+                        // var title = res[i].title.split(',');
+                        // var titleArr = "";
+                        // for (var j = 0; j < title.length; j++) {
+                        //     titleArr += title[j];
+                        // }
+                        var HOMEdiv = `  <div class="HOME_item i${i}">
                                         <input type="text" value="${res[i].title}" class="col-6 no-border">
                                         <input type="text" value="${res[i].times}" class="col-1 no-border">
                                         <input type="text" value="${res[i].times_status}" class="col-2 no-border">
                                         <div class="HOME_item_delete col-2" onclick="HOMEdel('i${i}','2','${sth}')">X</div>
                                         <div class="HOME_item_update col-2" onclick="HOMEupdate()"></div>
                                     </div>`
-                    $("#HOME_div_block").append(HOMEdiv);
+                        $("#HOME_div_block").append(HOMEdiv);
+                    }
+
                     // <div class="HOME_item_name">
                     //                         ${sth}
                     //                     </div>
@@ -567,13 +572,15 @@ $(document).ready(function() {
                     sth[0] = res[0].inputS;
                 }
                 for (var i = 0; i < sth.length; i++) {
-                    var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
+                    if (res[i].inputS != "") {
+                        var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
                                         <div class="HOME_item_name">
                                             ${sth[i]}
                                         </div>
                                         <div class="HOME_item_delete" onclick="HOMEdel('${sth[i]}','1','0')">X</div>
                                     </div>`
-                    $("#HOME_div_block").append(HOMEdiv);
+                        $("#HOME_div_block").append(HOMEdiv);
+                    }
                 }
             }
         });
@@ -584,11 +591,11 @@ $(document).ready(function() {
         $("#cal_win").show();
         $("#modal_block").hide();
     });
-    $("#modal_OK").click(function() {
-        console.log("#modal_OK");
-        $("#modal_block").hide();
-        $(".cal").removeClass("important");
-    });
+    // $("#modal_OK").click(function() {
+    //     console.log("#modal_OK");
+    //     $("#modal_block").hide();
+    //     $(".cal").removeClass("important");
+    // });
     $("#cal_close").click(function() {
         console.log("#cal_close");
 
@@ -606,6 +613,7 @@ $(document).ready(function() {
         $("#HOME_div").hide();
     });
 
+    $(".no-border").attr("readonly", true); //取消唯讀狀態
     $(".no-border").addClass('d-none');
 });
 
@@ -615,7 +623,6 @@ function HOMEupdate() {
 
 
 function HOMEdel(HOMEinput, ind, title) {
-    console.log("HOMEdel");
     $('.' + HOMEinput).remove();
     if (ind == '1') {
         var api = "http://127.0.0.1:3000/api/removeHOME";
@@ -624,8 +631,9 @@ function HOMEdel(HOMEinput, ind, title) {
             day: choiceDay,
             inputS: HOMEinput
         };
-        // jQuery.post(api, data, function(res) {});
-        // del(1);
+        console.log(data);
+        jQuery.post(api, data, function(res) {});
+        del(1);
     } else {
         var api1 = "http://127.0.0.1:3000/api/removeCal";
         var sth = title.split(',')

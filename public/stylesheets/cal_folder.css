@@ -441,3 +441,14 @@
     width: 100%;
     left: -10%;
 }
+
+.no-border {
+    border-width: 0px;
+    position: relative;
+    top: 13px;
+    margin-left: 13px;
+    font-size: 20px;
+    color: #82A3A3;
+}
+
+.have-border {}

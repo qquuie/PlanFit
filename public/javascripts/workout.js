@@ -152,24 +152,24 @@ function newList(data, i, end) {
     // $('div.card.border-GreenLake').click(function () {
     //     // console.log($(this).find(data._id))
     //     console.log(1)
-        // $('workoutModalID').removeClass('fade')
-        // $('workoutModalID').css('z-index','1000')
-        // var itemId = $(this).attr('id');
-        // const tmp = $(this).parent().find('a.nav-link>p');
-        // var img_id=tmp.attr('id').split('see_times')[1]
-        // console.log(img_id)
+    // $('workoutModalID').removeClass('fade')
+    // $('workoutModalID').css('z-index','1000')
+    // var itemId = $(this).attr('id');
+    // const tmp = $(this).parent().find('a.nav-link>p');
+    // var img_id=tmp.attr('id').split('see_times')[1]
+    // console.log(img_id)
 
     // })
 }
-function showModal(_ID,describe)
-{
+
+function showModal(_ID, describe) {
     console.log(_ID)
     console.log(describe)
 
     $('#workoutModalIDdiv').removeClass('fade')
     $('#workoutModalID').removeClass('fade')
-    $('#workoutModalIDdiv').css('z-index','1050')
-    $('#workoutModalID').css('z-index','1050')
+    $('#workoutModalIDdiv').css('z-index', '1050')
+    $('#workoutModalID').css('z-index', '1050')
     $("div#workoutModalID").modal("toggle");
     $('div.modal-body>p').html(describe);
 

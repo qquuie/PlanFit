@@ -1,6 +1,3 @@
-// $(".dropdown-item").click(function() {
-//     var workout_part = $(this).text();
-// });
 
 function getCookie(c_name) {
     var c_value = " " + document.cookie;
@@ -19,7 +16,6 @@ function getCookie(c_name) {
 }
 
 /*--------------------------------生成workout_div--------------------------------------*/
-
 
 
 function getPose(p) {
@@ -157,6 +153,29 @@ function showModal(_ID, describe) {
     $('#workoutModalID').css('z-index', '1050')
     $("div#workoutModalID").modal("toggle");
     $('div.modal-body>p').html(describe);
+
+}
+function showModalHome(id)
+{
+    console.log(id)
+    console.log()
+    var namePose=$('#'+id).parent().parent().find('#pose_name').text()
+    var api = "http://127.0.0.1:3000/api/showModalHome";
+    jQuery.post(api,{'name':namePose},function(res)
+    {
+        if(res.status==0)
+        {
+            console.log(res.data);
+                $('div.modal-body>p').html(res.data.describe);
+
+        }
+    })
+    $('#workoutModalIDdiv').removeClass('fade')
+    $('#workoutModalID').removeClass('fade')
+    $('#workoutModalIDdiv').css('z-index','1050')
+    $('#workoutModalID').css('z-index','1050')
+    $("div#workoutModalID").modal("toggle");
+    // $('div.modal-body>p').html(describe);
 
 }
 var choice_d = []; //存放所有選擇日期陣列

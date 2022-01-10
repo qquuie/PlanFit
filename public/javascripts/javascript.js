@@ -231,6 +231,9 @@ $(document).ready(function () {
     $('button#closeBtnfolder').click(function () {
         $('#all_fol').empty();
     })
-  
+   $('#carousel>img').click(function(){
+       console.log($(this).attr('name'))
+       
+   })
 
 });

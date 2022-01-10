@@ -64,12 +64,12 @@ button.contactBtn.btn {
 
 /* .inputForm4 {
     /* padding: 20%; */
-}
+/* } */
 
-.inputForm3,
-.inputForm5 {
+/* .inputForm3,
+.inputForm5 { */
     /* padding: 12%; */
-} */
+/* }  */
 
 .inputForm2 {
     padding: 6%;
@@ -94,7 +94,7 @@ div>h1 {
     font-size: 3.5rem;
 }
 
-button#signUpBtn.btn,button#closeBtnWorkout {
+button#signUpBtn.btn,button#closeBtnWorkout{
     background-color: #1D3124;
     font-size: x-large;
     color: white;

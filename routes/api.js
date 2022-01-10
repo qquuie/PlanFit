@@ -9,17 +9,18 @@ var HOMEinputModel = require('../models/HOMEinput.js');
 var bcrypt = require('bcryptjs');
 const createHttpError = require('http-errors');
 
-router.post('/HOMEload', function(req, res) {
+router.post('/HOMEload', function (req, res) {
     HOMEinputModel.find({
         acc: req.body.acc,
         day: req.body.day
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
 
-router.post('/removeHOME', function(req, res) {
-    HOMEinputModel.find({
+router.post('/HOMEinputNew', function (req, res) {
+    var new_HOMEinput = new HOMEinputModel({
+        acc: req.body.acc,
         day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
@@ -110,9 +111,11 @@ router.post('/HomeUpdate', function(req, res) {
         }
         res.json(data); //將資料回應給前端
     });
+    new_HOMEinput.save(function (err, data) {});
+    res.json(data);
 });
 
-router.post('/addUser', function(req, res) {
+router.post('/addUser', function (req, res) {
     // const body = _.pick(req.body, ['sex'])
     var newUser = new loginModel({
         acc: req.body.acc,
@@ -128,7 +131,7 @@ router.post('/addUser', function(req, res) {
     });
     loginModel.countDocuments({
         acc: req.body.acc
-    }, async function(err, data) {
+    }, async function (err, data) {
 
         if (data > 0) {
             res.json({
@@ -139,19 +142,20 @@ router.post('/addUser', function(req, res) {
             const salt = await bcrypt.genSalt(8);
             const hashpw = await req.body.pw;
             newUser.pw = bcrypt.hashSync(hashpw, salt);
-            newUser.save(function(err, data) {
+            newUser.save(function (err, data) {
                 if (err) {
                     res.json({
                         "status": 1,
                         "msg": "error"
                     });
-                    console.log(err)
+                    return;
                 } else {
                     res.json({
                         "status": 0,
                         "msg": "success",
                         "data": data
                     });
+                    return;
                 }
             })
         }
@@ -160,21 +164,22 @@ router.post('/addUser', function(req, res) {
 });
 
 //登入畫面擷取所有資料
-router.post('/getUser', async function(req, res) {
+router.post('/getUser', async function (req, res) {
     const {
         acc,
         pw
     } = req.body;
     loginModel.findOne({
         acc
-    }, async function(err, data) {
+    }, async function (err, data) {
         if (data == null) {
             res.json({
                 "status": 1,
                 "msg": "You are not our member yet!"
             });
+            return;
         } else {
-            const isPw = await bcrypt.compare(req.body.pw, data.pw);
+            const isPw = await bcrypt.compare(pw, data.pw);
             if (!isPw) {
                 res.json({
                     "status": 1,
@@ -186,35 +191,35 @@ router.post('/getUser', async function(req, res) {
                 "msg": "success",
                 "data": data
             });
+            return;
         }
 
     });
 });
 
-router.post('/getInfor', function(req, res) {
+router.post('/getInfor', function (req, res) {
     // var id = req.body.acc;
     loginModel.find({
         acc: req.body.acc
-    }, function(err, data) {
+    }, function (err, data) {
         if (err) console.log(err);
         res.json({
-            data
+            "status": 0,
+            "msg": "success",
+            "data": data
         })
+        return;
 
     })
 });
-router.post('/changeInfor', function(req, res) {
+router.post('/changeInfor', function (req, res) {
 
     loginModel.findOne({
         acc: req.body.acc
-    }, async function(err, data) {
+    }, async function (err, data) {
         if (err) console.log(err);
         else {
-            const salt = await bcrypt.genSalt(8);
-            const hashpw = await req.body.newpw;
-            data.pw = bcrypt.hashSync(hashpw, salt);
-
-            // data.pw = req.body.newpw;
+           
             data.email = req.body.newemail;
             data.birth = req.body.newbirth;
             data.sex = req.body.newsex;
@@ -223,29 +228,75 @@ router.post('/changeInfor', function(req, res) {
             data.age = req.body.newage;
             data.focusOption = req.body.newfocusOption;
             data.needOption = req.body.newneedOption;
-            // console.log(data);
 
-            data.save(function(err) {
+            data.save(function (err) {
                 if (err) console.log(err);
                 res.json({
-                    data
+                    "status": 0,
+                    "msg": "success",
+                    "data": data
                 })
+                return;
             })
 
         }
     })
 });
+
+router.post('/saveNewPw', function (req, res) {
+    loginModel.findOne({
+        acc: req.body.acc
+    }, async function (err, data) {
+        if (data) {
+            console.log('in')
+            const isPw1 = await bcrypt.compare(req.body.oldpw, data.pw);
+            if (!isPw1) {
+                res.json({
+                    "status": 1,
+                    "msg": "Your old password was wrong!"
+                });
+                return;
+
+            }
+            const salt = await bcrypt.genSalt(8);
+            const hashpass = await req.body.newpw;
+            data.pw = bcrypt.hashSync(hashpass, salt);
+            // data.pw = req.body.newpw
+            data.save(function (err) {
+                if (err) {
+                    res.json({
+                        "status": 1,
+                        "msg": "error"
+                    });
+                    return;
+
+                } else {
+                    res.json({
+                        "status": 0,
+                        "msg": " Changing successfull!!! Please sign in again to make sure your new password is working ",
+                        'data': data
+                    })
+                    return;
+                }
+            })
+        } else {
+            alert('Invalid token')
+        }
+    })
+})
 //workout載入
 
 
-router.post('/getposeList', function(req, res) {
+router.post('/getposeList', function (req, res) {
     if (req.body.find == 1) {
         workoutModel.find({
-            name: { $regex: req.body.pose, $options: "$i" }
-        }, function(err, data) {
+            name: {
+                $regex: req.body.pose
+            }
+        }, function (err, data) {
             for (var i = 0; i < data.length; i++) {
                 data[i].status = true;
-                data[i].save(function(err) {
+                data[i].save(function (err) {
                     if (err) {
                         console.log(err);
                     }
@@ -259,7 +310,7 @@ router.post('/getposeList', function(req, res) {
     } else {
         workoutModel.find({
             class_pose: req.body.pose
-        }, function(err, data) {
+        }, function (err, data) {
             if (err) {
                 console.log(err);
             }
@@ -270,16 +321,17 @@ router.post('/getposeList', function(req, res) {
 });
 
 //workout點擊更新//後端
-router.post('/updateposeClick', function(req, res) {
+router.post('/updateposeClick', function (req, res) {
     var id = req.body.id;
-    workoutModel.findById(id, function(err, data) {
+    // console.log(req.body);
+    workoutModel.findById(id, function (err, data) {
         if (err) {
             console.log(err);
         } else {
             // console.log(req.body.click);
             data.click = req.body.click;
             // console.log(data);
-            data.save(function(err) {
+            data.save(function (err) {
                 if (err) {
                     console.log(err);
                 }
@@ -289,21 +341,31 @@ router.post('/updateposeClick', function(req, res) {
     });
 });
 
-router.post('/listfile', function(req, res) {
+router.post('/listfile', function (req, res) {
+    // folderModel.find({
+    //     acc: req.body.acc,
+    //     status: true
+    // }, function(err, data) {
+    //     for (var i = 0; i < data.length; i++) {
+    //         data[i].status = false;
+    //         data[i].save(function(err, data) {});
+    //     }
+    // });
+
     folderModel.find({
         acc: req.body.acc
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
 
 //新增文件夾
-router.post('/addFolder', function(req, res) {
+router.post('/addFolder', function (req, res) {
     folderModel.find({
         title: req.body.title,
         status: false,
         acc: req.body.acc
-    }, function(err, data) {
+    }, function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -312,17 +374,17 @@ router.post('/addFolder', function(req, res) {
     })
 });
 
-router.post('/removeFolder', function(req, res) {
+router.post('/removeFolder', function (req, res) {
     folderModel.remove({
         title: req.body.title
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
-router.post('/removeList', function(req, res) {
+router.post('/removeList', function (req, res) {
     folderModel.remove({
         _id: req.body.id
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
@@ -347,21 +409,18 @@ router.post('/removeworkoutCal', function(req, res) {
     });
 });
 
-router.post('/workoutcal', function(req, res) {
+router.post('/workoutcal', function (req, res) {
+    console.log(req.body);
     var same = false;
     calendarModel.find({ //找尋相同姿勢&帳號
         title: req.body.title,
         acc: req.body.acc
-    }, function(err, data) {
+    }, function (err, data) {
+        console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             if (req.body.times == data[i].times && req.body.times_status == data[i].times_status) {
-                var tmp = data[i].day + ',' + req.body.day;
-                var arr = tmp.split(",");
-                var finalarr = arr.filter(function(ele, pos) {
-                    return arr.indexOf(ele) == pos;
-                });
-                data[i].day = finalarr.toString();
-                data[i].save(function(err) {
+                data[i].day = req.body.day;
+                data[i].save(function (err) {
                     if (err) {
                         console.log(err);
                     }
@@ -378,7 +437,8 @@ router.post('/workoutcal', function(req, res) {
                 times_status: req.body.times_status,
                 day: req.body.day
             });
-            new_workout.save(function(err, data) {
+            // console.log(new_workout, 296);
+            new_workout.save(function (err, data) {
                 if (err) {
                     console.log(err);
                 }
@@ -388,20 +448,21 @@ router.post('/workoutcal', function(req, res) {
     });
 });
 
-router.post('/workoutCalChoice', function(req, res) {
+router.post('/workoutCalChoice', function (req, res) {
     calendarModel.find({
         acc: req.body.acc,
-        // title: req.body.title
-    }, function(err, data) {
-        if (err) {
-            console.log(err);
-        }
+        title: req.body.title
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
 
 
-router.post('/addNew_workoutcal', function(req, res) {
+router.post('/addNew_workoutcal', function (req, res) {
+    // console.log("req.body.times_staus:" + req.body.workout_times_status);
+    // console.log("req.body.times:" + req.body.workout_times);
+    // console.log("req.body.choice_d:" + req.body.choice_day);
+    console.log("req.body.title:" + req.body.workout_sth_c);
     var new_workout = new calendarModel({
         title: req.body.workout_sth_c,
         acc: req.body.acc,
@@ -409,7 +470,8 @@ router.post('/addNew_workoutcal', function(req, res) {
         times_status: req.body.workout_times_status,
         day: req.body.choice_day
     });
-    new_workout.save(function(err, data) {
+    // console.log(new_workout, 296);
+    new_workout.save(function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -418,16 +480,16 @@ router.post('/addNew_workoutcal', function(req, res) {
     });
 });
 
-router.post('/getUserCal', function(req, res) {
+router.post('/getUserCal', function (req, res) {
     calendarModel.find({
         acc: req.body.acc
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
         // console.log(data);
     });
 });
 
-router.post('/addPose', function(req, res) {
+router.post('/addPose', function (req, res) {
     var newpose = new folderModel({
         title: req.body.folder,
         pose: req.body.pose,
@@ -435,7 +497,7 @@ router.post('/addPose', function(req, res) {
         acc: req.body.acc
     });
 
-    newpose.save(function(err, data) {
+    newpose.save(function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -444,38 +506,39 @@ router.post('/addPose', function(req, res) {
     });
 });
 
-router.post('/listpose', function(req, res) {
+router.post('/listpose', function (req, res) {
     folderModel.find({
         acc: req.body.acc,
         title: req.body.folder
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
 
     });
 });
 
-router.post('/getPose', function(req, res) {
+router.post('/getPose', function (req, res) {
     workoutModel.findOne({
         id: req.body.acc
-    }, async function(err, data) {
+    }, async function (err, data) {
 
     });
 });
 
-router.post('/getindexwheel', function(req, res) {
+router.post('/getindexwheel', function (req, res) {
     workoutModel.find({
         name: req.body.pose
-    }, function(err, data) {
+    }, function (err, data) {
         res.json(data); //將資料回應給前端
     });
 });
 
-router.post('/HOMEgetWorkoutName', function(req, res) {
+router.post('/HOMEgetWorkoutName', function (req, res) {
+    console.log(req.body.acc);
     calendarModel.find({ //找尋相同姿勢&帳號
         acc: req.body.acc //只要找到a的資料
-    }, function(err, data) {
+    }, function (err, data) {
         for (var i = 0; i < data.length; i++) {
-            data[i].save(function(err) {
+            data[i].save(function (err) {
                 if (err) {
                     console.log(err);
                 }

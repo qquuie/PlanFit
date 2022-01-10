@@ -12,7 +12,6 @@ $(document).ready(function () {
     tmp.click(function() {
         count = $('div.row#focusbtn').find('.active');
         if (count.length == 1) {
-            // alert('You only can choose one focus part');
             $('div.infor_data.infor_sex>input').checked == false
         }
         console.log(count.length)
@@ -28,14 +27,14 @@ $(document).ready(function () {
     tmp3.click(function() {
             count = $('div#needOptions').find('.active');
             if (count.length == 1) {
-                // alert('You only can choose one thing that you need ');
                 $('div.infor_data.infor_sex>input').checked == false
             }
             console.log(count.length)
         })
         // <--------------------------- Information-------------------------->
-    $("div#smallPageModal").css('z-index', '-1'); //abby改
-    $("div#workoutModalIDdiv").css('z-index', '-1'); //abby改
+    $("div#smallPageModal").css('z-index', '-1'); 
+    $("div#workoutModalIDdiv").css('z-index', '-1');
+    $("div#changePsModalDiv").css('z-index', '-1'); 
 
     $(".page").css('z-index', '1000');
     $(".nav.navbar").css('z-index', '1050');
@@ -68,6 +67,27 @@ $(document).ready(function () {
         $("div#smallPageModal").css('z-index', '-1');
 
     })
+    $('button#closeBtnPs').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#changePsModalID").addClass("fade");
+        $("div#changePsModalDiv").addClass("fade");
+        $("div#changePsModalDiv").css('z-index', '-1');
+        $("div#changePsModalID").css('z-index', '-1');
+        $(".page").css('z-index', '1050');
+        $("div#changePsModalID").modal("toggle");
+
+
+    })
+    $('button#closeBtnPsImg').click(function () {
+        $(".modal-backdrop").addClass("fade");
+        $("div#changePsModalID").addClass("fade");
+        $("div#changePsModalDiv").addClass("fade");
+        $("div#changePsModalDiv").css('z-index', '-1');
+        $("div#changePsModalID").css('z-index', '-1');
+        $(".page").css('z-index', '1050');
+        $("div#changePsModalID").modal("toggle");
+
+    })
     $('button#closeBtnWorkout').click(function () {
         $(".modal-backdrop").addClass("fade");
         $("div#workoutModalID").addClass("fade");
@@ -78,7 +98,6 @@ $(document).ready(function () {
         $(".page").css('z-index', '1000');
         $("div#workoutModalID").modal("toggle");
 
-        // $("div.modalContainer").css("background-color", "#bacec1")
 
     })
     $('button#closeBtnWorkoutImg').click(function () {
@@ -90,8 +109,6 @@ $(document).ready(function () {
         $("div#workoutModalID").css('z-index', '-1');
         $(".page").css('z-index', '1000');
         $("div#workoutModalID").modal("toggle");
-
-        // $("div.modalContainer").css("background-color", "#bacec1")
 
     })
     $('button#closeBtn').click(function() {

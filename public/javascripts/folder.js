@@ -30,13 +30,18 @@ $(document).ready(function() {
     });
     //----------------------index--------------------
     $('#indexFolder').click(function() {
-        $("div#smallPageModal_folder_index").toggle();
-        $("div#smallPageModal_folder_index").modal("toggle");
-        $("div#smallPageModal_folder_index").removeClass("fade");
-        $(".modal-backdrop").removeClass("fade");
-        $("div#smallPageModal_folder_index").css('z-index', '1050');
-        $(".page").css('z-index', '-1');
-        listfile_i();
+        console.log(1);
+        if (getCookie('username') == null) {
+            alert("Sign in! Please!!");
+        } else {
+            $("div#smallPageModal_folder_index").toggle();
+            $("div#smallPageModal_folder_index").modal("toggle");
+            $("div#smallPageModal_folder_index").removeClass("fade");
+            $(".modal-backdrop").removeClass("fade");
+            $("div#smallPageModal_folder_index").css('z-index', '1050');
+            $(".page").css('z-index', '-1');
+            listfile_i();
+        }
     });
     $("div#smallPageModal_folder_index").css('z-index', '-1'); //abby改
     $(".page").css('z-index', '1000');
@@ -77,7 +82,7 @@ $(document).ready(function() {
         addFolder_w();
     });
 
-})
+});
 
 var total = 0;
 var f = [];

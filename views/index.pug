@@ -24,28 +24,29 @@ head
   link(rel='stylesheet' href='stylesheets/style.css')
   link(rel='stylesheet' href='stylesheets/index.css')
   link(rel='stylesheet' href='stylesheets/folder.css')
+  link(rel='stylesheet' href='stylesheets/cal_folder.css')
 include includes/navigation
 .page
   div.container-fluit    
     .card-body.text-GreenLake
       ul.nav.nav-tabs.card-header-tabs.row.mx-0
-        li.nav-item.col
-        li.nav-item.col
+        li.nav-item.col-2
+        li.nav-item.col-1
           a.nav-link
             img(src='img/icon_see_times.png' width='20px')
             p.see_times #{img1.click}
-        li.nav-item.col
+        li.nav-item.col-1
           a.nav-link.folder#indexFolder
             img(src='img/icon_folder.png' width='25px')
-        li.nav-item.col
+        li.nav-item.col-1
           a.nav-link.calender
             img(src='img/icon_calender.png' width='20px')
-        li.col
+        li.col-1
           button.btn#show.mt-1(style='width: 45px;height: 42px;' onclick="showModalHome(this.id)" data-toggle='modal' data-bs-target='#workoutModalID')
             i.bi.bi-collection
               svg.bi.bi-collection(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                 path(d='M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z')
-        li.col-2
+        li.col-6
           p#pose_name #{img1.name}
         li.nav-item.col-3
   #carousel
@@ -301,8 +302,10 @@ script(type='text/javascript').
 script(src='javascripts/javascript.js')
 script(src='javascripts/login.js')
 script(src='javascripts/calendar.js')
-script(src='javascripts/home.js')
 script(src='javascripts/workout.js')
+script(src='javascripts/folder.js')
+script(src='javascripts/home.js')
+
 
 script.
   let today = new Date(); //新增一個Date物件，命名為today

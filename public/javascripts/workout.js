@@ -1,4 +1,3 @@
-
 function getCookie(c_name) {
     var c_value = " " + document.cookie;
     var c_start = c_value.indexOf(" " + c_name + "=");
@@ -155,25 +154,23 @@ function showModal(_ID, describe) {
     $('div.modal-body>p').html(describe);
 
 }
-function showModalHome(id)
-{
+
+function showModalHome(id) {
     console.log(id)
     console.log()
-    var namePose=$('#'+id).parent().parent().find('#pose_name').text()
+    var namePose = $('#' + id).parent().parent().find('#pose_name').text()
     var api = "http://127.0.0.1:3000/api/showModalHome";
-    jQuery.post(api,{'name':namePose},function(res)
-    {
-        if(res.status==0)
-        {
+    jQuery.post(api, { 'name': namePose }, function(res) {
+        if (res.status == 0) {
             console.log(res.data);
-                $('div.modal-body>p').html(res.data.describe);
+            $('div.modal-body>p').html(res.data.describe);
 
         }
     })
     $('#workoutModalIDdiv').removeClass('fade')
     $('#workoutModalID').removeClass('fade')
-    $('#workoutModalIDdiv').css('z-index','1050')
-    $('#workoutModalID').css('z-index','1050')
+    $('#workoutModalIDdiv').css('z-index', '1050')
+    $('#workoutModalID').css('z-index', '1050')
     $("div#workoutModalID").modal("toggle");
     // $('div.modal-body>p').html(describe);
 
@@ -231,7 +228,7 @@ function workout_cal_choice(name) {
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
         "acc": getCookie('username'),
-        "title": name,
+        // "title": name,
     };
     jQuery.post(api, data1, function(res) { //抓後端資料
         console.log(res.length);
@@ -263,14 +260,13 @@ function workout_cal_choice(name) {
                     }
                 }
             }
-
             var Days = document.getElementsByTagName("td");
             for (var k = 0; k <= 41; k++) {
                 for (var j = 0; j < havearr.length; j++) {
                     if ($(Days[k]).attr("data-uid") == havearr[j]) {
                         if (num_day[j] <= 3) {
                             $(Days[k]).addClass("have_s");
-                        } else if (num_day[j] > 3 && num_day[j] < 8) {
+                        } else if (num_day[j] > 3 && num_day[j] < 5) {
                             $(Days[k]).addClass("have_m");
                         } else {
                             $(Days[k]).addClass("have_h");
@@ -432,10 +428,6 @@ $("#modal_OK").click(function() {
 });
 
 /*--------------------------------calender--------------------------------------*/
-// $(".calender").click(function() {
-//     $("#calendar_win").show();
-//     $("#calendar_win").css({ "display": "flex", "flex-direction": "column" });
-// });
 
 
 $("div#smallPageModal").css('z-index', '-1');
@@ -447,21 +439,6 @@ $(".calender").click(function() {
         "flex-direction": "column"
     });
 });
-
-
-//------
-// $(".calender").click(function() {
-//     $("#cal_win").show();
-//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-// });
-
-
-$("div#smallPageModal").css('z-index', '-1');
-$(".page").css('z-index', '1000');
-// $(".calender").click(function() {
-//     $("#cal_win").show();
-//     $("#cal_win").css({ "display": "flex", "flex-direction": "column" });
-// });
 
 $('#find').click(function() {
     if ($('#findtxt').val() == "") {

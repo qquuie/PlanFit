@@ -14,6 +14,7 @@ router.post('/HOMEload', function(req, res) {
         acc: req.body.acc,
         day: req.body.day
     }, function(err, data) {
+        if (err) console.log(err);
         res.json(data); //將資料回應給前端
     });
 });
@@ -42,30 +43,68 @@ router.post('/HOMEinputNew', function(req, res) {
     });
 });
 
-router.post('/removeCal', function(req, res) {
-    calendarModel.findOne({
-        // title: req.body.inputS,
+router.post('/removeHOME', function(req, res) {
+
+    HOMEinputModel.find({
+        day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
-        console.log(date, 49);
-        // if (data[0].day.search(',') != -1) {
-        //     var sth = data[0].day.split(',');
-        //     for (let value of sth) {
-        //         if (value == req.body.day) {
-        //             var ind = sth.indexOf(req.body.day);
-        //             sth.splice(ind, 1);
-        //             data[0].day = sth.toString();
-        //             break;
-        //         }
-        //     }
-        // } else {
-        //     data[0].day = '';
-        // }
-        // data[0].save(function(err) {
-        if (err) {
-            console.log(err);
+        var sth = data[0].inputS.split(',');
+        for (let value of sth) {
+            console.log(sth);
+            console.log(value);
+            if (value == req.body.inputS) {
+                var ind = sth.indexOf(req.body.inputS);
+                console.log(ind);
+                sth.splice(ind, 1);
+                data[0].inputS = sth.toString();
+                break;
+            }
         }
-        // });
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        res.json(data);
+        console.log(data[0].inputS, 44);
+    });
+    // HOMEinputModel.remove({ inputS: "" }, function(err, data) {
+    //     console.log(11111111111);
+    //     console.log(data);
+    //     if (err) {} else {
+    //         console.log("remove!!!");
+    //     }
+    // });
+});
+
+
+
+router.post('/removeCal', function(req, res) {
+    calendarModel.find({
+        acc: req.body.acc,
+        times: req.body.times,
+        times_status: req.body.times_status
+    }, function(err, date) {
+        if (date[0].day.search(',') != -1) {
+            var sth = date[0].day.split(',');
+            for (let value of sth) {
+                if (value == req.body.day) {
+                    var ind = sth.indexOf(req.body.day);
+                    sth.splice(ind, 1);
+                    date[0].day = sth.toString();
+                    break;
+                }
+            }
+        } else {
+            date[0].day = '';
+        }
+        date[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        if (err) console.log(err);
     });
 });
 
@@ -92,6 +131,7 @@ router.post('/HomeUpdate', function(req, res) {
         day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
+        if (err) console.log(err);
         for (var i = 0; i < data.length; i++) {
             if (req.body.day == data[i].day) {
                 data[i].inputS += ",";
@@ -172,6 +212,7 @@ router.post('/getUser', async function(req, res) {
     loginModel.findOne({
         acc
     }, async function(err, data) {
+        if (err) console.log(err);
         if (data == null) {
             res.json({
                 "status": 1,
@@ -247,6 +288,7 @@ router.post('/saveNewPw', function(req, res) {
     loginModel.findOne({
         acc: req.body.acc
     }, async function(err, data) {
+        if (err) console.log(err);
         if (data) {
             console.log('in')
             const isPw1 = await bcrypt.compare(req.body.oldpw, data.pw);
@@ -420,7 +462,6 @@ router.post('/removeworkoutCal', function(req, res) {
 });
 
 router.post('/workoutcal', function(req, res) {
-    console.log(req.body);
     var same = false;
     calendarModel.find({ //找尋相同姿勢&帳號
         title: req.body.title,
@@ -447,7 +488,6 @@ router.post('/workoutcal', function(req, res) {
                 times_status: req.body.times_status,
                 day: req.body.day
             });
-            // console.log(new_workout, 296);
             new_workout.save(function(err, data) {
                 if (err) {
                     console.log(err);
@@ -462,6 +502,7 @@ router.post('/workoutCalChoice', function(req, res) {
     calendarModel.find({
         acc: req.body.acc,
     }, function(err, data) {
+        console.log(data);
         res.json(data); //將資料回應給前端
     });
 });
@@ -540,6 +581,8 @@ router.post('/getindexwheel', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
+
+
 
 router.post('/HOMEgetWorkoutName', function(req, res) {
     console.log(req.body.acc);

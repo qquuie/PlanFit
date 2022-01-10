@@ -225,15 +225,14 @@ function getUserCal() {
 var have = [];
 
 function workout_cal_choice(name) {
-    if (getCookie("username") == null)
-        var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
+    var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
         "acc": getCookie('username'),
-        // "title": name,
+        "title": name,
     };
     jQuery.post(api, data1, function(res) { //抓後端資料
-        // console.log(res.length);
-        var tmp = new Array();
+        console.log(res.length);
+        var tmpA = new Array();
         if (res.length != 0) {
             same = true;
             for (var i = 0; i < res.length; i++) {
@@ -287,39 +286,41 @@ function updateposeClick(id, name) {
     // console.log(getCookie('username'));
     if (getCookie('username') == null) {
         alert("Sign in! Please!!");
-    }
-    $("#calendar_win").show(); //顯示視窗
-    $("#cal_win").show(); //顯示視窗
-    same = false; //判斷是否有存取過該運動
-    // sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
-    // console.log(workout_list);
-    // console.log(id);
-    var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
-    var data = {
-        "id": id,
-        "click": parseInt($('#see_times' + id).text()) + 1,
-    }; //這邊給值//更改click+1
-    //---------------------------------------------------------初始化End----------------------------
-    //----------------------------------------------------------------//
-    jQuery.post(api, data, function(res) { //抓後端資料
-        $('#see_times' + id).text(data.click);
-    });
+    } else {
+        $("#calendar_win").show(); //顯示視窗
+        $("#cal_win").show(); //顯示視窗
+        same = false; //判斷是否有存取過該運動
+        // sameID = -1; //有存取過該運動，紀錄該運動在陣列中的索引值
+        // console.log(workout_list);
+        // console.log(id);
+        var api = "http://127.0.0.1:3000/api/updateposeClick"; //除非跨域
+        var data = {
+            "id": id,
+            "click": parseInt($('#see_times' + id).text()) + 1,
+        }; //這邊給值//更改click+1
+        //---------------------------------------------------------初始化End----------------------------
+        //----------------------------------------------------------------//
+        jQuery.post(api, data, function(res) { //抓後端資料
+            $('#see_times' + id).text(data.click);
+        });
 
-    var Days = document.getElementsByTagName("td");
-    for (var j = 0; j < Days.length; j++) {
-        $(Days[j]).removeClass("important");
-        $(Days[j]).removeClass("have_s");
-        $(Days[j]).removeClass("have_m");
-        $(Days[j]).removeClass("have_h");
+        var Days = document.getElementsByTagName("td");
+        for (var j = 0; j < Days.length; j++) {
+            $(Days[j]).removeClass("important");
+            $(Days[j]).removeClass("have_s");
+            $(Days[j]).removeClass("have_m");
+            $(Days[j]).removeClass("have_h");
+        }
+        // choice_d = [];
+        // console.log(choice_d);
+        workout_cal_choice(name);
+        //----------------------------------------------------------------//
+        window.localStorage.setItem('newpose', name);
+        //----------------------------------------------------------------//
+        //---------------------------------------------------------初始化End----------------------------
+        //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
     }
-    // choice_d = [];
-    // console.log(choice_d);
-    workout_cal_choice(name);
-    //----------------------------------------------------------------//
-    window.localStorage.setItem('newpose', name);
-    //----------------------------------------------------------------//
-    //---------------------------------------------------------初始化End----------------------------
-    //-------------------------------for迴圈判斷workout_list的物件裡面是否有該運動名稱
+
 
 }
 

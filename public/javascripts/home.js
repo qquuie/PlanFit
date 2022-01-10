@@ -533,16 +533,16 @@ $(document).ready(function() {
             // $("#HOME_div_block").empty(); //要先清空
             for (var i = 0; i < res.length; i++) {
                 if (res[i].day.search(choiceDay) != -1) {
-                    var sth = res[i].title + " " + res[i].times + " " + res[i].times_status;
-                    // var title = res[i].title.split(' ');
+                    var sth = res[i].title + "," + res[i].times + "," + res[i].times_status;
+                    // var title = res[i].title.split(',');
                     // var titleArr = "";
                     // for (var j = 0; j < title.length; j++) {
                     //     titleArr += title[j];
                     // }
                     var HOMEdiv = `  <div class="HOME_item i${i}">
-                                        <input type="text" value="${res[i].title}" class="col-6 no-border" onlydata>
-                                        <input type="text" value="${res[i].times}" class="col-1 no-border" onlydata>
-                                        <input type="text" value="${res[i].times_status}" class="col-2 no-border" onlydata>
+                                        <input type="text" value="${res[i].title}" class="col-6 no-border">
+                                        <input type="text" value="${res[i].times}" class="col-1 no-border">
+                                        <input type="text" value="${res[i].times_status}" class="col-2 no-border">
                                         <div class="HOME_item_delete col-2" onclick="HOMEdel('i${i}','2','${sth}')">X</div>
                                         <div class="HOME_item_update col-2" onclick="HOMEupdate()"></div>
                                     </div>`
@@ -605,6 +605,8 @@ $(document).ready(function() {
         $("#HOME_div_block").empty(); //清空
         $("#HOME_div").hide();
     });
+
+    $(".no-border").addClass('d-none');
 });
 
 function HOMEupdate() {
@@ -614,7 +616,6 @@ function HOMEupdate() {
 
 function HOMEdel(HOMEinput, ind, title) {
     console.log("HOMEdel");
-    console.log(HOMEinput, ind, title);
     $('.' + HOMEinput).remove();
     if (ind == '1') {
         var api = "http://127.0.0.1:3000/api/removeHOME";
@@ -623,31 +624,30 @@ function HOMEdel(HOMEinput, ind, title) {
             day: choiceDay,
             inputS: HOMEinput
         };
-        jQuery.post(api, data, function(res) {});
-        del(1);
+        // jQuery.post(api, data, function(res) {});
+        // del(1);
     } else {
         var api1 = "http://127.0.0.1:3000/api/removeCal";
-        var sth = title.split(' ')
+        var sth = title.split(',')
         var data1 = {
             acc: getCookie('username'),
             day: choiceDay,
-            inputS: title,
-            // times: sth[1],
-            // times_status: sth[2]
+            inputS: sth[0],
+            times: sth[1],
+            times_status: sth[2]
         };
-        console.log(data1);
         jQuery.post(api1, data1, function(res) {});
-        // del(2);
+        del(2);
     }
 }
 
 
-//按下add else +
+// //按下add else +
 $("#HOME_item_add").click(function() {
     $("#HOME_model").show();
     $("#HOME_div").hide();
 });
-//按下add
+// 按下add
 $("#HOME_sth_add").click(function() {
     if ($("#HOME_sth_input").val() == "") {
         alert("You don't input pose!");
@@ -659,7 +659,7 @@ $("#HOME_sth_add").click(function() {
                                 ${HOMEinput}
                             </div>
                             <div class="HOME_item_delete" onclick="HOMEdel('${HOMEinput}','1','0')" >X</div>
-                        </div>`
+                        </div>`;
         $("#HOME_div_block").append(HOMEdiv);
 
         var API = "http://127.0.0.1:3000/api/HomeUpdate";

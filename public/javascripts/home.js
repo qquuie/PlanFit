@@ -557,6 +557,8 @@ function HOMEgetWorkoutName() {
     });
 }
 
+
+
 $(".HOME_cal").click(function() {
     //前端特效
     $("#HOME_div").show();
@@ -692,6 +694,16 @@ function HOMEdel(HOMEinput,ind,title){
             day : choiceDay,
             inputS : HOMEinput
         };
+        jQuery.post(api, data, function(res) {
+            if(res.inputS==""){
+                var API = "http://127.0.0.1:3000/api/removeHW";
+                var Data = {
+                    acc : getCookie('username'),
+                    day : choiceDay,
+                    title : title
+                };
+            }
+        });
     }else{
         var api = "http://127.0.0.1:3000/api/removeworkoutCal";
         var data = {
@@ -700,11 +712,18 @@ function HOMEdel(HOMEinput,ind,title){
             title : title
         };
         console.log(choiceDay);
+        jQuery.post(api, data, function(res) {
+            if(res.inputS==""){
+                var API = "http://127.0.0.1:3000/api/removeHW";
+                var Data = {
+                    acc : getCookie('username'),
+                    day : choiceDay,
+                    title : title
+                };
+            }
+        });
     }
     
-    jQuery.post(api, data, function(res) {
-        
-    });
 }
 
 function PleaseSign() {

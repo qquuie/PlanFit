@@ -128,7 +128,7 @@ function getUser() {
 
             } else {
                 setCookie('username', res.data.acc)
-                setCookie('password', res.data.pw.substring(0,passlength))
+                setCookie('password', res.data.pw)
                 setCookie('email', res.data.email)
                 setCookie('sex', res.data.sex)
                 setCookie('focusOption', res.data.focusOption)
@@ -416,13 +416,15 @@ function edit() {
     </div>
 </div>`
     $('div#infor.container').append(ctn);
-    $('input#account').val(getCookie('username'))
-    $('input#ageChange').val(getCookie('age'))
-    $('input#weightChange').val(getCookie('weight'))
-    $('input#heightChange').val(getCookie('height'))
-    $('input#birthChange').val(getCookie('birth'))
-    $('input#pwChange').val(getCookie('password'))
-    $('input#emailChange').val(getCookie('email'))
+    $('input#account').val(getCookie('username'));
+    $('input#ageChange').val(getCookie('age'));
+    $('input#weightChange').val(getCookie('weight'));
+    $('input#heightChange').val(getCookie('height'));
+    $('input#birthChange').val(getCookie('birth'));
+    $('input#emailChange').val(getCookie('email'));
+    var ps=$('input#pwChange').val(getCookie('password')).substring(0,passlength);
+    
+    $('input#pwChange').val(ps);
 
 
     var count = 0,
@@ -488,14 +490,14 @@ function changeInfor() {
     if ($('#emailChange').val() == null) {
         email = getCookie('email');
     } else {
-        email = $('#emailChange').val();
+        email = $('input#emailChange').val();
 
     }
     var birth;
     if ($('#birthChange').val() === null) {
         birth = getCookie('birth');
     } else {
-        birth = $('#birthChange').val();
+        birth = $('input#birthChange').val();
 
     }
     var height;

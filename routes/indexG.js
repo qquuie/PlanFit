@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
         img1 = data[tmp].img;
         var click = data[tmp].click;
         re1 = tmp;
-
+        
         do {
             tmp = Math.floor(Math.random() * data.length);
         } while (tmp == re2 || tmp == re1);

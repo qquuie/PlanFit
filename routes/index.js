@@ -3,13 +3,13 @@ var router = express.Router();
 var workoutModel = require('../models/workout.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     var img1, img2, img3;
     var id1, id2, id3;
     var name1, name2, name3;
     var max = 0;
     var re1, re2, tmp;
-    workoutModel.find(function(err, data) {
+    workoutModel.find(function (err, data) {
         for (var i = 0; i < data.length; i++) {
             if (max < data[i].click) {
                 max = data[i].click;
@@ -56,6 +56,8 @@ router.get('/', function(req, res, next) {
             }
         });
     });
+
+    
 });
 
 module.exports = router;

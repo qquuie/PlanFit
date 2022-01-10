@@ -284,6 +284,17 @@ router.post('/saveNewPw', function (req, res) {
         }
     })
 })
+router.post('/showModalHome', function (req, res) {
+    workoutModel.findOne({
+        name: req.body.name
+    }, function (err, data) {
+        if(err) console.log(err)
+        res.json({
+            "status": 0,
+            'data': data
+        })
+    })
+})
 //workout載入
 
 

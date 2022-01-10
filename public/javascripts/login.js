@@ -296,7 +296,7 @@ function openChangePw() {
 function saveNewPw() {
     var _old = $('input#oldPw').val();
     var _new = $('input#newPw').val();
-    alert(_old + "," + _new)
+    // alert(_old + "," + _new)
     if(!_old||!_new)
     {
         alert("Please enter both password before save")
@@ -319,9 +319,6 @@ function saveNewPw() {
             if(res.status==1)
             {
                 alert(res.msg);
-                window.location.href = '/indexG';
-
-
             }
             else{
                 alert(res.msg)

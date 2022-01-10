@@ -335,6 +335,8 @@ $('.home_cal').click(function() {
     }
 });
 
+
+
 function Nextdialog() {
     if (choice_d.length == 0) { //未選擇日期
         alert("No date selected");

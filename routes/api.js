@@ -24,13 +24,10 @@ router.post('/removeHOME', function(req, res) {
         acc: req.body.acc
     }, function(err, data) {
         var sth = data[0].inputS.split(',');
-        
+
         for (let value of sth) {
-            console.log(sth);
-            console.log(value);
             if (value == req.body.inputS) {
                 var ind = sth.indexOf(req.body.inputS);
-                console.log(ind);
                 sth.splice(ind, 1);
                 data[0].inputS = sth.toString();
                 break;
@@ -41,43 +38,69 @@ router.post('/removeHOME', function(req, res) {
                 console.log(err);
             }
         });
-        res.json(data);
-        console.log(data[0].inputS,44);
     });
-    HOMEinputModel.remove({inputS: ""},function(err, data){
-        console.log(11111111111);
-        console.log(data);
-        if(err){
+});
 
-        }else{
-            console.log("remove!!!");
-            
+router.post('/removeCal', function(req, res) {
+    calendarModel.find({
+        title: req.body.inputS,
+        acc: req.body.acc
+    }, function(err, data) {
+        if (data[0].day.search(',') != -1) {
+            var sth = data[0].day.split(',');
+            for (let value of sth) {
+                if (value == req.body.day) {
+                    var ind = sth.indexOf(req.body.day);
+                    sth.splice(ind, 1);
+                    data[0].day = sth.toString();
+                    break;
+                }
+            }
+        } else {
+            data[0].day = '';
         }
-    }); 
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    });
+});
+
+router.post('/del', function(req, res) {
+    console.log(46);
+    if (req.body.type == 1) {
+        HOMEinputModel.deleteOne({ inputS: '' }, function(err, data) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    } else {
+        calendarModel.deleteOne({ day: '' }, function(err, data) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    }
+
 });
 
 router.post('/HomeUpdate', function(req, res) {
-    console.log(req.body.acc);
-    console.log(req.body.day);
-    console.log(req.body.inputS);
     var same = false;
     HOMEinputModel.find({ //找尋相同姿勢&帳號
         day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
-        // console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             if (req.body.day == data[i].day) {
                 data[i].inputS += ",";
                 data[i].inputS += req.body.inputS;
-                console.log(data[i].inputS);
                 data[i].save(function(err) {});
                 same = true;
                 break;
             }
         }
         if (same == false) {
-            console.log("new");
             var new_HOMEinput = new HOMEinputModel({
                 acc: req.body.acc,
                 day: req.body.day,
@@ -158,7 +181,6 @@ router.post('/getUser', async function(req, res) {
                     "msg": "Your account or password was wrong!"
                 });
             }
-            // console.log(data)
             res.json({
                 "status": 0,
                 "msg": "success",
@@ -175,7 +197,6 @@ router.post('/getInfor', function(req, res) {
         acc: req.body.acc
     }, function(err, data) {
         if (err) console.log(err);
-        // console.log(data);
         res.json({
             data
         })
@@ -206,7 +227,6 @@ router.post('/changeInfor', function(req, res) {
 
             data.save(function(err) {
                 if (err) console.log(err);
-                // console.log(data);
                 res.json({
                     data
                 })
@@ -252,7 +272,6 @@ router.post('/getposeList', function(req, res) {
 //workout點擊更新//後端
 router.post('/updateposeClick', function(req, res) {
     var id = req.body.id;
-    // console.log(req.body);
     workoutModel.findById(id, function(err, data) {
         if (err) {
             console.log(err);
@@ -309,17 +328,16 @@ router.post('/removeList', function(req, res) {
 });
 
 router.post('/removeworkoutCal', function(req, res) {
-    console.log(req.body.title);
     calendarModel.find({
         acc: req.body.acc,
         title: req.body.title
-        // title: req.body.title
+            // title: req.body.title
     }, function(err, data) {
         var sth = data[0].day.split(',');
         sth = sth.filter(function(item) {
             return item != req.body.day
         });
-        data[0].day = sth.toString(); 
+        data[0].day = sth.toString();
         data[0].save(function(err) {
             if (err) {
                 console.log(err);
@@ -330,13 +348,11 @@ router.post('/removeworkoutCal', function(req, res) {
 });
 
 router.post('/workoutcal', function(req, res) {
-    console.log(req.body);
     var same = false;
     calendarModel.find({ //找尋相同姿勢&帳號
         title: req.body.title,
         acc: req.body.acc
     }, function(err, data) {
-        console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             if (req.body.times == data[i].times && req.body.times_status == data[i].times_status) {
                 var tmp = data[i].day + ',' + req.body.day;
@@ -362,7 +378,6 @@ router.post('/workoutcal', function(req, res) {
                 times_status: req.body.times_status,
                 day: req.body.day
             });
-            // console.log(new_workout, 296);
             new_workout.save(function(err, data) {
                 if (err) {
                     console.log(err);
@@ -387,10 +402,6 @@ router.post('/workoutCalChoice', function(req, res) {
 
 
 router.post('/addNew_workoutcal', function(req, res) {
-    // console.log("req.body.times_staus:" + req.body.workout_times_status);
-    // console.log("req.body.times:" + req.body.workout_times);
-    // console.log("req.body.choice_d:" + req.body.choice_day);
-    // console.log("req.body.title:" + req.body.workout_sth_c);
     var new_workout = new calendarModel({
         title: req.body.workout_sth_c,
         acc: req.body.acc,
@@ -398,7 +409,6 @@ router.post('/addNew_workoutcal', function(req, res) {
         times_status: req.body.workout_times_status,
         day: req.body.choice_day
     });
-    // console.log(new_workout, 296);
     new_workout.save(function(err, data) {
         if (err) {
             console.log(err);
@@ -461,7 +471,6 @@ router.post('/getindexwheel', function(req, res) {
 });
 
 router.post('/HOMEgetWorkoutName', function(req, res) {
-    console.log(req.body.acc);
     calendarModel.find({ //找尋相同姿勢&帳號
         acc: req.body.acc //只要找到a的資料
     }, function(err, data) {
@@ -473,7 +482,6 @@ router.post('/HOMEgetWorkoutName', function(req, res) {
             });
         }
         res.json(data); //將資料回應給前端
-        console.log(data);
     });
 });
 

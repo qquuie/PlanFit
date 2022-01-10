@@ -278,14 +278,6 @@ function workout_cal_choice(name) {
             have = [];
             havearr = [];
         }
-        // console.log(res[i].day);
-        // workout_times = workout_list[i].workout_times;
-        // workout_times_status = workout_list[i].workout_times_status;
-        // console.log(workout_times + workout_times_status);
-        //         $("#modal_block input").val(workout_times);
-        //         $("#modal_block #times p").text(workout_times_status);
-        //         sameID = i
-        // console.log(res[i]);
     });
 }
 
@@ -450,7 +442,7 @@ $(".calender").click(function() {
 
 $('#find').click(function() {
     if ($('#findtxt').val() == "") {
-        alert("無法查詢");
+        alert("Nothing to find");
     } else {
         window.localStorage.setItem('pose', $('#findtxt').val());
         window.localStorage.setItem('find', 1);

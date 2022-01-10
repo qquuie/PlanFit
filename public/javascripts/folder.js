@@ -31,7 +31,7 @@ $(document).ready(function() {
     //----------------------index--------------------
     $('#indexFolder').click(function() {
         console.log(1);
-        if (getCookie('username') == null) {
+        if (getCookie('username') == "") {
             alert("Sign in! Please!!");
         } else {
             $("div#smallPageModal_folder_index").toggle();

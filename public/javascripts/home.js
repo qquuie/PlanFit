@@ -406,7 +406,7 @@ $('.cal').click(function() {
 // });
 //紀錄運動名稱
 $(".calender").click(function() {
-    if (getCookie('username') == null) {
+    if (getCookie('username') == "") {
         PleaseSign();
     } else {
         workout_sth_c = $("#pose_name").text();

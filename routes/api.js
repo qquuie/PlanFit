@@ -23,7 +23,24 @@ router.post('/removeHOME', function(req, res) {
         day: req.body.day,
         acc: req.body.acc
     }, function(err, data) {
-        data[0].inputS = req.body.inputS
+        var sth = data[0].inputS.split(',');
+        
+        for (let value of sth) {
+            console.log(sth);
+            console.log(value);
+            if (value == req.body.inputS) {
+                var ind = sth.indexOf(req.body.inputS);
+                console.log(ind);
+                sth.splice(ind, 1);
+                data[0].inputS = sth.toString();
+                break;
+            }
+        }
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
         res.json(data); //將資料回應給前端
     });
 });
@@ -279,15 +296,27 @@ router.post('/removeList', function(req, res) {
         res.json(data); //將資料回應給前端
     });
 });
-// router.post('/FolderList', function (req, res) {
-//     folderModel.find({
-//         acc: req.body.acc,
-//         title:req.body.folder
-//     }, function(err, data) {
-//         res.json(data); //將資料回應給前端
-//         console.log(data);
-//     });
-// });
+
+router.post('/removeworkoutCal', function(req, res) {
+    console.log(req.body.title);
+    calendarModel.find({
+        acc: req.body.acc,
+        title: req.body.title
+        // title: req.body.title
+    }, function(err, data) {
+        var sth = data[0].day.split(',');
+        sth = sth.filter(function(item) {
+            return item != req.body.day
+        });
+        data[0].day = sth.toString(); 
+        data[0].save(function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        res.json(data); //將資料回應給前端
+    });
+});
 
 router.post('/workoutcal', function(req, res) {
     console.log(req.body);
@@ -347,7 +376,10 @@ router.post('/workoutCalChoice', function(req, res) {
 
 
 router.post('/addNew_workoutcal', function(req, res) {
-    console.log("req.body.title:" + req.body.workout_sth_c);
+    // console.log("req.body.times_staus:" + req.body.workout_times_status);
+    // console.log("req.body.times:" + req.body.workout_times);
+    // console.log("req.body.choice_d:" + req.body.choice_day);
+    // console.log("req.body.title:" + req.body.workout_sth_c);
     var new_workout = new calendarModel({
         title: req.body.workout_sth_c,
         acc: req.body.acc,

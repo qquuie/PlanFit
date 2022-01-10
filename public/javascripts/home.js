@@ -711,6 +711,7 @@ $(document).ready(function() {
     $("#HOME_div_close").click(function() {
         $("#HOME_div_block").empty(); //清空
         $("#HOME_div").hide();
+        $("#HOME_sth_input").val("");
     });
 
     $(".no-border").attr("readonly", true); //取消唯讀狀態
@@ -782,6 +783,7 @@ $("#HOME_sth_add").click(function() {
         $("#HOME_model").hide();
         $("#HOME_div").show();
     }
+    $("#HOME_sth_input").val("");
 });
 
 

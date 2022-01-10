@@ -39,7 +39,7 @@ include includes/navigation
             img(src='img/icon_folder.png' width='25px')
         li.nav-item.col-1
           a.nav-link.calender
-            img(src='img/icon_calender.png' width='20px' onclick="updateposeClick('')")
+            img(src='img/icon_calender.png' width='20px')
         li.col-2
           p#pose_name #{img1.name}
         li.nav-item.col-3
@@ -215,7 +215,7 @@ include includes/navigation
       p workout name
     #modal_times
       input#input_num(type='number' name='' min='1')
-      #times
+      #times.HOME_times
         p time
     #modal_back
       p back
@@ -291,7 +291,7 @@ script(type='text/javascript').
   });
   });
   });
-script(src='javascripts/workout.js')
+//- script(src='javascripts/workout.js')
 
 script(src='javascripts/javascript.js')
 script(src='javascripts/login.js')

@@ -430,3 +430,8 @@
     background-color: #f3fff7;
     color:#82A3A3;
 }
+.totalPose{
+    position: absolute;
+    width: 100%;
+    left: -10%;
+}

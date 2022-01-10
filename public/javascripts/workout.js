@@ -144,22 +144,7 @@ function newList(data, i, end) {
                 </div>
             </div>`
     $('.card_row' + col_num).append(tmp);
-    // const workout_modal=`
 
-    // `;
-    // $('body').append(workout_modal)
-
-    // $('div.card.border-GreenLake').click(function () {
-    //     // console.log($(this).find(data._id))
-    //     console.log(1)
-        // $('workoutModalID').removeClass('fade')
-        // $('workoutModalID').css('z-index','1000')
-        // var itemId = $(this).attr('id');
-        // const tmp = $(this).parent().find('a.nav-link>p');
-        // var img_id=tmp.attr('id').split('see_times')[1]
-        // console.log(img_id)
-
-    // })
 }
 function showModal(_ID,describe)
 {

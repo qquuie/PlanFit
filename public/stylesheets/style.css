@@ -22,7 +22,7 @@ ul.dropdown-menu {
     background-color: #1D3124;
     color: white;
 }
-div#workoutModalIDdiv,div#workoutModalID
+div#workoutModalIDdiv,div#workoutModalID,div#changePsModalDiv,div#changePsModalID
 {
     margin: 0 auto;
     margin-top: 100px;
@@ -36,4 +36,19 @@ div.modal-body
 }
 p#des{
     font-size:18px
+}
+a.changePW
+{
+    color: black;
+    cursor: pointer;
+}
+button#closeBtnPs,button#saveBtnPs {
+    background-color: #1D3124;
+    color: white;
+    margin-top: 15px;
+   
+}
+.PsModal.modal-content
+{
+    background-color: #060e0d;
 }

@@ -97,7 +97,7 @@ body
               p Back
             .btn.btn-sm.d-flex.justify-content-between.add-btn(type='button' onclick="addPose()")
               p Add
- 
+  //================================================================================================================================================
   .workOutModal.modal.fade.d-grid#workoutModalIDdiv(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
       .workOutModal.modal.fade.d-grid#workoutModalID(tabindex='-1', role='dialog', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
           .modal-dialog
@@ -113,3 +113,25 @@ body
                 p#des
               .workoutFooter.modal-footer
                   button.btn.btn-lg#closeBtnWorkout( data-mdb-target='#workoutModalID', data-mdb-toggle='modal', data-mdb-dismiss='modal') Close
+  //================================================================================================================================================
+  .changePsModal.modal.fade.d-grid#changePsModalDiv(tabindex='-1', role='dialog', data-backdrop='static', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true')
+      .changePsModal.modal.fade.d-grid#changePsModalID(tabindex='-1', role='dialog', data-keyboard='false', data-bs-keyboard='false', aria-hidden='true', style='z-index: -1;')
+          .modal-dialog
+            .PsModal.modal-content
+              .logo.row.modal-header
+                a.col.me-auto#logoImg(href='indexG')
+                  img(src='./img/LOGO.png', width='150px', height='70px', alt)
+                button.btn.col-auto#closeBtnPsImg(type='button', data-dismiss='modal', aria-label='Close')
+                  img#closeBtnImg(src='./img/close_g2.png', width='30px', height='40px', alt)
+                //  <---------------------------------signinDiv------------------------------
+              .modal-body
+                form(action = "" method = "POST")
+                  .input-group-lg.mb-3
+                    h3 Let change a new password!
+                  .input-group-lg.mb-3
+                    input.form-control#oldPw(type='password', placeholder='    | Old password')
+                  .input-group-lg.mb-3
+                    input.form-control#newPw(type='password', placeholder='    | New password')
+              .workoutFooter.modal-footer.d-grid.gap-2.d-md-flex.justify-content-md-end
+                  button.btn.btn-lg#saveBtnPs(onclick="saveNewPw()") Save you change
+                  button.btn.btn-lg#closeBtnPs(data-mdb-target='#changePsModalID', data-mdb-toggle='modal', data-mdb-dismiss='modal') Close

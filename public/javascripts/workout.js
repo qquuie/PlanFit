@@ -119,13 +119,8 @@ function newList(data, i, end) {
                                 <img class="workoutFolder" src="img/icon_folder.png" width="25px">
                             </a>
                         </li>
-<<<<<<< Updated upstream
                         <li class="nav-item">
                             <a class="nav-link calender"  onclick="updateposeClick('${data._id}','${data.name}')">
-=======
-                        <li class="nav-item ">
-                            <a class="nav-link calender"  onclick="updateposeClick('${data._id}')">
->>>>>>> Stashed changes
                                 <img src="img/icon_calender.png" width="20px">
                             </a>
                         </li>

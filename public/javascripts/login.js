@@ -185,6 +185,9 @@ var content = "";
 
 function infor(data) {
     $('div#edit.row').addClass('d-none');
+    var arr = JSON.parse(JSON.stringify(data).replace(/"null"/g,'""'));
+    console.log(arr)
+
     content =
         ` <div class="row information container">
 
@@ -194,7 +197,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p class='_email'>${data.email}</p>
+                <p class='_email'>${arr.email}</p>
             </div>
         </div>
         <div class="col">
@@ -203,7 +206,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p>${data.acc}</p>
+                <p>${arr.acc}</p>
             </div>
     
         </div>
@@ -213,7 +216,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p>${data.birth}</p>
+                <p>${arr.birth}</p>
             </div>
         </div>
         <div class="col">
@@ -222,7 +225,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data infor_sex">
-                <p id='sexData'>${data.sex}</p>
+                <p id='sexData'>${arr.sex}</p>
             </div>
         </div>
         <div class="col">
@@ -231,7 +234,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p>${data.height}</p>
+                <p>${arr.height}</p>
             </div>
         </div>
         <div class="col">
@@ -240,7 +243,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p>${data.weight}</p>
+                <p>${arr.weight}</p>
             </div>
     
         </div>
@@ -250,7 +253,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p>${data.age}</p>
+                <p>${arr.age}</p>
             </div>
     
         </div>
@@ -260,7 +263,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p id='#needData'>${data.needOption}</p>
+                <p id='#needData'>${arr.needOption}</p>
             </div>
         </div>
     
@@ -270,7 +273,7 @@ function infor(data) {
             </div>
     
             <div class="infor_data">
-                <p id='focusData'>${data.focusOption}</p>
+                <p id='focusData'>${arr.focusOption}</p>
             </div>
     
     
@@ -430,8 +433,7 @@ function edit() {
     $('input#heightChange').val(getCookie('height'));
     $('input#birthChange').val(getCookie('birth'));
     $('input#emailChange').val(getCookie('email'));
- 
-
+    
 
     var count = 0,
         total = 0;
@@ -575,7 +577,9 @@ function changeInfor() {
 function setCookie(cname, cvalue) {
     const d = new Date();
     d.setTime(d.getTime());
+    
     document.cookie = cname + "=" + cvalue + ";" + ";path=/";
+
 }
 
 function getCookie(cname) {
@@ -622,6 +626,10 @@ function getCookie(c_name) {
             c_end = c_value.length;
         }
         c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    if(c_value==='null')
+    {
+        c_value===" "
     }
     return c_value;
 }

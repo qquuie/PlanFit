@@ -384,6 +384,16 @@ router.post('/updateposeClick', function(req, res) {
     });
 });
 
+//workout點擊更新//後端
+router.post('/HOMEdataChoice', function(req, res) {
+    HOMEinputModel.find({
+        acc: req.body.acc,
+    }, function(err, data) {
+        res.json(data); //將資料回應給前端
+    });
+});
+
+
 router.post('/listfile', function(req, res) {
     // folderModel.find({
     //     acc: req.body.acc,
@@ -492,7 +502,7 @@ router.post('/workoutCalChoice', function(req, res) {
     calendarModel.find({
         acc: req.body.acc,
     }, function(err, data) {
-        console.log(data);
+        // console.log(data);
         res.json(data); //將資料回應給前端
     });
 });
@@ -575,7 +585,7 @@ router.post('/getindexwheel', function(req, res) {
 
 
 router.post('/HOMEgetWorkoutName', function(req, res) {
-    console.log(req.body.acc);
+    // console.log(req.body.acc);
     calendarModel.find({ //找尋相同姿勢&帳號
         acc: req.body.acc //只要找到a的資料
     }, function(err, data) {

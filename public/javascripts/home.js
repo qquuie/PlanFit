@@ -338,6 +338,106 @@ function workout_cal_choice(name) {
     });
 }
 
+// var have = [];
+// var havearr = [];
+// var num_day = [];
+
+// function workout_cal_choice(name) {
+//     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
+//     var data1 = {
+//         "acc": getCookie('username'),
+//         "title": name,
+//     };
+//     jQuery.post(api, data1, function(res) { //抓後端資料
+//         console.log(res.length);
+//         var tmp = new Array();
+//         if (res.length != 0) {
+//             same = true;
+//             for (var i = 0; i < res.length; i++) {
+//                 if (res[i].day.search(',') != -1) {
+//                     tmp = res[i].day.split(',');
+//                     for (var j = 0; j < tmp.length; j++) {
+//                         have.push(tmp[j]); //當前日期陣列的值=資料庫物件裡面日期陣列的值
+//                     }
+//                 } else {
+//                     have.push(res[i].day);
+//                 }
+//             }
+
+//             havearr = have.filter(function(ele, pos) {
+//                 return have.indexOf(ele) == pos;
+//             });
+//         }
+//     });
+
+//     var API = "http://127.0.0.1:3000/api/HOMEdataChoice"; //除非跨域
+//     var DATA = {
+//         "acc": getCookie('username'),
+//     };
+//     var totalarr = [];
+//     jQuery.post(API, DATA, function(res) {
+//         for (var i = 0; i < havearr.length; i++) {
+//             num_day[i] = 0;
+//         }
+
+//         for (var i = 0; i < havearr.length; i++) {
+//             for (var j = 0; j < have.length; j++) {
+//                 if (have[j] == havearr[i]) {
+//                     num_day[i]++;
+//                 }
+//             }
+//         }
+
+//         var n = havearr.length - 1;
+//         for (var i = 0; i < res.length; i++) {
+//             havearr.push(res[i].day);
+//         }
+//         totalarr = havearr.filter(function(ele, pos) {
+//             return havearr.indexOf(ele) == pos;
+//         });
+//         for (var i = n; i < totalarr.length; i++) {
+//             num_day[i] = 0;
+//         }
+//         console.log(totalarr);
+//         console.log(num_day);
+
+//         for (var i = 0; i < res.length; i++) {
+//             for (var j = 0; j < totalarr.length; j++) {
+//                 if (res[i].day == totalarr[j]) {
+//                     if (res[i].inputS.search(',') != -1) {
+//                         var sth = res[i].inputS.split(',');
+//                         num_day[j] += sth.length;
+//                     } else {
+//                         num_day[j]++;
+//                     }
+//                 }
+//             }
+//         }
+//         console.log(num_day);
+
+//         var Days = document.getElementsByTagName("td");
+//         console.log(Days);
+
+//         for (var k = 0; k <= 41; k++) {
+//             for (var j = 0; j < totalarr.length; j++) {
+//                 if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+//                     if (num_day[j] <= 3) {
+//                         $(Days[k]).addClass("have_s");
+//                     } else if (num_day[j] > 3 && num_day[j] < 7) {
+//                         $(Days[k]).addClass("have_m");
+//                     } else {
+//                         $(Days[k]).addClass("have_h");
+//                     }
+//                     break;
+//                 }
+//             }
+//         }
+//     });
+//     have = [];
+//     havearr = [];
+//     num_day = [];
+// }
+
 
 
 //----------------------------------------按下日期格子----------------------------------
@@ -572,15 +672,15 @@ $(document).ready(function() {
                     sth[0] = res[0].inputS;
                 }
                 for (var i = 0; i < sth.length; i++) {
-                    if (res[i].inputS != "") {
-                        var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
+                    // if (res[i].inputS != "") {
+                    var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
                                         <div class="HOME_item_name">
                                             ${sth[i]}
                                         </div>
                                         <div class="HOME_item_delete" onclick="HOMEdel('${sth[i]}','1','0')">X</div>
-                                    </div>`
-                        $("#HOME_div_block").append(HOMEdiv);
-                    }
+                                    </div>`;
+                    $("#HOME_div_block").append(HOMEdiv);
+                    // }
                 }
             }
         });

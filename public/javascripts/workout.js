@@ -225,13 +225,14 @@ function getUserCal() {
 var have = [];
 
 function workout_cal_choice(name) {
-    var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
+    if (getCookie("username") == null)
+        var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
         "acc": getCookie('username'),
         // "title": name,
     };
     jQuery.post(api, data1, function(res) { //抓後端資料
-        console.log(res.length);
+        // console.log(res.length);
         var tmp = new Array();
         if (res.length != 0) {
             same = true;

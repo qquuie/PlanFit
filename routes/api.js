@@ -193,7 +193,7 @@ router.post('/changeInfor', function(req, res) {
 router.post('/getposeList', function(req, res) {
     if (req.body.find == 1) {
         workoutModel.find({
-            name: { $regex: req.body.pose }
+            name: { $regex: req.body.pose, $options: "$i" }
         }, function(err, data) {
             for (var i = 0; i < data.length; i++) {
                 data[i].status = true;

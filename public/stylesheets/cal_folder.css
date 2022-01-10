@@ -130,8 +130,8 @@
 
 #calendar_win {
     width: 60%;
-    height: 75%;
-    top: -10px;
+    height: 575px;
+    top: 15px;
     left: 50%;
     align-items: center;
     transform: translateX(-50%);

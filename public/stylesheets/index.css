@@ -1,10 +1,11 @@
-td:hover{
-    background-color:#82A3A3;
+td:hover {
+    background-color: #82A3A3;
     color: white;
     cursor: pointer;
     transition: 0.5s;
 }
-#HOME_div{
+
+#HOME_div {
     display: none;
     background-color: #f3f1de;
     width: 450px;
@@ -16,7 +17,8 @@ td:hover{
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0 0 0 / 50%);
 }
-#HOME_div_close{
+
+#HOME_div_close {
     width: 30px;
     position: absolute;
     top: 10px;
@@ -27,7 +29,8 @@ td:hover{
     cursor: pointer;
     touch-action: manipulation;
 }
-#HOME_div_block{
+
+#HOME_div_block {
     width: 80%;
     height: 60%;
     position: relative;
@@ -35,6 +38,7 @@ td:hover{
     top: 15%;
     overflow-y: scroll;
 }
+
 .HOME_item {
     width: 100%;
     height: 20%;
@@ -43,6 +47,7 @@ td:hover{
     border-radius: 4px;
     /*上下 左右*/
 }
+
 .HOME_item_name {
     float: left;
     color: #82A3A3;
@@ -52,13 +57,34 @@ td:hover{
     font-size: 20px;
     padding: 4%
 }
-.HOME_item_delete{
+
+.HOME_item_delete {
     float: right;
     color: #82A3A3;
     font-size: 20px;
     padding: 5px;
     cursor: pointer;
-    transition: 0.5s;
+    /* transition: 0.5s; */
+    width: 10px;
+    position: relative;
+    left: -18px;
+    top: -1px;
+}
+
+.HOME_item_update {
+    float: right;
+    color: #82A3A3;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    /* transition: 0.5s; */
+    width: 16px;
+    height: 16px;
+    top: 39px;
+    position: relative;
+    /* left: -3px; */
+    background-image: url("../img/write.png");
+    background-size: cover;
 }
 
 #HOME_item_add {
@@ -78,7 +104,7 @@ td:hover{
     transition: 0.5s;
 }
 
-#HOME_model{
+#HOME_model {
     display: none;
     background-color: #f3f1de;
     width: 450px;
@@ -90,7 +116,8 @@ td:hover{
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0 0 0 / 50%);
 }
-#HOME_model_title{
+
+#HOME_model_title {
     position: relative;
     top: 5%;
     padding: 2px;
@@ -100,7 +127,8 @@ td:hover{
     text-align: center;
     color: #bacec1;
 }
-#HOME_sth_add{
+
+#HOME_sth_add {
     background-color: #bacec1;
     color: white;
     position: relative;
@@ -115,7 +143,8 @@ td:hover{
     left: -10%;
     transition: 0.5s;
 }
-#HOME_sth_back{
+
+#HOME_sth_back {
     background-color: #bacec1;
     color: white;
     position: relative;
@@ -130,7 +159,8 @@ td:hover{
     left: 10%;
     transition: 0.5s;
 }
-#HOME_sth_input{
+
+#HOME_sth_input {
     padding: 10px;
     margin: 6px 10px;
     position: relative;
@@ -145,15 +175,20 @@ td:hover{
     transition: 0.5s;
     color: #82A3A3;
 }
-#HOME_sth_input:focus{
+
+#HOME_sth_input:focus {
     color: #f3f1de;
     background-color: #82A3A3;
 }
-#HOME_sth_back:hover,#HOME_sth_add:hover,#HOME_item_add:hover{
+
+#HOME_sth_back:hover,
+#HOME_sth_add:hover,
+#HOME_item_add:hover {
     color: #52795e;
     background-color: #82A3A3;
     cursor: pointer;
 }
+
 
 /* .text-GreenLake {
     color: #82A3A3;
@@ -222,7 +257,7 @@ td:hover{
     left: 10%;
     top: 15%;
     overflow-y: scroll;
-} 
+}
 
 
 /* .folder_workout {
@@ -416,9 +451,11 @@ td:hover{
 #Next {
     left: 70%;
 }
-#All:hover,#Next:hover{
+
+#All:hover,
+#Next:hover {
     background-color: #f3fff7;
-    color:#82A3A3;
+    color: #82A3A3;
 }
 
 
@@ -747,7 +784,8 @@ td:hover{
 .home_cal {
     height: 30%;
 }
-.HOME_cal{
+
+.HOME_cal {
     height: 30%;
 }
 

@@ -43,33 +43,33 @@ router.post('/HOMEinputNew', function (req, res) {
 });
 
 router.post('/removeCal', function(req, res) {
-    calendarModel.find({
-        title: req.body.inputS,
+    calendarModel.findOne({
+        // title: req.body.inputS,
         acc: req.body.acc
     }, function(err, data) {
-        if (data[0].day.search(',') != -1) {
-            var sth = data[0].day.split(',');
-            for (let value of sth) {
-                if (value == req.body.day) {
-                    var ind = sth.indexOf(req.body.day);
-                    sth.splice(ind, 1);
-                    data[0].day = sth.toString();
-                    break;
-                }
-            }
-        } else {
-            data[0].day = '';
+        console.log(date, 49);
+        // if (data[0].day.search(',') != -1) {
+        //     var sth = data[0].day.split(',');
+        //     for (let value of sth) {
+        //         if (value == req.body.day) {
+        //             var ind = sth.indexOf(req.body.day);
+        //             sth.splice(ind, 1);
+        //             data[0].day = sth.toString();
+        //             break;
+        //         }
+        //     }
+        // } else {
+        //     data[0].day = '';
+        // }
+        // data[0].save(function(err) {
+        if (err) {
+            console.log(err);
         }
-        data[0].save(function(err) {
-            if (err) {
-                console.log(err);
-            }
-        });
+        // });
     });
 });
 
 router.post('/del', function(req, res) {
-    console.log(46);
     if (req.body.type == 1) {
         HOMEinputModel.deleteOne({ inputS: '' }, function(err, data) {
             if (err) {
@@ -496,7 +496,7 @@ router.post('/getUserCal', function (req, res) {
         acc: req.body.acc
     }, function (err, data) {
         res.json(data); //將資料回應給前端
-        console.log(data);
+        // console.log(data);
     });
 });
 

@@ -167,7 +167,7 @@ function removeFolder(data) {
         'title': data
     };
     jQuery.post(api, acc, function(res) {
-        
+
     });
 }
 
@@ -333,9 +333,9 @@ function compareFloder_i(file) {
         return file.indexOf(ele) == pos;
     });
     var pose = document.getElementById("pose_name").innerText;
-    for (var j = 0; j < p.length; j++) {
+    // for (var j = 0; j < p.length; j++) {
 
-    }
+    // }
     for (var i = 0; i < filteredArray.length; i++) {
         newFolder_i(filteredArray[i]);
     }

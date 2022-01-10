@@ -67,12 +67,14 @@ function getMonthName(month) {
 
 // ----------------------------------標題年月-----------------------------------//
 function updateDates() {
+    console.log("updateDates");
     //新增一個Date物件，命名為today
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
 }
 
 function previousMonth() {
+
     $(".cal").removeClass("important"); //先把效果清除
     $(".HOME_cal").removeClass("important"); //先把效果清除
     thisMonth--;
@@ -83,7 +85,7 @@ function previousMonth() {
 
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
-    let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+    // let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     fillInMonth(thisYear, thisMonth, thisDate);
 
     var Days = document.getElementsByClassName("cal");
@@ -206,11 +208,6 @@ function fillInMonth(thisYear, thisMonth, thisDate) {
 // ----------------------------------月曆按鈕按下-----------------------------------//
 
 function Nextdialog() {
-    // $("#modal_block").show();
-    // $("#cal_win").hide();
-    // $("#modal_workout_name p").text(workout_sth_c);
-    // console.log(workout_sth_c);
-    // //$("#calendar_win").hide();
     if (choice_d.length == 0) { //未選擇日期
         alert("No date selected");
     } else {
@@ -226,6 +223,7 @@ function Alldialog() {
     //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
     for (var i = 0; i <= 41; i++) {
         for (var j = 0; j < choice_d.length; j++) {
+            // $(Days[i]).attr("data-uid")//在這裡更改當月
             if ($(Days[i]).attr("data-uid") == choice_d[j]) {
                 //choice_d[j]從陣列中移除
                 choice_d.splice(j, 1);
@@ -244,23 +242,10 @@ function Alldialog() {
     }
 }
 
-$("#modal_back").click(function() {
-    //$("#calendar_win").show();
-    $("#cal_win").show();
-    $("#modal_block").hide();
-});
-$("#modal_OK").click(function() {
-    $("#modal_block").hide();
-    $(".cal").removeClass("important");
-});
 
-$("#cal_close").click(function() {
-    $("#cal_win").hide();
-    //$("#calendar_win").hide();
-});
 /*--------------------------------------以下為要存的資料------------------------------*/
 
-getUserCal(); //User一開始登入的日曆
+// getUserCal(); //User一開始登入的日曆
 
 //User一開始登入的日曆
 function getUserCal() {
@@ -357,7 +342,7 @@ function workout_cal_choice(name) {
 
 //----------------------------------------按下日期格子----------------------------------
 $('.cal').click(function() {
-
+    console.log(360);
     change = true;
     choice = $(this).attr("data-uid");
     for (let value of choice_d) {
@@ -496,13 +481,13 @@ $("#modal_OK").click(function() {
 
 //----------------------------------------------------------------------------
 var choice_home_cal; //
-var homecalID; //首頁表格
+// var homecalID; //首頁表格
 var choiceDayWorkout = []; //物件陣列，物件裡放運動名稱
 var choiceDay; //點擊的日期
 var data_input = "";
 var dataDay = [];
 
-HOMEgetWorkoutName();
+// HOMEgetWorkoutName();
 
 function HOMEgetWorkoutName() {
     var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
@@ -524,70 +509,134 @@ function HOMEgetWorkoutName() {
     });
 }
 
-
-
-$(".HOME_cal").click(function() {
-    $("#HOME_div").show();
-    if ($(this).hasClass("important") == false) {
-        $(".HOME_cal").removeClass("important");
-        choice_home_cal = $(this).attr("data-uid");
-        homecalID = $(this).attr("data-uid"); //哪一格
-        $(this).addClass("important");
-    }
-
-    var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
-    var data = {
-        acc: getCookie('username')
-    };
-
-    choiceDay = $(this).attr("data-uid"); //請放在jQuery.post外面才能讀數值!!!
-    jQuery.post(api, data, function(res) { //抓後端資料
-        dataWorkout = ""; //要先清空
-        $(".HOME_item").remove(); //要先清空
-        for (var i = 0; i < res.length; i++) {
-            if (res[i].day.search(choiceDay) != -1) {
-                var sth = res[i].title + " " + res[i].times + " " + res[i].times_status;
-                var title = res[i].title.split(' ');
-                var titleArr = "";
-                for (var j = 0; j < title.length; j++) {
-                    titleArr += title[j];
+$(document).ready(function() {
+    $(".HOME_cal").click(function() {
+        $("#HOME_div").show();
+        if ($(this).hasClass("important") == false) {
+            $(".HOME_cal").removeClass("important");
+            choice_home_cal = $(this).attr("data-uid");
+            // homecalID = $(this).attr("data-uid"); //哪一格
+            $(this).addClass("important");
+        }
+        var api = "http://127.0.0.1:3000/api/HOMEgetWorkoutName";
+        var data = {
+            acc: getCookie('username')
+        };
+        choiceDay = $(this).attr("data-uid"); //請放在jQuery.post外面才能讀數值!!!
+        jQuery.post(api, data, function(res) { //抓後端資料
+            dataWorkout = ""; //要先清空
+            // $("#HOME_div_block").empty(); //要先清空
+            for (var i = 0; i < res.length; i++) {
+                if (res[i].day.search(choiceDay) != -1) {
+                    var sth = res[i].title + " " + res[i].times + " " + res[i].times_status;
+                    // var title = res[i].title.split(' ');
+                    // var titleArr = "";
+                    // for (var j = 0; j < title.length; j++) {
+                    //     titleArr += title[j];
+                    // }
+                    var HOMEdiv = `  <div class="HOME_item i${i}">
+                                        <input type="text" value="${res[i].title}" class="col-6 no-border" onlydata>
+                                        <input type="text" value="${res[i].times}" class="col-1 no-border" onlydata>
+                                        <input type="text" value="${res[i].times_status}" class="col-2 no-border" onlydata>
+                                        <div class="HOME_item_delete col-2" onclick="HOMEdel('i${i}','2','${sth}')">X</div>
+                                        <div class="HOME_item_update col-2" onclick="HOMEupdate()"></div>
+                                    </div>`
+                    $("#HOME_div_block").append(HOMEdiv);
+                    // <div class="HOME_item_name">
+                    //                         ${sth}
+                    //                     </div>
                 }
-                var HOMEdiv = `  <div class="HOME_item i${i}">
-                                    <div class="HOME_item_name">
-                                        ${sth}
-                                    </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel('i${i}','2','${res[i].title}')">X</div>
-                                </div>`
-                $("#HOME_div_block").append(HOMEdiv);
             }
-        }
+        });
+        var API = "http://127.0.0.1:3000/api/HOMEload";
+        var Data = {
+            acc: getCookie('username'),
+            day: choiceDay
+        };
+        jQuery.post(API, Data, function(res) { //抓後端資料
+            var sth = [];
+            if (res.length > 0) { //該日期有資料
+                if (res[0].inputS.search(',') != -1) {
+                    sth = res[0].inputS.split(',');
+                } else {
+                    sth[0] = res[0].inputS;
+                }
+                for (var i = 0; i < sth.length; i++) {
+                    var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
+                                        <div class="HOME_item_name">
+                                            ${sth[i]}
+                                        </div>
+                                        <div class="HOME_item_delete" onclick="HOMEdel('${sth[i]}','1','0')">X</div>
+                                    </div>`
+                    $("#HOME_div_block").append(HOMEdiv);
+                }
+            }
+        });
     });
+    $("#modal_back").click(function() {
+        console.log("#modal_back");
+        //$("#calendar_win").show();
+        $("#cal_win").show();
+        $("#modal_block").hide();
+    });
+    $("#modal_OK").click(function() {
+        console.log("#modal_OK");
+        $("#modal_block").hide();
+        $(".cal").removeClass("important");
+    });
+    $("#cal_close").click(function() {
+        console.log("#cal_close");
 
-    var API = "http://127.0.0.1:3000/api/HOMEload";
-    var Data = {
-        acc: getCookie('username'),
-        day: choiceDay
-    };
-    jQuery.post(API, Data, function(res) { //抓後端資料
-        var sth = [];
-        if (res.length > 0) { //該日期有資料
-            if (res[0].inputS.search(',') != -1) {
-                sth = res[0].inputS.split(',');
-            } else {
-                sth[0] = res[0].inputS;
-            }
-            for (var i = 0; i < sth.length; i++) {
-                var HOMEdiv = `  <div class="HOME_item ${sth[i]}">
-                                    <div class="HOME_item_name">
-                                        ${sth[i]}
-                                    </div>
-                                    <div class="HOME_item_delete" onclick="HOMEdel('${sth[i]}','1','0')">X</div>
-                                </div>`
-                $("#HOME_div_block").append(HOMEdiv);
-            }
-        }
+        $("#cal_win").hide();
+        //$("#calendar_win").hide();
+    });
+    //按下back
+    $("#HOME_sth_back").click(function() {
+        $("#HOME_div").show();
+        $("#HOME_model").hide();
+    });
+    //按下X
+    $("#HOME_div_close").click(function() {
+        $("#HOME_div_block").empty(); //清空
+        $("#HOME_div").hide();
     });
 });
+
+function HOMEupdate() {
+    console.log(1);
+}
+
+
+function HOMEdel(HOMEinput, ind, title) {
+    console.log("HOMEdel");
+    console.log(HOMEinput, ind, title);
+    $('.' + HOMEinput).remove();
+    if (ind == '1') {
+        var api = "http://127.0.0.1:3000/api/removeHOME";
+        var data = {
+            acc: getCookie('username'),
+            day: choiceDay,
+            inputS: HOMEinput
+        };
+        jQuery.post(api, data, function(res) {});
+        del(1);
+    } else {
+        var api1 = "http://127.0.0.1:3000/api/removeCal";
+        var sth = title.split(' ')
+        var data1 = {
+            acc: getCookie('username'),
+            day: choiceDay,
+            inputS: title,
+            // times: sth[1],
+            // times_status: sth[2]
+        };
+        console.log(data1);
+        jQuery.post(api1, data1, function(res) {});
+        // del(2);
+    }
+}
+
+
 //按下add else +
 $("#HOME_item_add").click(function() {
     $("#HOME_model").show();
@@ -623,39 +672,8 @@ $("#HOME_sth_add").click(function() {
 });
 
 
-//按下back
-$("#HOME_sth_back").click(function() {
-    $("#HOME_div").show();
-    $("#HOME_model").hide();
-});
-//按下X
-$("#HOME_div_close").click(function() {
-    $("#HOME_div_block").empty(); //清空
-    $("#HOME_div").hide();
-});
+
 //按下刪除資料按鍵
-function HOMEdel(HOMEinput, ind, title) {
-    $('.' + HOMEinput).remove();
-    if (ind == '1') {
-        var api = "http://127.0.0.1:3000/api/removeHOME";
-        var data = {
-            acc: getCookie('username'),
-            day: choiceDay,
-            inputS: HOMEinput
-        };
-        jQuery.post(api, data, function(res) {});
-        del(1);
-    } else {
-        var api = "http://127.0.0.1:3000/api/removeCal";
-        var data = {
-            acc: getCookie('username'),
-            day: choiceDay,
-            inputS: title
-        };
-        jQuery.post(api, data, function(res) {});
-        del(2);
-    }
-}
 
 function del(type) {
     var api = "http://127.0.0.1:3000/api/del";

@@ -142,15 +142,15 @@ function newList(data, i, end) {
     $('.card_row' + col_num).append(tmp);
 
 }
-function showModal(_ID,describe)
-{
+
+function showModal(_ID, describe) {
     console.log(_ID)
     console.log(describe)
 
     $('#workoutModalIDdiv').removeClass('fade')
     $('#workoutModalID').removeClass('fade')
-    $('#workoutModalIDdiv').css('z-index','1050')
-    $('#workoutModalID').css('z-index','1050')
+    $('#workoutModalIDdiv').css('z-index', '1050')
+    $('#workoutModalID').css('z-index', '1050')
     $("div#workoutModalID").modal("toggle");
     $('div.modal-body>p').html(describe);
 

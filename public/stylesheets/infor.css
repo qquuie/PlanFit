@@ -86,5 +86,7 @@ button.btn:focus {
 }
 
 .card-text>li {
-    /* color: #172c1e; */
+    color: #172c1e;
+    font-size: 17px;
+    font-weight: 1000;
 }

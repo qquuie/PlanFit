@@ -323,7 +323,7 @@ function workout_cal_choice(name) {
                     if ($(Days[k]).attr("data-uid") == havearr[j]) {
                         if (num_day[j] <= 3) {
                             $(Days[k]).addClass("have_s");
-                        } else if (num_day[j] > 3 && num_day[j] < 8) {
+                        } else if (num_day[j] > 3 && num_day[j] < 7) {
                             $(Days[k]).addClass("have_m");
                         } else {
                             $(Days[k]).addClass("have_h");
@@ -406,24 +406,29 @@ $('.cal').click(function() {
 // });
 //紀錄運動名稱
 $(".calender").click(function() {
-    workout_sth_c = $("#pose_name").text();
-    $("#cal_win").show();
     if (getCookie('username') == null) {
-        alert("Sign in! Please!!");
+        PleaseSign();
+    } else {
+        workout_sth_c = $("#pose_name").text();
+        $("#cal_win").show();
+        if (getCookie('username') == null) {
+            alert("Sign in! Please!!");
+        }
+        $("#cal_win").show(); //顯示視窗
+        same = false; //判斷是否有存取過該運動
+        var Days = document.getElementsByTagName("td");
+        for (var j = 0; j < Days.length; j++) {
+            $(Days[j]).removeClass("important");
+            $(Days[j]).removeClass("have_s");
+            $(Days[j]).removeClass("have_m");
+            $(Days[j]).removeClass("have_h");
+        }
+        workout_cal_choice(workout_sth_c);
+        //----------------------------------------------------------------//
+        window.localStorage.setItem('newpose', workout_sth_c);
     }
-    $("#cal_win").show(); //顯示視窗
-    same = false; //判斷是否有存取過該運動
-    var Days = document.getElementsByTagName("td");
-    for (var j = 0; j < Days.length; j++) {
-        $(Days[j]).removeClass("important");
-        $(Days[j]).removeClass("have_s");
-        $(Days[j]).removeClass("have_m");
-        $(Days[j]).removeClass("have_h");
-    }
-    workout_cal_choice(workout_sth_c);
-    //----------------------------------------------------------------//
-    window.localStorage.setItem('newpose', workout_sth_c);
 });
+
 $("#modal_OK").click(function() {
     var $ff = $(this).parent(); //input
     workout_times = $ff.find("#input_num").val();

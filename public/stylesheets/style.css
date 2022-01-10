@@ -22,33 +22,40 @@ ul.dropdown-menu {
     background-color: #1D3124;
     color: white;
 }
-div#workoutModalIDdiv,div#workoutModalID,div#changePsModalDiv,div#changePsModalID
-{
+
+div#workoutModalIDdiv,
+div#workoutModalID,
+div#changePsModalDiv,
+div#changePsModalID {
     margin: 0 auto;
     margin-top: 100px;
 }
-h1#how{
+
+h1#how {
     margin-top: 0px;
 }
-div.modal-body
-{
+
+div.modal-body {
     padding: 0 30px;
 }
-p#des{
-    font-size:18px
+
+p#des {
+    font-size: 18px
 }
-a.changePW
-{
+
+a.changePW {
     color: black;
     cursor: pointer;
+    width: 300px;
 }
-button#closeBtnPs,button#saveBtnPs {
+
+button#closeBtnPs,
+button#saveBtnPs {
     background-color: #1D3124;
     color: white;
     margin-top: 15px;
-   
 }
-.PsModal.modal-content
-{
+
+.PsModal.modal-content {
     background-color: #060e0d;
 }

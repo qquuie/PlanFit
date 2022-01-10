@@ -68,7 +68,7 @@ body
                 | Not a member yet?
                 button.btn#joinUs(href, data-mdb-target='#inputFormID1', data-mdb-toggle='modal', data-mdb-dismiss='modal') Join Us
           //  <---------------------------------signUpDiv1------------------------------  
-          .inputForm1.modal-body#inputFormID1
+          .inputForm2.modal-body
             form(action="addUser")
               .mb-3
                 h1 Which part should you focus on?
@@ -93,12 +93,12 @@ body
                   label.btn(for='signUpButt') Butts
             .nextDiv3.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
-              button.btn.btn-lg#nextBtn3 Next
+              button.btn.btn-lg#nextBtn Next
               p
                 | Already a member?
                 button.btn#signInBack Sign In
           //  <---------------------------------signUpDiv2------------------------------  
-          .inputForm2.modal-body
+          .inputForm1.modal-body#inputFormID1
             form(action="addUser")
               .input-group-lg.mb-3
                 h3 Welcome to join us
@@ -117,7 +117,7 @@ body
                 label.btn(for='signUpMale') Male
             .nextDiv.modal-footer
               p By creating an account, you agree to planFit's Private policy and Terms of us
-              button.btn.btn-lg#nextBtn() Next
+              button.btn.btn-lg#nextBtn3() Next
               p
                 | Already a member?
                 button.btn#signInBack Sign In

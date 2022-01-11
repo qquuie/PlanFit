@@ -222,9 +222,9 @@ function getUserCal() {
 
 }
 
-var have = [];
-var havearr = [];
-var num_day = [];
+// var have = [];
+// var havearr = [];
+// var num_day = [];
 
 function workout_cal_choice(name) {
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
@@ -474,6 +474,7 @@ $("#modal_OK").click(function() {
 $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
 $(".calender").click(function() {
+    console.log(1);
     $("#calendar_win").show();
     $("#calendar_win").css({
         "display": "flex",

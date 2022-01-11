@@ -67,10 +67,11 @@ function getMonthName(month) {
 
 // ----------------------------------標題年月-----------------------------------//
 function updateDates() {
-    console.log("updateDates");
     //新增一個Date物件，命名為today
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    workout_cal_choiceH();
+
 }
 
 function previousMonth() {
@@ -126,7 +127,6 @@ function previousMonth() {
 }
 
 function previousMonthH() {
-    console.log(1);
     $(".cal").removeClass("important"); //先把效果清除
     $(".HOME_cal").removeClass("important"); //先把效果清除
     thisMonthH--;
@@ -432,116 +432,33 @@ var havearr = [];
 var num_day = [];
 var totalarr = [];
 
+function init() {
+    var Days = document.getElementsByClassName("cal");
 
-// function workout_cal_choice(name) {
-//     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
-//     var data = {
-//         "acc": getCookie('username'),
-//         "title": name,
-//     };
-//     jQuery.post(api, data, function(res) { //抓後端資料
-//         console.log(res.length);
-//         var tmp = new Array();
-//         if (res.length != 0) {
-//             same = true;
-//             for (var i = 0; i < res.length; i++) {
-//                 if (res[i].day.search(',') != -1) {
-//                     tmp = res[i].day.split(',');
-//                     for (var j = 0; j < tmp.length; j++) {
-//                         have.push(tmp[j]); //當前日期陣列的值=資料庫物件裡面日期陣列的值
-//                     }
-//                 } else {
-//                     have.push(res[i].day);
-//                 }
-//             }
+    for (var k = 0; k <= 41; k++) {
+        $(Days[k]).removeClass("have_s");
+        $(Days[k]).removeClass("have_m");
+        $(Days[k]).removeClass("have_h");
+    }
 
-//             havearr = have.filter(function(ele, pos) {
-//                 return have.indexOf(ele) == pos;
-//             });
-//         }
-//     });
+    Days = document.getElementsByTagName("td");
 
-//     var api1 = "http://127.0.0.1:3000/api/HOMEdataChoice"; //除非跨域
-//     var data1 = {
-//         "acc": getCookie('username'),
-//     };
-//     var totalarr = [];
-//     jQuery.post(api1, data1, function(res) {
-//         for (var i = 0; i < havearr.length; i++) {
-//             num_day[i] = 0;
-//         }
-
-//         for (var i = 0; i < havearr.length; i++) {
-//             for (var j = 0; j < have.length; j++) {
-//                 if (have[j] == havearr[i]) {
-//                     num_day[i]++;
-//                 }
-//             }
-//         }
-
-//         var n = havearr.length - 1;
-//         for (var i = 0; i < res.length; i++) {
-//             havearr.push(res[i].day);
-//         }
-//         totalarr = havearr.filter(function(ele, pos) {
-//             return havearr.indexOf(ele) == pos;
-//         });
-//         for (var i = n; i < totalarr.length; i++) {
-//             num_day[i] = 0;
-//         }
-//         console.log(totalarr);
-//         console.log(num_day);
-
-//         for (var i = 0; i < res.length; i++) {
-//             for (var j = 0; j < totalarr.length; j++) {
-//                 if (res[i].day == totalarr[j]) {
-//                     if (res[i].inputS.search(',') != -1) {
-//                         var sth = res[i].inputS.split(',');
-//                         num_day[j] += sth.length;
-//                     } else {
-//                         num_day[j]++;
-//                     }
-//                 }
-//             }
-//         }
-//         console.log(num_day);
-
-//         var Days = document.getElementsByTagName("cal");
-//         console.log(Days);
-
-//         for (var k = 0; k <= 41; k++) {
-//             for (var j = 0; j < totalarr.length; j++) {
-//                 if ($(Days[k]).attr("data-uid") == totalarr[j]) {
-//                     if (num_day[j] <= 3) {
-//                         $(Days[k]).addClass("have_s");
-//                     } else if (num_day[j] > 3 && num_day[j] < 7) {
-//                         $(Days[k]).addClass("have_m");
-//                     } else {
-//                         $(Days[k]).addClass("have_h");
-//                     }
-//                     break;
-//                 }
-//             }
-//         }
-//     });
-//     // totalarr = [];
-//     have = [];
-//     havearr = [];
-//     num_day = [];
-// }
-
-// var have = [];
-// var havearr = [];
-// var num_day = [];
-
+    for (var k = 0; k <= 41; k++) {
+        $(Days[k]).removeClass("have_s");
+        $(Days[k]).removeClass("have_m");
+        $(Days[k]).removeClass("have_h");
+    }
+}
 
 function workout_cal_choiceH() {
+
+    init();
+
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data = {
         "acc": getCookie('username'),
     };
     jQuery.post(api, data, function(res) { //抓後端資料
-        console.log(res.length);
         var tmp = new Array();
         if (res.length != 0) {
             same = true;
@@ -589,8 +506,6 @@ function workout_cal_choiceH() {
         for (var i = n; i < totalarr.length; i++) {
             num_day[i] = 0;
         }
-        console.log(totalarr);
-        console.log(num_day);
 
         for (var i = 0; i < res.length; i++) {
             for (var j = 0; j < totalarr.length; j++) {
@@ -604,10 +519,25 @@ function workout_cal_choiceH() {
                 }
             }
         }
-        console.log(num_day);
 
         var Days = document.getElementsByClassName("cal");
-        console.log(Days);
+
+        for (var k = 0; k <= 41; k++) {
+            for (var j = 0; j < totalarr.length; j++) {
+                if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                    if (num_day[j] <= 3) {
+                        $(Days[k]).addClass("have_s");
+                    } else if (num_day[j] > 3 && num_day[j] < 7) {
+                        $(Days[k]).addClass("have_m");
+                    } else {
+                        $(Days[k]).addClass("have_h");
+                    }
+                    break;
+                }
+            }
+        }
+
+        Days = document.getElementsByTagName("td");
 
         for (var k = 0; k <= 41; k++) {
             for (var j = 0; j < totalarr.length; j++) {
@@ -696,7 +626,6 @@ $('.cal').click(function() {
 //     }
 // });
 //紀錄運動名稱
-workout_cal_choiceH();
 
 $(".calender").click(function() {
     console.log(1);
@@ -911,10 +840,6 @@ $(document).ready(function() {
     $(".no-border").addClass('d-none');
 });
 
-function HOMEupdate() {
-    console.log(1);
-}
-
 
 function HOMEdel(HOMEinput, ind, title) {
     $('.' + HOMEinput).remove();
@@ -977,6 +902,7 @@ $("#HOME_sth_add").click(function() {
         $("#HOME_div").show();
     }
     $("#HOME_sth_input").val("");
+    workout_cal_choiceH();
 });
 
 

@@ -850,7 +850,6 @@ function HOMEdel(HOMEinput, ind, title) {
             day: choiceDay,
             inputS: HOMEinput
         };
-        console.log(data);
         jQuery.post(api, data, function(res) {});
         del(1);
     } else {
@@ -866,6 +865,7 @@ function HOMEdel(HOMEinput, ind, title) {
         jQuery.post(api1, data1, function(res) {});
         del(2);
     }
+    workout_cal_choiceH();
 }
 
 
@@ -914,7 +914,10 @@ function del(type) {
     var data = {
         type: type
     };
-    jQuery.post(api, data, function(res) {});
+    console.log(1);
+    jQuery.post(api, data, function(res) {
+        console.log(res);
+    });
 }
 
 function PleaseSign() {

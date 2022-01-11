@@ -332,8 +332,8 @@ td:hover {
 #cal_win {
     display: none;
     background-color: #f3f1de;
-    width: 50vw;
-    height: 50vw;
+    width: 50%;
+    height: 600px;
     margin: 0 auto;
     left: 25%;
     position: absolute;

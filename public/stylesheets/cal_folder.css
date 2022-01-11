@@ -44,13 +44,15 @@
     display: none;
     background-color: #f3f1de;
     position: absolute;
-    width: 80%;
-    height: 700px;
+    width: 70%;
+    height: 600px;
     top: 100px;
-    left: 35%;
+    left: 40%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
+    align-items: center;
+    transform: translateX(-50%);
 }
 
 #folder_close {
@@ -140,15 +142,7 @@
 
 /*------------------------------------------------日曆視窗---------------------------------------------*/
 
-#calendar_win {
-    width: 60%;
-    height: 575px;
-    top: 15px;
-    left: 50%;
-    align-items: center;
-    transform: translateX(-50%);
-    color: #f3f1de;
-}
+
 
 #calender_close {
     /* width: 30px;
@@ -218,14 +212,14 @@
 }
 
 #calendar_win tbody td {
-    height: 5vw;
-    width: 5vw;
+    height: 5%;
+    width: 5%;
     font-size: 1.5vw;
     font-weight: 500;
     vertical-align: top;
     padding: 0.5vw;
     border: 1px solid #82A3A3;
-    transition: font-size 0.6s ease;
+    transition: 0.6s ease;
 }
 
 #calendar_win tbody td:hover {
@@ -290,7 +284,7 @@
     height: 300px;
     position: absolute;
     top: 100px;
-    left: 35%;
+    left: 30%;
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;

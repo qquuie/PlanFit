@@ -583,7 +583,7 @@ $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
 $(".calender").click(function() {
     console.log(1);
-    $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    // $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#calendar_win").show();
     $("#calendar_win").css({
         "display": "flex",

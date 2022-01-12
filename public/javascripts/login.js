@@ -62,7 +62,7 @@ function addUser() {
             'weight': weight,
             'age': age,
         };
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             if (res.status == 0) {
                 $('#signUpName').val('');
                 $('#signUpPass').val('');
@@ -107,12 +107,13 @@ function getUser() {
         jQuery.post(api, {
             'acc': id,
             'pw': pass
-        }, function (res) {
+        }, function(res) {
             if (res.status == 1) {
                 console.log(res.msg);
-                alert(res.msg)
+                alert(res.msg);
+                // window.location.href = 'index';
+                // return;
                 history.go(0);
-
             } else {
                 setCookie('username', res.data.acc)
                 setCookie('email', res.data.email)
@@ -176,7 +177,7 @@ function getInfor() {
         'age': age,
     };
     var api = "http://127.0.0.1:3000/api/getInfor";
-    jQuery.post(api, data, function (res) {
+    jQuery.post(api, data, function(res) {
         infor(data)
     });
 
@@ -185,7 +186,7 @@ var content = "";
 
 function infor(data) {
     $('div#edit.row').addClass('d-none');
-    var arr = JSON.parse(JSON.stringify(data).replace(/"null"/g,'""'));
+    var arr = JSON.parse(JSON.stringify(data).replace(/"null"/g, '""'));
     console.log(arr)
 
     content =
@@ -300,30 +301,24 @@ function saveNewPw() {
     var _old = $('input#oldPw').val();
     var _new = $('input#newPw').val();
     // alert(_old + "," + _new)
-    if(!_old||!_new)
-    {
+    if (!_old || !_new) {
         alert("Please enter both password before save")
-    }
-    else if(_old===_new)
-    {
+    } else if (_old === _new) {
         alert("Your old password and new password cannot be the same!")
 
-    }
-    else{
+    } else {
         var api = "http://127.0.0.1:3000/api/saveNewPw";
-        var data={
-            'acc':getCookie('username'),
-            'oldpw':_old,
-            'newpw':_new
+        var data = {
+            'acc': getCookie('username'),
+            'oldpw': _old,
+            'newpw': _new
         }
-       
-        jQuery.post(api, data, function (res) {
-            console.log(data,res.status);
-            if(res.status==1)
-            {
+
+        jQuery.post(api, data, function(res) {
+            console.log(data, res.status);
+            if (res.status == 1) {
                 alert(res.msg);
-            }
-            else{
+            } else {
                 alert(res.msg)
                 window.location.href = '/indexG';
             }
@@ -433,11 +428,11 @@ function edit() {
     $('input#heightChange').val(getCookie('height'));
     $('input#birthChange').val(getCookie('birth'));
     $('input#emailChange').val(getCookie('email'));
-    
+
 
     var count = 0,
         total = 0;
-    $('div.infor_data.infor_sex>label.btn').click(function () {
+    $('div.infor_data.infor_sex>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_sex').find('.active')
         if (count.length > 1) {
@@ -448,25 +443,25 @@ function edit() {
         }
 
     })
-    $('div.infor_data.infor_focus>label.btn').click(function () {
+    $('div.infor_data.infor_focus>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_focus').find('.active')
         $('div.infor_data.infor_focus>input').checked == false
 
 
     })
-    $('div.infor_data.infor_need>label.btn').click(function () {
+    $('div.infor_data.infor_need>label.btn').click(function() {
         $(this).toggleClass('active')
         count = $('div.infor_data.infor_need').find('.active')
         $('div.infor_data.infor_need>input').checked == false
 
     })
-   
+
 }
 
 function changeInfor() {
     var acc = getCookie('username');
-   
+
     var email;
     if ($('#emailChange').val() == null) {
         email = getCookie('email');
@@ -558,7 +553,7 @@ function changeInfor() {
     if (focusOption.length === 0 && needOption.length === 0 && sex.length === 0) {
         alert('Please check all the check button ')
     } else {
-        jQuery.post(api, data, function (res) {
+        jQuery.post(api, data, function(res) {
             setCookie('username', res.data.acc)
             setCookie('email', res.data.email)
             setCookie('sex', res.data.sex)
@@ -577,7 +572,7 @@ function changeInfor() {
 function setCookie(cname, cvalue) {
     const d = new Date();
     d.setTime(d.getTime());
-    
+
     document.cookie = cname + "=" + cvalue + ";" + ";path=/";
 
 }
@@ -627,9 +622,8 @@ function getCookie(c_name) {
         }
         c_value = unescape(c_value.substring(c_start, c_end));
     }
-    if(c_value==='null')
-    {
-        c_value===" "
+    if (c_value === 'null') {
+        c_value === " "
     }
     return c_value;
 }

@@ -703,6 +703,7 @@ $("#modal_OK_home").click(function() {
         }
     }
     choice_d = []; //清空陣列
+    workout_cal_choiceH();
 });
 
 

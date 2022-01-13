@@ -67,10 +67,11 @@ function getMonthName(month) {
 
 // ----------------------------------標題年月-----------------------------------//
 function updateDates() {
-    console.log("updateDates");
     //新增一個Date物件，命名為today
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    workout_cal_choiceH();
+
 }
 
 function previousMonth() {
@@ -84,7 +85,7 @@ function previousMonth() {
     }
 
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
-    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    // $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     // let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     fillInMonth(thisYear, thisMonth, thisDate);
 
@@ -100,6 +101,80 @@ function previousMonth() {
             }
         }
     }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
+}
+
+function previousMonthH() {
+    $(".cal").removeClass("important"); //先把效果清除
+    $(".HOME_cal").removeClass("important"); //先把效果清除
+    thisMonthH--;
+    if (thisMonthH === -1) {
+        thisMonthH = 11;
+        thisYearH--;
+    }
+
+    // $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonthH) + ", " + thisYearH);
+    // let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+    fillInMonth(thisYearH, thisMonthH, thisDateH);
+
+    var Days = document.getElementsByTagName("td");
+    //清空陣列再把所有data-uid的數值推入
+    //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
+    for (var i = 0; i <= 41; i++) {
+        // console.log($(Days[i]).attr("data-uid"));
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                $(Days[i]).addClass("important");
+                break;
+            }
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
 }
 
 function nextMonth() {
@@ -111,7 +186,7 @@ function nextMonth() {
         thisYear++;
     }
     $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
-    $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    // $("#home_cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     let firstDay = new Date(thisYear, thisMonth, 1).getDay();
     fillInMonth(thisYear, thisMonth, thisDate);
 
@@ -126,6 +201,80 @@ function nextMonth() {
             }
         }
     }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
+
+    // workout_cal_choiceH(window.localStorage.getItem('newpose'));
+}
+
+function nextMonthH() {
+    $(".cal").removeClass("important"); //先把效果清除
+    $(".HOME_cal").removeClass("important"); //先把效果清除
+    thisMonthH++;
+    if (thisMonthH === 12) {
+        thisMonthH = 0;
+        thisYearH++;
+    }
+    // $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
+    $("#home_cal-month").text(getMonthName(thisMonthH) + ", " + thisYearH);
+    let firstDay = new Date(thisYearH, thisMonthH, 1).getDay();
+    fillInMonth(thisYearH, thisMonthH, thisDateH);
+
+    var Days = document.getElementsByTagName("td");
+    for (var i = 0; i <= 41; i++) {
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                $(Days[i]).addClass("important");
+                break;
+            }
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
+
+    // workout_cal_choiceH(window.localStorage.getItem('newpose'));
 }
 // ----------------------------------表格日期-----------------------------------//
 function getUID(year, month, date) {
@@ -275,81 +424,41 @@ function getUserCal() {
             }
         }
     });
-
 }
 
-var have = [];
-
-// function workout_cal_choice(name) {
-//     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
-//     var data1 = {
-//         "acc": getCookie('username'),
-//         "title": name,
-//     };
-//     jQuery.post(api, data1, function(res) { //抓後端資料
-//         var tmp = new Array();
-//         if (res.length != 0) {
-//             same = true;
-//             for (var i = 0; i < res.length; i++) {
-
-//                 if (res[i].day.search(',') != -1) {
-//                     tmp = res[i].day.split(',');
-//                     for (var j = 0; j < tmp.length; j++) {
-//                         have.push(tmp[j]); //當前日期陣列的值=資料庫物件裡面日期陣列的值
-//                     }
-//                 } else {
-//                     have.push(res[i].day);
-//                 }
-//             }
-//             var havearr = have.filter(function(ele, pos) {
-//                 return have.indexOf(ele) == pos;
-//             });
-
-//             var num_day = [];
-//             for (var i = 0; i < havearr.length; i++) {
-//                 num_day[i] = 0;
-//             }
-//             for (var i = 0; i < havearr.length; i++) {
-//                 for (var j = 0; j < have.length; j++) {
-//                     if (have[j] == havearr[i]) {
-//                         num_day[i]++;
-//                     }
-//                 }
-//             }
-
-//             var Days = document.getElementsByClassName("cal");
-//             for (var k = 0; k <= 41; k++) {
-//                 for (var j = 0; j < havearr.length; j++) {
-//                     if ($(Days[k]).attr("data-uid") == havearr[j]) {
-//                         if (num_day[j] <= 3) {
-//                             $(Days[k]).addClass("have_s");
-//                         } else if (num_day[j] > 3 && num_day[j] < 7) {
-//                             $(Days[k]).addClass("have_m");
-//                         } else {
-//                             $(Days[k]).addClass("have_h");
-//                         }
-//                         break;
-//                     }
-//                 }
-//             }
-//             have = [];
-//             havearr = [];
-//         }
-//     });
-// }
 
 var have = [];
 var havearr = [];
 var num_day = [];
+var totalarr = [];
 
-function workout_cal_choiceH(name) {
+function init() {
+    var Days = document.getElementsByClassName("cal");
+
+    for (var k = 0; k <= 41; k++) {
+        $(Days[k]).removeClass("have_s");
+        $(Days[k]).removeClass("have_m");
+        $(Days[k]).removeClass("have_h");
+    }
+
+    Days = document.getElementsByTagName("td");
+
+    for (var k = 0; k <= 41; k++) {
+        $(Days[k]).removeClass("have_s");
+        $(Days[k]).removeClass("have_m");
+        $(Days[k]).removeClass("have_h");
+    }
+}
+
+function workout_cal_choiceH() {
+
+    init();
+
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data = {
         "acc": getCookie('username'),
-        "title": name,
     };
     jQuery.post(api, data, function(res) { //抓後端資料
-        console.log(res.length);
         var tmp = new Array();
         if (res.length != 0) {
             same = true;
@@ -374,7 +483,6 @@ function workout_cal_choiceH(name) {
     var data1 = {
         "acc": getCookie('username'),
     };
-    var totalarr = [];
     jQuery.post(api1, data1, function(res) {
         for (var i = 0; i < havearr.length; i++) {
             num_day[i] = 0;
@@ -398,8 +506,6 @@ function workout_cal_choiceH(name) {
         for (var i = n; i < totalarr.length; i++) {
             num_day[i] = 0;
         }
-        console.log(totalarr);
-        console.log(num_day);
 
         for (var i = 0; i < res.length; i++) {
             for (var j = 0; j < totalarr.length; j++) {
@@ -413,10 +519,25 @@ function workout_cal_choiceH(name) {
                 }
             }
         }
-        console.log(num_day);
 
-        var Days = document.getElementsByTagName("td");
-        console.log(Days);
+        var Days = document.getElementsByClassName("cal");
+
+        for (var k = 0; k <= 41; k++) {
+            for (var j = 0; j < totalarr.length; j++) {
+                if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                    if (num_day[j] <= 3) {
+                        $(Days[k]).addClass("have_s");
+                    } else if (num_day[j] > 3 && num_day[j] < 7) {
+                        $(Days[k]).addClass("have_m");
+                    } else {
+                        $(Days[k]).addClass("have_h");
+                    }
+                    break;
+                }
+            }
+        }
+
+        Days = document.getElementsByTagName("td");
 
         for (var k = 0; k <= 41; k++) {
             for (var j = 0; j < totalarr.length; j++) {
@@ -505,6 +626,7 @@ $('.cal').click(function() {
 //     }
 // });
 //紀錄運動名稱
+
 $(".calender").click(function() {
     console.log(1);
     if (getCookie('username') == "") {
@@ -517,14 +639,14 @@ $(".calender").click(function() {
         }
         $("#cal_win").show(); //顯示視窗
         same = false; //判斷是否有存取過該運動
-        var Days = document.getElementsByTagName("td");
+        var Days = document.getElementsByClassName("td");
         for (var j = 0; j < Days.length; j++) {
             $(Days[j]).removeClass("important");
             $(Days[j]).removeClass("have_s");
             $(Days[j]).removeClass("have_m");
             $(Days[j]).removeClass("have_h");
         }
-        workout_cal_choiceH(workout_sth_c);
+        // workout_cal_choice(workout_sth_c);
         //----------------------------------------------------------------//
         window.localStorage.setItem('newpose', workout_sth_c);
     }
@@ -581,6 +703,7 @@ $("#modal_OK_home").click(function() {
         }
     }
     choice_d = []; //清空陣列
+    workout_cal_choiceH();
 });
 
 
@@ -648,7 +771,6 @@ $(document).ready(function() {
                                         <input type="text" value="${res[i].times}" class="col-1 no-border">
                                         <input type="text" value="${res[i].times_status}" class="col-2 no-border">
                                         <div class="HOME_item_delete col-2" onclick="HOMEdel('i${i}','2','${sth}')">X</div>
-                                        <div class="HOME_item_update col-2" onclick="HOMEupdate()"></div>
                                     </div>`
                         $("#HOME_div_block").append(HOMEdiv);
                     }
@@ -719,10 +841,6 @@ $(document).ready(function() {
     $(".no-border").addClass('d-none');
 });
 
-function HOMEupdate() {
-    console.log(1);
-}
-
 
 function HOMEdel(HOMEinput, ind, title) {
     $('.' + HOMEinput).remove();
@@ -733,7 +851,6 @@ function HOMEdel(HOMEinput, ind, title) {
             day: choiceDay,
             inputS: HOMEinput
         };
-        console.log(data);
         jQuery.post(api, data, function(res) {});
         del(1);
     } else {
@@ -749,6 +866,7 @@ function HOMEdel(HOMEinput, ind, title) {
         jQuery.post(api1, data1, function(res) {});
         del(2);
     }
+    workout_cal_choiceH();
 }
 
 
@@ -785,6 +903,7 @@ $("#HOME_sth_add").click(function() {
         $("#HOME_div").show();
     }
     $("#HOME_sth_input").val("");
+    workout_cal_choiceH();
 });
 
 
@@ -796,7 +915,10 @@ function del(type) {
     var data = {
         type: type
     };
-    jQuery.post(api, data, function(res) {});
+    console.log(1);
+    jQuery.post(api, data, function(res) {
+        console.log(res);
+    });
 }
 
 function PleaseSign() {

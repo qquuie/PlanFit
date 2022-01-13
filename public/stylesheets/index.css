@@ -333,7 +333,7 @@ td:hover {
     display: none;
     background-color: #f3f1de;
     width: 50%;
-    height: 600px;
+    height: 800px;
     margin: 0 auto;
     left: 25%;
     position: absolute;
@@ -341,6 +341,7 @@ td:hover {
     border-radius: 4px;
     box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
     z-index: 5;
+    /* padding: 10px; */
 }
 
 #cal_close {

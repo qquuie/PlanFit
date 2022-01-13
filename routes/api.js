@@ -102,15 +102,18 @@ router.post('/removeCal', function(req, res) {
 
 router.post('/del', function(req, res) {
     if (req.body.type == 1) {
-        HOMEinputModel.deleteOne({ inputS: '' }, function(err, data) {
+        HOMEinputModel.deleteMany({ inputS: '' }, function(err, data) {
             if (err) {
                 console.log(err);
+                res.json(data);
             }
         });
     } else {
-        calendarModel.deleteOne({ day: '' }, function(err, data) {
+        calendarModel.deleteMany({ day: '' }, function(err, data) {
             if (err) {
                 console.log(err);
+                res.json(data);
+
             }
         });
     }

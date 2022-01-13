@@ -61,9 +61,9 @@ include includes/navigation
         tr
           th.border-color(colspan='7')
             #home_Date.text-align_center
-              i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonth();')
+              i.glyphicon.glyphicon-menu-left.icon_btn(onclick='previousMonthH();')
               h3#home_cal-month December ,2020
-              i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonth();')
+              i.glyphicon.glyphicon-menu-right.icon_btn(onclick='nextMonthH();')
         tr
           th.weekday.border-color Sun
           th.weekday.border-color Mon
@@ -312,5 +312,8 @@ script.
   let thisYear = today.getFullYear();
   let thisMonth = today.getMonth();
   let thisDate = today.getDate();
+  let thisYearH = today.getFullYear();
+  let thisMonthH = today.getMonth();
+  let thisDateH = today.getDate();
   updateDates();
   fillInMonth(thisYear, thisMonth, thisDate);

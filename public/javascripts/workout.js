@@ -222,11 +222,15 @@ function getUserCal() {
 
 }
 
+
+
 // var have = [];
 // var havearr = [];
 // var num_day = [];
+var totalarr = [];
 
 function workout_cal_choice(name) {
+    num_day = [];
     var api = "http://127.0.0.1:3000/api/workoutCalChoice"; //除非跨域
     var data1 = {
         "acc": getCookie('username'),
@@ -258,7 +262,6 @@ function workout_cal_choice(name) {
     var DATA = {
         "acc": getCookie('username'),
     };
-    var totalarr = [];
     jQuery.post(API, DATA, function(res) {
         for (var i = 0; i < havearr.length; i++) {
             num_day[i] = 0;
@@ -317,7 +320,112 @@ function workout_cal_choice(name) {
     });
     have = [];
     havearr = [];
-    num_day = [];
+    // num_day = [];
+}
+
+function nextMonth() {
+    $("td").removeClass("important"); //先把效果清除
+    pre_click_ym = getMonthName(thisMonth) + ", " + thisYear; //上一次的日曆頁面
+    thisMonth++;
+    if (thisMonth === 12) {
+        thisMonth = 0;
+        thisYear++;
+    }
+    now_click_ym = getMonthName(thisMonth) + ", " + thisYear; //現在的日曆頁面
+    $("#cal-month").text(now_click_ym);
+    let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+    console.log(pre_click_ym);
+    console.log(now_click_ym);
+    fillInMonth(thisYear, thisMonth, thisDate);
+
+    var Days = document.getElementsByTagName("td");
+    for (var i = 0; i <= 41; i++) {
+        // console.log($(Days[i]).attr("data-uid"));
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
+                $(Days[i]).addClass("important");
+                break;
+            }
+        }
+    }
+    console.log(1);
+    var Days = document.getElementsByTagName("td");
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
+}
+
+function previousMonth() {
+    $("td").removeClass("important"); //先把效果清除
+    pre_click_ym = getMonthName(thisMonth) + ", " + thisYear; //上一次的日曆頁面
+    thisMonth--;
+    if (thisMonth === -1) {
+        thisMonth = 11;
+        thisYear--;
+    }
+    now_click_ym = getMonthName(thisMonth) + ", " + thisYear; //現在的日曆頁面
+    $("#cal-month").text(now_click_ym);
+    let firstDay = new Date(thisYear, thisMonth, 1).getDay();
+    console.log(pre_click_ym);
+    console.log(now_click_ym);
+    fillInMonth(thisYear, thisMonth, thisDate);
+
+    var Days = document.getElementsByTagName("td");
+    //清空陣列再把所有data-uid的數值推入
+    //應寫成把該月的所有刪掉而不是直接清空(直接會導致其他月份都清空)
+    for (var i = 0; i <= 41; i++) {
+        // console.log($(Days[i]).attr("data-uid"));
+        for (var j = 0; j < choice_d.length; j++) {
+            if ($(Days[i]).attr("data-uid") == choice_d[j]) {
+                console.log($(Days[i]).attr("data-uid") + "," + choice_d[j]);
+                $(Days[i]).addClass("important");
+                break;
+            }
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            $(Days[k]).removeClass("have_s");
+            $(Days[k]).removeClass("have_m");
+            $(Days[k]).removeClass("have_h");
+        }
+    }
+
+    for (var k = 0; k <= 41; k++) {
+        for (var j = 0; j < totalarr.length; j++) {
+            if ($(Days[k]).attr("data-uid") == totalarr[j]) {
+                if (num_day[j] <= 3) {
+                    $(Days[k]).addClass("have_s");
+                } else if (num_day[j] > 3 && num_day[j] < 7) {
+                    $(Days[k]).addClass("have_m");
+                } else {
+                    $(Days[k]).addClass("have_h");
+                }
+                break;
+            }
+        }
+    }
 }
 
 //更新待辦事項//前端
@@ -475,6 +583,7 @@ $("div#smallPageModal").css('z-index', '-1');
 $(".page").css('z-index', '1000');
 $(".calender").click(function() {
     console.log(1);
+    // $("#cal-month").text(getMonthName(thisMonth) + ", " + thisYear);
     $("#calendar_win").show();
     $("#calendar_win").css({
         "display": "flex",

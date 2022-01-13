@@ -141,7 +141,7 @@ function getUID(year, month, date) {
 function fillInMonth(thisYear, thisMonth, thisDate) {
     let firstDayThisMonthYear = new Date(thisYear, thisMonth, 1).getDay();
     // 填滿月曆表格日期
-    var days = document.getElementsByTagName("td"); //取得月曆表格html所有的TD標籤物件陣列
+    var days = document.getElementsByClassName("HOME_cal"); //取得月曆表格html所有的TD標籤物件陣列
     var days_form = document.getElementsByClassName("cal"); //取得月曆表格html所有的TD標籤物件陣列
     var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //記錄每個月的天數
     if (thisYear % 400 == 0 || (thisYear % 4 == 0 && thisYear % 100 != 0)) {
